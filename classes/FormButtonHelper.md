@@ -72,13 +72,13 @@ The settings for the form button helper.
 
 ### button
 
-> `get` **button**(): [`FormlyFieldConfig`](../interfaces/FormlyFieldConfig.md)\<[`FormlyFieldProps`](../interfaces/FormlyFieldProps.md)\>
+> `get` **button**(): `FormlyFieldConfig`\<`FormlyFieldProps`\>
 
 Gets the Formly field configuration for the button.
 
 #### Returns
 
-[`FormlyFieldConfig`](../interfaces/FormlyFieldConfig.md)\<[`FormlyFieldProps`](../interfaces/FormlyFieldProps.md)\>
+`FormlyFieldConfig`\<`FormlyFieldProps`\>
 
 The Formly field configuration.
 

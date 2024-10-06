@@ -12,7 +12,7 @@ Checks if the current widget is an object on the board, or a service.
 
 ## Parameters
 
-• **h?**: [`IWidgetApi`](../interfaces/IWidgetApi.md) \| [`IWidgetServiceApi`](../interfaces/IWidgetServiceApi.md) = `haptic`
+• **h?**: `IWidgetApi` \| `IWidgetServiceApi` = `haptic`
 
 The widget API or service API connector.
 

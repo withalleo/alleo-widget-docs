@@ -22,19 +22,19 @@ Helper class for capturing image or video content from an object on the board.
 
 ### supportedImageObjectTypes
 
-> `static` **supportedImageObjectTypes**: [`BoardFabricObjectType`](../enumerations/BoardFabricObjectType.md)[]
+> `static` **supportedImageObjectTypes**: `BoardFabricObjectType`[]
 
 ***
 
 ### supportedObjectTypes
 
-> `static` **supportedObjectTypes**: [`BoardFabricObjectType`](../enumerations/BoardFabricObjectType.md)[]
+> `static` **supportedObjectTypes**: `BoardFabricObjectType`[]
 
 ***
 
 ### supportedVideoObjectTypes
 
-> `static` **supportedVideoObjectTypes**: [`BoardFabricObjectType`](../enumerations/BoardFabricObjectType.md)[]
+> `static` **supportedVideoObjectTypes**: `BoardFabricObjectType`[]
 
 ## Methods
 

@@ -70,7 +70,7 @@ Creates a font picker button on the widget bar.
 
 #### Parameters
 
-• **button?**: [`ContextMenuFont`](../interfaces/ContextMenuFont.md) = `undefined`
+• **button?**: `ContextMenuFont` = `undefined`
 
 The context menu font button.
 

@@ -85,7 +85,7 @@ Creates a color picker button.
 
 #### Parameters
 
-• **button?**: [`ContextMenuColor`](../interfaces/ContextMenuColor.md) = `undefined`
+• **button?**: `ContextMenuColor` = `undefined`
 
 The context menu color button.
 

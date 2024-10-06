@@ -46,7 +46,7 @@ Gets an exposed function from the widget by its name.
 
 #### Parameters
 
-• **widget**: [`IBoardObject`](../interfaces/IBoardObject.md)
+• **widget**: `IBoardObject`
 
 The widget object.
 
@@ -114,7 +114,7 @@ Lists all exposed functions of the widget.
 
 #### Parameters
 
-• **widget**: [`IBoardObject`](../interfaces/IBoardObject.md)
+• **widget**: `IBoardObject`
 
 The widget object.
 

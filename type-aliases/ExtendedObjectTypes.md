@@ -6,4 +6,4 @@
 
 # Type Alias: ExtendedObjectTypes
 
-> **ExtendedObjectTypes**: [`BoardFabricObjectType`](../enumerations/BoardFabricObjectType.md) \| `"notepad"`
+> **ExtendedObjectTypes**: `BoardFabricObjectType` \| `"notepad"`
