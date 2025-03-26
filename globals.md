@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](README.md) • **Docs**
+[**@withalleo/alleo-widget**](README.md)
 
 ***
 
@@ -6,19 +6,31 @@
 
 ## Enumerations
 
+- [AiMessageType](enumerations/AiMessageType.md)
+- [BackendKeyConfigurationScope](enumerations/BackendKeyConfigurationScope.md)
+- [DataConnectorActions](enumerations/DataConnectorActions.md)
+- [NotificationType](enumerations/NotificationType.md)
+- [SettingsButtonPosition](enumerations/SettingsButtonPosition.md)
 - [TextInputFormat](enumerations/TextInputFormat.md)
+- [UiButtonPosition](enumerations/UiButtonPosition.md)
 
 ## Classes
 
 - [AlleoWidget](classes/AlleoWidget.md)
 - [AnalyticsHelper](classes/AnalyticsHelper.md)
 - [AssetHelper](classes/AssetHelper.md)
+- [BackendProxyHelper](classes/BackendProxyHelper.md)
 - [BoardNotepadHelper](classes/BoardNotepadHelper.md)
 - [BoardObjectHelper](classes/BoardObjectHelper.md)
 - [BoardTextElementHelper](classes/BoardTextElementHelper.md)
 - [BrowserContextHelper](classes/BrowserContextHelper.md)
 - [ColorPickerHelper](classes/ColorPickerHelper.md)
 - [ColorSwitcherHelper](classes/ColorSwitcherHelper.md)
+- [ContainerSelectorSupportingSettingsDialogHelper](classes/ContainerSelectorSupportingSettingsDialogHelper.md)
+- [CSVHelper](classes/CSVHelper.md)
+- [DataConnector](classes/DataConnector.md)
+- [DataConnectorWidget](classes/DataConnectorWidget.md)
+- [DataImportHelper](classes/DataImportHelper.md)
 - [DefaultColors](classes/DefaultColors.md)
 - [DefaultLocale](classes/DefaultLocale.md)
 - [DeploymentSettingsHelper](classes/DeploymentSettingsHelper.md)
@@ -27,36 +39,60 @@
 - [FontPickerHelper](classes/FontPickerHelper.md)
 - [FormButtonHelper](classes/FormButtonHelper.md)
 - [ImageObjectCaptureHelper](classes/ImageObjectCaptureHelper.md)
+- [ItemListHelper](classes/ItemListHelper.md)
+- [LoadingStatus](classes/LoadingStatus.md)
 - [LoadSharingHelper](classes/LoadSharingHelper.md)
 - [MultiTouchHelper](classes/MultiTouchHelper.md)
+- [OptionalContainerSelectorSupportingSettingsDialogHelper](classes/OptionalContainerSelectorSupportingSettingsDialogHelper.md)
+- [OptionalLocationSelectorSupportingSettingsDialogHelper](classes/OptionalLocationSelectorSupportingSettingsDialogHelper.md)
+- [PointerHelper](classes/PointerHelper.md)
+- [RateLimitFunctionHelper](classes/RateLimitFunctionHelper.md)
 - [RateLimitUpdateHelper](classes/RateLimitUpdateHelper.md)
 - [ResizeHelper](classes/ResizeHelper.md)
 - [ScrollHelper](classes/ScrollHelper.md)
+- [SelfDeleteHelper](classes/SelfDeleteHelper.md)
 - [ServiceUi](classes/ServiceUi.md)
 - [SettingsDialogHelper](classes/SettingsDialogHelper.md)
 - [SharedCache](classes/SharedCache.md)
+- [SharedVariable](classes/SharedVariable.md)
+- [SimpleUserNotification](classes/SimpleUserNotification.md)
+- [SoundRecordingHelper](classes/SoundRecordingHelper.md)
 - [UiButtonHelper](classes/UiButtonHelper.md)
+- [UserNotification](classes/UserNotification.md)
+- [WatsonxAiHelper](classes/WatsonxAiHelper.md)
+- [WidgetDetails](classes/WidgetDetails.md)
 - [WidgetNameHelper](classes/WidgetNameHelper.md)
 
 ## Interfaces
 
+- [AiMessage](interfaces/AiMessage.md)
 - [RealIBoardObject](interfaces/RealIBoardObject.md)
 
 ## Type Aliases
 
 - [Color](type-aliases/Color.md)
+- [ConfigDialogSetting](type-aliases/ConfigDialogSetting.md)
 - [Coordinates](type-aliases/Coordinates.md)
+- [CSVData](type-aliases/CSVData.md)
+- [DataImportHelperSettings](type-aliases/DataImportHelperSettings.md)
 - [EventDisableHelperOptions](type-aliases/EventDisableHelperOptions.md)
 - [ExtendedObjectTypes](type-aliases/ExtendedObjectTypes.md)
 - [FontPickerSettings](type-aliases/FontPickerSettings.md)
 - [FormButtonHelperSettings](type-aliases/FormButtonHelperSettings.md)
 - [GetTextContentOptions](type-aliases/GetTextContentOptions.md)
+- [Instruction](type-aliases/Instruction.md)
+- [ItemListHelperOptions](type-aliases/ItemListHelperOptions.md)
 - [JavascriptEventName](type-aliases/JavascriptEventName.md)
+- [ListRecord](type-aliases/ListRecord.md)
 - [MultiTouchHelperOptions](type-aliases/MultiTouchHelperOptions.md)
+- [Notification](type-aliases/Notification.md)
 - [SetTextContentOptions](type-aliases/SetTextContentOptions.md)
 - [SharedLock](type-aliases/SharedLock.md)
+- [SharedVariableChangeObserverOptions](type-aliases/SharedVariableChangeObserverOptions.md)
 - [Size](type-aliases/Size.md)
+- [SoundRecordingHelperOptions](type-aliases/SoundRecordingHelperOptions.md)
 - [StandardSyncMessage](type-aliases/StandardSyncMessage.md)
+- [UserNotificationOptions](type-aliases/UserNotificationOptions.md)
 - [WidgetSyncMessage](type-aliases/WidgetSyncMessage.md)
 
 ## Functions
@@ -64,6 +100,7 @@
 - [getWidgetCoordinates](functions/getWidgetCoordinates.md)
 - [isEnumValue](functions/isEnumValue.md)
 - [isEqual](functions/isEqual.md)
+- [isPermissionEnough](functions/isPermissionEnough.md)
 - [isTransparent](functions/isTransparent.md)
 - [randomInt](functions/randomInt.md)
 - [simpleHash](functions/simpleHash.md)

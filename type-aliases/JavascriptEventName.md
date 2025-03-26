@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -6,6 +6,6 @@
 
 # Type Alias: JavascriptEventName
 
-> **JavascriptEventName**: `NonNullable`\<`string`\>
+> **JavascriptEventName** = `NonNullable`\<`string`\>
 
 Type representing a JavaScript event names.

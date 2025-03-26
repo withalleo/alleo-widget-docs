@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,21 +10,23 @@ A helper for handling file assets.
 
 ## Constructors
 
-### new AssetHelper()
+### Constructor
 
-> **new AssetHelper**(`widgetContainerSelector`?): [`AssetHelper`](AssetHelper.md)
+> **new AssetHelper**(`widgetContainerSelector`?): `AssetHelper`
 
 Creates an instance of AssetHelper.
 
 #### Parameters
 
-• **widgetContainerSelector?**: `string` = `'.widget-container'`
+##### widgetContainerSelector?
+
+`string` = `'.widget-container'`
 
 The CSS selector for the widget container.
 
 #### Returns
 
-[`AssetHelper`](AssetHelper.md)
+`AssetHelper`
 
 ## Properties
 
@@ -44,7 +46,9 @@ Sets up CSS URLs for the specified array of CSS properties.
 
 #### Parameters
 
-• **cssArray**: `object`[]
+##### cssArray
+
+`object`[]
 
 An array of objects containing CSS query, variable, and value.
 

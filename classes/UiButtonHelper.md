@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,15 +10,15 @@ Helper class for managing UI buttons for widget services.
 
 ## Constructors
 
-### new UiButtonHelper()
+### Constructor
 
-> **new UiButtonHelper**(): [`UiButtonHelper`](UiButtonHelper.md)
+> **new UiButtonHelper**(): `UiButtonHelper`
 
 Constructs a new button.
 
 #### Returns
 
-[`UiButtonHelper`](UiButtonHelper.md)
+`UiButtonHelper`
 
 ## Properties
 
@@ -34,13 +34,31 @@ Constructs a new button.
 
 ## Accessors
 
+### backgroundColor
+
+#### Get Signature
+
+> **get** **backgroundColor**(): `string`
+
+Gets the background color of the buttons.
+
+##### Returns
+
+`string`
+
+The background color of the buttons.
+
+***
+
 ### buttons
 
-> `get` **buttons**(): `HTMLElement`[]
+#### Get Signature
+
+> **get** **buttons**(): `HTMLElement`[]
 
 Gets the list of button elements.
 
-#### Returns
+##### Returns
 
 `HTMLElement`[]
 
@@ -56,23 +74,39 @@ Adds a new button to the UI.
 
 #### Parameters
 
-• **html**: `string`
+##### html
+
+`string`
 
 The HTML content of the button.
 
-• **callback**
+##### callback
+
+() => `void`
 
 The callback function to execute when the button is clicked.
 
-• **settings** = `{}`
+##### settings
 
 The settings for the button.
 
-• **settings.buttonId?**: `string`
+###### buttonId?
+
+`string`
 
 The ID of the button.
 
-• **settings.position?**: `UiButtonPosition`
+###### callbackPointerDown?
+
+(`e`) => `void`
+
+###### callbackPointerUp?
+
+(`e`) => `void`
+
+###### position?
+
+[`UiButtonPosition`](../enumerations/UiButtonPosition.md)
 
 The position of the button.
 
@@ -104,7 +138,9 @@ Gets the button element with the given ID.
 
 #### Parameters
 
-• **buttonId**: `string`
+##### buttonId
+
+`string`
 
 The ID of the button.
 
@@ -124,7 +160,9 @@ Checks if a button with the given ID is visible.
 
 #### Parameters
 
-• **buttonId**: `string`
+##### buttonId
+
+`string`
 
 The ID of the button.
 
@@ -144,7 +182,9 @@ Removes a button with the given ID.
 
 #### Parameters
 
-• **buttonId**: `string`
+##### buttonId
+
+`string`
 
 The ID of the button to remove.
 

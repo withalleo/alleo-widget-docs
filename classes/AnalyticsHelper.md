@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,13 +10,13 @@ A helper collection for analytics and debugging.
 
 ## Constructors
 
-### new AnalyticsHelper()
+### Constructor
 
-> **new AnalyticsHelper**(): [`AnalyticsHelper`](AnalyticsHelper.md)
+> **new AnalyticsHelper**(): `AnalyticsHelper`
 
 #### Returns
 
-[`AnalyticsHelper`](AnalyticsHelper.md)
+`AnalyticsHelper`
 
 ## Methods
 
@@ -28,7 +28,9 @@ Logs a debug message. Debug messages are only shown in development mode, and not
 
 #### Parameters
 
-• ...**params**: `any`[]
+##### params
+
+...`any`[]
 
 The parameters to log.
 
@@ -46,7 +48,9 @@ Logs an error message.
 
 #### Parameters
 
-• ...**params**: `any`[]
+##### params
+
+...`any`[]
 
 The parameters to log.
 
@@ -78,7 +82,9 @@ Logs an info message. These are (usually) not shown in production, however are l
 
 #### Parameters
 
-• ...**params**: `any`[]
+##### params
+
+...`any`[]
 
 The parameters to log.
 
@@ -96,15 +102,21 @@ TypeScript decorator to log accessor calls.
 
 #### Parameters
 
-• **target**: `any`
+##### target
+
+`any`
 
 The target object.
 
-• **propertyKey**: `any`
+##### propertyKey
+
+`any`
 
 The name of the accessor.
 
-• **descriptor?**: `PropertyDescriptor` = `undefined`
+##### descriptor?
+
+`PropertyDescriptor` = `undefined`
 
 The property descriptor.
 
@@ -122,11 +134,15 @@ TypeScript decorator to log class instantiation.
 
 #### Type Parameters
 
-• **T** *extends* (...`args`) => `object`
+##### T
+
+`T` *extends* (...`args`) => `object`
 
 #### Parameters
 
-• **constructor**: `T`
+##### constructor
+
+`T`
 
 The class constructor.
 
@@ -146,15 +162,21 @@ TypeScript decorator to log method calls.
 
 #### Parameters
 
-• **target**: `any`
+##### target
+
+`any`
 
 The target object.
 
-• **propertyKey**: `any`
+##### propertyKey
+
+`any`
 
 The name of the method.
 
-• **descriptor?**: `PropertyDescriptor` = `undefined`
+##### descriptor?
+
+`PropertyDescriptor` = `undefined`
 
 The property descriptor.
 
@@ -172,15 +194,21 @@ TypeScript decorator to log parameter usage.
 
 #### Parameters
 
-• **target**: `any`
+##### target
+
+`any`
 
 The target object.
 
-• **propertyKey**: `any`
+##### propertyKey
+
+`any`
 
 The name of the method.
 
-• **parameterIndex?**: `number` = `undefined`
+##### parameterIndex?
+
+`number` = `undefined`
 
 The index of the parameter.
 
@@ -198,11 +226,15 @@ TypeScript decorator to log property access.
 
 #### Parameters
 
-• **target**: `any`
+##### target
+
+`any`
 
 The target object.
 
-• **propertyKey**: `any`
+##### propertyKey
+
+`any`
 
 The name of the property.
 
@@ -220,11 +252,15 @@ Tracks an analytics event.
 
 #### Parameters
 
-• **action**: `string`
+##### action
+
+`string`
 
 The action name of the event.
 
-• **payload?**: `Record`\<`string`, `any`\> = `{}`
+##### payload?
+
+`Record`\<`string`, `any`\> = `{}`
 
 Additional data to be sent with the event.
 
@@ -242,7 +278,9 @@ Logs a warning message.
 
 #### Parameters
 
-• ...**params**: `any`[]
+##### params
+
+...`any`[]
 
 The parameters to log.
 

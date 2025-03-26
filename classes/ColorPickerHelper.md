@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -14,45 +14,59 @@ A helper class for creating a color picker
 
 ## Constructors
 
-### new ColorPickerHelper()
+### Constructor
 
-> **new ColorPickerHelper**(`handle`?, `CSSVariable`?, `defaultColor`?, `coloPickerSettings`?, `widgetContainerSelector`?, `callbackOnColorChange`?, `displayColorPickerButtonOnInit`?): [`ColorPickerHelper`](ColorPickerHelper.md)
+> **new ColorPickerHelper**(`handle`?, `CSSVariable`?, `defaultColor`?, `coloPickerSettings`?, `widgetContainerSelector`?, `callbackOnColorChange`?, `displayColorPickerButtonOnInit`?): `ColorPickerHelper`
 
 Creates a Color Picker
 
 #### Parameters
 
-• **handle?**: `string` = `'color'`
+##### handle?
+
+`string` = `'color'`
 
 The handle for the color picker. (the shared variable)
 
-• **CSSVariable?**: `string` = `'--widget-color'`
+##### CSSVariable?
+
+`string` = `'--widget-color'`
 
 The CSS variable for the color.
 
-• **defaultColor?**: `string` = `DefaultColors.primary`
+##### defaultColor?
+
+`string` = `DefaultColors.primary`
 
 The default color.
 
-• **coloPickerSettings?**: `Partial`\<`object`\> = `...`
+##### coloPickerSettings?
+
+`Partial`\<\{ `icon`: \{ `icon`: `string`; `set`: `string`; \}; `includeTransparent`: `boolean`; `label`: `string`; `palette`: `string`; \}\> = `...`
 
 The settings for the color picker.
 
-• **widgetContainerSelector?**: `string` = `'.widget-container'`
+##### widgetContainerSelector?
+
+`string` = `'.widget-container'`
 
 The CSS selector for the widget container.
 
-• **callbackOnColorChange?** = `undefined`
+##### callbackOnColorChange?
+
+(`color`) => `void`
 
 The callback function to call on color change.
 
-• **displayColorPickerButtonOnInit?**: `boolean` = `true`
+##### displayColorPickerButtonOnInit?
+
+`boolean` = `true`
 
 Whether to display the color picker button on initialization.
 
 #### Returns
 
-[`ColorPickerHelper`](ColorPickerHelper.md)
+`ColorPickerHelper`
 
 #### Throws
 
@@ -76,11 +90,15 @@ Creates a color picker button.
 
 #### Parameters
 
-• **button?**: `ContextMenuColor` = `undefined`
+##### button?
+
+`ContextMenuColor` = `undefined`
 
 The context menu color button.
 
-• **coloPickerSettings?**: `Partial`\<`object`\>
+##### coloPickerSettings?
+
+`Partial`\<\{ `icon`: \{ `icon`: `string`; `set`: `string`; \}; `includeTransparent`: `boolean`; `label`: `string`; `palette`: `string`; \}\>
 
 The settings for the color picker.
 
@@ -102,7 +120,9 @@ Updates the color. (when set)
 
 #### Parameters
 
-• **color**: `string`
+##### color
+
+`string`
 
 The new color.
 
@@ -120,7 +140,9 @@ Sets the color.
 
 #### Parameters
 
-• **color**: `string`
+##### color
+
+`string`
 
 The new color.
 

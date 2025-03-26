@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,13 +10,13 @@ Helper class for exposing widget functionality to other objects on the board.
 
 ## Constructors
 
-### new ExposeActionHelper()
+### Constructor
 
-> **new ExposeActionHelper**(): [`ExposeActionHelper`](ExposeActionHelper.md)
+> **new ExposeActionHelper**(): `ExposeActionHelper`
 
 #### Returns
 
-[`ExposeActionHelper`](ExposeActionHelper.md)
+`ExposeActionHelper`
 
 ## Methods
 
@@ -28,7 +28,9 @@ Exposes actions by adding them to the widget reference of the root node.
 
 #### Parameters
 
-• **actions**: `object`[]
+##### actions
+
+`object`[]
 
 The actions to expose.
 
@@ -46,11 +48,15 @@ Gets an exposed function from the widget by its name.
 
 #### Parameters
 
-• **widget**: `IBoardObject`
+##### widget
+
+`IBoardObject`
 
 The widget object.
 
-• **functionName**: `string`
+##### functionName
+
+`string`
 
 The name of the function to get.
 
@@ -92,11 +98,15 @@ Handles an incoming asynchronous message from another widget.
 
 #### Parameters
 
-• **widgetSyncMessage**: [`WidgetSyncMessage`](../type-aliases/WidgetSyncMessage.md)
+##### widgetSyncMessage
+
+[`WidgetSyncMessage`](../type-aliases/WidgetSyncMessage.md)
 
 The widget synchronization message.
 
-• **filterType?**: `string` = `undefined`
+##### filterType?
+
+`string` = `undefined`
 
 Optional filter type to process specific messages.
 
@@ -114,7 +124,9 @@ Lists all exposed functions of the widget.
 
 #### Parameters
 
-• **widget**: `IBoardObject`
+##### widget
+
+`IBoardObject`
 
 The widget object.
 
@@ -138,15 +150,21 @@ Sends an asynchronous message to connected widgets
 
 #### Parameters
 
-• **functionName**: `string`
+##### functionName
+
+`string`
 
 The name of the function to call.
 
-• **type?**: `string` = `''`
+##### type?
+
+`string` = `''`
 
 The type of the message.
 
-• **args?**: `any` = `undefined`
+##### args?
+
+`any` = `undefined`
 
 The arguments to pass to the function.
 
@@ -166,7 +184,9 @@ Sends multiple asynchronous messages to connected widgets.
 
 #### Parameters
 
-• **messages**: [`StandardSyncMessage`](../type-aliases/StandardSyncMessage.md)[]
+##### messages
+
+[`StandardSyncMessage`](../type-aliases/StandardSyncMessage.md)[]
 
 The list of messages to send.
 
@@ -186,7 +206,9 @@ Removes an exposed functionality.
 
 #### Parameters
 
-• **actions**: `object`[]
+##### actions
+
+`object`[]
 
 The actions to unexpose.
 

@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,13 +10,13 @@ A class that provides default color settings for the widget.
 
 ## Constructors
 
-### new DefaultColors()
+### Constructor
 
-> **new DefaultColors**(): [`DefaultColors`](DefaultColors.md)
+> **new DefaultColors**(): `DefaultColors`
 
 #### Returns
 
-[`DefaultColors`](DefaultColors.md)
+`DefaultColors`
 
 ## Properties
 
@@ -25,6 +25,16 @@ A class that provides default color settings for the widget.
 > `readonly` `static` **background**: `string`
 
 The default color for the background.
+
+***
+
+### green
+
+> `readonly` `static` **green**: `string`
+
+The default color used as "green" in the widget.
+
+Typically used for success messages.
 
 ***
 
@@ -41,6 +51,16 @@ The default primary color (ie. organization's main color).
 > `readonly` `static` **rainbow**: `string`[]
 
 A set of colors for using multiple colors in the widget.
+
+***
+
+### red
+
+> `readonly` `static` **red**: `string`
+
+The default color used as "red" in the widget.
+
+Typically used for error messages.
 
 ***
 

@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -12,29 +12,35 @@ ie. to prevent dragging, scrolling, etc.
 
 ## Constructors
 
-### new EventDisableHelper()
+### Constructor
 
-> **new EventDisableHelper**(`element`, `events`, `options`): [`EventDisableHelper`](EventDisableHelper.md)
+> **new EventDisableHelper**(`element`, `events`, `options`): `EventDisableHelper`
 
 Constructor for EventDisableHelper.
 
 #### Parameters
 
-• **element**: `HTMLElement` \| `Window` = `...`
+##### element
 
 The HTML element or window to which events are attached.
 
-• **events**: `string`[] = `EventDisableHelper.POINTER_EVENTS`
+`HTMLElement` | `Window`
+
+##### events
+
+`string`[] = `EventDisableHelper.POINTER_EVENTS`
 
 List of events to be managed.
 
-• **options**: [`EventDisableHelperOptions`](../type-aliases/EventDisableHelperOptions.md) = `{}`
+##### options
+
+[`EventDisableHelperOptions`](../type-aliases/EventDisableHelperOptions.md) = `{}`
 
 Options for the EventDisableHelper.
 
 #### Returns
 
-[`EventDisableHelper`](EventDisableHelper.md)
+`EventDisableHelper`
 
 ## Properties
 
@@ -160,23 +166,33 @@ Disables events on the element.
 
 #### Parameters
 
-• **events**: `string`[] = `...`
+##### events
+
+`string`[] = `...`
 
 List of events to be disabled.
 
-• **preventDefault**: `boolean` = `false`
+##### preventDefault
+
+`boolean` = `false`
 
 Whether to call preventDefault on the event.
 
-• **stopPropagation**: `boolean` = `true`
+##### stopPropagation
+
+`boolean` = `true`
 
 Whether to call stopPropagation on the event.
 
-• **stopImmediatePropagation**: `boolean` = `false`
+##### stopImmediatePropagation
+
+`boolean` = `false`
 
 Whether to call stopImmediatePropagation on the event.
 
-• **capture**: `boolean` = `false`
+##### capture
+
+`boolean` = `false`
 
 Whether to capture the event.
 
@@ -194,7 +210,9 @@ Enables events on the element.
 
 #### Parameters
 
-• **events**: `string`[] = `...`
+##### events
+
+`string`[] = `...`
 
 List of events to be enabled.
 
@@ -224,23 +242,33 @@ Cancels an event.
 
 #### Parameters
 
-• **e**: `Event`
+##### e
+
+`Event`
 
 The event to be cancelled.
 
-• **preventDefault**: `boolean` = `true`
+##### preventDefault
+
+`boolean` = `true`
 
 Whether to call preventDefault on the event.
 
-• **stopPropagation**: `boolean` = `true`
+##### stopPropagation
+
+`boolean` = `true`
 
 Whether to call stopPropagation on the event.
 
-• **stopImmediatePropagation**: `boolean` = `true`
+##### stopImmediatePropagation
+
+`boolean` = `true`
 
 Whether to call stopImmediatePropagation on the event.
 
-• **callback** = `undefined`
+##### callback
+
+(`e`) => `void`
 
 A callback to be called when the event is cancelled.
 
@@ -258,7 +286,9 @@ Makes an element draggable.
 
 #### Parameters
 
-• **element**: `HTMLElement`
+##### element
+
+`HTMLElement`
 
 The element to be made draggable.
 

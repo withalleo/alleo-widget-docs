@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,21 +10,23 @@ Class to manage multi-touch and similar advanced interactions for a widget.
 
 ## Constructors
 
-### new MultiTouchHelper()
+### Constructor
 
-> **new MultiTouchHelper**(`options`): [`MultiTouchHelper`](MultiTouchHelper.md)
+> **new MultiTouchHelper**(`options`): `MultiTouchHelper`
 
 Constructor for MultiTouchHelper.
 
 #### Parameters
 
-• **options**: [`MultiTouchHelperOptions`](../type-aliases/MultiTouchHelperOptions.md) = `{}`
+##### options
+
+[`MultiTouchHelperOptions`](../type-aliases/MultiTouchHelperOptions.md) = `{}`
 
 Configuration options for the MultiTouchHelper.
 
 #### Returns
 
-[`MultiTouchHelper`](MultiTouchHelper.md)
+`MultiTouchHelper`
 
 ## Properties
 
@@ -124,6 +126,26 @@ Stops the MultiTouchHelper, disabling managed interactions.
 
 ***
 
+### updateUnlockHelperIcon()
+
+> `protected` **updateUnlockHelperIcon**(`locked`): `void`
+
+Updates the unlock helper icon.
+
+#### Parameters
+
+##### locked
+
+`boolean` = `undefined`
+
+specifies if the icon should be shown or hidden (undefined means automatic detection)
+
+#### Returns
+
+`void`
+
+***
+
 ### updateZoomOutButtonStatus()
 
 > **updateZoomOutButtonStatus**(): `void`
@@ -170,9 +192,11 @@ Dispatches a pointer event to the widget's root node.
 
 #### Parameters
 
-• **event**: `string` \| `PointerEvent`
+##### event
 
 The event to dispatch.
+
+`string` | `PointerEvent`
 
 #### Returns
 
@@ -188,11 +212,15 @@ Creates a safe ResizeObserver for the given element.
 
 #### Parameters
 
-• **obj**: `HTMLElement`
+##### obj
+
+`HTMLElement`
 
 The element to observe.
 
-• **callback**: `ResizeObserverCallback`
+##### callback
+
+`ResizeObserverCallback`
 
 The callback to execute when the element is resized.
 

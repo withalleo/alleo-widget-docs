@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,55 +10,81 @@ A helper class to manage rapid updates to a shared variable.
 
 ## Type Parameters
 
-• **T** = `any`
+### T
+
+`T` = `any`
 
 The type of the value being managed.
 
 ## Constructors
 
-### new RateLimitUpdateHelper()
+### Constructor
 
-> **new RateLimitUpdateHelper**\<`T`\>(`key`, `maxDelay`?): [`RateLimitUpdateHelper`](RateLimitUpdateHelper.md)\<`T`\>
+> **new RateLimitUpdateHelper**\<`T`\>(`key`, `maxDelay`?): `RateLimitUpdateHelper`\<`T`\>
 
 Creates an instance of RateLimitUpdateHelper.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 The key used to store the value.
 
-• **maxDelay?**: `number` = `250`
+##### maxDelay?
+
+`number` = `250`
 
 The maximum delay between updates in milliseconds.
 
 #### Returns
 
-[`RateLimitUpdateHelper`](RateLimitUpdateHelper.md)\<`T`\>
+`RateLimitUpdateHelper`\<`T`\>
 
 ## Accessors
 
-### newest
+### latest
 
-> `get` **newest**(): `T`
+#### Get Signature
 
-Gets the newest value.
+> **get** **latest**(): `T`
 
-#### Returns
+Gets the newest sent or received value.
+
+##### Returns
 
 `T`
 
-- The newest value.
+- The newest sent or received value.
+
+***
+
+### newest
+
+#### Get Signature
+
+> **get** **newest**(): `T`
+
+Gets the newest sent value.
+
+##### Returns
+
+`T`
+
+- The newest sent value.
 
 ***
 
 ### stored
 
-> `get` **stored**(): `T`
+#### Get Signature
+
+> **get** **stored**(): `T`
 
 Gets the remotely stored value.
 
-#### Returns
+##### Returns
 
 `T`
 
@@ -74,7 +100,9 @@ Sets a new value and triggers an update if necessary.
 
 #### Parameters
 
-• **value**: `T`
+##### value
+
+`T`
 
 The new value to set.
 

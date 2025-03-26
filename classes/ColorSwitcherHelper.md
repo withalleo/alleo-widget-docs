@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -15,45 +15,59 @@ Extends the ColorPickerHelper class.
 
 ## Constructors
 
-### new ColorSwitcherHelper()
+### Constructor
 
-> **new ColorSwitcherHelper**(`handle`?, `CSSVariable`?, `defaultColor`?, `coloPickerSettings`?, `widgetContainerSelector`?, `callbackOnColorChange`?, `displayColorSwitcherButtonOnInit`?): [`ColorSwitcherHelper`](ColorSwitcherHelper.md)
+> **new ColorSwitcherHelper**(`handle`?, `CSSVariable`?, `defaultColor`?, `coloPickerSettings`?, `widgetContainerSelector`?, `callbackOnColorChange`?, `displayColorSwitcherButtonOnInit`?): `ColorSwitcherHelper`
 
 Creates a Color Switcher
 
 #### Parameters
 
-• **handle?**: `string` = `'fontColor'`
+##### handle?
+
+`string` = `'fontColor'`
 
 The handle for the color switcher.
 
-• **CSSVariable?**: `string` = `'--widget-font-color'`
+##### CSSVariable?
+
+`string` = `'--widget-font-color'`
 
 The CSS variable for the font color.
 
-• **defaultColor?**: `string` = `DefaultColors.text`
+##### defaultColor?
+
+`string` = `DefaultColors.text`
 
 The default color.
 
-• **coloPickerSettings?**: `Partial`\<`object`\> = `...`
+##### coloPickerSettings?
+
+`Partial`\<\{ `icon`: \{ `icon`: `string`; `set`: `string`; \}; `includeTransparent`: `boolean`; `label`: `string`; `palette`: `string`; \}\> = `...`
 
 The settings for the color picker.
 
-• **widgetContainerSelector?**: `string` = `'.widget-container'`
+##### widgetContainerSelector?
+
+`string` = `'.widget-container'`
 
 The CSS selector for the widget container.
 
-• **callbackOnColorChange?** = `undefined`
+##### callbackOnColorChange?
+
+(`color`) => `undefined`
 
 The callback function to call on color change.
 
-• **displayColorSwitcherButtonOnInit?**: `boolean` = `true`
+##### displayColorSwitcherButtonOnInit?
+
+`boolean` = `true`
 
 Whether to display the color switcher button on initialization.
 
 #### Returns
 
-[`ColorSwitcherHelper`](ColorSwitcherHelper.md)
+`ColorSwitcherHelper`
 
 #### Throws
 
@@ -61,7 +75,7 @@ Will throw an error if the DOM is not available.
 
 #### Overrides
 
-[`ColorPickerHelper`](ColorPickerHelper.md).[`constructor`](ColorPickerHelper.md#constructors)
+[`ColorPickerHelper`](ColorPickerHelper.md).[`constructor`](ColorPickerHelper.md#constructor)
 
 ## Properties
 
@@ -85,11 +99,15 @@ Creates a color picker button.
 
 #### Parameters
 
-• **button?**: `ContextMenuColor` = `undefined`
+##### button?
+
+`ContextMenuColor` = `undefined`
 
 The context menu color button.
 
-• **coloPickerSettings?**: `Partial`\<`object`\>
+##### coloPickerSettings?
+
+`Partial`\<\{ `icon`: \{ `icon`: `string`; `set`: `string`; \}; `includeTransparent`: `boolean`; `label`: `string`; `palette`: `string`; \}\>
 
 The settings for the color picker.
 
@@ -115,7 +133,9 @@ Updates the color. (when set)
 
 #### Parameters
 
-• **color**: `string`
+##### color
+
+`string`
 
 The new color.
 
@@ -137,7 +157,9 @@ Sets the color.
 
 #### Parameters
 
-• **color**: `string`
+##### color
+
+`string`
 
 The new color.
 

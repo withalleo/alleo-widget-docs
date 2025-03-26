@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -12,9 +12,11 @@ Retrieves the coordinates of a pointer event within the widget.
 
 ## Parameters
 
-• **event**: `PointerEvent` \| `MouseEvent` \| `Touch` \| `object`
+### event
 
 The event to get coordinates from.
+
+`PointerEvent` | `MouseEvent` | `Touch` | \{ `clientX`: `number`; `clientY`: `number`; \}
 
 ## Returns
 

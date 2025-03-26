@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,29 +10,35 @@ Class to create and manage a font picker button on the widget bar.
 
 ## Constructors
 
-### new FontPickerHelper()
+### Constructor
 
-> **new FontPickerHelper**(`handle`?, `CSSVariable`?, `fontPickerSettings`?): [`FontPickerHelper`](FontPickerHelper.md)
+> **new FontPickerHelper**(`handle`?, `CSSVariable`?, `fontPickerSettings`?): `FontPickerHelper`
 
 Constructor for FontPickerHelper.
 
 #### Parameters
 
-• **handle?**: `string` = `FontPickerHelper.defaultHandle`
+##### handle?
+
+`string` = `FontPickerHelper.defaultHandle`
 
 The handle for the font selector.
 
-• **CSSVariable?**: `string` = `FontPickerHelper.defaultCSS`
+##### CSSVariable?
+
+`string` = `FontPickerHelper.defaultCSS`
 
 The CSS variable for the widget font.
 
-• **fontPickerSettings?**: `Partial`\<`object`\> = `...`
+##### fontPickerSettings?
+
+`Partial` = `...`
 
 The settings for the font picker.
 
 #### Returns
 
-[`FontPickerHelper`](FontPickerHelper.md)
+`FontPickerHelper`
 
 #### Throws
 
@@ -70,7 +76,9 @@ Creates a font picker button on the widget bar.
 
 #### Parameters
 
-• **button?**: `ContextMenuFont` = `undefined`
+##### button?
+
+`ContextMenuFont` = `undefined`
 
 The context menu font button.
 
@@ -92,7 +100,9 @@ Updates the font in the widget.
 
 #### Parameters
 
-• **font**: `string`
+##### font
+
+`string`
 
 The font to update.
 
@@ -110,7 +120,9 @@ Sets the font for the widget.
 
 #### Parameters
 
-• **font**: `string`
+##### font
+
+`string`
 
 The font to set.
 

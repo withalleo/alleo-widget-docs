@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -8,13 +8,13 @@
 
 ## Constructors
 
-### new DeploymentSettingsHelper()
+### Constructor
 
-> **new DeploymentSettingsHelper**(): [`DeploymentSettingsHelper`](DeploymentSettingsHelper.md)
+> **new DeploymentSettingsHelper**(): `DeploymentSettingsHelper`
 
 #### Returns
 
-[`DeploymentSettingsHelper`](DeploymentSettingsHelper.md)
+`DeploymentSettingsHelper`
 
 ## Properties
 

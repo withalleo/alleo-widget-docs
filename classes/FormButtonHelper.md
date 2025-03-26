@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,29 +10,35 @@ Class helping to add buttons to a form or dialog.
 
 ## Constructors
 
-### new FormButtonHelper()
+### Constructor
 
-> **new FormButtonHelper**(`label`, `callback`?, `settings`?): [`FormButtonHelper`](FormButtonHelper.md)
+> **new FormButtonHelper**(`label`, `callback`?, `settings`?): `FormButtonHelper`
 
 Creates an instance of FormButtonHelper.
 
 #### Parameters
 
-• **label**: `string`
+##### label
+
+`string`
 
 The label of the button.
 
-• **callback?** = `undefined`
+##### callback?
+
+() => `void`
 
 The callback function to be called when the button is clicked.
 
-• **settings?**: [`FormButtonHelperSettings`](../type-aliases/FormButtonHelperSettings.md) = `{}`
+##### settings?
+
+[`FormButtonHelperSettings`](../type-aliases/FormButtonHelperSettings.md) = `{}`
 
 The settings for the form button helper.
 
 #### Returns
 
-[`FormButtonHelper`](FormButtonHelper.md)
+`FormButtonHelper`
 
 ## Properties
 
@@ -72,11 +78,13 @@ The settings for the form button helper.
 
 ### button
 
-> `get` **button**(): `FormlyFieldConfig`\<`FormlyFieldProps`\>
+#### Get Signature
+
+> **get** **button**(): `FormlyFieldConfig`\<`FormlyFieldProps`\>
 
 Gets the Formly field configuration for the button.
 
-#### Returns
+##### Returns
 
 `FormlyFieldConfig`\<`FormlyFieldProps`\>
 
@@ -86,11 +94,13 @@ The Formly field configuration.
 
 ### isTimerRunning
 
-> `get` **isTimerRunning**(): `boolean`
+#### Get Signature
+
+> **get** **isTimerRunning**(): `boolean`
 
 Checks if the timer is running.
 
-#### Returns
+##### Returns
 
 `boolean`
 
@@ -124,9 +134,15 @@ Handles the timer tick event.
 
 ### startTimer()
 
-> **startTimer**(): `void`
+> **startTimer**(`interval`): `void`
 
 Starts the timer.
+
+#### Parameters
+
+##### interval
+
+`number` = `undefined`
 
 #### Returns
 
@@ -143,3 +159,13 @@ Stops the timer.
 #### Returns
 
 `void`
+
+***
+
+### updateButtonUI()
+
+> **updateButtonUI**(): `Promise`\<`void`\>
+
+#### Returns
+
+`Promise`\<`void`\>

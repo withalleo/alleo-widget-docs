@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -6,6 +6,6 @@
 
 # Type Alias: WidgetSyncMessage
 
-> **WidgetSyncMessage**: [`StandardSyncMessage`](StandardSyncMessage.md) \| `StandardSyncMessageList`
+> **WidgetSyncMessage** = [`StandardSyncMessage`](StandardSyncMessage.md) \| `StandardSyncMessageList`
 
 Type representing a widget synchronization message, which can be either a single message or a list of messages.

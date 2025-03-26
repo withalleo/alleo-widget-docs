@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,18 +10,24 @@ Class representing the service UI.
 
 ## Constructors
 
-### new ServiceUi()
+### Constructor
 
-> **new ServiceUi**(): [`ServiceUi`](ServiceUi.md)
+> **new ServiceUi**(): `ServiceUi`
 
 Creates an instance of ServiceUi.
 
 #### Returns
 
-[`ServiceUi`](ServiceUi.md)
+`ServiceUi`
 
 ## Properties
 
+### buttons
+
+> **buttons**: [`UiButtonHelper`](UiButtonHelper.md)
+
+***
+
 ### loadingStatus
 
-> **loadingStatus**: `LoadingStatus`
+> **loadingStatus**: [`LoadingStatus`](LoadingStatus.md)

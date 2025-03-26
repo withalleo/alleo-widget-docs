@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,83 +10,109 @@ Helper class for managing widget names.
 
 ## Constructors
 
-### new WidgetNameHelper()
+### Constructor
 
-> **new WidgetNameHelper**(`preferredName`, `currentNote`): [`WidgetNameHelper`](WidgetNameHelper.md)
+> **new WidgetNameHelper**(`preferredName`, `currentNote`): `WidgetNameHelper`
 
 Sets up the name of the widget.
 
 #### Parameters
 
-• **preferredName**: `string` = `undefined`
+##### preferredName
+
+`string` = `undefined`
 
 The preferred name for the widget.
 
-• **currentNote**: `string` = `undefined`
+##### currentNote
+
+`string` = `undefined`
 
 The current note of the widget.
 
 #### Returns
 
-[`WidgetNameHelper`](WidgetNameHelper.md)
+`WidgetNameHelper`
 
 ## Accessors
 
 ### name
 
-> `get` **name**(): `string`
+#### Get Signature
+
+> **get** **name**(): `string`
 
 Gets the name of the widget.
 
-> `set` **name**(`name`): `void`
-
-Sets the name of the widget.
-
-#### Parameters
-
-• **name**: `string`
-
-The new name of the widget.
-
-#### Returns
+##### Returns
 
 `string`
 
 The name of the widget.
 
+#### Set Signature
+
+> **set** **name**(`name`): `void`
+
+Sets the name of the widget.
+
+##### Parameters
+
+###### name
+
+`string`
+
+The new name of the widget.
+
+##### Returns
+
+`void`
+
 ***
 
 ### note
 
-> `get` **note**(): `string`
+#### Get Signature
+
+> **get** **note**(): `string`
 
 Gets the note associated with the widget.
 
-> `set` **note**(`note`): `void`
-
-Sets the note associated with the widget.
-
-#### Parameters
-
-• **note**: `string`
-
-The new note for the widget.
-
-#### Returns
+##### Returns
 
 `string`
 
 The note associated with the widget.
 
+#### Set Signature
+
+> **set** **note**(`note`): `void`
+
+Sets the note associated with the widget.
+
+##### Parameters
+
+###### note
+
+`string`
+
+The new note for the widget.
+
+##### Returns
+
+`void`
+
 ***
 
 ### displayName
 
-> `get` `static` **displayName**(): `string`
+#### Get Signature
+
+> **get** `static` **displayName**(): `string`
 
 Gets the display name of the widget.
 
-#### Returns
+##### Returns
 
 `string`
 
@@ -96,11 +122,13 @@ The display name of the widget.
 
 ### manifest
 
-> `get` `static` **manifest**(): `Record`\<`string`, `any`\>
+#### Get Signature
+
+> **get** `static` **manifest**(): `Record`\<`string`, `any`\>
 
 Gets the manifest of the widget.
 
-#### Returns
+##### Returns
 
 `Record`\<`string`, `any`\>
 
@@ -142,7 +170,9 @@ Sets the note for the widget.
 
 #### Parameters
 
-• **note?**: `string`
+##### note?
+
+`string`
 
 The note to set.
 

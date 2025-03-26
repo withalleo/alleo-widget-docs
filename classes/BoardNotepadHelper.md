@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,21 +10,23 @@ A helper class for handling notepad-related operations on the board.
 
 ## Constructors
 
-### new BoardNotepadHelper()
+### Constructor
 
-> **new BoardNotepadHelper**(`notepad`): [`BoardNotepadHelper`](BoardNotepadHelper.md)
+> **new BoardNotepadHelper**(`notepad`): `BoardNotepadHelper`
 
 Creates an instance of BoardNotepadHelper.
 
 #### Parameters
 
-• **notepad**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### notepad
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The notepad object.
 
 #### Returns
 
-[`BoardNotepadHelper`](BoardNotepadHelper.md)
+`BoardNotepadHelper`
 
 #### Throws
 
@@ -48,11 +50,15 @@ Appends content to the notepad.
 
 #### Parameters
 
-• **content**: `string` \| `string`[]
+##### content
 
 The content to append.
 
-• **inputFormat?**: [`TextInputFormat`](../enumerations/TextInputFormat.md) = `TextInputFormat.Text`
+`string` | `string`[]
+
+##### inputFormat?
+
+[`TextInputFormat`](../enumerations/TextInputFormat.md) = `TextInputFormat.Text`
 
 The format of the content.
 
@@ -70,9 +76,11 @@ Gets the content of the notepad.
 
 #### Parameters
 
-• **inputFormat?**: [`Text`](../enumerations/TextInputFormat.md#text) \| [`Html`](../enumerations/TextInputFormat.md#html) = `TextInputFormat.Text`
+##### inputFormat?
 
 The format of the content.
+
+[`Text`](../enumerations/TextInputFormat.md#text) | [`Html`](../enumerations/TextInputFormat.md#html)
 
 #### Returns
 
@@ -90,11 +98,15 @@ Replaces the content of the notepad.
 
 #### Parameters
 
-• **content**: `string` \| `string`[]
+##### content
 
 The new content.
 
-• **inputFormat?**: [`TextInputFormat`](../enumerations/TextInputFormat.md) = `TextInputFormat.Text`
+`string` | `string`[]
+
+##### inputFormat?
+
+[`TextInputFormat`](../enumerations/TextInputFormat.md) = `TextInputFormat.Text`
 
 The format of the content.
 
@@ -112,11 +124,15 @@ Gets the label of the notepad.
 
 #### Parameters
 
-• **notepadObject**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### notepadObject
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The notepad object.
 
-• **len?**: `number` = `30`
+##### len?
+
+`number` = `30`
 
 The maximum length of the label. (an extra "..." might be added)
 
@@ -136,7 +152,9 @@ Checks if the given object is a notepad.
 
 #### Parameters
 
-• **obj**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### obj
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The object to check.
 

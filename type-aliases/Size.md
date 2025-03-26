@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -6,15 +6,17 @@
 
 # Type Alias: Size
 
-> **Size**: `object`
+> **Size** = `object`
 
 Represents the size of an element.
 
-## Type declaration
+## Properties
 
 ### height
 
 > **height**: `number`
+
+***
 
 ### width
 

@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -12,9 +12,11 @@ Checks if the current widget is an object on the board, or a service.
 
 ## Parameters
 
-• **h?**: `IWidgetApi` \| `IWidgetServiceApi` = `haptic`
+### h?
 
 The widget API or service API connector.
+
+`IWidgetApi` | `IWidgetServiceApi`
 
 ## Returns
 

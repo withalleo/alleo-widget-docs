@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,13 +10,13 @@ A class that provides default locale settings for the widget.
 
 ## Constructors
 
-### new DefaultLocale()
+### Constructor
 
-> **new DefaultLocale**(): [`DefaultLocale`](DefaultLocale.md)
+> **new DefaultLocale**(): `DefaultLocale`
 
 #### Returns
 
-[`DefaultLocale`](DefaultLocale.md)
+`DefaultLocale`
 
 ## Properties
 
@@ -68,11 +68,15 @@ Retrieves the translated text (if available) based on the provided language code
 
 #### Parameters
 
-• **englishDefaultText**: `string`
+##### englishDefaultText
+
+`string`
 
 The default text in English.
 
-• **languageCode?**: `string` = `DefaultLocale.language`
+##### languageCode?
+
+`string` = `DefaultLocale.language`
 
 The language code or 'original' to use the default text.
 

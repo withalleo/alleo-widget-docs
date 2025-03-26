@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,13 +10,13 @@ A helper class for handling text element-related operations on the board.
 
 ## Constructors
 
-### new BoardTextElementHelper()
+### Constructor
 
-> **new BoardTextElementHelper**(): [`BoardTextElementHelper`](BoardTextElementHelper.md)
+> **new BoardTextElementHelper**(): `BoardTextElementHelper`
 
 #### Returns
 
-[`BoardTextElementHelper`](BoardTextElementHelper.md)
+`BoardTextElementHelper`
 
 ## Methods
 
@@ -28,11 +28,15 @@ Gets the text content of a board object.
 
 #### Parameters
 
-• **object**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### object
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The board object.
 
-• **options?**: [`GetTextContentOptions`](../type-aliases/GetTextContentOptions.md) = `{}`
+##### options?
+
+[`GetTextContentOptions`](../type-aliases/GetTextContentOptions.md) = `{}`
 
 The options for getting text content.
 
@@ -52,15 +56,21 @@ Sets the text content of a board object.
 
 #### Parameters
 
-• **object**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### object
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The board object.
 
-• **text**: `string`[]
+##### text
+
+`string`[]
 
 The text content to set.
 
-• **options?**: [`SetTextContentOptions`](../type-aliases/SetTextContentOptions.md) = `{}`
+##### options?
+
+[`SetTextContentOptions`](../type-aliases/SetTextContentOptions.md) = `{}`
 
 The options for setting text content.
 

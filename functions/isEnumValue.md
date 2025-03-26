@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -12,15 +12,21 @@ Checks if a value is a valid enum value.
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 ## Parameters
 
-• **enumObj**: `T`
+### enumObj
+
+`T`
 
 The enum object.
 
-• **value**: `unknown`
+### value
+
+`unknown`
 
 The value to check.
 

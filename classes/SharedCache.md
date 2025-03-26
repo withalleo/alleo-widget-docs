@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,31 +10,37 @@ Class representing a shared cache.
 
 ## Type Parameters
 
-• **T** = `any`
+### T
+
+`T` = `any`
 
 The type of the cached values.
 
 ## Constructors
 
-### new SharedCache()
+### Constructor
 
-> **new SharedCache**\<`T`\>(`databaseId`?, `delayedWrite`?): [`SharedCache`](SharedCache.md)\<`T`\>
+> **new SharedCache**\<`T`\>(`databaseId`?, `delayedWrite`?): `SharedCache`\<`T`\>
 
 Constructs a new SharedCache.
 
 #### Parameters
 
-• **databaseId?**: `string` = `'cache'`
+##### databaseId?
+
+`string` = `'cache'`
 
 The ID of the database.
 
-• **delayedWrite?**: `boolean` = `false`
+##### delayedWrite?
+
+`boolean` = `false`
 
 Whether to delay writes to the cache.
 
 #### Returns
 
-[`SharedCache`](SharedCache.md)\<`T`\>
+`SharedCache`\<`T`\>
 
 ## Properties
 
@@ -66,7 +72,9 @@ Gets a value from the cache.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 The key of the value.
 
@@ -86,11 +94,15 @@ Sets a value in the cache.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 The key of the value.
 
-• **value**: `T`
+##### value
+
+`T`
 
 The value to set.
 

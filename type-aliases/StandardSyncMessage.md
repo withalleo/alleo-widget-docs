@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -6,19 +6,23 @@
 
 # Type Alias: StandardSyncMessage
 
-> **StandardSyncMessage**: `object`
+> **StandardSyncMessage** = `object`
 
 Type representing a standard synchronization message.
 
-## Type declaration
+## Properties
 
 ### data?
 
 > `optional` **data**: `any`[]
 
+***
+
 ### function
 
 > **function**: `string`
+
+***
 
 ### type
 

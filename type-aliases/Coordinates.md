@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -6,15 +6,17 @@
 
 # Type Alias: Coordinates
 
-> **Coordinates**: `object`
+> **Coordinates** = `object`
 
 Represents coordinates with x and y values.
 
-## Type declaration
+## Properties
 
 ### x
 
 > **x**: `number`
+
+***
 
 ### y
 

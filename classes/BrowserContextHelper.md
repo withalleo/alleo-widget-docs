@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,13 +10,13 @@ A helper class for handling browser context.
 
 ## Constructors
 
-### new BrowserContextHelper()
+### Constructor
 
-> **new BrowserContextHelper**(): [`BrowserContextHelper`](BrowserContextHelper.md)
+> **new BrowserContextHelper**(): `BrowserContextHelper`
 
 #### Returns
 
-[`BrowserContextHelper`](BrowserContextHelper.md)
+`BrowserContextHelper`
 
 ## Methods
 

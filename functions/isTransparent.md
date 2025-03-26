@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -12,7 +12,9 @@ Checks if a color is (fully) transparent.
 
 ## Parameters
 
-• **color**: `string`
+### color
+
+`string`
 
 The color to check.
 

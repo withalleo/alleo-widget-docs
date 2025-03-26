@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -12,11 +12,15 @@ Generates a random integer between the specified minimum and maximum values.
 
 ## Parameters
 
-• **min**: `number`
+### min
+
+`number`
 
 The minimum value.
 
-• **max**: `number`
+### max
+
+`number`
 
 The maximum value.
 

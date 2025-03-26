@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,53 +10,95 @@ A helper class to enable axis-independent resizing of a widget
 
 ## Constructors
 
-### new ResizeHelper()
+### Constructor
 
-> **new ResizeHelper**(`minSize`?, `callback`?, `updateCss`?, `widgetContainerSelector`?): [`ResizeHelper`](ResizeHelper.md)
+> **new ResizeHelper**(`minSize`?, `options`?): `ResizeHelper`
 
 Enable axis-independent resizing.
 
 #### Parameters
 
-• **minSize?**: [`Size`](../type-aliases/Size.md) = `...`
+##### minSize?
+
+[`Size`](../type-aliases/Size.md)
 
 The minimum size of the element.
 
-• **callback?** = `undefined`
+##### options?
 
-A callback function to be called on resize.
+`ResizeHelperOptions`
 
-• **updateCss?**: `boolean` = `true`
-
-Whether to update CSS properties on resize.
-
-• **widgetContainerSelector?**: `string` = `'.widget-container'`
-
-The CSS selector for the widget container.
+The options to use.
 
 #### Returns
 
-[`ResizeHelper`](ResizeHelper.md)
+`ResizeHelper`
 
 #### Throws
 
 Will throw an error if no DOM is available.
 
+### Constructor
+
+> **new ResizeHelper**(`minSize`?, `callback`?, `updateCss`?, `settings`?): `ResizeHelper`
+
+Enable axis-independent resizing.
+
+#### Parameters
+
+##### minSize?
+
+[`Size`](../type-aliases/Size.md)
+
+The minimum size of the element.
+
+##### callback?
+
+(`__namedParameters`) => `void`
+
+The callback to call when the element is resized.
+
+##### updateCss?
+
+`boolean`
+
+Whether to update the CSS variables.
+
+##### settings?
+
+`LimitedResizeHelperOptions`
+
+The options to use.
+
+#### Returns
+
+`ResizeHelper`
+
+#### Throws
+
+Will throw an error if no DOM is available.
+
+#### Deprecated
+
+Use the object-based constructor instead.
+
 ## Properties
 
 ### callback()
 
-> **callback**: (`__namedParameters`) => `void` = `undefined`
-
-A callback function to be called on resize.
+> **callback**: (`__namedParameters`) => `void`
 
 #### Parameters
 
-• **\_\_namedParameters**
+##### \_\_namedParameters
 
-• **\_\_namedParameters.height**: `any`
+###### height
 
-• **\_\_namedParameters.width**: `any`
+`any`
+
+###### width
+
+`any`
 
 #### Returns
 
@@ -67,8 +109,6 @@ A callback function to be called on resize.
 ### updateCss
 
 > **updateCss**: `boolean` = `true`
-
-Whether to update CSS properties on resize.
 
 ## Methods
 
@@ -96,7 +136,9 @@ Sets the minimum size of the element.
 
 #### Parameters
 
-• **minSize**: [`Size`](../type-aliases/Size.md)
+##### minSize
+
+[`Size`](../type-aliases/Size.md)
 
 The minimum size to set.
 
@@ -118,7 +160,9 @@ Sets the size of the element.
 
 #### Parameters
 
-• **size**: [`Size`](../type-aliases/Size.md)
+##### size
+
+[`Size`](../type-aliases/Size.md)
 
 The size to set.
 

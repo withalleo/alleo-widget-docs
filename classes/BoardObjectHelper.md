@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,13 +10,29 @@ A helper class for board objects.
 
 ## Constructors
 
-### new BoardObjectHelper()
+### Constructor
 
-> **new BoardObjectHelper**(): [`BoardObjectHelper`](BoardObjectHelper.md)
+> **new BoardObjectHelper**(): `BoardObjectHelper`
 
 #### Returns
 
-[`BoardObjectHelper`](BoardObjectHelper.md)
+`BoardObjectHelper`
+
+## Accessors
+
+### thisWidget
+
+#### Get Signature
+
+> **get** `static` **thisWidget**(): [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+
+Retrieves the current widget.
+
+##### Returns
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+
+The current widget.
 
 ## Methods
 
@@ -28,11 +44,15 @@ Adds an object to a container.
 
 #### Parameters
 
-• **container**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### container
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The container object.
 
-• **elem**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### elem
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The element to add to the container.
 
@@ -46,6 +66,38 @@ Will throw an error if the container or element is not a proper board object.
 
 ***
 
+### addTags()
+
+> `static` **addTags**(`object`, `tags`, `replace`): `void`
+
+Adds tags to a board object.
+
+#### Parameters
+
+##### object
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+
+The board object.
+
+##### tags
+
+The tags to add.
+
+`string` | `string`[]
+
+##### replace
+
+`boolean` = `false`
+
+Whether to replace the existing tags.
+
+#### Returns
+
+`void`
+
+***
+
 ### changeObjectContainerPosition()
 
 > `static` **changeObjectContainerPosition**(`object`, `position`): `void`
@@ -54,11 +106,15 @@ Changes the position of an object within its container.
 
 #### Parameters
 
-• **object**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### object
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The object to reposition.
 
-• **position**: `number`
+##### position
+
+`number`
 
 The new position of the object.
 
@@ -72,6 +128,18 @@ Will throw an error if the object is not a board object or not in a container.
 
 ***
 
+### deleteMe()
+
+> `static` **deleteMe**(): `Promise`\<`void`\>
+
+Deletes the current widget from the board.
+
+#### Returns
+
+`Promise`\<`void`\>
+
+***
+
 ### deleteObject()
 
 > `static` **deleteObject**(`object`): `void`
@@ -80,7 +148,9 @@ Deletes a board object.
 
 #### Parameters
 
-• **object**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### object
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The object to delete.
 
@@ -102,15 +172,21 @@ Edits the content of a sticky note.
 
 #### Parameters
 
-• **stickyNote**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### stickyNote
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The sticky note object.
 
-• **text**: `string`
+##### text
+
+`string`
 
 The new text content.
 
-• **overwritePermissions?**: `boolean` = `false`
+##### overwritePermissions?
+
+`boolean` = `false`
 
 Whether to overwrite permissions.
 
@@ -132,11 +208,15 @@ Edits the text content of a text object.
 
 #### Parameters
 
-• **textObject**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### textObject
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The text object to edit.
 
-• **text**: `string`
+##### text
+
+`string`
 
 The new text content.
 
@@ -158,7 +238,9 @@ Retrieves a board object by its ID.
 
 #### Parameters
 
-• **id**: `string`
+##### id
+
+`string`
 
 The ID of the board object.
 
@@ -178,7 +260,9 @@ Retrieves the ID of the container managing a given object.
 
 #### Parameters
 
-• **object**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### object
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The object.
 
@@ -212,7 +296,9 @@ Retrieves the IDs of objects managed by a container.
 
 #### Parameters
 
-• **container**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### container
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The container object.
 
@@ -232,7 +318,9 @@ Retrieves the objects managed by a container.
 
 #### Parameters
 
-• **container**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### container
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The container object.
 
@@ -252,7 +340,9 @@ Retrieves the container managing a given object.
 
 #### Parameters
 
-• **object**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### object
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The object.
 
@@ -278,6 +368,26 @@ The container object.
 
 ***
 
+### getElementsByTag()
+
+> `static` **getElementsByTag**(`tag`): [`RealIBoardObject`](../interfaces/RealIBoardObject.md)[]
+
+Retrieves the current widget's container.
+
+#### Parameters
+
+##### tag
+
+`string`
+
+#### Returns
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)[]
+
+The container object.
+
+***
+
 ### getElementsByType()
 
 > `static` **getElementsByType**(`type`): `FormlySelectOption`[]
@@ -286,7 +396,9 @@ Retrieves elements by their type.
 
 #### Parameters
 
-• **type**: [`ExtendedObjectTypes`](../type-aliases/ExtendedObjectTypes.md)
+##### type
+
+[`ExtendedObjectTypes`](../type-aliases/ExtendedObjectTypes.md)
 
 The type of the elements.
 
@@ -306,7 +418,9 @@ Retrieves the display name of a board object.
 
 #### Parameters
 
-• **object**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### object
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The board object.
 
@@ -326,7 +440,9 @@ Retrieves the title of a board object.
 
 #### Parameters
 
-• **obj**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### obj
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The board object.
 
@@ -346,7 +462,9 @@ Retrieves the content of a sticky note.
 
 #### Parameters
 
-• **stickyNote**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### stickyNote
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The sticky note object.
 
@@ -358,6 +476,50 @@ The content of the sticky note.
 
 ***
 
+### getTags()
+
+> `static` **getTags**(`object`): `string`[]
+
+Retrieves the tags of a board object.
+
+#### Parameters
+
+##### object
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+
+The board object.
+
+#### Returns
+
+`string`[]
+
+The tags of the board object.
+
+***
+
+### getTypeNameOfObject()
+
+> `static` **getTypeNameOfObject**(`object`): `string`
+
+Retrieves the type name of a board object.
+
+#### Parameters
+
+##### object
+
+`IBoardObject`
+
+The board object.
+
+#### Returns
+
+`string`
+
+The name of the board object type. (eg. Sticky Note, Notepad, Widget, Image, etc.)
+
+***
+
 ### isTheSameWidget()
 
 > `static` **isTheSameWidget**(`object`): `boolean`
@@ -366,7 +528,9 @@ Checks if a given object is the same as the current widget.
 
 #### Parameters
 
-• **object**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### object
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The object to check.
 
@@ -378,6 +542,18 @@ True if the object is the same as the current widget, false otherwise.
 
 ***
 
+### reloadMe()
+
+> `static` **reloadMe**(): `void`
+
+Reloads the current widget
+
+#### Returns
+
+`void`
+
+***
+
 ### removeObjectFromContainer()
 
 > `static` **removeObjectFromContainer**(`container`, `elem`): `void`
@@ -386,11 +562,15 @@ Removes an object from a container.
 
 #### Parameters
 
-• **container**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### container
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The container object.
 
-• **elem**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### elem
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The element to remove from the container.
 
@@ -401,3 +581,29 @@ The element to remove from the container.
 #### Throws
 
 Will throw an error if the container or element is not a proper board object.
+
+***
+
+### removeTags()
+
+> `static` **removeTags**(`object`, `tags`): `void`
+
+Removes tags from a board object.
+
+#### Parameters
+
+##### object
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+
+The board object.
+
+##### tags
+
+The tags to remove
+
+`string` | `string`[]
+
+#### Returns
+
+`void`

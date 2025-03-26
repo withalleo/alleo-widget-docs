@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -11,41 +11,53 @@ Including synchronization of scrolling between users.
 
 ## Constructors
 
-### new ScrollHelper()
+### Constructor
 
-> **new ScrollHelper**(`element`, `autoEnableScroll`, `syncScrolling`, `syncScrollingLeaderOnly`, `disableUserScrolling`, `sharedVariableName`): [`ScrollHelper`](ScrollHelper.md)
+> **new ScrollHelper**(`element`, `autoEnableScroll`, `syncScrolling`, `syncScrollingLeaderOnly`, `disableUserScrolling`, `sharedVariableName`): `ScrollHelper`
 
 Makes an element scrollable.
 
 #### Parameters
 
-• **element**: `HTMLElement`
+##### element
+
+`HTMLElement`
 
 The HTML element to manage scrolling for.
 
-• **autoEnableScroll**: `boolean` = `true`
+##### autoEnableScroll
+
+`boolean` = `true`
 
 Whether to automatically enable scrolling.
 
-• **syncScrolling**: `boolean` = `true`
+##### syncScrolling
+
+`boolean` = `true`
 
 Whether to synchronize scrolling.
 
-• **syncScrollingLeaderOnly**: `boolean` = `true`
+##### syncScrollingLeaderOnly
+
+`boolean` = `true`
 
 Whether to synchronize scrolling only for the leader.
 
-• **disableUserScrolling**: `boolean` = `false`
+##### disableUserScrolling
+
+`boolean` = `false`
 
 Whether to disable user scrolling.
 
-• **sharedVariableName**: `string` = `'_AlleoWidget_ScrollHelper_coords'`
+##### sharedVariableName
+
+`string` = `'_AlleoWidget_ScrollHelper_coords'`
 
 The name of the shared variable for coordinates.
 
 #### Returns
 
-[`ScrollHelper`](ScrollHelper.md)
+`ScrollHelper`
 
 ## Properties
 
@@ -129,7 +141,9 @@ Handles the scroll event on the HTML element.
 
 #### Parameters
 
-• **event**: `Event`
+##### event
+
+`Event`
 
 The scroll event.
 
@@ -147,13 +161,17 @@ Scrolls the HTML element to the specified coordinates.
 
 #### Parameters
 
-• **coords**: [`Coordinates`](../type-aliases/Coordinates.md)
+##### coords
+
+[`Coordinates`](../type-aliases/Coordinates.md)
 
 The coordinates to scroll to.
 
-• **behavior**: `"auto"` \| `"instant"` \| `"smooth"` = `'auto'`
+##### behavior
 
 The scrolling behavior ('auto', 'smooth', or 'instant').
+
+`"auto"` | `"instant"` | `"smooth"`
 
 #### Returns
 

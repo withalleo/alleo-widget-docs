@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,13 +10,13 @@ Helper class for capturing image or video content from an object on the board.
 
 ## Constructors
 
-### new ImageObjectCaptureHelper()
+### Constructor
 
-> **new ImageObjectCaptureHelper**(): [`ImageObjectCaptureHelper`](ImageObjectCaptureHelper.md)
+> **new ImageObjectCaptureHelper**(): `ImageObjectCaptureHelper`
 
 #### Returns
 
-[`ImageObjectCaptureHelper`](ImageObjectCaptureHelper.md)
+`ImageObjectCaptureHelper`
 
 ## Properties
 
@@ -46,15 +46,21 @@ Captures the content of a board object as an image.
 
 #### Type Parameters
 
-• **FunctionResultType** *extends* `string` \| `Uint8Array` \| `Uint8ClampedArray` \| `CanvasRenderingContext2D` = `Uint8Array`
+##### FunctionResultType
+
+`FunctionResultType` *extends* `string` \| `Uint8Array`\<`ArrayBufferLike`\> \| `Uint8ClampedArray`\<`ArrayBufferLike`\> \| `CanvasRenderingContext2D` = `Uint8Array`\<`ArrayBufferLike`\>
 
 #### Parameters
 
-• **object**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+##### object
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The board object to capture.
 
-• **options**: `GetContentAsImageOptions` = `{}`
+##### options
+
+`GetContentAsImageOptions` = `{}`
 
 Options for capturing the content.
 
@@ -78,15 +84,21 @@ Captures the content of an image or video element as an image.
 
 #### Type Parameters
 
-• **FunctionResultType** *extends* `string` \| `Uint8Array` \| `Uint8ClampedArray` \| `CanvasRenderingContext2D` = `Uint8Array`
+##### FunctionResultType
+
+`FunctionResultType` *extends* `string` \| `Uint8Array`\<`ArrayBufferLike`\> \| `Uint8ClampedArray`\<`ArrayBufferLike`\> \| `CanvasRenderingContext2D` = `Uint8Array`\<`ArrayBufferLike`\>
 
 #### Parameters
 
-• **element**: `ImageBitmap` \| `HTMLImageElement` \| `HTMLVideoElement`
+##### element
 
 The HTML element (video or image) to capture.
 
-• **options**: `GetContentAsImageOptions` = `{}`
+`ImageBitmap` | `HTMLImageElement` | `HTMLVideoElement`
+
+##### options
+
+`GetContentAsImageOptions` = `{}`
 
 Options for capturing the content.
 

@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -14,33 +14,41 @@ eg. a weather widget might need a data update every 5 minutes. However only one 
 
 ## Constructors
 
-### new LoadSharingHelper()
+### Constructor
 
-> **new LoadSharingHelper**(`callback`, `checkInterval`, `takeOverTimeout`, `dataFieldName`): [`LoadSharingHelper`](LoadSharingHelper.md)
+> **new LoadSharingHelper**(`callback`, `checkInterval`, `takeOverTimeout`, `dataFieldName`): `LoadSharingHelper`
 
 Creates an instance a periodical task, that is performed by only one frontend instance.
 
 #### Parameters
 
-• **callback**
+##### callback
+
+(`lastEntryRelativeTime`?) => `void`
 
 The callback function to be called when the lock is acquired.
 
-• **checkInterval**: `number` = `300`
+##### checkInterval
+
+`number` = `300`
 
 The interval in milliseconds to check the lock status.
 
-• **takeOverTimeout**: `number` = `...`
+##### takeOverTimeout
+
+`number` = `...`
 
 The timeout in milliseconds to take over the lock if not updated.
 
-• **dataFieldName**: `string` = `'processLock'`
+##### dataFieldName
+
+`string` = `'processLock'`
 
 The name of the data field to store the lock information.
 
 #### Returns
 
-[`LoadSharingHelper`](LoadSharingHelper.md)
+`LoadSharingHelper`
 
 ## Properties
 
@@ -49,6 +57,34 @@ The name of the data field to store the lock information.
 > `static` **defaultLock**: [`SharedLock`](../type-aliases/SharedLock.md)
 
 The default shared lock.
+
+## Accessors
+
+### currentLock
+
+#### Get Signature
+
+> **get** **currentLock**(): [`SharedLock`](../type-aliases/SharedLock.md)
+
+##### Returns
+
+[`SharedLock`](../type-aliases/SharedLock.md)
+
+***
+
+### isMyResponsibility
+
+#### Get Signature
+
+> **get** **isMyResponsibility**(): `boolean`
+
+Returns whether the current frontend instance is responsible for the task.
+
+##### Returns
+
+`boolean`
+
+True if the current instance is responsible for the task, false otherwise.
 
 ## Methods
 
@@ -60,11 +96,15 @@ Restarts the timer with a new interval and takeover timeout.
 
 #### Parameters
 
-• **interval**: `number` = `undefined`
+##### interval
+
+`number` = `undefined`
 
 The new interval in milliseconds to check the lock status.
 
-• **takeOverTimeOut**: `number` = `...`
+##### takeOverTimeOut
+
+`number` = `...`
 
 The new timeout in milliseconds to take over the lock if not updated.
 

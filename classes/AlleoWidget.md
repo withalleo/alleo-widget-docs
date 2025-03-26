@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -10,33 +10,43 @@ Class representing an Alleo Widget.
 
 Provides access to shared variables, a constructor, and a destroy method.
 
+## Extended by
+
+- [`DataConnectorWidget`](DataConnectorWidget.md)
+
 ## Type Parameters
 
-• **SharedVariableStructure** *extends* `Record`\<`string`, `any`\> = `Record`\<`string`, `any`\>
+### SharedVariableStructure
+
+`SharedVariableStructure` *extends* `Record`\<`string`, `any`\> = `Record`\<`string`, `any`\>
 
 The structure of the shared variables.
 
 ## Constructors
 
-### new AlleoWidget()
+### Constructor
 
-> **new AlleoWidget**\<`SharedVariableStructure`\>(`defaultSharedVariables`?, `settings`?): [`AlleoWidget`](AlleoWidget.md)\<`SharedVariableStructure`\>
+> **new AlleoWidget**\<`SharedVariableStructure`\>(`defaultSharedVariables`?, `settings`?): `AlleoWidget`\<`SharedVariableStructure`\>
 
 Creates an instance of AlleoWidget.
 
 #### Parameters
 
-• **defaultSharedVariables?**: `Partial`\<`SharedVariableStructure`\> = `{}`
+##### defaultSharedVariables?
+
+`Partial`\<`SharedVariableStructure`\> = `{}`
 
 The default shared variables.
 
-• **settings?**: `WidgetInitSettings` = `...`
+##### settings?
+
+`WidgetInitSettings` = `...`
 
 The settings for the widget.
 
 #### Returns
 
-[`AlleoWidget`](AlleoWidget.md)\<`SharedVariableStructure`\>
+`AlleoWidget`\<`SharedVariableStructure`\>
 
 ## Properties
 
@@ -98,13 +108,17 @@ Selects a DOM element within the widget container.
 
 #### Type Parameters
 
-• **HTMLElementType** *extends* `HTMLElement` = `HTMLElement`
+##### HTMLElementType
+
+`HTMLElementType` *extends* `HTMLElement` = `HTMLElement`
 
 The type of the HTML element.
 
 #### Parameters
 
-• **query**: `string`
+##### query
+
+`string`
 
 The query selector.
 
@@ -128,11 +142,15 @@ Sets an HTML class for the widget container.
 
 #### Parameters
 
-• **className**: `string`
+##### className
+
+`string`
 
 The class name to set.
 
-• **add?**: `boolean` = `true`
+##### add?
+
+`boolean` = `true`
 
 Whether to add or remove the class. (if !add the "not-className" class is added, and the original is removed)
 

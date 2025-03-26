@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -6,11 +6,11 @@
 
 # Type Alias: MultiTouchHelperOptions
 
-> **MultiTouchHelperOptions**: `object`
+> **MultiTouchHelperOptions** = `object`
 
 Options for configuring the MultiTouchHelper.
 
-## Type declaration
+## Properties
 
 ### adjustWidgetSizeAutomatically?
 
@@ -18,11 +18,15 @@ Options for configuring the MultiTouchHelper.
 
 If true, the widget size will not be adjusted automatically when the zoom level changes (default: true)
 
+***
+
 ### autoManage?
 
 > `optional` **autoManage**: `boolean`
 
 If true, the MultiTouchHelper will automatically manage the touch interactions (default: true)
+
+***
 
 ### element?
 
@@ -30,11 +34,15 @@ If true, the MultiTouchHelper will automatically manage the touch interactions (
 
 The element that will be manipulated (default: the whole widget)
 
+***
+
 ### enableDblClickToZoom?
 
 > `optional` **enableDblClickToZoom**: `boolean`
 
 Enable to double-click to zoom into the widget (default: false)
+
+***
 
 ### enablePointerOverWidget?
 
@@ -42,11 +50,15 @@ Enable to double-click to zoom into the widget (default: false)
 
 If true, the pointer over widget will be shown (default: false)
 
+***
+
 ### eventList?
 
 > `optional` **eventList**: `string`[]
 
 A list of events that will be disabled when the MultiTouchHelper is enabled
+
+***
 
 ### onScaleAdjustment()?
 
@@ -56,14 +68,26 @@ A callback function that will be called when the scale is adjusted
 
 #### Parameters
 
-• **scale**: `number`
+##### scale
+
+`number`
 
 #### Returns
 
 `void`
+
+***
 
 ### showAdjustSizeButton?
 
 > `optional` **showAdjustSizeButton**: `boolean`
 
 If true, a button will be shown to adjust the widget size manually (default: false)
+
+***
+
+### unlockHelper?
+
+> `optional` **unlockHelper**: `boolean`
+
+If true, the widget will display an unlock helper icon for editors. This might be practical when the widget content is not propagating out. (ie. an iframe) (default: false)

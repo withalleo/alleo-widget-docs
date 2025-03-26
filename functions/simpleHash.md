@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -12,7 +12,9 @@ Creates a comparable hash from a string, ignoring casing and some whitespace.
 
 ## Parameters
 
-• **input**: `string`
+### input
+
+`string`
 
 The input string.
 

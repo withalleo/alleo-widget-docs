@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -6,12 +6,14 @@
 
 # Type Alias: GetTextContentOptions
 
-> **GetTextContentOptions**: `object`
+> **GetTextContentOptions** = `object`
 
 Options for getting text content.
 
-## Type declaration
+## Properties
 
 ### format?
 
 > `optional` **format**: [`Html`](../enumerations/TextInputFormat.md#html) \| [`Text`](../enumerations/TextInputFormat.md#text)
+
+The format of the text content.

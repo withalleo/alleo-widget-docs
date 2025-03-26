@@ -1,4 +1,4 @@
-[**@withalleo/alleo-widget**](../README.md) • **Docs**
+[**@withalleo/alleo-widget**](../README.md)
 
 ***
 
@@ -12,15 +12,21 @@ Checks if two values are equal.
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 ## Parameters
 
-• **a**: `T`
+### a
+
+`T`
 
 The first value.
 
-• **b**: `T`
+### b
+
+`T`
 
 The second value.
 
