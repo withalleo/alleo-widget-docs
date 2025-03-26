@@ -17,4 +17,5 @@ See our [Hello World widget at GitHub](https://github.com/withalleo/hello-world-
 ## Documentation
 
 **@withalleo/alleo-widget** • [**Docs**](https://github.com/withalleo/alleo-widget-docs/blob/main/globals.md)
+
 **Alleo Widget API** • [**Docs**](https://meet.withalleo.com/widget-docs/)
