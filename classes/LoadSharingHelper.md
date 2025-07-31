@@ -24,7 +24,7 @@ Creates an instance a periodical task, that is performed by only one frontend in
 
 ##### callback
 
-(`lastEntryRelativeTime`?) => `void`
+(`lastEntryRelativeTime?`) => `void`
 
 The callback function to be called when the lock is acquired.
 

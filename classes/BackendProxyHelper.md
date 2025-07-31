@@ -14,7 +14,7 @@ It provides an interface to request data from the backend using the shared secre
 
 ### Constructor
 
-> **new BackendProxyHelper**(`connectionId`): `BackendProxyHelper`
+> **new BackendProxyHelper**(`connectionId`, `helperSettings`): `BackendProxyHelper`
 
 Creates an instance of BackendHelper.
 
@@ -25,6 +25,10 @@ Creates an instance of BackendHelper.
 `string` = `'default'`
 
 the connection ID, as referenced in the DeploymentSettings.
+
+##### helperSettings
+
+`BackendProxyHelperSettings` = `{}`
 
 #### Returns
 
@@ -43,6 +47,18 @@ the connection ID, as referenced in the DeploymentSettings.
 > `readonly` **connectionId**: `string` = `'default'`
 
 the connection ID, as referenced in the DeploymentSettings.
+
+***
+
+### helperSettings
+
+> `protected` `readonly` **helperSettings**: `BackendProxyHelperSettings` = `{}`
+
+***
+
+### defaultTimeoutInMs
+
+> `readonly` `static` **defaultTimeoutInMs**: `number`
 
 ## Accessors
 
@@ -124,6 +140,22 @@ TODO This does not recognizes organization keys, and reports them as 'deployment
 
 ***
 
+### getStatusDisplay()
+
+> **getStatusDisplay**(`serviceDisplayName`): `FormlyFieldConfig`\<`FormlyFieldProps` & `object`\>[]
+
+#### Parameters
+
+##### serviceDisplayName
+
+`string` = `''`
+
+#### Returns
+
+`FormlyFieldConfig`\<`FormlyFieldProps` & `object`\>[]
+
+***
+
 ### getToken()
 
 > `protected` **getToken**(): `Promise`\<`string`\>
@@ -144,7 +176,7 @@ Will throw an error if no key or provider is found for the shared secret, or if 
 
 ### request()
 
-> **request**(`url`, `params`?, `doNotRetry`?): `Promise`\<`Response`\>
+> **request**(`url`, `params?`, `retryNumber?`, `timeoutMs?`): `Promise`\<`Response`\>
 
 Makes a request to the specified URL with the provided parameters.
 Retries the request once if the token is expired.
@@ -163,11 +195,17 @@ The URL to request.
 
 The request parameters.
 
-##### doNotRetry?
+##### retryNumber?
 
-`boolean` = `false`
+The number of retries to attempt if the request fails. (set to 0 to disable retry)
 
-Flag to indicate if the request should not be retried.
+`number` | `boolean`
+
+##### timeoutMs?
+
+`number` = `...`
+
+The timeout in milliseconds for the request.
 
 #### Returns
 
@@ -183,7 +221,7 @@ Will throw an error if the request fails and doNotRetry is true.
 
 ### requestJson()
 
-> **requestJson**\<`T`\>(`url`, `params`?): `Promise`\<`T`\>
+> **requestJson**\<`T`\>(`url`, `params?`, `retryNumber?`, `timeoutMs?`): `Promise`\<`T`\>
 
 Makes a request to the specified URL and returns the JSON response.
 
@@ -206,6 +244,18 @@ The URL to request.
 `Omit`\<`RequestInit`, `"credentials"` \| `"mode"`\> = `...`
 
 The request parameters.
+
+##### retryNumber?
+
+The number of retries to attempt if the request fails. (set to 0 to disable retry)
+
+`number` | `boolean`
+
+##### timeoutMs?
+
+`number` = `...`
+
+The timeout in milliseconds for the request.
 
 #### Returns
 

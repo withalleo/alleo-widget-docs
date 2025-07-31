@@ -36,6 +36,14 @@ Configuration options for the MultiTouchHelper.
 
 ***
 
+### enableZoomOutButton
+
+> **enableZoomOutButton**: `boolean` = `true`
+
+Checks if the zoom-out button is enabled for this user (resets to default if not).
+
+***
+
 ### eventDisableHelper
 
 > `protected` **eventDisableHelper**: [`EventDisableHelper`](EventDisableHelper.md)
@@ -51,6 +59,48 @@ Configuration options for the MultiTouchHelper.
 ### htmlElement
 
 > `readonly` **htmlElement**: `HTMLElement`
+
+## Accessors
+
+### enableZoomOutButtonOption
+
+#### Get Signature
+
+> **get** **enableZoomOutButtonOption**(): `boolean`
+
+Checks if the zoom-out button is enabled in the settings.
+
+##### Returns
+
+`boolean`
+
+#### Set Signature
+
+> **set** **enableZoomOutButtonOption**(`enable`): `void`
+
+Sets the zoom-out button option in the settings.
+
+##### Parameters
+
+###### enable
+
+`boolean`
+
+##### Returns
+
+`void`
+
+***
+
+### settingsDialogContent
+
+#### Get Signature
+
+> **get** **settingsDialogContent**(): `FormlyFieldConfig`\<`FormlyFieldProps`\>[]
+
+##### Returns
+
+`FormlyFieldConfig`\<`FormlyFieldProps`\>[]
 
 ## Methods
 

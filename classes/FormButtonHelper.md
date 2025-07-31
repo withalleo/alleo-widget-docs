@@ -12,7 +12,7 @@ Class helping to add buttons to a form or dialog.
 
 ### Constructor
 
-> **new FormButtonHelper**(`label`, `callback`?, `settings`?): `FormButtonHelper`
+> **new FormButtonHelper**(`label`, `callback?`, `settings?`): `FormButtonHelper`
 
 Creates an instance of FormButtonHelper.
 
@@ -26,7 +26,7 @@ The label of the button.
 
 ##### callback?
 
-() => `void`
+(`field`) => `void`
 
 The callback function to be called when the button is clicked.
 
@@ -44,7 +44,13 @@ The settings for the form button helper.
 
 ### callback()
 
-> **callback**: () => `void`
+> **callback**: (`field`) => `void`
+
+#### Parameters
+
+##### field
+
+`FormlyFieldConfig`\<`FormlyFieldProps`\>
 
 #### Returns
 

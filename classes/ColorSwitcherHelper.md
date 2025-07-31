@@ -17,7 +17,7 @@ Extends the ColorPickerHelper class.
 
 ### Constructor
 
-> **new ColorSwitcherHelper**(`handle`?, `CSSVariable`?, `defaultColor`?, `coloPickerSettings`?, `widgetContainerSelector`?, `callbackOnColorChange`?, `displayColorSwitcherButtonOnInit`?): `ColorSwitcherHelper`
+> **new ColorSwitcherHelper**(`handle?`, `CSSVariable?`, `defaultColor?`, `coloPickerSettings?`, `widgetContainerSelector?`, `callbackOnColorChange?`, `displayColorSwitcherButtonOnInit?`): `ColorSwitcherHelper`
 
 Creates a Color Switcher
 
@@ -93,7 +93,7 @@ The current color.
 
 ### createColorPickerButton()
 
-> **createColorPickerButton**(`button`?, `coloPickerSettings`?): `void`
+> **createColorPickerButton**(`button?`, `coloPickerSettings?`): `void`
 
 Creates a color picker button.
 

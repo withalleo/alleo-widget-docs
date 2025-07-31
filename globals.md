@@ -33,11 +33,12 @@
 - [DataImportHelper](classes/DataImportHelper.md)
 - [DefaultColors](classes/DefaultColors.md)
 - [DefaultLocale](classes/DefaultLocale.md)
-- [DeploymentSettingsHelper](classes/DeploymentSettingsHelper.md)
+- [~~DeploymentSettingsHelper~~](classes/DeploymentSettingsHelper.md)
 - [EventDisableHelper](classes/EventDisableHelper.md)
 - [ExposeActionHelper](classes/ExposeActionHelper.md)
 - [FontPickerHelper](classes/FontPickerHelper.md)
 - [FormButtonHelper](classes/FormButtonHelper.md)
+- [HelpButtonHelper](classes/HelpButtonHelper.md)
 - [ImageObjectCaptureHelper](classes/ImageObjectCaptureHelper.md)
 - [ItemListHelper](classes/ItemListHelper.md)
 - [LoadingStatus](classes/LoadingStatus.md)
@@ -59,9 +60,11 @@
 - [SoundRecordingHelper](classes/SoundRecordingHelper.md)
 - [UiButtonHelper](classes/UiButtonHelper.md)
 - [UserNotification](classes/UserNotification.md)
+- [ViewportSizeHelper](classes/ViewportSizeHelper.md)
 - [WatsonxAiHelper](classes/WatsonxAiHelper.md)
 - [WidgetDetails](classes/WidgetDetails.md)
 - [WidgetNameHelper](classes/WidgetNameHelper.md)
+- [WidgetSettings](classes/WidgetSettings.md)
 
 ## Interfaces
 
@@ -93,6 +96,7 @@
 - [SoundRecordingHelperOptions](type-aliases/SoundRecordingHelperOptions.md)
 - [StandardSyncMessage](type-aliases/StandardSyncMessage.md)
 - [UserNotificationOptions](type-aliases/UserNotificationOptions.md)
+- [ViewportSize](type-aliases/ViewportSize.md)
 - [WidgetSyncMessage](type-aliases/WidgetSyncMessage.md)
 
 ## Functions

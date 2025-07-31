@@ -20,7 +20,7 @@ The type of the value being managed.
 
 ### Constructor
 
-> **new RateLimitUpdateHelper**\<`T`\>(`key`, `maxDelay`?): `RateLimitUpdateHelper`\<`T`\>
+> **new RateLimitUpdateHelper**\<`T`\>(`key`, `maxDelay?`): `RateLimitUpdateHelper`\<`T`\>
 
 Creates an instance of RateLimitUpdateHelper.
 

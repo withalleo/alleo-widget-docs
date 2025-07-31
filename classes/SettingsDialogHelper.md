@@ -17,7 +17,7 @@ Helper class for managing settings dialogs.
 
 ### Constructor
 
-> **new SettingsDialogHelper**(`settings`?, `options`?): `SettingsDialogHelper`
+> **new SettingsDialogHelper**(`settings?`, `options?`): `SettingsDialogHelper`
 
 Constructs a new Settings Dialog.
 
@@ -41,7 +41,7 @@ Options for the settings dialog.
 
 ### Constructor
 
-> **new SettingsDialogHelper**(`settings`, `createSettingsButtonOnInit`?, `callbackOnSettingsDialogClose`?): `SettingsDialogHelper`
+> **new SettingsDialogHelper**(`settings`, `createSettingsButtonOnInit?`, `callbackOnSettingsDialogClose?`): `SettingsDialogHelper`
 
 #### Parameters
 
@@ -167,13 +167,13 @@ The updated settings.
 
 ### openSettingsDialog()
 
-> **openSettingsDialog**(): `Promise`\<`void`\>
+> **openSettingsDialog**(): `Promise`\<`false` \| `void` \| `""` \| `FormlyDialogModel`\>
 
 Opens the settings dialog.
 
 #### Returns
 
-`Promise`\<`void`\>
+`Promise`\<`false` \| `void` \| `""` \| `FormlyDialogModel`\>
 
 ***
 

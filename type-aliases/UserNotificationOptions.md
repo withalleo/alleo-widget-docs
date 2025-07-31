@@ -10,6 +10,24 @@
 
 ## Properties
 
+### alternativeButton?
+
+> `optional` **alternativeButton**: `object`
+
+#### onClick()
+
+> **onClick**: () => `void`
+
+##### Returns
+
+`void`
+
+#### text
+
+> **text**: `string`
+
+***
+
 ### autoOpen?
 
 > `optional` **autoOpen**: `boolean`

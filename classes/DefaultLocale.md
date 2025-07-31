@@ -36,33 +36,45 @@ The language code.
 
 ***
 
-### timeFormat
-
-> `static` **timeFormat**: `"12hrs"` \| `"24hrs"`
-
-The time format, either '12hrs' or '24hrs'.
-
-***
-
 ### timeZone
 
 > `static` **timeZone**: `string`
 
 The time zone.
 
+## Accessors
+
+### timeFormat
+
+#### Get Signature
+
+> **get** `static` **timeFormat**(): `"12hrs"` \| `"24hrs"`
+
+The time format, either '12hrs' or '24hrs'.
+
+##### Returns
+
+`"12hrs"` \| `"24hrs"`
+
 ***
 
 ### unitSystem
 
-> `static` **unitSystem**: `"imperial"` \| `"si"`
+#### Get Signature
+
+> **get** `static` **unitSystem**(): `"imperial"` \| `"si"`
 
 The unit system, either 'imperial' or 'si'.
+
+##### Returns
+
+`"imperial"` \| `"si"`
 
 ## Methods
 
 ### txt()
 
-> `static` **txt**(`englishDefaultText`, `languageCode`?): `string`
+> `static` **txt**(`englishDefaultText`, `languageCode?`): `string`
 
 Retrieves the translated text (if available) based on the provided language code.
 

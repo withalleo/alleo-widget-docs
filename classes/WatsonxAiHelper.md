@@ -20,13 +20,13 @@
 
 ### backendApiKey
 
-> `readonly` `static` **backendApiKey**: `string` = `DeploymentSettingsHelper.settings.ApiKey`
+> `readonly` `static` **backendApiKey**: `string` = `WidgetSettings.settings.ApiKey`
 
 ***
 
 ### backendUrl
 
-> `readonly` `static` **backendUrl**: `string` = `DeploymentSettingsHelper.settings.ApiRoot`
+> `readonly` `static` **backendUrl**: `string` = `WidgetSettings.settings.ApiRoot`
 
 ***
 
@@ -62,7 +62,7 @@
 
 ### enableCustomQueries
 
-> `readonly` `static` **enableCustomQueries**: `boolean` = `!DeploymentSettingsHelper.settings.DisableCustomQuery`
+> `readonly` `static` **enableCustomQueries**: `boolean` = `!WidgetSettings.settings.DisableCustomQuery`
 
 ***
 

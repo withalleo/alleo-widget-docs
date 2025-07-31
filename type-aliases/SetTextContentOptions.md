@@ -16,12 +16,8 @@ Options for setting text content.
 
 > `optional` **append**: `boolean`
 
-Whether to append the text content.
-
 ***
 
 ### format?
 
 > `optional` **format**: [`Html`](../enumerations/TextInputFormat.md#html) \| [`Text`](../enumerations/TextInputFormat.md#text)
-
-The format of the text content.

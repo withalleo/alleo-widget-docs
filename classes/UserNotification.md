@@ -40,7 +40,13 @@
 
 ### options
 
-> `protected` **options**: [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) = `{}`
+> **options**: [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) = `{}`
+
+***
+
+### DEBUG
+
+> `static` **DEBUG**: `boolean` = `true`
 
 ## Accessors
 
@@ -58,11 +64,11 @@
 
 ### close()
 
-> **close**(): `void`
+> **close**(): `Promise`\<`void`\>
 
 #### Returns
 
-`void`
+`Promise`\<`void`\>
 
 ***
 
@@ -88,13 +94,29 @@
 
 ### updateContent()
 
-> **updateContent**(`notification`): `void`
+> **updateContent**(`notification`): `Promise`\<`void`\>
 
 #### Parameters
 
 ##### notification
 
 [`Notification`](../type-aliases/Notification.md)
+
+#### Returns
+
+`Promise`\<`void`\>
+
+***
+
+### updateOptions()
+
+> **updateOptions**(`options`): `void`
+
+#### Parameters
+
+##### options
+
+[`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) = `undefined`
 
 #### Returns
 

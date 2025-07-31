@@ -120,6 +120,18 @@ The structure of the shared variables.
 
 ***
 
+### settings
+
+#### Get Signature
+
+> **get** `protected` **settings**(): `ExtendedFormlyFieldConfig`[]
+
+##### Returns
+
+`ExtendedFormlyFieldConfig`[]
+
+***
+
 ### widgetName
 
 #### Get Signature
@@ -290,7 +302,7 @@ The query selector.
 
 ### setContainerClass()
 
-> `protected` **setContainerClass**(`className`, `add`?): `void`
+> `protected` **setContainerClass**(`className`, `add?`): `void`
 
 Sets an HTML class for the widget container.
 
@@ -329,6 +341,20 @@ Whether to add or remove the class. (if !add the "not-className" class is added,
 #### Returns
 
 `void`
+
+***
+
+### updateDomStatus()
+
+> `protected` **updateDomStatus**(): `void`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`AlleoWidget`](AlleoWidget.md).[`updateDomStatus`](AlleoWidget.md#updatedomstatus)
 
 ***
 

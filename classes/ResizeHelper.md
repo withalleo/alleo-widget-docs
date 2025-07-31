@@ -12,7 +12,7 @@ A helper class to enable axis-independent resizing of a widget
 
 ### Constructor
 
-> **new ResizeHelper**(`minSize`?, `options`?): `ResizeHelper`
+> **new ResizeHelper**(`minSize?`, `options?`): `ResizeHelper`
 
 Enable axis-independent resizing.
 
@@ -40,7 +40,7 @@ Will throw an error if no DOM is available.
 
 ### Constructor
 
-> **new ResizeHelper**(`minSize`?, `callback`?, `updateCss`?, `settings`?): `ResizeHelper`
+> **new ResizeHelper**(`minSize?`, `callback?`, `updateCss?`, `settings?`): `ResizeHelper`
 
 Enable axis-independent resizing.
 
@@ -117,6 +117,33 @@ Use the object-based constructor instead.
 > **destroy**(): `void`
 
 Destroys the ResizeHelper instance, disabling resizing and disconnecting the observer.
+
+#### Returns
+
+`void`
+
+#### Throws
+
+Will throw an error if no DOM is available.
+
+***
+
+### onResize()
+
+> **onResize**(`contentRect`): `void`
+
+Triggers the resize event with the current size of the widget.
+This method is called by the ResizeObserver when the widget is resized.
+It updates the CSS variables and calls the callback function if provided.
+Additionally, it tracks the resize event for analytics purposes.
+
+#### Parameters
+
+##### contentRect
+
+[`Size`](../type-aliases/Size.md)
+
+The content rectangle of the resized element.
 
 #### Returns
 

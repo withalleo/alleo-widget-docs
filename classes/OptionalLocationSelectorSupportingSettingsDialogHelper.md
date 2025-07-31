@@ -16,7 +16,7 @@ Helper class for managing settings dialogs.
 
 ### Constructor
 
-> **new OptionalLocationSelectorSupportingSettingsDialogHelper**(`settings`?, `options`?): `OptionalLocationSelectorSupportingSettingsDialogHelper`
+> **new OptionalLocationSelectorSupportingSettingsDialogHelper**(`settings?`, `options?`): `OptionalLocationSelectorSupportingSettingsDialogHelper`
 
 Constructs a new Settings Dialog.
 
@@ -44,7 +44,7 @@ Options for the settings dialog.
 
 ### Constructor
 
-> **new OptionalLocationSelectorSupportingSettingsDialogHelper**(`settings`, `createSettingsButtonOnInit`?, `callbackOnSettingsDialogClose`?): `OptionalLocationSelectorSupportingSettingsDialogHelper`
+> **new OptionalLocationSelectorSupportingSettingsDialogHelper**(`settings`, `createSettingsButtonOnInit?`, `callbackOnSettingsDialogClose?`): `OptionalLocationSelectorSupportingSettingsDialogHelper`
 
 #### Parameters
 
@@ -200,13 +200,13 @@ The updated settings.
 
 ### openSettingsDialog()
 
-> **openSettingsDialog**(): `Promise`\<`void`\>
+> **openSettingsDialog**(): `Promise`\<`false` \| `void` \| `""` \| `FormlyDialogModel`\>
 
 Opens the settings dialog.
 
 #### Returns
 
-`Promise`\<`void`\>
+`Promise`\<`false` \| `void` \| `""` \| `FormlyDialogModel`\>
 
 #### Inherited from
 

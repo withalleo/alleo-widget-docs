@@ -166,7 +166,7 @@ Will throw an error if the object is not a proper board object or the user does 
 
 ### editStickyNoteContent()
 
-> `static` **editStickyNoteContent**(`stickyNote`, `text`, `overwritePermissions`?): `void`
+> `static` **editStickyNoteContent**(`stickyNote`, `text`, `overwritePermissions?`): `void`
 
 Edits the content of a sticky note.
 
@@ -227,6 +227,22 @@ The new text content.
 #### Throws
 
 Will throw an error if the text object is not a proper board object or not a text object.
+
+***
+
+### getActionEffects()
+
+> `static` **getActionEffects**(`object`): `object`[]
+
+#### Parameters
+
+##### object
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+
+#### Returns
+
+`object`[]
 
 ***
 
@@ -412,7 +428,7 @@ The elements of the specified type.
 
 ### getObjectDisplayName()
 
-> `static` **getObjectDisplayName**(`object`): `string`
+> `static` **getObjectDisplayName**(`object`, `addTypeName`): `string`
 
 Retrieves the display name of a board object.
 
@@ -423,6 +439,12 @@ Retrieves the display name of a board object.
 [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
 The board object.
+
+##### addTypeName
+
+`boolean` = `true`
+
+Whether to include the type name in the display name. (eg. "Sticky Note: XXX")
 
 #### Returns
 
@@ -542,6 +564,32 @@ True if the object is the same as the current widget, false otherwise.
 
 ***
 
+### moveObject()
+
+> `static` **moveObject**(`object`, `position`): `void`
+
+Moves a board object to a new position based on coordinates.
+
+#### Parameters
+
+##### object
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+
+The board object to move.
+
+##### position
+
+`IPosition`
+
+The new position of the object.
+
+#### Returns
+
+`void`
+
+***
+
 ### reloadMe()
 
 > `static` **reloadMe**(): `void`
@@ -607,3 +655,23 @@ The tags to remove
 #### Returns
 
 `void`
+
+***
+
+### triggerActionEffect()
+
+> `static` **triggerActionEffect**(`object`, `effectId`): `Promise`\<`void`\>
+
+#### Parameters
+
+##### object
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+
+##### effectId
+
+`string`
+
+#### Returns
+
+`Promise`\<`void`\>

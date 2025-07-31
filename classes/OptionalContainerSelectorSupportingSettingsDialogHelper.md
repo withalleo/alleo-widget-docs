@@ -16,7 +16,7 @@ Helper class for managing settings dialogs.
 
 ### Constructor
 
-> **new OptionalContainerSelectorSupportingSettingsDialogHelper**(`settings`?, `options`?): `OptionalContainerSelectorSupportingSettingsDialogHelper`
+> **new OptionalContainerSelectorSupportingSettingsDialogHelper**(`settings?`, `options?`): `OptionalContainerSelectorSupportingSettingsDialogHelper`
 
 Constructs a new Settings Dialog.
 
@@ -44,7 +44,7 @@ Options for the settings dialog.
 
 ### Constructor
 
-> **new OptionalContainerSelectorSupportingSettingsDialogHelper**(`settings`, `createSettingsButtonOnInit`?, `callbackOnSettingsDialogClose`?): `OptionalContainerSelectorSupportingSettingsDialogHelper`
+> **new OptionalContainerSelectorSupportingSettingsDialogHelper**(`settings`, `createSettingsButtonOnInit?`, `callbackOnSettingsDialogClose?`): `OptionalContainerSelectorSupportingSettingsDialogHelper`
 
 #### Parameters
 
@@ -214,13 +214,13 @@ The updated settings.
 
 ### openSettingsDialog()
 
-> **openSettingsDialog**(): `Promise`\<`void`\>
+> **openSettingsDialog**(): `Promise`\<`false` \| `void` \| `""` \| `FormlyDialogModel`\>
 
 Opens the settings dialog.
 
 #### Returns
 
-`Promise`\<`void`\>
+`Promise`\<`false` \| `void` \| `""` \| `FormlyDialogModel`\>
 
 #### Inherited from
 

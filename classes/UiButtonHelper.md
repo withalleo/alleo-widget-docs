@@ -82,7 +82,7 @@ The HTML content of the button.
 
 ##### callback
 
-() => `void`
+(`e`) => `void`
 
 The callback function to execute when the button is clicked.
 
@@ -90,11 +90,19 @@ The callback function to execute when the button is clicked.
 
 The settings for the button.
 
+###### backgroundColor?
+
+`string`
+
 ###### buttonId?
 
 `string`
 
 The ID of the button.
+
+###### callbackAltClick?
+
+(`e`) => `void`
 
 ###### callbackPointerDown?
 
@@ -104,9 +112,13 @@ The ID of the button.
 
 (`e`) => `void`
 
+###### color?
+
+`string`
+
 ###### position?
 
-[`UiButtonPosition`](../enumerations/UiButtonPosition.md)
+`number` \| [`UiButtonPosition`](../enumerations/UiButtonPosition.md)
 
 The position of the button.
 
@@ -187,6 +199,16 @@ Removes a button with the given ID.
 `string`
 
 The ID of the button to remove.
+
+#### Returns
+
+`void`
+
+***
+
+### reOrderButtons()
+
+> `protected` **reOrderButtons**(): `void`
 
 #### Returns
 

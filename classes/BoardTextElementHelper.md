@@ -22,7 +22,7 @@ A helper class for handling text element-related operations on the board.
 
 ### getTextContent()
 
-> `static` **getTextContent**(`object`, `options`?): `Promise`\<`string`[]\>
+> `static` **getTextContent**(`object`, `options?`): `Promise`\<`string`[]\>
 
 Gets the text content of a board object.
 
@@ -48,9 +48,32 @@ The text content of the board object.
 
 ***
 
+### isSupported()
+
+> `static` **isSupported**(`object`): `boolean`
+
+Checks if the given board object is a supported object type for text content operations.
+Supported types include Container, StickyNote, Notepad, Label (Text) and certain Widgets.
+
+#### Parameters
+
+##### object
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+
+The board object to check.
+
+#### Returns
+
+`boolean`
+
+True if the object is supported, false otherwise.
+
+***
+
 ### setTextContent()
 
-> `static` **setTextContent**(`object`, `text`, `options`?): `Promise`\<`void`\>
+> `static` **setTextContent**(`object`, `text`, `options?`): `Promise`\<`void`\>
 
 Sets the text content of a board object.
 

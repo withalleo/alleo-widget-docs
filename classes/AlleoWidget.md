@@ -26,7 +26,7 @@ The structure of the shared variables.
 
 ### Constructor
 
-> **new AlleoWidget**\<`SharedVariableStructure`\>(`defaultSharedVariables`?, `settings`?): `AlleoWidget`\<`SharedVariableStructure`\>
+> **new AlleoWidget**\<`SharedVariableStructure`\>(`defaultSharedVariables?`, `settings?`): `AlleoWidget`\<`SharedVariableStructure`\>
 
 Creates an instance of AlleoWidget.
 
@@ -136,7 +136,7 @@ The query selector.
 
 ### setContainerClass()
 
-> `protected` **setContainerClass**(`className`, `add`?): `void`
+> `protected` **setContainerClass**(`className`, `add?`): `void`
 
 Sets an HTML class for the widget container.
 
@@ -161,3 +161,13 @@ Whether to add or remove the class. (if !add the "not-className" class is added,
 #### Throws
 
 - If no DOM is available.
+
+***
+
+### updateDomStatus()
+
+> `protected` **updateDomStatus**(): `void`
+
+#### Returns
+
+`void`

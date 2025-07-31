@@ -134,6 +134,22 @@ Gets the manifest of the widget.
 
 The manifest of the widget.
 
+***
+
+### widgetId
+
+#### Get Signature
+
+> **get** `static` **widgetId**(): `string`
+
+Gets the display name of the widget.
+
+##### Returns
+
+`string`
+
+The display name of the widget.
+
 ## Methods
 
 ### getFullName()
@@ -164,7 +180,7 @@ Updates the widget name.
 
 ### setOnlyNote()
 
-> `static` **setOnlyNote**(`note`?): `void`
+> `static` **setOnlyNote**(`note?`): `void`
 
 Sets the note for the widget.
 

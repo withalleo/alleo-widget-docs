@@ -92,7 +92,7 @@ Will throw an error if no DOM is available.
 
 ### handleAsyncMessage()
 
-> `static` **handleAsyncMessage**(`widgetSyncMessage`, `filterType`?): `Promise`\<`void`\>
+> `static` **handleAsyncMessage**(`widgetSyncMessage`, `filterType?`): `Promise`\<`void`\>
 
 Handles an incoming asynchronous message from another widget.
 
@@ -144,7 +144,7 @@ Will throw an error if no DOM is available.
 
 ### sendAsyncMessage()
 
-> `static` **sendAsyncMessage**(`functionName`, `type`?, `args`?): `any`
+> `static` **sendAsyncMessage**(`functionName`, `type?`, `args?`): `any`
 
 Sends an asynchronous message to connected widgets
 

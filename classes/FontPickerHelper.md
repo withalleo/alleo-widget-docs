@@ -12,7 +12,7 @@ Class to create and manage a font picker button on the widget bar.
 
 ### Constructor
 
-> **new FontPickerHelper**(`handle`?, `CSSVariable`?, `fontPickerSettings`?): `FontPickerHelper`
+> **new FontPickerHelper**(`handle?`, `CSSVariable?`, `fontPickerSettings?`): `FontPickerHelper`
 
 Constructor for FontPickerHelper.
 
@@ -32,7 +32,7 @@ The CSS variable for the widget font.
 
 ##### fontPickerSettings?
 
-`Partial` = `...`
+[`FontPickerSettings`](../type-aliases/FontPickerSettings.md) = `...`
 
 The settings for the font picker.
 
@@ -70,7 +70,7 @@ Default handle for the font selector.
 
 ### createFontPickerButton()
 
-> `protected` **createFontPickerButton**(`button`?): `void`
+> `protected` **createFontPickerButton**(`button?`): `void`
 
 Creates a font picker button on the widget bar.
 

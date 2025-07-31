@@ -6,7 +6,7 @@
 
 # Function: widgetHasDom()
 
-> **widgetHasDom**(`h`?): `h is IWidgetApi`
+> **widgetHasDom**(`h?`): `h is IWidgetApi`
 
 Checks if the current widget is an object on the board, or a service.
 

@@ -91,3 +91,11 @@ If true, a button will be shown to adjust the widget size manually (default: fal
 > `optional` **unlockHelper**: `boolean`
 
 If true, the widget will display an unlock helper icon for editors. This might be practical when the widget content is not propagating out. (ie. an iframe) (default: false)
+
+***
+
+### zoomOutButtonId?
+
+> `optional` **zoomOutButtonId**: `string`
+
+the id of the zoom out button data fiueld

@@ -12,7 +12,7 @@ A helper for handling file assets.
 
 ### Constructor
 
-> **new AssetHelper**(`widgetContainerSelector`?): `AssetHelper`
+> **new AssetHelper**(`widgetContainerSelector?`): `AssetHelper`
 
 Creates an instance of AssetHelper.
 
@@ -28,13 +28,33 @@ The CSS selector for the widget container.
 
 `AssetHelper`
 
-## Properties
+## Accessors
 
 ### assetsRoot
 
-> `readonly` `static` **assetsRoot**: `string`
+#### Get Signature
+
+> **get** `static` **assetsRoot**(): `string`
 
 The root path for assets (ending with a slash).
+
+##### Returns
+
+`string`
+
+***
+
+### widgetRoot
+
+#### Get Signature
+
+> **get** `static` **widgetRoot**(): `string`
+
+The root path for the widget (ending with a slash).
+
+##### Returns
+
+`string`
 
 ## Methods
 

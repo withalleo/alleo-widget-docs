@@ -96,7 +96,7 @@ The parameters to log.
 
 ### LogAccessor()
 
-> `static` **LogAccessor**(`target`, `propertyKey`, `descriptor`?): `void`
+> `static` **LogAccessor**(`target`, `propertyKey`, `descriptor?`): `void`
 
 TypeScript decorator to log accessor calls.
 
@@ -128,7 +128,7 @@ The property descriptor.
 
 ### LogClass()
 
-> `static` **LogClass**\<`T`\>(`constructor`): (...`args`) => `(Anonymous class)`\<`T`\> & `T`
+> `static` **LogClass**\<`T`\>(`constructor`): \{(...`args`): `(Anonymous class)`\<`T`\>; `prototype`: `(Anonymous class)`\<`any`\>; \} & `T`
 
 TypeScript decorator to log class instantiation.
 
@@ -148,7 +148,7 @@ The class constructor.
 
 #### Returns
 
-(...`args`) => `(Anonymous class)`\<`T`\> & `T`
+\{(...`args`): `(Anonymous class)`\<`T`\>; `prototype`: `(Anonymous class)`\<`any`\>; \} & `T`
 
 The new class with logging.
 
@@ -156,7 +156,7 @@ The new class with logging.
 
 ### LogMethod()
 
-> `static` **LogMethod**(`target`, `propertyKey`, `descriptor`?): `void`
+> `static` **LogMethod**(`target`, `propertyKey`, `descriptor?`): `void`
 
 TypeScript decorator to log method calls.
 
@@ -188,7 +188,7 @@ The property descriptor.
 
 ### LogParameter()
 
-> `static` **LogParameter**(`target`, `propertyKey`, `parameterIndex`?): `void`
+> `static` **LogParameter**(`target`, `propertyKey`, `parameterIndex?`): `void`
 
 TypeScript decorator to log parameter usage.
 
@@ -246,7 +246,7 @@ The name of the property.
 
 ### trackEvent()
 
-> `static` **trackEvent**(`action`, `payload`?): `void`
+> `static` **trackEvent**(`action`, `payload?`): `void`
 
 Tracks an analytics event.
 

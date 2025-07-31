@@ -58,7 +58,13 @@
 
 ### importToCsv()
 
-> **importToCsv**(): `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
+> **importToCsv**(`finalStep`): `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
+
+#### Parameters
+
+##### finalStep
+
+`boolean` = `false`
 
 #### Returns
 

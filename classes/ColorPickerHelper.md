@@ -16,7 +16,7 @@ A helper class for creating a color picker
 
 ### Constructor
 
-> **new ColorPickerHelper**(`handle`?, `CSSVariable`?, `defaultColor`?, `coloPickerSettings`?, `widgetContainerSelector`?, `callbackOnColorChange`?, `displayColorPickerButtonOnInit`?): `ColorPickerHelper`
+> **new ColorPickerHelper**(`handle?`, `CSSVariable?`, `defaultColor?`, `coloPickerSettings?`, `widgetContainerSelector?`, `callbackOnColorChange?`, `displayColorPickerButtonOnInit?`): `ColorPickerHelper`
 
 Creates a Color Picker
 
@@ -84,7 +84,7 @@ The current color.
 
 ### createColorPickerButton()
 
-> **createColorPickerButton**(`button`?, `coloPickerSettings`?): `void`
+> **createColorPickerButton**(`button?`, `coloPickerSettings?`): `void`
 
 Creates a color picker button.
 

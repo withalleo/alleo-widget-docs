@@ -54,11 +54,21 @@
 
 ### options
 
-> `protected` **options**: [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) = `{}`
+> **options**: [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) = `{}`
 
 #### Inherited from
 
 [`UserNotification`](UserNotification.md).[`options`](UserNotification.md#options)
+
+***
+
+### DEBUG
+
+> `static` **DEBUG**: `boolean` = `true`
+
+#### Inherited from
+
+[`UserNotification`](UserNotification.md).[`DEBUG`](UserNotification.md#debug)
 
 ## Accessors
 
@@ -80,11 +90,11 @@
 
 ### close()
 
-> **close**(): `void`
+> **close**(): `Promise`\<`void`\>
 
 #### Returns
 
-`void`
+`Promise`\<`void`\>
 
 #### Inherited from
 
@@ -122,7 +132,7 @@
 
 ### updateContent()
 
-> **updateContent**(`notification`): `void`
+> **updateContent**(`notification`): `Promise`\<`void`\>
 
 #### Parameters
 
@@ -132,11 +142,31 @@
 
 #### Returns
 
-`void`
+`Promise`\<`void`\>
 
 #### Inherited from
 
 [`UserNotification`](UserNotification.md).[`updateContent`](UserNotification.md#updatecontent)
+
+***
+
+### updateOptions()
+
+> **updateOptions**(`options`): `void`
+
+#### Parameters
+
+##### options
+
+[`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) = `undefined`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`UserNotification`](UserNotification.md).[`updateOptions`](UserNotification.md#updateoptions)
 
 ***
 

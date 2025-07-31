@@ -19,7 +19,7 @@ The type of the value being managed.
 
 ### Constructor
 
-> **new RateLimitFunctionHelper**(`callback`, `maxDelay`?): `RateLimitFunctionHelper`
+> **new RateLimitFunctionHelper**(`callback`, `maxDelay?`): `RateLimitFunctionHelper`
 
 Creates an instance of RateLimitFunctionHelper.
 

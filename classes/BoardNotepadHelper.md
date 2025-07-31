@@ -44,7 +44,7 @@ The notepad object.
 
 ### appendContent()
 
-> **appendContent**(`content`, `inputFormat`?): `Promise`\<`void`\>
+> **appendContent**(`content`, `inputFormat?`): `Promise`\<`void`\>
 
 Appends content to the notepad.
 
@@ -70,7 +70,7 @@ The format of the content.
 
 ### getContent()
 
-> **getContent**(`inputFormat`?): `Promise`\<`string`\>
+> **getContent**(`inputFormat?`): `Promise`\<`string`\>
 
 Gets the content of the notepad.
 
@@ -92,7 +92,7 @@ The content of the notepad.
 
 ### replaceContent()
 
-> **replaceContent**(`content`, `inputFormat`?): `Promise`\<`void`\>
+> **replaceContent**(`content`, `inputFormat?`): `Promise`\<`void`\>
 
 Replaces the content of the notepad.
 
@@ -118,7 +118,7 @@ The format of the content.
 
 ### getNotepadLabel()
 
-> `static` **getNotepadLabel**(`notepadObject`, `len`?): `string`
+> `static` **getNotepadLabel**(`notepadObject`, `len?`): `string`
 
 Gets the label of the notepad.
 

@@ -20,7 +20,7 @@ The type of the cached values.
 
 ### Constructor
 
-> **new SharedCache**\<`T`\>(`databaseId`?, `delayedWrite`?): `SharedCache`\<`T`\>
+> **new SharedCache**\<`T`\>(`databaseId?`, `delayedWrite?`): `SharedCache`\<`T`\>
 
 Constructs a new SharedCache.
 
