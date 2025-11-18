@@ -6,6 +6,8 @@
 
 # Class: SharedVariable
 
+Static utility for interacting with shared variables.
+
 ## Constructors
 
 ### Constructor
@@ -22,11 +24,15 @@
 
 > `static` **observer**: *typeof* `SharedVariableHelper` = `SharedVariableHelper`
 
+Returns a SharedVariableHelper observer class.
+
 ## Methods
 
 ### append()
 
 > `static` **append**(`variable`, `value`): `Promise`\<`any`\>
+
+Appends values to a shared variable (array).
 
 #### Parameters
 
@@ -34,9 +40,13 @@
 
 `string`
 
+The variable name.
+
 ##### value
 
 `any`[]
+
+The values to append.
 
 #### Returns
 
@@ -48,11 +58,15 @@
 
 > `static` **get**(`variable`): `any`
 
+Gets the value of a shared variable.
+
 #### Parameters
 
 ##### variable
 
 `string`
+
+The variable name.
 
 #### Returns
 
@@ -64,11 +78,15 @@
 
 > `static` **getMultiple**(`variables`): `Record`\<`string`, `any`\>
 
+Gets multiple shared variable values.
+
 #### Parameters
 
 ##### variables
 
 `string`[]
+
+Array of variable names.
 
 #### Returns
 
@@ -80,15 +98,21 @@
 
 > `static` **set**(`variable`, `value`): `Promise`\<`any`\>
 
+Sets the value of a shared variable.
+
 #### Parameters
 
 ##### variable
 
 `string`
 
+The variable name.
+
 ##### value
 
 `any`
+
+The value to set.
 
 #### Returns
 
@@ -100,15 +124,21 @@
 
 > `static` **setMultiple**(`variables`, `delta`): `Promise`\<`any`\>
 
+Sets multiple shared variable values.
+
 #### Parameters
 
 ##### variables
 
 `Record`\<`string`, `any`\>
 
+Object mapping variable names to values.
+
 ##### delta
 
 `boolean` = `true`
+
+If true, applies changes as a delta.
 
 #### Returns
 

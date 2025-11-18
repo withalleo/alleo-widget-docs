@@ -6,9 +6,7 @@
 
 # Class: DataConnectorWidget\<SharedVariableStructure\>
 
-Class representing an Alleo Widget.
-
-Provides access to shared variables, a constructor, and a destroy method.
+Base class for widgets that connect to data sources and provide import/export functionality.
 
 ## Extends
 
@@ -20,7 +18,7 @@ Provides access to shared variables, a constructor, and a destroy method.
 
 `SharedVariableStructure`
 
-The structure of the shared variables.
+The structure of shared variables for the widget.
 
 ## Constructors
 
@@ -28,11 +26,15 @@ The structure of the shared variables.
 
 > **new DataConnectorWidget**\<`SharedVariableStructure`\>(`defaultSharedVariables`): `DataConnectorWidget`\<`SharedVariableStructure`\>
 
+Constructs a DataConnectorWidget instance.
+
 #### Parameters
 
 ##### defaultSharedVariables
 
 `Partial`\<`SharedVariableStructure`\> = `{}`
+
+Default shared variables for the widget.
 
 #### Returns
 
@@ -58,11 +60,15 @@ The structure of the shared variables.
 
 > `protected` **lineLimit**: `number` = `0`
 
+Maximum number of lines allowed for import.
+
 ***
 
 ### nameHelper
 
 > `protected` **nameHelper**: [`WidgetNameHelper`](WidgetNameHelper.md)
+
+Helper for managing widget name display.
 
 ***
 
@@ -90,9 +96,21 @@ The structure of the shared variables.
 
 ***
 
+### api
+
+> `static` **api**: `IWidgetServiceApi` = `haptic`
+
+#### Inherited from
+
+[`AlleoWidget`](AlleoWidget.md).[`api`](AlleoWidget.md#api)
+
+***
+
 ### widgetNamePrefix
 
 > `readonly` `static` **widgetNamePrefix**: `string` = `'▤ '`
+
+Prefix for widget display name.
 
 ## Accessors
 
@@ -101,6 +119,8 @@ The structure of the shared variables.
 #### Get Signature
 
 > **get** `protected` **implemented**(): [`DataConnectorActions`](../enumerations/DataConnectorActions.md)[]
+
+Returns the list of actions implemented by the widget.
 
 ##### Returns
 
@@ -114,6 +134,8 @@ The structure of the shared variables.
 
 > **get** `protected` **length**(): `number`
 
+Returns the number of records in the widget's data source.
+
 ##### Returns
 
 `number`
@@ -126,9 +148,25 @@ The structure of the shared variables.
 
 > **get** `protected` **settings**(): `ExtendedFormlyFieldConfig`[]
 
+Returns the settings fields for the widget.
+
 ##### Returns
 
 `ExtendedFormlyFieldConfig`[]
+
+***
+
+### widgetDescription
+
+#### Get Signature
+
+> **get** `protected` **widgetDescription**(): `string`
+
+Returns the description of the widget.
+
+##### Returns
+
+`string`
 
 ***
 
@@ -137,6 +175,8 @@ The structure of the shared variables.
 #### Get Signature
 
 > **get** `protected` **widgetName**(): `string`
+
+Returns the display name of the widget.
 
 ##### Returns
 
@@ -148,15 +188,23 @@ The structure of the shared variables.
 
 > `protected` **append**(`row`): `Promise`\<`boolean`\>
 
+Appends a row to the widget's data source.
+
 #### Parameters
 
 ##### row
 
 `string`[]
 
+The row to append.
+
 #### Returns
 
 `Promise`\<`boolean`\>
+
+#### Throws
+
+Error if not implemented.
 
 ***
 
@@ -238,9 +286,15 @@ The query selector.
 
 > `protected` **export**(): `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
 
+Exports the widget's data as CSV.
+
 #### Returns
 
 `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
+
+#### Throws
+
+Error if not implemented.
 
 ***
 
@@ -248,15 +302,21 @@ The query selector.
 
 > **exportProcess**(`name`, `download`): `Promise`\<`void`\>
 
+Handles the export process by exporting data and saving it in board assets.
+
 #### Parameters
 
 ##### name
 
 `string` = `'Exported data'`
 
+Name for the exported file.
+
 ##### download
 
 `boolean` = `true`
+
+Whether to download the file after export.
 
 #### Returns
 
@@ -268,21 +328,31 @@ The query selector.
 
 > `protected` **import**(`data`): `Promise`\<`boolean`\>
 
+Imports data into the widget's data source.
+
 #### Parameters
 
 ##### data
 
 [`CSVData`](../type-aliases/CSVData.md)
 
+The CSV data to import.
+
 #### Returns
 
 `Promise`\<`boolean`\>
+
+#### Throws
+
+Error if not implemented.
 
 ***
 
 ### importProcess()
 
 > **importProcess**(): `Promise`\<`void`\>
+
+Handles the import process by opening the import dialog and importing data.
 
 #### Returns
 
@@ -293,6 +363,20 @@ The query selector.
 ### initialize()
 
 > `protected` **initialize**(): `Promise`\<`void`\>
+
+Initializes the widget (called in constructor).
+
+#### Returns
+
+`Promise`\<`void`\>
+
+***
+
+### reset()
+
+> `protected` **reset**(): `Promise`\<`void`\>
+
+Resets the widget's data source.
 
 #### Returns
 
@@ -338,6 +422,8 @@ Whether to add or remove the class. (if !add the "not-className" class is added,
 
 > `protected` **updateDisplayName**(): `void`
 
+Updates the display name of the widget.
+
 #### Returns
 
 `void`
@@ -362,19 +448,27 @@ Whether to add or remove the class. (if !add the "not-className" class is added,
 
 > `static` **isDataConnector**(`object`, `actionsRequiredSupport`): `boolean`
 
+Checks if a board object is a DataConnector and supports required actions.
+
 #### Parameters
 
 ##### object
 
 [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
+The board object to check.
+
 ##### actionsRequiredSupport
 
 [`DataConnectorActions`](../enumerations/DataConnectorActions.md)[] = `[]`
 
+Actions that must be supported.
+
 #### Returns
 
 `boolean`
+
+True if the object is a DataConnector and supports the required actions.
 
 ***
 
@@ -382,12 +476,18 @@ Whether to add or remove the class. (if !add the "not-className" class is added,
 
 > `static` **saveCSVInBoardAssets**(`file`): `Promise`\<`StorageNodeCreatedResponseDto`\>
 
+Saves a CSV file in board assets and attempts to close the import dialog if open.
+
 #### Parameters
 
 ##### file
 
 `File`
 
+The CSV file to upload.
+
 #### Returns
 
 `Promise`\<`StorageNodeCreatedResponseDto`\>
+
+The uploaded file node.

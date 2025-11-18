@@ -8,6 +8,8 @@
 
 > **DataImportHelperSettings** = `object`
 
+Settings for the DataImportHelper.
+
 ## Properties
 
 ### allowImportFromDataConnector?

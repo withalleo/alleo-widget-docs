@@ -271,7 +271,7 @@ Will throw an error if the response is not successful.
 
 ### getAuthorizationToken()
 
-> `static` **getAuthorizationToken**(`id`): `Promise`\<`any`\>
+> `static` **getAuthorizationToken**(`id`): `Promise`\<`OAuthTokenDto`\>
 
 #### Parameters
 
@@ -281,13 +281,13 @@ Will throw an error if the response is not successful.
 
 #### Returns
 
-`Promise`\<`any`\>
+`Promise`\<`OAuthTokenDto`\>
 
 ***
 
 ### getAuthorizationTokenForObject()
 
-> `static` **getAuthorizationTokenForObject**(`id`): `Promise`\<`any`\>
+> `static` **getAuthorizationTokenForObject**(`id`): `Promise`\<`OAuthTokenDto`\>
 
 #### Parameters
 
@@ -297,13 +297,13 @@ Will throw an error if the response is not successful.
 
 #### Returns
 
-`Promise`\<`any`\>
+`Promise`\<`OAuthTokenDto`\>
 
 ***
 
 ### listSecretsAvailableForBoard()
 
-> `static` **listSecretsAvailableForBoard**(`id`): `Promise`\<`any`\>
+> `static` **listSecretsAvailableForBoard**(`id`): `Promise`\<`ThirdPartyConnectionApiDto`[]\>
 
 #### Parameters
 
@@ -313,13 +313,13 @@ Will throw an error if the response is not successful.
 
 #### Returns
 
-`Promise`\<`any`\>
+`Promise`\<`ThirdPartyConnectionApiDto`[]\>
 
 ***
 
 ### proxyRequest()
 
-> `static` **proxyRequest**(`url`, `token`, `params`): `Promise`\<`any`\>
+> `static` **proxyRequest**(`url`, `token`, `params`): `Promise`\<`Response`\>
 
 #### Parameters
 
@@ -337,4 +337,4 @@ Will throw an error if the response is not successful.
 
 #### Returns
 
-`Promise`\<`any`\>
+`Promise`\<`Response`\>

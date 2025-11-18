@@ -6,6 +6,8 @@
 
 # Class: UserNotification
 
+Displays and manages user notifications in the UI.
+
 ## Extended by
 
 - [`SimpleUserNotification`](SimpleUserNotification.md)
@@ -16,15 +18,21 @@
 
 > **new UserNotification**(`notification`, `options`): `UserNotification`
 
+Creates a new UserNotification instance.
+
 #### Parameters
 
 ##### notification
 
 [`Notification`](../type-aliases/Notification.md)
 
+Notification data.
+
 ##### options
 
 [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) = `{}`
+
+Notification options.
 
 #### Returns
 
@@ -36,17 +44,23 @@
 
 > `protected` **notification**: [`Notification`](../type-aliases/Notification.md)
 
+Notification data.
+
 ***
 
 ### options
 
 > **options**: [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) = `{}`
 
+Notification options.
+
 ***
 
 ### DEBUG
 
 > `static` **DEBUG**: `boolean` = `true`
+
+Enable debug logging.
 
 ## Accessors
 
@@ -55,6 +69,8 @@
 #### Get Signature
 
 > **get** **isOpen**(): `boolean`
+
+Returns true if the notification is open.
 
 ##### Returns
 
@@ -66,6 +82,8 @@
 
 > **close**(): `Promise`\<`void`\>
 
+Closes the notification and removes it from the UI.
+
 #### Returns
 
 `Promise`\<`void`\>
@@ -75,6 +93,8 @@
 ### destroy()
 
 > **destroy**(): `void`
+
+Destroys the notification and cleans up resources.
 
 #### Returns
 
@@ -86,6 +106,8 @@
 
 > **open**(): `Promise`\<`void`\>
 
+Opens the notification in the UI.
+
 #### Returns
 
 `Promise`\<`void`\>
@@ -96,11 +118,15 @@
 
 > **updateContent**(`notification`): `Promise`\<`void`\>
 
+Updates the notification content.
+
 #### Parameters
 
 ##### notification
 
 [`Notification`](../type-aliases/Notification.md)
+
+New notification data.
 
 #### Returns
 
@@ -112,11 +138,15 @@
 
 > **updateOptions**(`options`): `void`
 
+Updates notification options and redraws content.
+
 #### Parameters
 
 ##### options
 
 [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) = `undefined`
+
+New options to apply.
 
 #### Returns
 
@@ -126,7 +156,9 @@
 
 ### error()
 
-> `static` **error**(`message`, `actions`, `throttle`): `any`
+> `static` **error**(`message`, `actions`, `throttle`): `void`
+
+Shows an error notification.
 
 #### Parameters
 
@@ -134,23 +166,31 @@
 
 `string`
 
+Message to display.
+
 ##### actions
 
 `string`[] = `[]`
+
+Optional actions.
 
 ##### throttle
 
 `boolean` = `true`
 
+If true, throttles notifications.
+
 #### Returns
 
-`any`
+`void`
 
 ***
 
 ### info()
 
-> `static` **info**(`message`, `actions`, `throttle`): `any`
+> `static` **info**(`message`, `actions`, `throttle`): `void`
+
+Shows an info notification.
 
 #### Parameters
 
@@ -158,23 +198,31 @@
 
 `string`
 
+Message to display.
+
 ##### actions
 
 `string`[] = `[]`
+
+Optional actions.
 
 ##### throttle
 
 `boolean` = `true`
 
+If true, throttles notifications.
+
 #### Returns
 
-`any`
+`void`
 
 ***
 
 ### warn()
 
-> `static` **warn**(`message`, `actions`, `throttle`): `any`
+> `static` **warn**(`message`, `actions`, `throttle`): `void`
+
+Shows a warning notification.
 
 #### Parameters
 
@@ -182,14 +230,20 @@
 
 `string`
 
+Message to display.
+
 ##### actions
 
 `string`[] = `[]`
+
+Optional actions.
 
 ##### throttle
 
 `boolean` = `true`
 
+If true, throttles notifications.
+
 #### Returns
 
-`any`
+`void`

@@ -8,11 +8,15 @@
 
 > **UserNotificationOptions** = `object`
 
+Options for customizing user notifications.
+
 ## Properties
 
 ### alternativeButton?
 
 > `optional` **alternativeButton**: `object`
+
+Custom button with text and click handler.
 
 #### onClick()
 
@@ -32,11 +36,15 @@
 
 > `optional` **autoOpen**: `boolean`
 
+If true, opens notification on creation.
+
 ***
 
 ### hideButton?
 
 > `optional` **hideButton**: `boolean`
+
+If true, hides the dismiss button.
 
 ***
 
@@ -44,8 +52,12 @@
 
 > `optional` **neverTimeout**: `boolean`
 
+If true, notification never auto-closes.
+
 ***
 
 ### timeout?
 
 > `optional` **timeout**: `number`
+
+Duration before notification auto-closes (ms).

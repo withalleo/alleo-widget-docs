@@ -8,6 +8,8 @@
 
 > **ListRecord** = `object`
 
+Represents a record in the item list.
+
 ## Indexable
 
 \[`p`: `string`\]: `any`

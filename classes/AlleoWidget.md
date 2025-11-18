@@ -70,6 +70,12 @@ The settings for the widget.
 
 > **loaded**: `boolean`
 
+***
+
+### api
+
+> `static` **api**: `IWidgetServiceApi` = `haptic`
+
 ## Methods
 
 ### assertWidgetLoaded()

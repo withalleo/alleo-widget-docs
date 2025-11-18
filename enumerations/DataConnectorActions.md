@@ -6,6 +6,8 @@
 
 # Enumeration: DataConnectorActions
 
+Enum representing the available actions for DataConnector widgets.
+
 ## Enumeration Members
 
 ### Append
@@ -23,3 +25,9 @@
 ### Import
 
 > **Import**: `"import"`
+
+***
+
+### Reset
+
+> **Reset**: `"reset"`

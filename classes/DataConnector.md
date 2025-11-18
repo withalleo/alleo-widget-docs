@@ -6,6 +6,8 @@
 
 # Class: DataConnector
 
+Helper class for interacting with DataConnector widgets on the board.
+
 ## Constructors
 
 ### Constructor
@@ -17,6 +19,8 @@
 ##### objectId
 
 `string`
+
+The ID of the board object to interact with.
 
 #### Returns
 
@@ -30,6 +34,8 @@
 
 > **get** **length**(): `number`
 
+Returns the number of records in the DataConnector widget.
+
 ##### Returns
 
 `number`
@@ -42,6 +48,8 @@
 
 > **get** **supportedActions**(): [`DataConnectorActions`](../enumerations/DataConnectorActions.md)[]
 
+Returns the actions supported by the DataConnector widget.
+
 ##### Returns
 
 [`DataConnectorActions`](../enumerations/DataConnectorActions.md)[]
@@ -52,11 +60,15 @@
 
 > **append**(`row`): `Promise`\<`boolean`\>
 
+Appends a row to the DataConnector widget.
+
 #### Parameters
 
 ##### row
 
 `string`[]
+
+The row to append.
 
 #### Returns
 
@@ -68,9 +80,13 @@
 
 > **export**(): `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
 
+Exports the data from the DataConnector widget.
+
 #### Returns
 
 `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
+
+The exported CSV data.
 
 ***
 
@@ -78,11 +94,15 @@
 
 > **import**(`data`): `Promise`\<`boolean`\>
 
+Imports data into the DataConnector widget.
+
 #### Parameters
 
 ##### data
 
 [`CSVData`](../type-aliases/CSVData.md)
+
+The CSV data to import.
 
 #### Returns
 

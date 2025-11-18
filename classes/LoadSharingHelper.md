@@ -88,6 +88,18 @@ True if the current instance is responsible for the task, false otherwise.
 
 ## Methods
 
+### onDestroy()
+
+> **onDestroy**(): `void`
+
+Handles the destruction of the widget by stopping the timer.
+
+#### Returns
+
+`void`
+
+***
+
 ### restartTimer()
 
 > **restartTimer**(`interval`, `takeOverTimeOut`): `void`

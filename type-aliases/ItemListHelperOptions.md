@@ -8,6 +8,8 @@
 
 > **ItemListHelperOptions** = `object`
 
+Options for configuring the ItemListHelper.
+
 ## Properties
 
 ### allowDataConnectors?

@@ -6,6 +6,8 @@
 
 # Class: WidgetDetails
 
+Helper class for managing widget label, visibility, and search description.
+
 ## Constructors
 
 ### Constructor
@@ -24,6 +26,8 @@
 
 > **get** `static` **hideLabel**(): `boolean`
 
+Gets whether the widget label is hidden.
+
 ##### Returns
 
 `boolean`
@@ -32,11 +36,15 @@
 
 > **set** `static` **hideLabel**(`hide`): `void`
 
+Sets whether the widget label is hidden.
+
 ##### Parameters
 
 ###### hide
 
 `boolean`
+
+True to hide the label, false to show.
 
 ##### Returns
 
@@ -50,6 +58,8 @@
 
 > **get** `static` **label**(): `string`
 
+Gets the widget label (caption text).
+
 ##### Returns
 
 `string`
@@ -58,11 +68,16 @@
 
 > **set** `static` **label**(`title`): `void`
 
+Sets the widget label (caption text).
+Truncates to 250 characters if needed.
+
 ##### Parameters
 
 ###### title
 
 `string`
+
+The label to set.
 
 ##### Returns
 
@@ -76,11 +91,15 @@
 
 > **set** `static` **searchDescription**(`description`): `void`
 
+Sets the widget search description. Falls back to hiding label and setting label if not supported.
+
 ##### Parameters
 
 ###### description
 
 `string`
+
+The search description to set.
 
 ##### Returns
 

@@ -6,6 +6,8 @@
 
 # Enumeration: NotificationType
 
+Enum for notification types.
+
 ## Enumeration Members
 
 ### Info
