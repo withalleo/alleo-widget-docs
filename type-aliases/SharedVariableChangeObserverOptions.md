@@ -8,20 +8,20 @@
 
 > **SharedVariableChangeObserverOptions** = `object`
 
-Options for observing changes to shared variables.
+Configuration options for shared variable change observers.
 
 ## Properties
 
 ### runOnInit?
 
-> `optional` **runOnInit**: `boolean`
+> `optional` **runOnInit?**: `boolean`
 
-If true, callback runs on initialization.
+When true, executes the callback immediately with current value upon initialization.
 
 ***
 
 ### startSuspended?
 
-> `optional` **startSuspended**: `boolean`
+> `optional` **startSuspended?**: `boolean`
 
-If true, observers start suspended.
+When true, observer starts in suspended state and won't trigger callbacks until resumed.

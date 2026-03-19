@@ -6,7 +6,34 @@
 
 # Class: BoardNotepadHelper
 
-A helper class for handling notepad-related operations on the board.
+Provides utilities for interacting with collaborative notepad objects on the board.
+
+Enables widgets to read, write, and manipulate content in Alleo's collaborative notepads.
+Supports multiple input/output formats (plain text, Markdown, HTML) and handles the
+underlying collaborative editing infrastructure. Essential for widgets that need to
+integrate with or manipulate notepad content programmatically.
+
+## Example
+
+```typescript
+// Get notepad from board
+const notepadObj = BoardObjectHelper.getBoardObjectById(notepadId);
+
+// Check if object is a notepad
+if (BoardNotepadHelper.isNotepad(notepadObj)) {
+  const notepadHelper = new BoardNotepadHelper(notepadObj);
+
+  // Read content
+  const text = await notepadHelper.getText();
+  console.log('Notepad content:', text);
+
+  // Write content
+  await notepadHelper.setText('New content', TextInputFormat.Markdown);
+
+  // Get notepad label
+  const label = BoardNotepadHelper.getNotepadLabel(notepadObj);
+}
+```
 
 ## Constructors
 
@@ -14,7 +41,10 @@ A helper class for handling notepad-related operations on the board.
 
 > **new BoardNotepadHelper**(`notepad`): `BoardNotepadHelper`
 
-Creates an instance of BoardNotepadHelper.
+Creates a BoardNotepadHelper instance for manipulating a specific notepad.
+
+Initializes the helper with references to the notepad's collaborative editing
+infrastructure. Requires a widget with DOM access.
 
 #### Parameters
 
@@ -22,7 +52,7 @@ Creates an instance of BoardNotepadHelper.
 
 [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
-The notepad object.
+The board object representing the collaborative notepad.
 
 #### Returns
 
@@ -30,7 +60,7 @@ The notepad object.
 
 #### Throws
 
-Will throw an error if the widget DOM is not available or the notepad is not found.
+Throws if widget doesn't have DOM or notepad object is invalid.
 
 ## Properties
 
@@ -38,7 +68,7 @@ Will throw an error if the widget DOM is not available or the notepad is not fou
 
 > **notepad**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
-The notepad object.
+The board object representing the collaborative notepad.
 
 ## Methods
 
@@ -52,9 +82,9 @@ Appends content to the notepad.
 
 ##### content
 
-The content to append.
+`string` \| `string`[]
 
-`string` | `string`[]
+The content to append.
 
 ##### inputFormat?
 
@@ -78,9 +108,9 @@ Gets the content of the notepad.
 
 ##### inputFormat?
 
-The format of the content.
+[`TextInputFormat`](../enumerations/TextInputFormat.md) = `TextInputFormat.Text`
 
-[`Text`](../enumerations/TextInputFormat.md#text) | [`Html`](../enumerations/TextInputFormat.md#html)
+The format of the content.
 
 #### Returns
 
@@ -100,9 +130,9 @@ Replaces the content of the notepad.
 
 ##### content
 
-The new content.
+`string` \| `string`[]
 
-`string` | `string`[]
+The new content.
 
 ##### inputFormat?
 
@@ -120,7 +150,10 @@ The format of the content.
 
 > `static` **getNotepadLabel**(`notepadObject`, `len?`): `string`
 
-Gets the label of the notepad.
+Retrieves a display label for a notepad object.
+
+Returns the notepad's caption/title if available, otherwise returns a preview
+of the content. Automatically truncates long text and adds ellipsis.
 
 #### Parameters
 
@@ -128,19 +161,21 @@ Gets the label of the notepad.
 
 [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
-The notepad object.
+The notepad board object.
 
 ##### len?
 
 `number` = `30`
 
-The maximum length of the label. (an extra "..." might be added)
+Maximum length of the returned label. Longer text is truncated with '...'.
 
 #### Returns
 
 `string`
 
-The notepad label.
+The notepad label (title or content preview).
+
+#### Static
 
 ***
 
@@ -148,7 +183,9 @@ The notepad label.
 
 > `static` **isNotepad**(`obj`): `boolean`
 
-Checks if the given object is a notepad.
+Determines if a board object is a collaborative notepad.
+
+Checks the object's type and data properties to identify notepad objects.
 
 #### Parameters
 
@@ -156,10 +193,12 @@ Checks if the given object is a notepad.
 
 [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
-The object to check.
+The board object to check.
 
 #### Returns
 
 `boolean`
 
 True if the object is a notepad, false otherwise.
+
+#### Static

@@ -6,29 +6,56 @@
 
 # Class: BackendProxyHelper
 
-BackendHelper class provides methods to handle backend requests.
+Manages secure backend API connections with automatic authentication and token management.
 
-It provides an interface to request data from the backend using the shared secret key.
+Provides a comprehensive interface for making authenticated requests to backend services,
+handling API key management at deployment/organization/custom scopes, token caching,
+and settings UI generation. Supports multiple authentication scopes and automatic
+token refresh. Essential for widgets that need to communicate with external APIs securely.
+
+## Example
+
+```typescript
+// Initialize with connection ID from manifest
+const backend = new BackendProxyHelper('myApiConnection');
+
+// Make authenticated GET request
+const data = await backend.get('/api/users');
+
+// Make POST request with body
+const result = await backend.post('/api/data', { name: 'John' });
+
+// Check connection status
+if (backend.isKeyConfigured()) {
+  console.log('API key is configured');
+}
+```
 
 ## Constructors
 
 ### Constructor
 
-> **new BackendProxyHelper**(`connectionId`, `helperSettings`): `BackendProxyHelper`
+> **new BackendProxyHelper**(`connectionId?`, `helperSettings?`): `BackendProxyHelper`
 
-Creates an instance of BackendHelper.
+Creates a BackendProxyHelper instance for managing authenticated backend connections.
+
+Sets up token caching, scope management, and watches for API key changes.
+The connection ID should match a backend configuration defined in the widget's
+deployment settings.
 
 #### Parameters
 
-##### connectionId
+##### connectionId?
 
 `string` = `'default'`
 
-the connection ID, as referenced in the DeploymentSettings.
+The connection identifier from deployment settings matching the backend configuration.
 
-##### helperSettings
+##### helperSettings?
 
 `BackendProxyHelperSettings` = `{}`
+
+Additional configuration options.
 
 #### Returns
 
@@ -46,13 +73,15 @@ the connection ID, as referenced in the DeploymentSettings.
 
 > `readonly` **connectionId**: `string` = `'default'`
 
-the connection ID, as referenced in the DeploymentSettings.
+The connection identifier from deployment settings matching the backend configuration.
 
 ***
 
 ### helperSettings
 
 > `protected` `readonly` **helperSettings**: `BackendProxyHelperSettings` = `{}`
+
+Additional configuration options.
 
 ***
 
@@ -142,11 +171,11 @@ TODO This does not recognizes organization keys, and reports them as 'deployment
 
 ### getStatusDisplay()
 
-> **getStatusDisplay**(`serviceDisplayName`): `FormlyFieldConfig`\<`FormlyFieldProps` & `object`\>[]
+> **getStatusDisplay**(`serviceDisplayName?`): `FormlyFieldConfig`\<`FormlyFieldProps` & `object`\>[]
 
 #### Parameters
 
-##### serviceDisplayName
+##### serviceDisplayName?
 
 `string` = `''`
 
@@ -197,9 +226,9 @@ The request parameters.
 
 ##### retryNumber?
 
-The number of retries to attempt if the request fails. (set to 0 to disable retry)
+`number` \| `boolean`
 
-`number` | `boolean`
+The number of retries to attempt if the request fails. (set to 0 to disable retry)
 
 ##### timeoutMs?
 
@@ -221,7 +250,7 @@ Will throw an error if the request fails and doNotRetry is true.
 
 ### requestJson()
 
-> **requestJson**\<`T`\>(`url`, `params?`, `retryNumber?`, `timeoutMs?`): `Promise`\<`T`\>
+> **requestJson**\<`T`\>(`url`, `params?`, `retryNumber?`, `timeoutMs?`, `returnContentOnError?`): `Promise`\<`T`\>
 
 Makes a request to the specified URL and returns the JSON response.
 
@@ -247,15 +276,21 @@ The request parameters.
 
 ##### retryNumber?
 
-The number of retries to attempt if the request fails. (set to 0 to disable retry)
+`number` \| `boolean`
 
-`number` | `boolean`
+The number of retries to attempt if the request fails. (set to 0 to disable retry)
 
 ##### timeoutMs?
 
 `number` = `...`
 
 The timeout in milliseconds for the request.
+
+##### returnContentOnError?
+
+`boolean` = `false`
+
+Whether to try to return the JSON on error responses.
 
 #### Returns
 

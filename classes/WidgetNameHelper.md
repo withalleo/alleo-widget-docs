@@ -6,29 +6,50 @@
 
 # Class: WidgetNameHelper
 
-Helper class for managing widget names.
+Manages widget identification and naming across different contexts.
+
+Provides utilities for retrieving widget names, IDs, and display names from various
+sources including manifest configuration, deployment settings, and URL paths. Handles
+automatic widget name detection and validation. Essential for widgets that need to
+identify themselves or display their name to users.
+
+## Example
+
+```typescript
+// Get widget display name
+const displayName = WidgetNameHelper.displayName;
+console.log('Widget:', displayName); // e.g., "AI Chat"
+
+// Get widget ID (technical name)
+const widgetId = WidgetNameHelper.widgetId;
+console.log('ID:', widgetId); // e.g., "ai-chat"
+
+// Create instance with preferred name
+const nameHelper = new WidgetNameHelper('custom-widget');
+console.log('Name:', nameHelper.name);
+```
 
 ## Constructors
 
 ### Constructor
 
-> **new WidgetNameHelper**(`preferredName`, `currentNote`): `WidgetNameHelper`
+> **new WidgetNameHelper**(`preferredName?`, `currentNote?`): `WidgetNameHelper`
 
-Sets up the name of the widget.
+Creates a WidgetNameHelper instance with optional custom naming.
 
 #### Parameters
 
-##### preferredName
+##### preferredName?
 
 `string` = `undefined`
 
-The preferred name for the widget.
+Optional preferred name to use for the widget instead of auto-detection.
 
-##### currentNote
+##### currentNote?
 
 `string` = `undefined`
 
-The current note of the widget.
+Optional current note/caption text for the widget.
 
 #### Returns
 
@@ -110,13 +131,18 @@ The new note for the widget.
 
 > **get** `static` **displayName**(): `string`
 
-Gets the display name of the widget.
+Retrieves the human-readable display name of the widget.
+
+Returns the widget's friendly name for display in UI, prioritizing deployment
+settings, then manifest configuration, then auto-detected names.
+
+##### Static
 
 ##### Returns
 
 `string`
 
-The display name of the widget.
+The widget's display name (e.g., "AI Chat", "Hello World").
 
 ***
 
@@ -142,13 +168,18 @@ The manifest of the widget.
 
 > **get** `static` **widgetId**(): `string`
 
-Gets the display name of the widget.
+Retrieves the technical widget identifier.
+
+Returns the widget's unique ID used for internal references, typically in kebab-case
+format. Checks deployment settings, manifest configuration, or derives from entry point URL.
+
+##### Static
 
 ##### Returns
 
 `string`
 
-The display name of the widget.
+The widget's ID (e.g., "ai-chat", "hello-world").
 
 ## Methods
 

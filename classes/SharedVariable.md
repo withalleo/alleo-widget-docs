@@ -122,7 +122,7 @@ The value to set.
 
 ### setMultiple()
 
-> `static` **setMultiple**(`variables`, `delta`): `Promise`\<`any`\>
+> `static` **setMultiple**(`variables`, `delta?`): `Promise`\<`any`\>
 
 Sets multiple shared variable values.
 
@@ -134,7 +134,7 @@ Sets multiple shared variable values.
 
 Object mapping variable names to values.
 
-##### delta
+##### delta?
 
 `boolean` = `true`
 

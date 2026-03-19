@@ -8,9 +8,10 @@
 
 - [AiMessageType](enumerations/AiMessageType.md)
 - [BackendKeyConfigurationScope](enumerations/BackendKeyConfigurationScope.md)
-- [DataConnectorActions](enumerations/DataConnectorActions.md)
+- [DataConnectorAction](enumerations/DataConnectorAction.md)
 - [NotificationType](enumerations/NotificationType.md)
 - [SettingsButtonPosition](enumerations/SettingsButtonPosition.md)
+- [TextAlignment](enumerations/TextAlignment.md)
 - [TextInputFormat](enumerations/TextInputFormat.md)
 - [UiButtonPosition](enumerations/UiButtonPosition.md)
 
@@ -26,7 +27,7 @@
 - [BrowserContextHelper](classes/BrowserContextHelper.md)
 - [ColorPickerHelper](classes/ColorPickerHelper.md)
 - [ColorSwitcherHelper](classes/ColorSwitcherHelper.md)
-- [ContainerSelectorSupportingSettingsDialogHelper](classes/ContainerSelectorSupportingSettingsDialogHelper.md)
+- [~~ContainerSelectorSupportingSettingsDialogHelper~~](classes/ContainerSelectorSupportingSettingsDialogHelper.md)
 - [CSVHelper](classes/CSVHelper.md)
 - [DataConnector](classes/DataConnector.md)
 - [DataConnectorWidget](classes/DataConnectorWidget.md)
@@ -44,7 +45,7 @@
 - [LoadingStatus](classes/LoadingStatus.md)
 - [LoadSharingHelper](classes/LoadSharingHelper.md)
 - [MultiTouchHelper](classes/MultiTouchHelper.md)
-- [OptionalContainerSelectorSupportingSettingsDialogHelper](classes/OptionalContainerSelectorSupportingSettingsDialogHelper.md)
+- [~~OptionalContainerSelectorSupportingSettingsDialogHelper~~](classes/OptionalContainerSelectorSupportingSettingsDialogHelper.md)
 - [OptionalLocationSelectorSupportingSettingsDialogHelper](classes/OptionalLocationSelectorSupportingSettingsDialogHelper.md)
 - [PointerHelper](classes/PointerHelper.md)
 - [RateLimitFunctionHelper](classes/RateLimitFunctionHelper.md)
@@ -58,6 +59,7 @@
 - [SharedVariable](classes/SharedVariable.md)
 - [SimpleUserNotification](classes/SimpleUserNotification.md)
 - [SoundRecordingHelper](classes/SoundRecordingHelper.md)
+- [TextAlignHelper](classes/TextAlignHelper.md)
 - [UiButtonHelper](classes/UiButtonHelper.md)
 - [UserNotification](classes/UserNotification.md)
 - [ViewportSizeHelper](classes/ViewportSizeHelper.md)
@@ -69,7 +71,9 @@
 ## Interfaces
 
 - [AiMessage](interfaces/AiMessage.md)
+- [ExtendedFormlyFieldConfig](interfaces/ExtendedFormlyFieldConfig.md)
 - [RealIBoardObject](interfaces/RealIBoardObject.md)
+- [SettingsDialogDefinition](interfaces/SettingsDialogDefinition.md)
 
 ## Type Aliases
 
@@ -89,6 +93,7 @@
 - [ListRecord](type-aliases/ListRecord.md)
 - [MultiTouchHelperOptions](type-aliases/MultiTouchHelperOptions.md)
 - [Notification](type-aliases/Notification.md)
+- [Prettify](type-aliases/Prettify.md)
 - [SetTextContentOptions](type-aliases/SetTextContentOptions.md)
 - [SharedLock](type-aliases/SharedLock.md)
 - [SharedVariableChangeObserverOptions](type-aliases/SharedVariableChangeObserverOptions.md)

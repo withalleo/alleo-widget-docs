@@ -6,19 +6,42 @@
 
 # Class: HelpButtonHelper
 
-A helper class for managing the "Help" button in Alleo widgets.
+Manages a "Help" button that displays markdown documentation in a dialog.
 
-Allows you to open .md files in Help dialogs.
+Provides an easy way to add contextual help documentation to widgets by displaying
+markdown files in a formatted dialog. Automatically handles button creation, dialog
+display, and markdown rendering. Supports custom help file locations and can be
+configured through deployment settings.
+
+## Example
+
+```typescript
+// Basic usage with default help file location
+const helpButton = new HelpButtonHelper();
+
+// Custom help file URL
+const customHelp = new HelpButtonHelper({
+  mdUrl: 'https://example.com/docs/widget-help.md'
+});
+
+// Without automatic button creation
+const manualHelp = new HelpButtonHelper({
+  doNotAddButton: true,
+  id: 'custom-help'
+});
+// Later, manually show help
+manualHelp.showHelp();
+```
 
 ## Constructors
 
 ### Constructor
 
-> **new HelpButtonHelper**(`settings`): `HelpButtonHelper`
+> **new HelpButtonHelper**(`settings?`): `HelpButtonHelper`
 
 #### Parameters
 
-##### settings
+##### settings?
 
 `HelpButtonHelperSettings` = `{}`
 

@@ -14,73 +14,73 @@ Options for configuring the ItemListHelper.
 
 ### allowDataConnectors?
 
-> `optional` **allowDataConnectors**: `boolean`
+> `optional` **allowDataConnectors?**: `boolean`
 
 ***
 
 ### allowImport?
 
-> `optional` **allowImport**: `boolean`
+> `optional` **allowImport?**: `boolean`
 
 ***
 
 ### allowLocalEdit?
 
-> `optional` **allowLocalEdit**: `boolean`
+> `optional` **allowLocalEdit?**: `boolean`
 
 ***
 
 ### allowReordering?
 
-> `optional` **allowReordering**: `boolean`
+> `optional` **allowReordering?**: `boolean`
 
 ***
 
 ### dataSourceLabel?
 
-> `optional` **dataSourceLabel**: `string`
+> `optional` **dataSourceLabel?**: `string`
 
 ***
 
 ### defaultValue?
 
-> `optional` **defaultValue**: [`ListRecord`](ListRecord.md)[]
+> `optional` **defaultValue?**: [`ListRecord`](ListRecord.md)[]
 
 ***
 
 ### disableAllEdits?
 
-> `optional` **disableAllEdits**: `boolean`
+> `optional` **disableAllEdits?**: `boolean`
 
 ***
 
 ### elements?
 
-> `optional` **elements**: `FormlyFieldConfig`\<`FormlyFieldProps` & `object`\>[]
+> `optional` **elements?**: `FormlyFieldConfig`\<`FormlyFieldProps` & `object`\>[]
 
 ***
 
 ### importSettings?
 
-> `optional` **importSettings**: `Omit`\<[`DataImportHelperSettings`](DataImportHelperSettings.md), `"fields"`\>
+> `optional` **importSettings?**: `Omit`\<[`DataImportHelperSettings`](DataImportHelperSettings.md), `"fields"`\>
 
 ***
 
 ### label?
 
-> `optional` **label**: `string`
+> `optional` **label?**: `string`
 
 ***
 
 ### localListProps?
 
-> `optional` **localListProps**: `Record`\<`string`, `any`\>
+> `optional` **localListProps?**: `Record`\<`string`, `any`\>
 
 ***
 
-### migrateIdGenerateFunction()?
+### migrateIdGenerateFunction?
 
-> `optional` **migrateIdGenerateFunction**: (`element`, `list`, `index`) => `string`
+> `optional` **migrateIdGenerateFunction?**: (`element`, `list`, `index`) => `string`
 
 #### Parameters
 
@@ -104,13 +104,13 @@ Options for configuring the ItemListHelper.
 
 ### migrateOldArrayTypeList?
 
-> `optional` **migrateOldArrayTypeList**: `boolean`
+> `optional` **migrateOldArrayTypeList?**: `boolean`
 
 ***
 
-### newIdGenerateFunction()?
+### newIdGenerateFunction?
 
-> `optional` **newIdGenerateFunction**: () => `string`
+> `optional` **newIdGenerateFunction?**: () => `string`
 
 #### Returns
 
@@ -118,9 +118,9 @@ Options for configuring the ItemListHelper.
 
 ***
 
-### onListChangeCallback()?
+### onListChangeCallback?
 
-> `optional` **onListChangeCallback**: (`list`) => `void`
+> `optional` **onListChangeCallback?**: (`list`) => `void`
 
 #### Parameters
 
@@ -136,4 +136,4 @@ Options for configuring the ItemListHelper.
 
 ### readonlyApi?
 
-> `optional` **readonlyApi**: `boolean`
+> `optional` **readonlyApi?**: `boolean`

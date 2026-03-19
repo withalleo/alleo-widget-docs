@@ -6,19 +6,47 @@
 
 # Class: LoadSharingHelper
 
-Helper class for managing load sharing through a shared lock mechanism.
+Coordinates task execution across multiple widget instances using distributed locking.
 
-The idea is that something will be handled by a single frontend instance only.
+Implements a leader election system where only one widget instance (across all users)
+executes a periodic task, preventing duplicate API calls or processing. Uses shared
+variables for lock coordination with automatic takeover if the leader becomes unresponsive.
+Essential for widgets that need to fetch data periodically but should only do so once
+across all active sessions.
 
-eg. a weather widget might need a data update every 5 minutes. However only one client needs to do this, and share the data as a shared variable.
+## Example
+
+```typescript
+// Only one widget instance will fetch weather data
+const weatherUpdater = new LoadSharingHelper(
+  (lastUpdateTime) => {
+    console.log('I am the leader, fetching weather data');
+    fetchWeatherData().then(data => {
+      // Share data via shared variable
+      haptic.setDataField('weatherData', data, false);
+    });
+  },
+  60000,  // Check every 60 seconds
+  70000,  // Take over if leader hasn't updated in 70 seconds
+  'weatherUpdateLock'
+);
+
+// Check if this instance is the leader
+if (weatherUpdater.isResponsible) {
+  console.log('I am managing updates');
+}
+```
 
 ## Constructors
 
 ### Constructor
 
-> **new LoadSharingHelper**(`callback`, `checkInterval`, `takeOverTimeout`, `dataFieldName`): `LoadSharingHelper`
+> **new LoadSharingHelper**(`callback`, `checkInterval?`, `takeOverTimeout?`, `dataFieldName?`): `LoadSharingHelper`
 
-Creates an instance a periodical task, that is performed by only one frontend instance.
+Creates a LoadSharingHelper for coordinated task execution across widget instances.
+
+Sets up periodic checking and automatic leader election. The callback is only invoked
+on the instance that holds the lock (the "leader").
 
 #### Parameters
 
@@ -26,25 +54,25 @@ Creates an instance a periodical task, that is performed by only one frontend in
 
 (`lastEntryRelativeTime?`) => `void`
 
-The callback function to be called when the lock is acquired.
+Function to execute when this instance is the leader. Receives time since last update.
 
-##### checkInterval
+##### checkInterval?
 
 `number` = `300`
 
-The interval in milliseconds to check the lock status.
+Milliseconds between lock status checks and callback execution.
 
-##### takeOverTimeout
+##### takeOverTimeout?
 
 `number` = `...`
 
-The timeout in milliseconds to take over the lock if not updated.
+Milliseconds of inactivity before another instance can take over leadership.
 
-##### dataFieldName
+##### dataFieldName?
 
 `string` = `'processLock'`
 
-The name of the data field to store the lock information.
+Shared variable name for storing lock information.
 
 #### Returns
 
@@ -78,13 +106,13 @@ The default shared lock.
 
 > **get** **isMyResponsibility**(): `boolean`
 
-Returns whether the current frontend instance is responsible for the task.
+Indicates whether the current widget instance is the leader responsible for task execution.
 
 ##### Returns
 
 `boolean`
 
-True if the current instance is responsible for the task, false otherwise.
+True if this instance holds the lock and should execute tasks, false otherwise.
 
 ## Methods
 
@@ -102,19 +130,19 @@ Handles the destruction of the widget by stopping the timer.
 
 ### restartTimer()
 
-> **restartTimer**(`interval`, `takeOverTimeOut`): `void`
+> **restartTimer**(`interval?`, `takeOverTimeOut?`): `void`
 
 Restarts the timer with a new interval and takeover timeout.
 
 #### Parameters
 
-##### interval
+##### interval?
 
 `number` = `undefined`
 
 The new interval in milliseconds to check the lock status.
 
-##### takeOverTimeOut
+##### takeOverTimeOut?
 
 `number` = `...`
 

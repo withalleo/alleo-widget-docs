@@ -6,7 +6,44 @@
 
 # Class: SettingsDialogHelper
 
-Helper class for managing settings dialogs.
+Creates and manages interactive settings dialogs for widgets.
+
+Provides a comprehensive system for building widget configuration UIs using Formly forms.
+Handles dialog display, form validation, value persistence to shared variables, change
+tracking, and toolbar button integration. Supports complex form layouts including tabs,
+sections, and custom field types. Essential for widgets requiring user configuration.
+
+## Example
+
+```typescript
+// Define settings fields
+const settings = new SettingsDialogHelper({
+  fields: [
+    {
+      key: 'apiKey',
+      type: 'input',
+      props: { label: 'API Key', required: true }
+    },
+    {
+      key: 'refreshInterval',
+      type: 'input',
+      props: { label: 'Refresh (seconds)', type: 'number', min: 1 }
+    }
+  ]
+}, {
+  title: 'Widget Configuration',
+  createSettingsButtonOnInit: true,
+  callbackOnSettingsDialogClose: (changed, keys, values) => {
+    if (changed) {
+      console.log('Settings changed:', keys);
+      applyNewSettings(values);
+    }
+  }
+});
+
+// Programmatically show dialog
+settings.showSettingsDialog();
+```
 
 ## Extended by
 
@@ -25,7 +62,7 @@ Constructs a new Settings Dialog.
 
 ##### settings?
 
-`DialogDefinition`
+[`SettingsDialogDefinition`](../interfaces/SettingsDialogDefinition.md)
 
 The settings for the dialog.
 
@@ -47,7 +84,7 @@ Options for the settings dialog.
 
 ##### settings
 
-`DialogDefinition`
+[`SettingsDialogDefinition`](../interfaces/SettingsDialogDefinition.md)
 
 The settings for the dialog.
 
@@ -83,13 +120,13 @@ Use the constructor with SettingsDialogOptions.
 
 #### Get Signature
 
-> **get** **dialogSettings**(): `DialogDefinition`
+> **get** **dialogSettings**(): [`SettingsDialogDefinition`](../interfaces/SettingsDialogDefinition.md)
 
 The current settings for the dialog.
 
 ##### Returns
 
-`DialogDefinition`
+[`SettingsDialogDefinition`](../interfaces/SettingsDialogDefinition.md)
 
 #### Set Signature
 
@@ -101,7 +138,7 @@ Sets the settings for the dialog.
 
 ###### settings
 
-`DialogDefinition`
+[`SettingsDialogDefinition`](../interfaces/SettingsDialogDefinition.md)
 
 The settings to set.
 
@@ -113,13 +150,13 @@ The settings to set.
 
 ### addSettingsButtonToWidgetContextMenu()
 
-> **addSettingsButtonToWidgetContextMenu**(`button`): `void`
+> **addSettingsButtonToWidgetContextMenu**(`button?`): `void`
 
 Creates a settings button on the widget bar.
 
 #### Parameters
 
-##### button
+##### button?
 
 `ContextMenuButton` = `undefined`
 
@@ -140,6 +177,18 @@ Adds settings to the widget object settings (ie. service, or advanced settings)
 #### Returns
 
 `Promise`\<`void`\>
+
+***
+
+### destroy()
+
+> **destroy**(): `void`
+
+Destroys the settings dialog, removing any settings buttons and custom object settings from the widget.
+
+#### Returns
+
+`void`
 
 ***
 
@@ -187,9 +236,9 @@ Processes the result of the form dialog. (including saving the settings)
 
 ##### ret
 
-The result of the form dialog.
+`false` \| `""` \| `FormlyDialogModel`
 
-`false` | `""` | `FormlyDialogModel`
+The result of the form dialog.
 
 #### Returns
 

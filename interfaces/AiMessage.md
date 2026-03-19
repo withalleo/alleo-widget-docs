@@ -16,4 +16,4 @@
 
 ### type?
 
-> `optional` **type**: [`AiMessageType`](../enumerations/AiMessageType.md)
+> `optional` **type?**: [`AiMessageType`](../enumerations/AiMessageType.md)

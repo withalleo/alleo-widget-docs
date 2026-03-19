@@ -6,7 +6,34 @@
 
 # Class: WidgetDetails
 
-Helper class for managing widget label, visibility, and search description.
+Manages widget metadata including label (caption), visibility, and search description.
+
+Provides utilities for programmatically controlling the widget's display name, label
+visibility, and searchable description. Useful for widgets that need to dynamically
+update their display properties based on content or state. Automatically handles
+backward compatibility with older Alleo versions.
+
+## Example
+
+```typescript
+// Set widget label
+WidgetDetails.label = 'Data Analysis Dashboard';
+
+// Hide the label
+WidgetDetails.hideLabel = true;
+
+// Set search description for better discoverability
+WidgetDetails.searchDescription = 'Financial data visualization with charts and graphs';
+
+// Read current label
+const currentLabel = WidgetDetails.label;
+console.log('Widget is labeled:', currentLabel);
+
+// Check if label is hidden
+if (WidgetDetails.hideLabel) {
+  console.log('Label is currently hidden');
+}
+```
 
 ## Constructors
 
@@ -26,17 +53,25 @@ Helper class for managing widget label, visibility, and search description.
 
 > **get** `static` **hideLabel**(): `boolean`
 
-Gets whether the widget label is hidden.
+Checks if the widget's label is currently hidden.
+
+##### Static
 
 ##### Returns
 
 `boolean`
 
+True if the label is hidden, false if visible.
+
 #### Set Signature
 
 > **set** `static` **hideLabel**(`hide`): `void`
 
-Sets whether the widget label is hidden.
+Controls whether the widget's label is hidden or visible.
+
+When hidden, the label still exists but is not displayed on the board.
+
+##### Static
 
 ##### Parameters
 
@@ -44,7 +79,7 @@ Sets whether the widget label is hidden.
 
 `boolean`
 
-True to hide the label, false to show.
+True to hide the label, false to show it.
 
 ##### Returns
 
@@ -58,18 +93,26 @@ True to hide the label, false to show.
 
 > **get** `static` **label**(): `string`
 
-Gets the widget label (caption text).
+Retrieves the widget's current display label (caption text).
+
+##### Static
 
 ##### Returns
 
 `string`
 
+The widget's caption/label text, or empty string if not set.
+
 #### Set Signature
 
 > **set** `static` **label**(`title`): `void`
 
-Sets the widget label (caption text).
-Truncates to 250 characters if needed.
+Sets the widget's display label (caption text).
+
+Automatically truncates to 250 characters if longer. Updates the widget's caption
+displayed above or below the widget on the board.
+
+##### Static
 
 ##### Parameters
 
@@ -77,7 +120,7 @@ Truncates to 250 characters if needed.
 
 `string`
 
-The label to set.
+The label text to display. Truncated at 250 characters if longer.
 
 ##### Returns
 
@@ -91,7 +134,12 @@ The label to set.
 
 > **set** `static` **searchDescription**(`description`): `void`
 
-Sets the widget search description. Falls back to hiding label and setting label if not supported.
+Sets the widget's search description for improved discoverability.
+
+The search description helps users find the widget when searching the board.
+Falls back to setting the label with visibility hidden for older Alleo versions.
+
+##### Static
 
 ##### Parameters
 
@@ -99,7 +147,7 @@ Sets the widget search description. Falls back to hiding label and setting label
 
 `string`
 
-The search description to set.
+The search-friendly description of the widget's content or purpose.
 
 ##### Returns
 

@@ -8,13 +8,16 @@
 
 > **isEnumValue**\<`T`\>(`enumObj`, `value`): `value is T[keyof T]`
 
-Checks if a value is a valid enum value.
+Type guard to check if a value is a valid member of a TypeScript enum.
+
+Validates that a runtime value matches one of the enum's defined values,
+providing type safety when working with user input or API responses.
 
 ## Type Parameters
 
 ### T
 
-`T`
+`T` *extends* `Record`\<`string`, `string`\>
 
 ## Parameters
 
@@ -22,16 +25,31 @@ Checks if a value is a valid enum value.
 
 `T`
 
-The enum object.
+The enum object to check against.
 
 ### value
 
 `unknown`
 
-The value to check.
+The value to validate.
 
 ## Returns
 
 `value is T[keyof T]`
 
-True if the value is a valid enum value, false otherwise.
+True if value is a valid enum member, false otherwise.
+
+## Example
+
+```typescript
+enum Status { Active = 'active', Inactive = 'inactive', Pending = 'pending' }
+
+const userInput: unknown = 'active';
+if (isEnumValue(Status, userInput)) {
+  // TypeScript now knows userInput is Status
+  const status: Status = userInput;
+}
+
+isEnumValue(Status, 'active');    // true
+isEnumValue(Status, 'invalid');   // false
+```

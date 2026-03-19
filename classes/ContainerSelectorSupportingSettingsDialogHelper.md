@@ -4,9 +4,23 @@
 
 [@withalleo/alleo-widget](../globals.md) / ContainerSelectorSupportingSettingsDialogHelper
 
-# Class: ContainerSelectorSupportingSettingsDialogHelper
+# ~~Class: ContainerSelectorSupportingSettingsDialogHelper~~
 
-Helper class for managing settings dialogs.
+Legacy helper for settings dialogs with container selection dropdown.
+
+## Deprecated
+
+Use ObjectSelectorSettingsDialogHelper instead.
+
+## Example
+
+```typescript
+// Legacy usage (deprecated)
+const settingsHelper = new ContainerSelectorSupportingSettingsDialogHelper(...);
+
+// Use this instead:
+// const settingsHelper = new ObjectSelectorSettingsDialogHelper(...);
+```
 
 ## Extends
 
@@ -28,7 +42,7 @@ Constructs a new Settings Dialog.
 
 ##### settings?
 
-`DialogDefinition`
+[`SettingsDialogDefinition`](../interfaces/SettingsDialogDefinition.md)
 
 The settings for the dialog.
 
@@ -54,7 +68,7 @@ Options for the settings dialog.
 
 ##### settings
 
-`DialogDefinition`
+[`SettingsDialogDefinition`](../interfaces/SettingsDialogDefinition.md)
 
 The settings for the dialog.
 
@@ -84,19 +98,19 @@ Use the constructor with SettingsDialogOptions.
 
 ## Properties
 
-### isContainerOptional
+### ~~isContainerOptional~~
 
 > `protected` `readonly` **isContainerOptional**: `boolean` = `false`
 
 ***
 
-### optionsCallback
+### ~~optionsCallback~~
 
 > **optionsCallback**: `Function`
 
 ***
 
-### title
+### ~~title~~
 
 > `readonly` **title**: `string` = `undefined`
 
@@ -106,17 +120,17 @@ Use the constructor with SettingsDialogOptions.
 
 ## Accessors
 
-### dialogSettings
+### ~~dialogSettings~~
 
 #### Get Signature
 
-> **get** **dialogSettings**(): `DialogDefinition`
+> **get** **dialogSettings**(): [`SettingsDialogDefinition`](../interfaces/SettingsDialogDefinition.md)
 
 The current settings for the dialog.
 
 ##### Returns
 
-`DialogDefinition`
+[`SettingsDialogDefinition`](../interfaces/SettingsDialogDefinition.md)
 
 #### Set Signature
 
@@ -128,7 +142,7 @@ Sets the settings for the dialog.
 
 ###### settings
 
-`DialogDefinition`
+[`SettingsDialogDefinition`](../interfaces/SettingsDialogDefinition.md)
 
 The settings to set.
 
@@ -142,15 +156,15 @@ The settings to set.
 
 ## Methods
 
-### addSettingsButtonToWidgetContextMenu()
+### ~~addSettingsButtonToWidgetContextMenu()~~
 
-> **addSettingsButtonToWidgetContextMenu**(`button`): `void`
+> **addSettingsButtonToWidgetContextMenu**(`button?`): `void`
 
 Creates a settings button on the widget bar.
 
 #### Parameters
 
-##### button
+##### button?
 
 `ContextMenuButton` = `undefined`
 
@@ -166,7 +180,7 @@ The context menu button to create.
 
 ***
 
-### addSettingsToWidgetObjectSettings()
+### ~~addSettingsToWidgetObjectSettings()~~
 
 > **addSettingsToWidgetObjectSettings**(): `Promise`\<`void`\>
 
@@ -182,7 +196,23 @@ Adds settings to the widget object settings (ie. service, or advanced settings)
 
 ***
 
-### initialSettingsTransformation()
+### ~~destroy()~~
+
+> **destroy**(): `void`
+
+Destroys the settings dialog, removing any settings buttons and custom object settings from the widget.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`SettingsDialogHelper`](SettingsDialogHelper.md).[`destroy`](SettingsDialogHelper.md#destroy)
+
+***
+
+### ~~initialSettingsTransformation()~~
 
 > `protected` **initialSettingsTransformation**(`settings`): `FormlyDialogSettings`
 
@@ -208,7 +238,7 @@ The updated settings.
 
 ***
 
-### openSettingsDialog()
+### ~~openSettingsDialog()~~
 
 > **openSettingsDialog**(): `Promise`\<`false` \| `void` \| `""` \| `FormlyDialogModel`\>
 
@@ -224,7 +254,7 @@ Opens the settings dialog.
 
 ***
 
-### processFormDialogResult()
+### ~~processFormDialogResult()~~
 
 > `protected` **processFormDialogResult**(`ret`): `boolean`
 
@@ -234,9 +264,9 @@ Processes the result of the form dialog. (including saving the settings)
 
 ##### ret
 
-The result of the form dialog.
+`false` \| `""` \| `FormlyDialogModel`
 
-`false` | `""` | `FormlyDialogModel`
+The result of the form dialog.
 
 #### Returns
 
@@ -250,7 +280,7 @@ Whether any settings were changed.
 
 ***
 
-### refreshFormData()
+### ~~refreshFormData()~~
 
 > `protected` **refreshFormData**(`settings`): `Promise`\<`FormlyDialogSettings`\<`FormlyDialogModel`\>\>
 
@@ -279,7 +309,7 @@ The refreshed settings.
 
 ***
 
-### updateDialogUiSettings()
+### ~~updateDialogUiSettings()~~
 
 > `protected` **updateDialogUiSettings**(`settings`): `FormlyDialogSettings`
 
@@ -305,7 +335,7 @@ The updated settings.
 
 ***
 
-### getAllContainersAsFormOptions()
+### ~~getAllContainersAsFormOptions()~~
 
 > `static` **getAllContainersAsFormOptions**(): `FormlySelectOption`[]
 
@@ -315,7 +345,7 @@ The updated settings.
 
 ***
 
-### shouldDisableRequiredParam()
+### ~~shouldDisableRequiredParam()~~
 
 > `static` **shouldDisableRequiredParam**(`model`): `boolean`
 

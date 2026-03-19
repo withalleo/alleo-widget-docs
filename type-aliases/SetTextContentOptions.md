@@ -14,10 +14,10 @@ Options for setting text content.
 
 ### append?
 
-> `optional` **append**: `boolean`
+> `optional` **append?**: `boolean`
 
 ***
 
 ### format?
 
-> `optional` **format**: [`Html`](../enumerations/TextInputFormat.md#html) \| [`Text`](../enumerations/TextInputFormat.md#text)
+> `optional` **format?**: [`Html`](../enumerations/TextInputFormat.md#html) \| [`Text`](../enumerations/TextInputFormat.md#text) \| [`Markdown`](../enumerations/TextInputFormat.md#markdown)

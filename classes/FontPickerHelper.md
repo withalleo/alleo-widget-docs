@@ -6,7 +6,38 @@
 
 # Class: FontPickerHelper
 
-Class to create and manage a font picker button on the widget bar.
+Creates and manages a font picker button for widget text styling.
+
+Provides an interactive font selection UI that appears in the widget toolbar, allowing
+users to choose from available system fonts. Automatically updates CSS custom properties
+and persists selections via shared variables. Essential for widgets with customizable
+text styling needs.
+
+## Example
+
+```typescript
+// Basic font picker with defaults
+const fontPicker = new FontPickerHelper();
+
+// Custom font picker with callback
+const customFontPicker = new FontPickerHelper(
+  'myFontHandle',
+  '--custom-font',
+  {
+    label: 'Choose Font',
+    defaultFont: 'Arial, sans-serif',
+    widgetContainerSelector: '.content',
+    callbackOnFontChange: (font) => {
+      console.log('Font changed to:', font);
+      updateTextElements(font);
+    },
+    displayFontPickerButtonOnInit: true
+  }
+);
+
+// Access current font
+console.log('Current font:', fontPicker.font);
+```
 
 ## Constructors
 
@@ -14,7 +45,10 @@ Class to create and manage a font picker button on the widget bar.
 
 > **new FontPickerHelper**(`handle?`, `CSSVariable?`, `fontPickerSettings?`): `FontPickerHelper`
 
-Constructor for FontPickerHelper.
+Creates a FontPickerHelper instance with font selection UI.
+
+Initializes the font picker, sets up event handlers for font changes, and optionally
+displays a font selection button in the widget toolbar.
 
 #### Parameters
 
@@ -22,19 +56,19 @@ Constructor for FontPickerHelper.
 
 `string` = `FontPickerHelper.defaultHandle`
 
-The handle for the font selector.
+Shared variable name for storing the selected font.
 
 ##### CSSVariable?
 
 `string` = `FontPickerHelper.defaultCSS`
 
-The CSS variable for the widget font.
+CSS custom property name to update with the font value.
 
 ##### fontPickerSettings?
 
 [`FontPickerSettings`](../type-aliases/FontPickerSettings.md) = `...`
 
-The settings for the font picker.
+Configuration options for the font picker.
 
 #### Returns
 
@@ -42,7 +76,7 @@ The settings for the font picker.
 
 #### Throws
 
-Will throw an error if no DOM is available.
+Throws if widget doesn't have a DOM (service widgets not supported).
 
 ## Properties
 

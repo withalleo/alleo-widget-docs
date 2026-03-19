@@ -6,7 +6,33 @@
 
 # Class: ResizeHelper
 
-A helper class to enable axis-independent resizing of a widget
+Enables axis-independent widget resizing with automatic DOM updates and size constraints.
+
+Provides automatic handling of widget resize events, updating CSS variables and triggering
+callbacks when the widget's size changes. Supports minimum size constraints and debounced
+resize callbacks for performance. Essential for responsive widgets that need to adapt
+their layout based on size.
+
+## Example
+
+```typescript
+// Basic usage with minimum size
+new ResizeHelper({ width: 200, height: 150 });
+
+// With callback for custom resize logic
+new ResizeHelper(
+  { width: 300, height: 200 },
+  {
+    callback: ({ width, height }) => {
+      console.log(`Widget resized to ${width}x${height}`);
+      updateLayout(width, height);
+    }
+  }
+);
+
+// Get current widget size
+const size = ResizeHelper.getWidgetSize();
+```
 
 ## Constructors
 
@@ -14,7 +40,7 @@ A helper class to enable axis-independent resizing of a widget
 
 > **new ResizeHelper**(`minSize?`, `options?`): `ResizeHelper`
 
-Enable axis-independent resizing.
+Enables axis-independent resizing with options-based configuration.
 
 #### Parameters
 
@@ -22,13 +48,13 @@ Enable axis-independent resizing.
 
 [`Size`](../type-aliases/Size.md)
 
-The minimum size of the element.
+Minimum allowed widget dimensions.
 
 ##### options?
 
 `ResizeHelperOptions`
 
-The options to use.
+Configuration options for resize behavior.
 
 #### Returns
 
@@ -36,13 +62,13 @@ The options to use.
 
 #### Throws
 
-Will throw an error if no DOM is available.
+Throws if widget doesn't have a DOM or container element is not found.
 
 ### Constructor
 
-> **new ResizeHelper**(`minSize?`, `callback?`, `updateCss?`, `settings?`): `ResizeHelper`
+> **new ResizeHelper**(`minSize?`, `callback`, `updateCss?`, `settings?`): `ResizeHelper`
 
-Enable axis-independent resizing.
+Enables axis-independent resizing with legacy parameter-based configuration.
 
 #### Parameters
 
@@ -50,25 +76,25 @@ Enable axis-independent resizing.
 
 [`Size`](../type-aliases/Size.md)
 
-The minimum size of the element.
+Minimum allowed widget dimensions.
 
-##### callback?
+##### callback
 
 (`__namedParameters`) => `void`
 
-The callback to call when the element is resized.
+Function called when widget is resized with {width, height} parameter.
 
 ##### updateCss?
 
 `boolean`
 
-Whether to update the CSS variables.
+Whether to update CSS custom properties with size values.
 
 ##### settings?
 
 `LimitedResizeHelperOptions`
 
-The options to use.
+Additional configuration options.
 
 #### Returns
 
@@ -76,15 +102,15 @@ The options to use.
 
 #### Throws
 
-Will throw an error if no DOM is available.
+Throws if widget doesn't have a DOM or container element is not found.
 
 #### Deprecated
 
-Use the object-based constructor instead.
+Use the object-based constructor signature instead for better type safety.
 
 ## Properties
 
-### callback()
+### callback
 
 > **callback**: (`__namedParameters`) => `void`
 
@@ -92,13 +118,7 @@ Use the object-based constructor instead.
 
 ##### \_\_namedParameters
 
-###### height
-
-`any`
-
-###### width
-
-`any`
+[`Size`](../type-aliases/Size.md)
 
 #### Returns
 

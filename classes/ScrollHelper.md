@@ -6,16 +6,45 @@
 
 # Class: ScrollHelper
 
-A helper class to manage scrolling behavior on an HTML element within a widget.
-Including synchronization of scrolling between users.
+Manages scrolling behavior with optional cross-user synchronization.
+
+Provides controlled scrolling for HTML elements within widgets, with support for
+synchronizing scroll positions across multiple users viewing the same widget.
+Can be configured to follow a leader's scrolling or allow independent scrolling.
+Includes rate-limiting to prevent excessive updates during rapid scrolling.
+
+## Example
+
+```typescript
+const scrollContainer = document.querySelector('.scrollable-content');
+
+// Basic scroll management with synchronization
+const scrollHelper = new ScrollHelper(scrollContainer);
+
+// Scroll with custom settings
+const customScroll = new ScrollHelper(
+  scrollContainer,
+  true,  // auto-enable
+  true,  // sync scrolling
+  false, // allow all users to control scroll
+  false, // allow user scrolling
+  'myScrollPosition'
+);
+
+// Programmatically scroll to position
+scrollHelper.scrollTo({ x: 0, y: 100 });
+```
 
 ## Constructors
 
 ### Constructor
 
-> **new ScrollHelper**(`element`, `autoEnableScroll`, `syncScrolling`, `syncScrollingLeaderOnly`, `disableUserScrolling`, `sharedVariableName`): `ScrollHelper`
+> **new ScrollHelper**(`element`, `autoEnableScroll?`, `syncScrolling?`, `syncScrollingLeaderOnly?`, `disableUserScrolling?`, `sharedVariableName?`): `ScrollHelper`
 
-Makes an element scrollable.
+Creates a ScrollHelper to manage scrolling behavior on an HTML element.
+
+Sets up scroll event handling, synchronization listeners, and rate-limited
+coordinate updates. Automatically enables scrolling unless specified otherwise.
 
 #### Parameters
 
@@ -23,37 +52,37 @@ Makes an element scrollable.
 
 `HTMLElement`
 
-The HTML element to manage scrolling for.
+The HTML element to make scrollable and manage.
 
-##### autoEnableScroll
-
-`boolean` = `true`
-
-Whether to automatically enable scrolling.
-
-##### syncScrolling
+##### autoEnableScroll?
 
 `boolean` = `true`
 
-Whether to synchronize scrolling.
+Whether to enable scrolling immediately upon creation.
 
-##### syncScrollingLeaderOnly
+##### syncScrolling?
 
 `boolean` = `true`
 
-Whether to synchronize scrolling only for the leader.
+Whether to synchronize scroll position across users.
 
-##### disableUserScrolling
+##### syncScrollingLeaderOnly?
+
+`boolean` = `true`
+
+When true, only the session leader can control scrolling. When false, any user can control it.
+
+##### disableUserScrolling?
 
 `boolean` = `false`
 
-Whether to disable user scrolling.
+When true, prevents users from manually scrolling (programmatic scrolling still works).
 
-##### sharedVariableName
+##### sharedVariableName?
 
 `string` = `'_AlleoWidget_ScrollHelper_coords'`
 
-The name of the shared variable for coordinates.
+Shared variable name for storing scroll coordinates.
 
 #### Returns
 
@@ -155,7 +184,7 @@ The scroll event.
 
 ### scrollTo()
 
-> **scrollTo**(`coords`, `behavior`): `void`
+> **scrollTo**(`coords`, `behavior?`): `void`
 
 Scrolls the HTML element to the specified coordinates.
 
@@ -167,11 +196,11 @@ Scrolls the HTML element to the specified coordinates.
 
 The coordinates to scroll to.
 
-##### behavior
+##### behavior?
+
+`"auto"` \| `"instant"` \| `"smooth"`
 
 The scrolling behavior ('auto', 'smooth', or 'instant').
-
-`"auto"` | `"instant"` | `"smooth"`
 
 #### Returns
 

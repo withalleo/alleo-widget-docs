@@ -14,13 +14,13 @@ Settings for the DataImportHelper.
 
 ### allowImportFromDataConnector?
 
-> `optional` **allowImportFromDataConnector**: `boolean`
+> `optional` **allowImportFromDataConnector?**: `boolean`
 
 ***
 
 ### askAboutOverwrite?
 
-> `optional` **askAboutOverwrite**: `boolean`
+> `optional` **askAboutOverwrite?**: `boolean`
 
 ***
 
@@ -40,16 +40,16 @@ Settings for the DataImportHelper.
 
 ### label?
 
-> `optional` **label**: `string`
+> `optional` **label?**: `string`
 
 ***
 
 ### lineLimit?
 
-> `optional` **lineLimit**: `number`
+> `optional` **lineLimit?**: `number`
 
 ***
 
 ### warningMessage?
 
-> `optional` **warningMessage**: `string`
+> `optional` **warningMessage?**: `string`

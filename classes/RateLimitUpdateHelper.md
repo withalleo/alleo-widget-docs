@@ -6,7 +6,33 @@
 
 # Class: RateLimitUpdateHelper\<T\>
 
-A helper class to manage rapid updates to a shared variable.
+Manages rate-limited updates to shared variables to prevent excessive synchronization.
+
+Throttles rapid updates to shared variables by batching changes within a specified time
+window. Essential for high-frequency updates like scrolling, dragging, or real-time input
+to avoid overwhelming the synchronization system. Automatically coalesces multiple rapid
+changes into a single update.
+
+## Example
+
+```typescript
+// Rate-limit scroll position updates
+const scrollPosition = new RateLimitUpdateHelper<{x: number, y: number}>(
+  'scrollPos',
+  200 // Update at most every 200ms
+);
+
+// Rapid updates are automatically throttled
+element.addEventListener('scroll', () => {
+  scrollPosition.set({ x: element.scrollLeft, y: element.scrollTop });
+});
+
+// Get latest value
+const currentPos = scrollPosition.latest;
+
+// Get stored remote value
+const remotePos = scrollPosition.stored;
+```
 
 ## Type Parameters
 
@@ -14,7 +40,7 @@ A helper class to manage rapid updates to a shared variable.
 
 `T` = `any`
 
-The type of the value being managed.
+The type of value being rate-limited.
 
 ## Constructors
 
@@ -22,7 +48,7 @@ The type of the value being managed.
 
 > **new RateLimitUpdateHelper**\<`T`\>(`key`, `maxDelay?`): `RateLimitUpdateHelper`\<`T`\>
 
-Creates an instance of RateLimitUpdateHelper.
+Creates a RateLimitUpdateHelper for managing rate-limited shared variable updates.
 
 #### Parameters
 
@@ -30,13 +56,13 @@ Creates an instance of RateLimitUpdateHelper.
 
 `string`
 
-The key used to store the value.
+Shared variable name to store the rate-limited value.
 
 ##### maxDelay?
 
 `number` = `250`
 
-The maximum delay between updates in milliseconds.
+Maximum milliseconds between updates. Rapid changes within this window are batched.
 
 #### Returns
 
@@ -50,13 +76,16 @@ The maximum delay between updates in milliseconds.
 
 > **get** **latest**(): `T`
 
-Gets the newest sent or received value.
+The most current value, considering both local and remote timing.
+
+Returns the newest local value if updated recently (within maxDelay), otherwise
+returns the stored remote value. Useful for getting the authoritative current value.
 
 ##### Returns
 
 `T`
 
-- The newest sent or received value.
+The latest value from either local or remote source.
 
 ***
 
@@ -66,13 +95,16 @@ Gets the newest sent or received value.
 
 > **get** **newest**(): `T`
 
-Gets the newest sent value.
+The most recent value set locally, whether or not it has been synced yet.
+
+Returns the last value passed to `set()`, which may be newer than the stored value
+if an update is pending.
 
 ##### Returns
 
 `T`
 
-- The newest sent value.
+The newest locally set value, or the stored value if no local updates pending.
 
 ***
 
@@ -82,13 +114,16 @@ Gets the newest sent value.
 
 > **get** **stored**(): `T`
 
-Gets the remotely stored value.
+The current value stored in the shared variable (remote/synchronized value).
+
+Retrieves the actual value from the shared variable storage, reflecting what
+other users or widget instances can see.
 
 ##### Returns
 
 `T`
 
-- The stored value.
+The remotely stored shared variable value.
 
 ## Methods
 
@@ -96,7 +131,10 @@ Gets the remotely stored value.
 
 > **set**(`value`): `void`
 
-Sets a new value and triggers an update if necessary.
+Sets a new value with automatic rate limiting.
+
+Queues the value for update. If called multiple times within maxDelay window,
+only the final value is synced, reducing unnecessary updates.
 
 #### Parameters
 
@@ -104,7 +142,7 @@ Sets a new value and triggers an update if necessary.
 
 `T`
 
-The new value to set.
+The new value to set and eventually sync.
 
 #### Returns
 
@@ -116,7 +154,10 @@ The new value to set.
 
 > `protected` **update**(): `void`
 
-Updates the stored value remotely if it has changed.
+Performs the actual update to the shared variable storage.
+
+Only updates if the new value differs from the stored value. Automatically
+handles retry logic if the update fails.
 
 #### Returns
 

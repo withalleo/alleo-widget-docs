@@ -6,7 +6,29 @@
 
 # Class: BoardObjectHelper
 
-A helper class for board objects.
+Utility class for managing and manipulating board objects in Alleo.
+
+Provides methods for working with various board objects including widgets, containers, text elements,
+images, and notepads. Handles operations like creation, deletion, selection, positioning, and
+container management. Essential for widgets that need to interact with other board objects.
+
+## Example
+
+```typescript
+// Get the current widget object
+const widget = BoardObjectHelper.thisWidget;
+
+// Create a new text object
+const textId = await BoardObjectHelper.createTextObject('Hello World', { x: 100, y: 100 });
+
+// Add object to a container
+const container = BoardObjectHelper.getBoardObjectById(containerId);
+const object = BoardObjectHelper.getBoardObjectById(objectId);
+BoardObjectHelper.addObjectToContainer(container, object);
+
+// Delete the current widget
+BoardObjectHelper.deleteMe();
+```
 
 ## Constructors
 
@@ -26,13 +48,24 @@ A helper class for board objects.
 
 > **get** `static` **thisWidget**(): [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
-Retrieves the current widget.
+Reference to the current widget's board object instance.
+
+Provides access to the board object representing this widget, allowing manipulation
+of its properties, position, size, and other attributes.
+
+##### Example
+
+```typescript
+const widget = BoardObjectHelper.thisWidget;
+console.log(widget.id, widget.type);
+const position = widget.getPosition();
+```
 
 ##### Returns
 
 [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
-The current widget.
+The board object instance for the current widget.
 
 ## Methods
 
@@ -40,7 +73,11 @@ The current widget.
 
 > `static` **addObjectToContainer**(`container`, `elem`): `void`
 
-Adds an object to a container.
+Adds a board object to a container, establishing a parent-child relationship.
+
+Automatically removes the object from any previous container before adding it to the new one.
+Fires appropriate events and updates the container's managed objects list. The container
+will control the object's positioning and z-order.
 
 #### Parameters
 
@@ -48,13 +85,13 @@ Adds an object to a container.
 
 [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
-The container object.
+The container object (must be of type Container).
 
 ##### elem
 
 [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
-The element to add to the container.
+The board object to add to the container.
 
 #### Returns
 
@@ -62,13 +99,21 @@ The element to add to the container.
 
 #### Throws
 
-Will throw an error if the container or element is not a proper board object.
+Throws if container is not a Container type or if objects are invalid.
+
+#### Example
+
+```typescript
+const container = BoardObjectHelper.getBoardObjectById(containerId);
+const textObject = BoardObjectHelper.getBoardObjectById(textId);
+BoardObjectHelper.addObjectToContainer(container, textObject);
+```
 
 ***
 
 ### addTags()
 
-> `static` **addTags**(`object`, `tags`, `replace`): `void`
+> `static` **addTags**(`object`, `tags`, `replace?`): `void`
 
 Adds tags to a board object.
 
@@ -82,11 +127,11 @@ The board object.
 
 ##### tags
 
+`string` \| `string`[]
+
 The tags to add.
 
-`string` | `string`[]
-
-##### replace
+##### replace?
 
 `boolean` = `false`
 
@@ -102,7 +147,10 @@ Whether to replace the existing tags.
 
 > `static` **changeObjectContainerPosition**(`object`, `position`): `void`
 
-Changes the position of an object within its container.
+Changes the z-order position of an object within its container's managed objects list.
+
+Reorders objects within a container, affecting their stacking order and layout position.
+The position is clamped to valid indices (0 to container length).
 
 #### Parameters
 
@@ -110,13 +158,13 @@ Changes the position of an object within its container.
 
 [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
-The object to reposition.
+The object to reposition within its container.
 
 ##### position
 
 `number`
 
-The new position of the object.
+The new zero-based index position (will be rounded and clamped).
 
 #### Returns
 
@@ -124,7 +172,17 @@ The new position of the object.
 
 #### Throws
 
-Will throw an error if the object is not a board object or not in a container.
+Throws if object is not in a container or is invalid.
+
+#### Example
+
+```typescript
+// Move object to front (position 0)
+BoardObjectHelper.changeObjectContainerPosition(object, 0);
+
+// Move object to back
+BoardObjectHelper.changeObjectContainerPosition(object, 999);
+```
 
 ***
 
@@ -204,7 +262,10 @@ Will throw an error if the user does not have permissions to edit sticky notes o
 
 > `static` **editTextContent**(`textObject`, `text`): `void`
 
-Edits the text content of a text object.
+Programmatically updates the text content of a text object.
+
+Modifies a text object's content and fires the appropriate events to update
+the display and mark the object as modified. Only works on Text-type objects.
 
 #### Parameters
 
@@ -212,13 +273,13 @@ Edits the text content of a text object.
 
 [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
-The text object to edit.
+The text object to edit (must be type Text).
 
 ##### text
 
 `string`
 
-The new text content.
+The new text content to display.
 
 #### Returns
 
@@ -226,7 +287,14 @@ The new text content.
 
 #### Throws
 
-Will throw an error if the text object is not a proper board object or not a text object.
+Throws if textObject is not valid or not a text object.
+
+#### Example
+
+```typescript
+const textObj = BoardObjectHelper.getBoardObjectById(textId);
+BoardObjectHelper.editTextContent(textObj, 'Updated text content');
+```
 
 ***
 
@@ -250,7 +318,10 @@ Will throw an error if the text object is not a proper board object or not a tex
 
 > `static` **getBoardObjectById**(`id`): [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
-Retrieves a board object by its ID.
+Retrieves a board object by its unique identifier.
+
+Searches all board objects and returns the one matching the specified ID.
+Returns undefined if no object is found or if an error occurs.
 
 #### Parameters
 
@@ -258,7 +329,7 @@ Retrieves a board object by its ID.
 
 `string`
 
-The ID of the board object.
+The unique ID of the board object to retrieve.
 
 #### Returns
 
@@ -266,13 +337,25 @@ The ID of the board object.
 
 The board object, or undefined if not found.
 
+#### Example
+
+```typescript
+const object = BoardObjectHelper.getBoardObjectById('abc-123-def');
+if (object) {
+  console.log(object.type, object.getPosition());
+}
+```
+
 ***
 
 ### getContainerIdOfObject()
 
 > `static` **getContainerIdOfObject**(`object`): `string`
 
-Retrieves the ID of the container managing a given object.
+Retrieves the ID of the container that manages a given object.
+
+Returns the parent container's ID if the object is inside a container,
+or undefined if the object is not contained.
 
 #### Parameters
 
@@ -280,13 +363,22 @@ Retrieves the ID of the container managing a given object.
 
 [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
-The object.
+The board object to check.
 
 #### Returns
 
 `string`
 
-The ID of the container.
+The container's ID, or undefined if object is not in a container.
+
+#### Example
+
+```typescript
+const containerId = BoardObjectHelper.getContainerIdOfObject(object);
+if (containerId) {
+  const container = BoardObjectHelper.getBoardObjectById(containerId);
+}
+```
 
 ***
 
@@ -308,7 +400,10 @@ The ID of the container.
 
 > `static` **getContainerObjectIds**(`container`): `string`[]
 
-Retrieves the IDs of objects managed by a container.
+Retrieves the IDs of all objects managed by a container.
+
+Returns an array of board object IDs that are children of the specified container.
+Returns an empty array if the container has no managed objects.
 
 #### Parameters
 
@@ -322,7 +417,14 @@ The container object.
 
 `string`[]
 
-The IDs of the managed objects.
+Array of managed object IDs.
+
+#### Example
+
+```typescript
+const objectIds = BoardObjectHelper.getContainerObjectIds(container);
+console.log(`Container manages ${objectIds.length} objects`);
+```
 
 ***
 
@@ -330,7 +432,11 @@ The IDs of the managed objects.
 
 > `static` **getContainerObjects**(`container`): [`RealIBoardObject`](../interfaces/RealIBoardObject.md)[]
 
-Retrieves the objects managed by a container.
+Retrieves all board objects managed by a container.
+
+Returns the actual board object instances (not just IDs) for all children of the
+container. Filters out invalid objects, service widgets, and duplicates. Only returns
+objects that genuinely belong to this container.
 
 #### Parameters
 
@@ -344,7 +450,16 @@ The container object.
 
 [`RealIBoardObject`](../interfaces/RealIBoardObject.md)[]
 
-The managed objects.
+Array of managed board objects.
+
+#### Example
+
+```typescript
+const objects = BoardObjectHelper.getContainerObjects(container);
+objects.forEach(obj => {
+  console.log(obj.type, obj.id);
+});
+```
 
 ***
 
@@ -428,7 +543,7 @@ The elements of the specified type.
 
 ### getObjectDisplayName()
 
-> `static` **getObjectDisplayName**(`object`, `addTypeName`): `string`
+> `static` **getObjectDisplayName**(`object`, `addTypeName?`): `string`
 
 Retrieves the display name of a board object.
 
@@ -440,7 +555,7 @@ Retrieves the display name of a board object.
 
 The board object.
 
-##### addTypeName
+##### addTypeName?
 
 `boolean` = `true`
 
@@ -458,7 +573,10 @@ The display name of the board object.
 
 > `static` **getObjectTitle**(`obj`): `string`
 
-Retrieves the title of a board object.
+Retrieves the display title/caption of a board object.
+
+Returns the object's caption text if available (e.g., widget titles, text object content).
+Returns undefined if the object has no caption.
 
 #### Parameters
 
@@ -472,7 +590,14 @@ The board object.
 
 `string`
 
-The title of the board object.
+The title/caption text, or undefined if not available.
+
+#### Example
+
+```typescript
+const title = BoardObjectHelper.getObjectTitle(widget);
+console.log(`Widget title: ${title}`);
+```
 
 ***
 
@@ -590,6 +715,26 @@ The new position of the object.
 
 ***
 
+### moveObjectCenterToCoordinate()
+
+> `static` **moveObjectCenterToCoordinate**(`object`, `position`): `void`
+
+#### Parameters
+
+##### object
+
+[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+
+##### position
+
+`Position`
+
+#### Returns
+
+`void`
+
+***
+
 ### reloadMe()
 
 > `static` **reloadMe**(): `void`
@@ -606,7 +751,10 @@ Reloads the current widget
 
 > `static` **removeObjectFromContainer**(`container`, `elem`): `void`
 
-Removes an object from a container.
+Removes a board object from its container, breaking the parent-child relationship.
+
+The object becomes independent after removal. Fires appropriate events and updates
+the container's managed objects list. Does nothing if the object is not in the container.
 
 #### Parameters
 
@@ -620,7 +768,7 @@ The container object.
 
 [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
-The element to remove from the container.
+The board object to remove from the container.
 
 #### Returns
 
@@ -628,7 +776,15 @@ The element to remove from the container.
 
 #### Throws
 
-Will throw an error if the container or element is not a proper board object.
+Throws if container or elem are not valid board objects.
+
+#### Example
+
+```typescript
+const container = BoardObjectHelper.getBoardObjectById(containerId);
+const textObject = BoardObjectHelper.getBoardObjectById(textId);
+BoardObjectHelper.removeObjectFromContainer(container, textObject);
+```
 
 ***
 
@@ -648,9 +804,9 @@ The board object.
 
 ##### tags
 
-The tags to remove
+`string` \| `string`[]
 
-`string` | `string`[]
+The tags to remove
 
 #### Returns
 

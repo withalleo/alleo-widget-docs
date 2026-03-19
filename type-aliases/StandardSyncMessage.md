@@ -14,7 +14,7 @@ Type representing a standard synchronization message.
 
 ### data?
 
-> `optional` **data**: `any`[]
+> `optional` **data?**: `any`[]
 
 ***
 

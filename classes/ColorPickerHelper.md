@@ -6,7 +6,38 @@
 
 # Class: ColorPickerHelper
 
-A helper class for creating a color picker
+Creates and manages an interactive color picker UI for widgets.
+
+Provides a complete color selection interface with predefined palettes, custom colors,
+transparent option, and automatic CSS variable updates. Integrates with the widget's
+toolbar to display a color picker button. Manages color persistence through shared
+variables and provides callbacks for color change events.
+
+## Example
+
+```typescript
+// Basic color picker for text color
+const textColorPicker = new ColorPickerHelper(
+  'textColor',
+  '--text-color',
+  '#ffffff'
+);
+
+// Color picker with custom palette and callback
+const bgColorPicker = new ColorPickerHelper(
+  'backgroundColor',
+  '--bg-color',
+  DefaultColors.background,
+  {
+    label: 'Background Color',
+    icon: { icon: 'fill-drip', set: 'fas' },
+    palette: ColorPalette.Background,
+    includeTransparent: true
+  },
+  '.widget-container',
+  (color) => console.log('Color changed to:', color)
+);
+```
 
 ## Extended by
 
@@ -18,7 +49,7 @@ A helper class for creating a color picker
 
 > **new ColorPickerHelper**(`handle?`, `CSSVariable?`, `defaultColor?`, `coloPickerSettings?`, `widgetContainerSelector?`, `callbackOnColorChange?`, `displayColorPickerButtonOnInit?`): `ColorPickerHelper`
 
-Creates a Color Picker
+Creates a color picker with toolbar button and automatic color management.
 
 #### Parameters
 
@@ -26,43 +57,43 @@ Creates a Color Picker
 
 `string` = `'color'`
 
-The handle for the color picker. (the shared variable)
+Shared variable name for storing the selected color.
 
 ##### CSSVariable?
 
 `string` = `'--widget-color'`
 
-The CSS variable for the color.
+CSS custom property name to update with the selected color.
 
 ##### defaultColor?
 
 `string` = `DefaultColors.primary`
 
-The default color.
+Default color value when no color is stored.
 
 ##### coloPickerSettings?
 
-`Partial`\<\{ `icon`: \{ `icon`: `string`; `set`: `string`; \}; `includeTransparent`: `boolean`; `label`: `string`; `palette`: `string`; \}\> = `...`
+`Partial`\<\{ `icon`: \{ `icon`: `string`; `set`: `string`; \}; `includeTransparent`: `boolean`; `label`: `string`; `palette`: `ColorPalette`; \}\> = `...`
 
-The settings for the color picker.
+Configuration for the color picker appearance and behavior.
 
 ##### widgetContainerSelector?
 
 `string` = `'.widget-container'`
 
-The CSS selector for the widget container.
+CSS selector for the widget's main container element.
 
 ##### callbackOnColorChange?
 
 (`color`) => `void`
 
-The callback function to call on color change.
+Callback function invoked when color changes, receives the new color string.
 
 ##### displayColorPickerButtonOnInit?
 
 `boolean` = `true`
 
-Whether to display the color picker button on initialization.
+Whether to show the color picker button immediately on creation.
 
 #### Returns
 
@@ -70,7 +101,7 @@ Whether to display the color picker button on initialization.
 
 #### Throws
 
-Will throw an error if the DOM is not available.
+Throws if the widget doesn't have a DOM (service widgets).
 
 ## Properties
 
@@ -84,7 +115,7 @@ The current color.
 
 ### createColorPickerButton()
 
-> **createColorPickerButton**(`button?`, `coloPickerSettings?`): `void`
+> **createColorPickerButton**(`button?`, `coloPickerSettings`): `void`
 
 Creates a color picker button.
 
@@ -96,9 +127,9 @@ Creates a color picker button.
 
 The context menu color button.
 
-##### coloPickerSettings?
+##### coloPickerSettings
 
-`Partial`\<\{ `icon`: \{ `icon`: `string`; `set`: `string`; \}; `includeTransparent`: `boolean`; `label`: `string`; `palette`: `string`; \}\>
+`Partial`\<\{ `icon`: \{ `icon`: `string`; `set`: `string`; \}; `includeTransparent`: `boolean`; `label`: `string`; `palette`: `ColorPalette`; \}\>
 
 The settings for the color picker.
 

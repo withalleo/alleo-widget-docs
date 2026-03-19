@@ -12,7 +12,7 @@ Represents a record in the item list.
 
 ## Indexable
 
-\[`p`: `string`\]: `any`
+> \[`p`: `string`\]: `any`
 
 ## Properties
 

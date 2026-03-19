@@ -6,6 +6,40 @@
 
 # Class: WatsonxAiHelper
 
+Provides utilities and configurations for IBM Watsonx AI integration.
+
+Offers standardized configuration, model selection, instruction management, and settings
+dialogs for widgets using IBM Watsonx AI services. Includes predefined models, customizable
+instructions, and form fields for AI configuration. Essential for widgets requiring
+Watsonx AI capabilities with consistent configuration patterns.
+
+## Example
+
+```typescript
+// Use default model and instructions
+const model = WatsonxAiHelper.defaultModel;
+const instructions = WatsonxAiHelper.defaultInstructions;
+
+// Access enabled models for selection
+const models = WatsonxAiHelper.EnabledModels;
+console.log('Available models:', models);
+
+// Use settings dialog fields in your widget
+const settingsDialog = new SettingsDialogHelper({
+  fields: [
+    ...WatsonxAiHelper.settingsDialogFields,
+    // Add your custom fields
+    { key: 'myField', type: 'input', props: { label: 'My Setting' } }
+  ]
+});
+
+// Create AI messages
+const message: AiMessage = {
+  type: AiMessageType.User,
+  message: 'Hello, AI!'
+};
+```
+
 ## Constructors
 
 ### Constructor
@@ -152,7 +186,7 @@
 
 ### getChatResponse()
 
-> **getChatResponse**(`messages`, `model`): `Promise`\<`string`\>
+> **getChatResponse**(`messages`, `model?`): `Promise`\<`string`\>
 
 #### Parameters
 
@@ -160,7 +194,7 @@
 
 [`AiMessage`](../interfaces/AiMessage.md)[]
 
-##### model
+##### model?
 
 `string` = `...`
 
@@ -172,7 +206,7 @@
 
 ### getDiscoveryResponse()
 
-> **getDiscoveryResponse**(`query`, `region`, `collectionId`, `instanceId`, `projectId`, `wxProjectId`, `textEndpoint`): `Promise`\<`any`\>
+> **getDiscoveryResponse**(`query`, `region`, `collectionId`, `instanceId`, `projectId`, `wxProjectId?`, `textEndpoint?`): `Promise`\<`any`\>
 
 #### Parameters
 
@@ -196,11 +230,11 @@
 
 `string`
 
-##### wxProjectId
+##### wxProjectId?
 
 `string` = `...`
 
-##### textEndpoint
+##### textEndpoint?
 
 `string` = `...`
 
@@ -212,7 +246,7 @@
 
 ### getTextResponse()
 
-> **getTextResponse**(`input`, `model`): `Promise`\<`string`\>
+> **getTextResponse**(`input`, `model?`): `Promise`\<`string`\>
 
 #### Parameters
 
@@ -220,7 +254,7 @@
 
 `string`
 
-##### model
+##### model?
 
 `string` = `...`
 

@@ -12,13 +12,13 @@
 
 ### align?
 
-> `optional` **align**: `"left"` \| `"right"` \| `"center"` \| `"justify"` \| `"start"` \| `"end"`
+> `optional` **align?**: `"left"` \| `"right"` \| `"center"` \| `"justify"` \| `"start"` \| `"end"`
 
 ***
 
-### callbackOnFormOpened()?
+### callbackOnFormOpened?
 
-> `optional` **callbackOnFormOpened**: (`button`) => `void`
+> `optional` **callbackOnFormOpened?**: (`button`) => `void`
 
 Callback function to be called when the form is opened.
 
@@ -36,7 +36,7 @@ Callback function to be called when the form is opened.
 
 ### displayInline?
 
-> `optional` **displayInline**: `boolean`
+> `optional` **displayInline?**: `boolean`
 
 Flag to indicate if the button should be displayed inline.
 
@@ -44,13 +44,13 @@ Flag to indicate if the button should be displayed inline.
 
 ### doNotStartFormTimer?
 
-> `optional` **doNotStartFormTimer**: `boolean`
+> `optional` **doNotStartFormTimer?**: `boolean`
 
 ***
 
 ### doNotStartTimer?
 
-> `optional` **doNotStartTimer**: `boolean`
+> `optional` **doNotStartTimer?**: `boolean`
 
 Flag to indicate if the timer should not start.
 
@@ -58,7 +58,7 @@ Flag to indicate if the timer should not start.
 
 ### formlyKey?
 
-> `optional` **formlyKey**: `string`
+> `optional` **formlyKey?**: `string`
 
 Key for the Formly field configuration.
 
@@ -66,7 +66,7 @@ Key for the Formly field configuration.
 
 ### id?
 
-> `optional` **id**: `string`
+> `optional` **id?**: `string`
 
 ID of the form button.
 
@@ -74,7 +74,7 @@ ID of the form button.
 
 ### interval?
 
-> `optional` **interval**: `number`
+> `optional` **interval?**: `number`
 
 Interval for the timer in milliseconds.
 
@@ -82,7 +82,7 @@ Interval for the timer in milliseconds.
 
 ### loadingPlaceholder?
 
-> `optional` **loadingPlaceholder**: `string`
+> `optional` **loadingPlaceholder?**: `string`
 
 Placeholder text to display while loading.
 
@@ -90,13 +90,13 @@ Placeholder text to display while loading.
 
 ### primary?
 
-> `optional` **primary**: `boolean`
+> `optional` **primary?**: `boolean`
 
 ***
 
 ### singleUse?
 
-> `optional` **singleUse**: `boolean`
+> `optional` **singleUse?**: `boolean`
 
 Flag to indicate if the button should be single-use.
 
@@ -104,6 +104,6 @@ Flag to indicate if the button should be single-use.
 
 ### timeout?
 
-> `optional` **timeout**: `number`
+> `optional` **timeout?**: `number`
 
 Timeout in milliseconds after which the button should be destroyed.

@@ -6,33 +6,64 @@
 
 # Class: EventDisableHelper
 
-Helper class to manage and disable events on HTML elements.
+Manages temporary disabling and re-enabling of DOM events on HTML elements.
 
-ie. to prevent dragging, scrolling, etc.
+Provides fine-grained control over event handling, allowing widgets to selectively disable
+events like dragging, scrolling, or pointer interactions. Automatically manages event state
+based on widget interactability. Useful for implementing custom interactions that need to
+temporarily prevent default browser behaviors. Stores and restores original event listeners.
+
+## Example
+
+```typescript
+const element = document.querySelector('.interactive');
+
+// Disable all pointer events
+const pointerDisabler = new EventDisableHelper(
+  element,
+  EventDisableHelper.POINTER_EVENTS
+);
+
+// Disable scroll events with auto-management
+const scrollDisabler = new EventDisableHelper(
+  element,
+  EventDisableHelper.SCROLL_EVENTS,
+  { autoManage: true }
+);
+
+// Manually control event disabling
+const customDisabler = new EventDisableHelper(element, ['click', 'dblclick'], {
+  autoManage: false,
+  callback: (e) => console.log('Event prevented:', e.type)
+});
+customDisabler.disable();
+// ... do work ...
+customDisabler.enable();
+```
 
 ## Constructors
 
 ### Constructor
 
-> **new EventDisableHelper**(`element`, `events`, `options`): `EventDisableHelper`
+> **new EventDisableHelper**(`element?`, `events?`, `options?`): `EventDisableHelper`
 
 Constructor for EventDisableHelper.
 
 #### Parameters
 
-##### element
+##### element?
+
+`HTMLElement` \| `Window`
 
 The HTML element or window to which events are attached.
 
-`HTMLElement` | `Window`
-
-##### events
+##### events?
 
 `string`[] = `EventDisableHelper.POINTER_EVENTS`
 
 List of events to be managed.
 
-##### options
+##### options?
 
 [`EventDisableHelperOptions`](../type-aliases/EventDisableHelperOptions.md) = `{}`
 
@@ -160,37 +191,37 @@ Destroys the EventDisableHelper instance, stopping auto-management and enabling 
 
 ### disableEvents()
 
-> **disableEvents**(`events`, `preventDefault`, `stopPropagation`, `stopImmediatePropagation`, `capture`): `void`
+> **disableEvents**(`events?`, `preventDefault?`, `stopPropagation?`, `stopImmediatePropagation?`, `capture?`): `void`
 
 Disables events on the element.
 
 #### Parameters
 
-##### events
+##### events?
 
 `string`[] = `...`
 
 List of events to be disabled.
 
-##### preventDefault
+##### preventDefault?
 
 `boolean` = `false`
 
 Whether to call preventDefault on the event.
 
-##### stopPropagation
+##### stopPropagation?
 
 `boolean` = `true`
 
 Whether to call stopPropagation on the event.
 
-##### stopImmediatePropagation
+##### stopImmediatePropagation?
 
 `boolean` = `false`
 
 Whether to call stopImmediatePropagation on the event.
 
-##### capture
+##### capture?
 
 `boolean` = `false`
 
@@ -204,13 +235,13 @@ Whether to capture the event.
 
 ### enableEvents()
 
-> **enableEvents**(`events`): `void`
+> **enableEvents**(`events?`): `void`
 
 Enables events on the element.
 
 #### Parameters
 
-##### events
+##### events?
 
 `string`[] = `...`
 
@@ -236,7 +267,7 @@ Stops automatically managing events.
 
 ### cancelEvent()
 
-> `static` **cancelEvent**(`e`, `preventDefault`, `stopPropagation`, `stopImmediatePropagation`, `callback`): `void`
+> `static` **cancelEvent**(`e`, `preventDefault?`, `stopPropagation?`, `stopImmediatePropagation?`, `callback?`): `void`
 
 Cancels an event.
 
@@ -248,25 +279,25 @@ Cancels an event.
 
 The event to be cancelled.
 
-##### preventDefault
+##### preventDefault?
 
 `boolean` = `true`
 
 Whether to call preventDefault on the event.
 
-##### stopPropagation
+##### stopPropagation?
 
 `boolean` = `true`
 
 Whether to call stopPropagation on the event.
 
-##### stopImmediatePropagation
+##### stopImmediatePropagation?
 
 `boolean` = `true`
 
 Whether to call stopImmediatePropagation on the event.
 
-##### callback
+##### callback?
 
 (`e`) => `void`
 

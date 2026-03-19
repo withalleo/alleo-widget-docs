@@ -12,7 +12,7 @@
 
 ### defaultText?
 
-> `optional` **defaultText**: `string`
+> `optional` **defaultText?**: `string`
 
 ***
 

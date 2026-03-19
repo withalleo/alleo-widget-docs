@@ -6,7 +6,31 @@
 
 # Class: PointerHelper
 
-Helper class for handling pointer events and click/alt-click logic on an element.
+Manages pointer events with support for click, alt-click, and long-press detection.
+
+Provides a unified interface for handling various pointer interactions including normal clicks,
+alt/ctrl-modified clicks, and long-press gestures. Automatically filters out invalid clicks
+based on pressure and timing. Useful for implementing context menus, alternate actions,
+and touch-friendly interactions.
+
+## Example
+
+```typescript
+const element = document.querySelector('.interactive-area');
+const pointer = new PointerHelper(element);
+
+// Handle normal clicks
+pointer.registerOnclick((e) => {
+  console.log('Clicked at:', e.clientX, e.clientY);
+  performAction();
+});
+
+// Handle alt-click or long-press for context menu
+pointer.registerOnAltClick((e) => {
+  console.log('Alt-click detected');
+  showContextMenu(e);
+});
+```
 
 ## Constructors
 
@@ -14,7 +38,10 @@ Helper class for handling pointer events and click/alt-click logic on an element
 
 > **new PointerHelper**(`element`): `PointerHelper`
 
-Creates a PointerHelper for the given element.
+Creates a PointerHelper instance for managing pointer interactions on an element.
+
+Attaches pointer event listeners to track down, up, cancel, leave, and out events.
+Automatically manages pointer state and distinguishes between different interaction types.
 
 #### Parameters
 
@@ -22,7 +49,7 @@ Creates a PointerHelper for the given element.
 
 `HTMLElement`
 
-The target HTML element.
+The HTML element to attach pointer event handlers to.
 
 #### Returns
 
@@ -70,7 +97,7 @@ Registered click callbacks.
 
 > `protected` **element**: `HTMLElement`
 
-The target HTML element.
+The HTML element to attach pointer event handlers to.
 
 ## Methods
 
@@ -78,7 +105,7 @@ The target HTML element.
 
 > `protected` **onAltClick**(`e`): `void`
 
-Invokes registered alt-click callbacks.
+Invokes all registered alt-click callbacks.
 
 #### Parameters
 
@@ -86,7 +113,7 @@ Invokes registered alt-click callbacks.
 
 `PointerEvent`
 
-The pointer event.
+The pointer event that triggered the alt-click.
 
 #### Returns
 
@@ -98,7 +125,7 @@ The pointer event.
 
 > `protected` **onClick**(`e`): `void`
 
-Invokes registered click callbacks.
+Invokes all registered normal click callbacks.
 
 #### Parameters
 
@@ -106,7 +133,7 @@ Invokes registered click callbacks.
 
 `PointerEvent`
 
-The pointer event.
+The pointer event that triggered the click.
 
 #### Returns
 
@@ -118,7 +145,11 @@ The pointer event.
 
 > **registerOnAltClick**(`callback`): `void`
 
-Registers a callback for alt-click or long-press events.
+Registers a callback function for alt-click or long-press events.
+
+Triggered by clicks with Alt/Ctrl modifiers or by pressing and holding for
+more than 700ms. Useful for context menus or alternative actions. Multiple
+callbacks can be registered.
 
 #### Parameters
 
@@ -126,7 +157,7 @@ Registers a callback for alt-click or long-press events.
 
 (`e`) => `void`
 
-Function to call on alt-click.
+Function to execute on alt-click, receives the PointerEvent.
 
 #### Returns
 
@@ -138,7 +169,10 @@ Function to call on alt-click.
 
 > **registerOnclick**(`callback`): `void`
 
-Registers a callback for normal click events.
+Registers a callback function to be invoked on normal click events.
+
+Normal clicks are pointer events that don't have alt/ctrl modifiers and aren't
+long-presses. Multiple callbacks can be registered.
 
 #### Parameters
 
@@ -146,7 +180,7 @@ Registers a callback for normal click events.
 
 (`e`) => `void`
 
-Function to call on click.
+Function to execute on click, receives the PointerEvent.
 
 #### Returns
 

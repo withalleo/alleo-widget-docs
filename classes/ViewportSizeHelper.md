@@ -6,42 +6,75 @@
 
 # Class: ViewportSizeHelper
 
-A helper class for managing viewport size changes and providing size information
-for specific elements in the Alleo whiteboard application.
+Monitors viewport dimensions and element positioning for responsive layouts.
+
+Provides real-time tracking of viewport size changes, including the main canvas and
+document body dimensions. Automatically detects resize events and triggers callbacks
+with updated size information. Essential for implementing responsive UI that adapts
+to browser window resizing, canvas changes, or layout updates. Uses ResizeObserver
+for efficient change detection.
+
+## Example
+
+```typescript
+// Monitor viewport changes for responsive layout
+const viewportHelper = new ViewportSizeHelper((canvas, body) => {
+  console.log('Canvas size:', canvas.width, canvas.height);
+  console.log('Body size:', body.width, body.height);
+  updateLayout(canvas, body);
+});
+
+// With custom settings
+const customHelper = new ViewportSizeHelper(
+  (canvas, body) => adjustUI(canvas),
+  {
+    triggerOnBodyResize: true,
+    triggerOnCanvasResize: true,
+    triggerOnInit: false // Don't trigger immediately
+  }
+);
+```
 
 ## Constructors
 
 ### Constructor
 
-> **new ViewportSizeHelper**(`callback`, `settings`): `ViewportSizeHelper`
+> **new ViewportSizeHelper**(`callback?`, `settings?`): `ViewportSizeHelper`
 
-Creates an instance of ViewportSizeHelper.
+Creates a ViewportSizeHelper instance to monitor viewport dimension changes.
+
+Sets up ResizeObserver to watch for changes to the main canvas and document body.
+Automatically cleans up observers when the widget is destroyed.
 
 #### Parameters
 
-##### callback
+##### callback?
 
 (`canvas`, `body`) => `unknown`
 
-A function to be called when the viewport size changes.
+Function called when viewport size changes. Receives canvas and body ViewportSize objects.
 
-##### settings
+##### settings?
 
 `ViewportSizeHelperSettings` = `{}`
 
-Optional settings to configure the behavior of the helper.
+Configuration options.
 
 #### Returns
 
 `ViewportSizeHelper`
 
+#### Throws
+
+Throws if the mainCanvas element is not found in the document.
+
 ## Properties
 
-### callback()
+### callback
 
 > `readonly` **callback**: (`canvas`, `body`) => `unknown` = `undefined`
 
-A function to be called when the viewport size changes.
+Function called when viewport size changes. Receives canvas and body ViewportSize objects.
 
 #### Parameters
 
@@ -126,11 +159,11 @@ The size and position of the canvas.
 
 ### triggerChange()
 
-> **triggerChange**(`force`): `void`
+> **triggerChange**(`force?`): `void`
 
 #### Parameters
 
-##### force
+##### force?
 
 `boolean` = `false`
 

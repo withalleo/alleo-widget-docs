@@ -6,19 +6,49 @@
 
 # Class: MultiTouchHelper
 
-Class to manage multi-touch and similar advanced interactions for a widget.
+Enables advanced touch and zoom interactions for widgets with custom content.
+
+Provides multi-touch gestures (pinch-to-zoom, pan) and mouse-based zooming for widgets
+containing complex interactive content like iframes, canvases, or custom visualizations.
+Manages event propagation, scale adjustments, and provides UI controls for zooming.
+Essential for widgets that need independent zoom/pan controls separate from the board.
+
+## Example
+
+```typescript
+// Basic multi-touch support
+const multiTouch = new MultiTouchHelper();
+
+// With custom configuration
+const customTouch = new MultiTouchHelper({
+  enableDblClickToZoom: true,
+  showAdjustSizeButton: true,
+  adjustWidgetSizeAutomatically: false,
+  onScaleAdjustment: (scale) => {
+    console.log('Zoom level:', scale);
+    updateContent(scale);
+  }
+});
+
+// For iframe or canvas content
+const iframeTouch = new MultiTouchHelper({
+  element: document.querySelector('iframe'),
+  unlockHelper: true,
+  enablePointerOverWidget: true
+});
+```
 
 ## Constructors
 
 ### Constructor
 
-> **new MultiTouchHelper**(`options`): `MultiTouchHelper`
+> **new MultiTouchHelper**(`options?`): `MultiTouchHelper`
 
 Constructor for MultiTouchHelper.
 
 #### Parameters
 
-##### options
+##### options?
 
 [`MultiTouchHelperOptions`](../type-aliases/MultiTouchHelperOptions.md) = `{}`
 
@@ -178,13 +208,13 @@ Stops the MultiTouchHelper, disabling managed interactions.
 
 ### updateUnlockHelperIcon()
 
-> `protected` **updateUnlockHelperIcon**(`locked`): `void`
+> `protected` **updateUnlockHelperIcon**(`locked?`): `void`
 
 Updates the unlock helper icon.
 
 #### Parameters
 
-##### locked
+##### locked?
 
 `boolean` = `undefined`
 
@@ -244,9 +274,9 @@ Dispatches a pointer event to the widget's root node.
 
 ##### event
 
-The event to dispatch.
+`string` \| `PointerEvent`
 
-`string` | `PointerEvent`
+The event to dispatch.
 
 #### Returns
 

@@ -34,8 +34,21 @@ Use `WidgetSettings` instead. (This provides the same functionality for compatib
 
 > `readonly` `static` **manifestConfig**: `Record`\<`string`, `any`\>
 
-The widget settings from the widget's `manifest.json` file.
-These settings usually represent the default configuration for the widget, which can be overridden at the organization level.
+Widget's default configuration from the `manifest.json` file.
+
+Contains only the base configuration defined in the widget's manifest, without any
+organization or deployment overrides applied. Useful when you need to access the
+original default values regardless of customizations.
+
+#### Example
+
+```typescript
+// Get the default color even if organization changed it
+const defaultColor = WidgetSettings.manifestConfig.defaultColor;
+
+// Check if user customized a setting
+const isCustomized = WidgetSettings.settings.theme !== WidgetSettings.manifestConfig.theme;
+```
 
 #### Inherited from
 
@@ -47,10 +60,22 @@ These settings usually represent the default configuration for the widget, which
 
 > `readonly` `static` **settings**: `Record`\<`string`, `any`\>
 
-The settings for the widget. The settings are merged from the followings:
-- organization settings
-- deployment settings
-- widget defaults from the widget's `manifest.json` configuration file.
+Merged widget settings from all configuration sources.
+
+Contains the final, resolved configuration values after merging:
+- Organization-level settings (highest priority - overrides everything)
+- Deployment-level settings (medium priority - overrides widget defaults)
+- Widget defaults from `manifest.json` (lowest priority - fallback values)
+
+Use this property to access any configuration value that should respect
+organization customizations.
+
+#### Example
+
+```typescript
+const maxFileSize = WidgetSettings.settings.maxFileSize || 10 * 1024 * 1024;
+const apiUrl = WidgetSettings.settings.apiEndpoint;
+```
 
 #### Inherited from
 

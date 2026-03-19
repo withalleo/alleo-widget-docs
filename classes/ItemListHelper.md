@@ -6,13 +6,50 @@
 
 # Class: ItemListHelper
 
-Helper class for managing a list of items with import, export, and edit capabilities.
+Manages dynamic lists of items with import, export, reordering, and editing capabilities.
+
+Provides comprehensive list management including item addition/removal, CSV import/export,
+data connector integration, reordering via drag-and-drop, and form-based editing. Stores
+data in shared variables with automatic ID generation and change tracking. Essential for
+widgets managing collections of user-defined items.
+
+## Example
+
+```typescript
+// Create a list of contacts
+const contactList = new ItemListHelper(
+  'contacts',
+  {
+    label: 'Contact List',
+    allowReordering: true,
+    allowImport: true,
+    elements: [
+      { key: 'name', type: 'input', props: { label: 'Name', required: true } },
+      { key: 'email', type: 'input', props: { label: 'Email', type: 'email' } },
+      { key: 'phone', type: 'input', props: { label: 'Phone' } }
+    ],
+    importSettings: {
+      fields: [
+        { name: 'name', label: 'Name' },
+        { name: 'email', label: 'Email' },
+        { name: 'phone', label: 'Phone' }
+      ]
+    },
+    onListChangeCallback: (list) => {
+      console.log('List updated:', list.length, 'items');
+    }
+  }
+);
+
+// Get current list
+const items = contactList.list;
+```
 
 ## Constructors
 
 ### Constructor
 
-> **new ItemListHelper**(`key`, `options`): `ItemListHelper`
+> **new ItemListHelper**(`key`, `options?`): `ItemListHelper`
 
 Creates an instance of ItemListHelper.
 
@@ -24,7 +61,7 @@ Creates an instance of ItemListHelper.
 
 The key used to store the list data.
 
-##### options
+##### options?
 
 [`ItemListHelperOptions`](../type-aliases/ItemListHelperOptions.md) = `{}`
 
@@ -166,7 +203,7 @@ Error if the list is read-only.
 
 ### getFieldList()
 
-> **getFieldList**\<`FieldType`\>(`key`): `FieldType`[]
+> **getFieldList**\<`FieldType`\>(`key?`): `FieldType`[]
 
 Gets a list of field values for a given key.
 
@@ -178,7 +215,7 @@ Gets a list of field values for a given key.
 
 #### Parameters
 
-##### key
+##### key?
 
 `string` = `...`
 
@@ -192,7 +229,7 @@ The field key to retrieve values for.
 
 ### getFieldListById()
 
-> **getFieldListById**\<`FieldType`\>(`key`): `Record`\<`string`, `FieldType`\>
+> **getFieldListById**\<`FieldType`\>(`key?`): `Record`\<`string`, `FieldType`\>
 
 Gets a record of field values by item id for a given key.
 
@@ -204,7 +241,7 @@ Gets a record of field values by item id for a given key.
 
 #### Parameters
 
-##### key
+##### key?
 
 `string` = `...`
 

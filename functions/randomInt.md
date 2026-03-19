@@ -8,7 +8,10 @@
 
 > **randomInt**(`min`, `max`): `number`
 
-Generates a random integer between the specified minimum and maximum values.
+Generates a cryptographically secure random integer within a specified range (inclusive).
+
+Uses the Web Crypto API for secure random number generation, making it suitable for
+security-sensitive applications. Both min and max values are inclusive in the range.
 
 ## Parameters
 
@@ -16,20 +19,28 @@ Generates a random integer between the specified minimum and maximum values.
 
 `number`
 
-The minimum value.
+The minimum value (inclusive, must be non-negative).
 
 ### max
 
 `number`
 
-The maximum value.
+The maximum value (inclusive, must be non-negative and >= min).
 
 ## Returns
 
 `number`
 
-A random integer between min and max.
+A random integer between min and max (inclusive).
 
 ## Throws
 
-Will throw an error if min is greater than max or if min or max are negative.
+Throws if min > max, if either is negative, or if range exceeds 2^32.
+
+## Example
+
+```typescript
+randomInt(1, 6);    // Random dice roll: 1, 2, 3, 4, 5, or 6
+randomInt(0, 100);  // Random percentage: 0 to 100
+randomInt(10, 10);  // Always returns 10
+```

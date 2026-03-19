@@ -6,9 +6,34 @@
 
 # Class: AlleoWidget\<SharedVariableStructure\>
 
-Class representing an Alleo Widget.
+Base class for creating Alleo Widgets with shared variable management and lifecycle handling.
 
-Provides access to shared variables, a constructor, and a destroy method.
+This class provides a foundation for building widgets that can store and synchronize data across
+multiple widget instances, handle DOM interactions, and manage widget lifecycle events. It includes
+automatic handling of interactability states, design mode visualization, and proper cleanup on destruction.
+
+## Example
+
+```typescript
+interface MyWidgetData {
+  counter: number;
+  label: string;
+}
+
+class MyWidget extends AlleoWidget<MyWidgetData> {
+  constructor() {
+    super({ counter: 0, label: 'Hello' });
+    this.shared.counter++; // Access and modify shared variables
+  }
+
+  destroy() {
+    // Clean up resources when widget is unloaded
+    console.log('Widget destroyed');
+  }
+}
+
+new MyWidget();
+```
 
 ## Extended by
 
@@ -20,7 +45,7 @@ Provides access to shared variables, a constructor, and a destroy method.
 
 `SharedVariableStructure` *extends* `Record`\<`string`, `any`\> = `Record`\<`string`, `any`\>
 
-The structure of the shared variables.
+The structure of the shared variables (an object with key-value pairs).
 
 ## Constructors
 
@@ -28,7 +53,10 @@ The structure of the shared variables.
 
 > **new AlleoWidget**\<`SharedVariableStructure`\>(`defaultSharedVariables?`, `settings?`): `AlleoWidget`\<`SharedVariableStructure`\>
 
-Creates an instance of AlleoWidget.
+Creates an instance of AlleoWidget and initializes shared variables, DOM references, and lifecycle handlers.
+
+The constructor sets up a proxy for shared variables to automatically sync with Alleo's data fields,
+configures DOM interaction handlers, and registers the widget with the Alleo platform.
 
 #### Parameters
 
@@ -36,13 +64,13 @@ Creates an instance of AlleoWidget.
 
 `Partial`\<`SharedVariableStructure`\> = `{}`
 
-The default shared variables.
+Default values for shared variables. These values are used when the widget is first created or when a shared variable hasn't been set yet.
 
 ##### settings?
 
 `WidgetInitSettings` = `...`
 
-The settings for the widget.
+Configuration options for widget initialization.
 
 #### Returns
 
@@ -52,7 +80,7 @@ The settings for the widget.
 
 ### dom
 
-> `protected` **dom**: `HTMLDivElement`
+> `protected` **dom**: `HTMLDivElement` = `null`
 
 ***
 
@@ -82,7 +110,11 @@ The settings for the widget.
 
 > `protected` **assertWidgetLoaded**(): `void`
 
-Asserts that the widget is loaded.
+Validates that the widget is still loaded and has not been destroyed.
+
+Use this method in async operations or callbacks to ensure the widget instance is still valid
+before performing operations. This prevents errors when a widget is destroyed while an async
+operation is still in progress.
 
 #### Returns
 
@@ -90,7 +122,17 @@ Asserts that the widget is loaded.
 
 #### Throws
 
-- If the widget has been destroyed.
+Throws an error with message "assertWidgetLoaded - Widget was destroyed" if the widget has been destroyed.
+
+#### Example
+
+```typescript
+async loadData() {
+  const data = await fetchDataFromAPI();
+  this.assertWidgetLoaded(); // Ensure widget wasn't destroyed during fetch
+  this.displayData(data);
+}
+```
 
 ***
 
@@ -98,11 +140,18 @@ Asserts that the widget is loaded.
 
 > **destroy**(): `void` \| `Promise`\<`void`\>
 
-Called when the widget instance is destroyed (when unloaded, NOT when the widget is deleted from the board).
+Lifecycle method called when the widget instance is being destroyed.
+
+This method is invoked when the widget is unloaded from memory (e.g., when navigating away from the board
+or when the widget needs to be reloaded). This is NOT called when the widget object is deleted from the board.
+Override this method to perform cleanup tasks such as unsubscribing from observables, clearing timers,
+or releasing resources.
 
 #### Returns
 
 `void` \| `Promise`\<`void`\>
+
+Can return a Promise for async cleanup operations.
 
 ***
 
@@ -110,7 +159,10 @@ Called when the widget instance is destroyed (when unloaded, NOT when the widget
 
 > `protected` **domSelect**\<`HTMLElementType`\>(`query`): `HTMLElementType`
 
-Selects a DOM element within the widget container.
+Queries for a DOM element within the widget container using a CSS selector.
+
+This is a convenience method that automatically scopes the query to within the widget's container,
+preventing accidental selection of elements outside the widget.
 
 #### Type Parameters
 
@@ -118,7 +170,7 @@ Selects a DOM element within the widget container.
 
 `HTMLElementType` *extends* `HTMLElement` = `HTMLElement`
 
-The type of the HTML element.
+The expected HTML element type (e.g., HTMLButtonElement, HTMLInputElement).
 
 #### Parameters
 
@@ -126,17 +178,24 @@ The type of the HTML element.
 
 `string`
 
-The query selector.
+CSS selector string (will be prefixed with the container selector).
 
 #### Returns
 
 `HTMLElementType`
 
-- The selected HTML element.
+The first matching HTML element, or null if not found.
 
 #### Throws
 
-- If no DOM is available.
+Throws if the widget doesn't have a DOM.
+
+#### Example
+
+```typescript
+const button = this.domSelect<HTMLButtonElement>('.my-button');
+button.addEventListener('click', () => console.log('Clicked!'));
+```
 
 ***
 
@@ -144,7 +203,10 @@ The query selector.
 
 > `protected` **setContainerClass**(`className`, `add?`): `void`
 
-Sets an HTML class for the widget container.
+Adds or removes CSS classes from the widget container for styling purposes.
+
+When adding a class, it removes the "not-{className}" variant. When removing a class,
+it adds the "not-{className}" variant instead. This pattern helps with CSS targeting.
 
 #### Parameters
 
@@ -152,13 +214,13 @@ Sets an HTML class for the widget container.
 
 `string`
 
-The class name to set.
+The CSS class name to add or remove.
 
 ##### add?
 
 `boolean` = `true`
 
-Whether to add or remove the class. (if !add the "not-className" class is added, and the original is removed)
+When true, adds the class. When false, removes the class and adds "not-{className}".
 
 #### Returns
 
@@ -166,7 +228,14 @@ Whether to add or remove the class. (if !add the "not-className" class is added,
 
 #### Throws
 
-- If no DOM is available.
+Throws if the widget doesn't have a DOM (e.g., when used in a service context).
+
+#### Example
+
+```typescript
+this.setContainerClass('active', true);  // Adds 'active' class, removes 'not-active'
+this.setContainerClass('active', false); // Removes 'active' class, adds 'not-active'
+```
 
 ***
 

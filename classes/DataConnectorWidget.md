@@ -6,7 +6,12 @@
 
 # Class: DataConnectorWidget\<SharedVariableStructure\>
 
-Base class for widgets that connect to data sources and provide import/export functionality.
+Base class for widgets that provide data import/export and act as data sources for other widgets.
+
+Extends `AlleoWidget` and wires up common data-connector behavior such as CSV import/export,
+exposed actions for other widgets, settings UI, and a preview dialog.
+Concrete widgets typically override the protected data methods (`export`, `import`, `append`, etc.)
+and the metadata getters (`implemented`, `length`, `widgetName`, `widgetDescription`, `settings`).
 
 ## Extends
 
@@ -18,23 +23,28 @@ Base class for widgets that connect to data sources and provide import/export fu
 
 `SharedVariableStructure`
 
-The structure of shared variables for the widget.
+Structure of the widget's shared variables stored on the board.
 
 ## Constructors
 
 ### Constructor
 
-> **new DataConnectorWidget**\<`SharedVariableStructure`\>(`defaultSharedVariables`): `DataConnectorWidget`\<`SharedVariableStructure`\>
+> **new DataConnectorWidget**\<`SharedVariableStructure`\>(`defaultSharedVariables?`): `DataConnectorWidget`\<`SharedVariableStructure`\>
 
-Constructs a DataConnectorWidget instance.
+Creates a data connector widget.
+
+The constructor:
+- sets up the settings dialog (including Import/Export/Preview buttons when supported),
+- exposes standard data connector actions and
+- initializes the widget name and action effects.
 
 #### Parameters
 
-##### defaultSharedVariables
+##### defaultSharedVariables?
 
 `Partial`\<`SharedVariableStructure`\> = `{}`
 
-Default shared variables for the widget.
+Optional initial values for the widget's shared variables.
 
 #### Returns
 
@@ -48,7 +58,7 @@ Default shared variables for the widget.
 
 ### dom
 
-> `protected` **dom**: `HTMLDivElement`
+> `protected` **dom**: `HTMLDivElement` = `null`
 
 #### Inherited from
 
@@ -60,7 +70,7 @@ Default shared variables for the widget.
 
 > `protected` **lineLimit**: `number` = `0`
 
-Maximum number of lines allowed for import.
+Maximum number of records allowed for import; `0` means "no explicit limit".
 
 ***
 
@@ -68,7 +78,19 @@ Maximum number of lines allowed for import.
 
 > `protected` **nameHelper**: [`WidgetNameHelper`](WidgetNameHelper.md)
 
-Helper for managing widget name display.
+Helper responsible for keeping the visible widget name in sync.
+
+***
+
+### onChangeCallbacks
+
+> **onChangeCallbacks**: () => `void`[] = `[]`
+
+Optional callbacks that run when the widget's data changes.
+
+#### Returns
+
+`void`
 
 ***
 
@@ -110,21 +132,39 @@ Helper for managing widget name display.
 
 > `readonly` `static` **widgetNamePrefix**: `string` = `'▤ '`
 
-Prefix for widget display name.
+Prefix used when showing the widget name on the board.
 
 ## Accessors
+
+### displayName
+
+#### Get Signature
+
+> **get** **displayName**(): `string`
+
+Resolved display name of the widget as shown on the board.
+
+Uses the custom `displayName` shared variable when present, otherwise falls back to `widgetName`.
+
+##### Returns
+
+`string`
+
+***
 
 ### implemented
 
 #### Get Signature
 
-> **get** `protected` **implemented**(): [`DataConnectorActions`](../enumerations/DataConnectorActions.md)[]
+> **get** **implemented**(): [`DataConnectorAction`](../enumerations/DataConnectorAction.md)[]
 
-Returns the list of actions implemented by the widget.
+List of data connector actions that this concrete widget actually implements.
+
+Subclasses should override this to advertise their supported features.
 
 ##### Returns
 
-[`DataConnectorActions`](../enumerations/DataConnectorActions.md)[]
+[`DataConnectorAction`](../enumerations/DataConnectorAction.md)[]
 
 ***
 
@@ -132,9 +172,11 @@ Returns the list of actions implemented by the widget.
 
 #### Get Signature
 
-> **get** `protected` **length**(): `number`
+> **get** **length**(): `number`
 
-Returns the number of records in the widget's data source.
+Number of records currently stored by the widget, when known.
+
+Subclasses can override this to expose their own length; `undefined` means "not reported".
 
 ##### Returns
 
@@ -146,13 +188,15 @@ Returns the number of records in the widget's data source.
 
 #### Get Signature
 
-> **get** `protected` **settings**(): `ExtendedFormlyFieldConfig`[]
+> **get** `protected` **settings**(): [`ExtendedFormlyFieldConfig`](../interfaces/ExtendedFormlyFieldConfig.md)[]
 
-Returns the settings fields for the widget.
+Additional settings fields contributed by the concrete widget.
+
+These are injected into the shared settings dialog for the data connector instance.
 
 ##### Returns
 
-`ExtendedFormlyFieldConfig`[]
+[`ExtendedFormlyFieldConfig`](../interfaces/ExtendedFormlyFieldConfig.md)[]
 
 ***
 
@@ -160,9 +204,11 @@ Returns the settings fields for the widget.
 
 #### Get Signature
 
-> **get** `protected` **widgetDescription**(): `string`
+> **get** **widgetDescription**(): `string`
 
-Returns the description of the widget.
+Short description of what this data connector does.
+
+Used in the settings dialog footer.
 
 ##### Returns
 
@@ -174,9 +220,11 @@ Returns the description of the widget.
 
 #### Get Signature
 
-> **get** `protected` **widgetName**(): `string`
+> **get** **widgetName**(): `string`
 
-Returns the display name of the widget.
+Human friendly base name of the widget (without the connector prefix).
+
+Subclasses should override this to provide a more specific name.
 
 ##### Returns
 
@@ -186,25 +234,26 @@ Returns the display name of the widget.
 
 ### append()
 
-> `protected` **append**(`row`): `Promise`\<`boolean`\>
+> `protected` **append**(`newRecord`): `Promise`\<`boolean`\>
 
-Appends a row to the widget's data source.
+Appends a new record to the widget's data source.
+
+The base implementation only emits an action trigger and returns `false`.
+Most widgets should override this to update their internal data and return `true` on success.
 
 #### Parameters
 
-##### row
+##### newRecord
 
 `string`[]
 
-The row to append.
+Record to append.
 
 #### Returns
 
 `Promise`\<`boolean`\>
 
-#### Throws
-
-Error if not implemented.
+`true` when the record was added; `false` in the base implementation.
 
 ***
 
@@ -212,7 +261,11 @@ Error if not implemented.
 
 > `protected` **assertWidgetLoaded**(): `void`
 
-Asserts that the widget is loaded.
+Validates that the widget is still loaded and has not been destroyed.
+
+Use this method in async operations or callbacks to ensure the widget instance is still valid
+before performing operations. This prevents errors when a widget is destroyed while an async
+operation is still in progress.
 
 #### Returns
 
@@ -220,7 +273,17 @@ Asserts that the widget is loaded.
 
 #### Throws
 
-- If the widget has been destroyed.
+Throws an error with message "assertWidgetLoaded - Widget was destroyed" if the widget has been destroyed.
+
+#### Example
+
+```typescript
+async loadData() {
+  const data = await fetchDataFromAPI();
+  this.assertWidgetLoaded(); // Ensure widget wasn't destroyed during fetch
+  this.displayData(data);
+}
+```
 
 #### Inherited from
 
@@ -228,15 +291,46 @@ Asserts that the widget is loaded.
 
 ***
 
+### deleteLine()
+
+> `protected` **deleteLine**(`recordNumber`): `Promise`\<`boolean`\>
+
+Deletes a single record from the widget's data source.
+
+The base implementation only emits an action trigger and returns `false`.
+
+#### Parameters
+
+##### recordNumber
+
+`number`
+
+Zero-based index of the record to delete.
+
+#### Returns
+
+`Promise`\<`boolean`\>
+
+`true` when the record was deleted; `false` in the base implementation.
+
+***
+
 ### destroy()
 
 > **destroy**(): `void` \| `Promise`\<`void`\>
 
-Called when the widget instance is destroyed (when unloaded, NOT when the widget is deleted from the board).
+Lifecycle method called when the widget instance is being destroyed.
+
+This method is invoked when the widget is unloaded from memory (e.g., when navigating away from the board
+or when the widget needs to be reloaded). This is NOT called when the widget object is deleted from the board.
+Override this method to perform cleanup tasks such as unsubscribing from observables, clearing timers,
+or releasing resources.
 
 #### Returns
 
 `void` \| `Promise`\<`void`\>
+
+Can return a Promise for async cleanup operations.
 
 #### Inherited from
 
@@ -248,7 +342,10 @@ Called when the widget instance is destroyed (when unloaded, NOT when the widget
 
 > `protected` **domSelect**\<`HTMLElementType`\>(`query`): `HTMLElementType`
 
-Selects a DOM element within the widget container.
+Queries for a DOM element within the widget container using a CSS selector.
+
+This is a convenience method that automatically scopes the query to within the widget's container,
+preventing accidental selection of elements outside the widget.
 
 #### Type Parameters
 
@@ -256,7 +353,7 @@ Selects a DOM element within the widget container.
 
 `HTMLElementType` *extends* `HTMLElement` = `HTMLElement`
 
-The type of the HTML element.
+The expected HTML element type (e.g., HTMLButtonElement, HTMLInputElement).
 
 #### Parameters
 
@@ -264,17 +361,24 @@ The type of the HTML element.
 
 `string`
 
-The query selector.
+CSS selector string (will be prefixed with the container selector).
 
 #### Returns
 
 `HTMLElementType`
 
-- The selected HTML element.
+The first matching HTML element, or null if not found.
 
 #### Throws
 
-- If no DOM is available.
+Throws if the widget doesn't have a DOM.
+
+#### Example
+
+```typescript
+const button = this.domSelect<HTMLButtonElement>('.my-button');
+button.addEventListener('click', () => console.log('Clicked!'));
+```
 
 #### Inherited from
 
@@ -286,65 +390,104 @@ The query selector.
 
 > `protected` **export**(): `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
 
-Exports the widget's data as CSV.
+Exports the widget's data as a 2D CSV array.
+
+Subclasses must override this to return their current data.
 
 #### Returns
 
 `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
 
+All records currently stored by this data connector.
+
 #### Throws
 
-Error if not implemented.
+Always throws in the base class; concrete implementations must provide a working version.
 
 ***
 
 ### exportProcess()
 
-> **exportProcess**(`name`, `download`): `Promise`\<`void`\>
+> **exportProcess**(`name?`, `download?`): `Promise`\<`void`\>
 
-Handles the export process by exporting data and saving it in board assets.
+Exports data from the connector and uploads it as a CSV file to board assets.
+
+Optionally triggers a download for the current user.
 
 #### Parameters
 
-##### name
+##### name?
 
 `string` = `'Exported data'`
 
-Name for the exported file.
+Base name to use for the exported file (without extension).
 
-##### download
+##### download?
 
 `boolean` = `true`
 
-Whether to download the file after export.
+When `true`, also downloads the file to the local machine.
 
 #### Returns
 
 `Promise`\<`void`\>
 
+#### Throws
+
+When the uploaded file has no public URL.
+
+***
+
+### getLine()
+
+> `protected` **getLine**(`recordNumber?`): `Promise`\<`string`[]\>
+
+Reads a single record from the widget's data source by index.
+
+This method relies on `export` and enforces `lineLimit` when it is greater than 0.
+
+#### Parameters
+
+##### recordNumber?
+
+`number` = `0`
+
+Zero-based index of the record to read. Defaults to `0`.
+
+#### Returns
+
+`Promise`\<`string`[]\>
+
+The requested record as an array of string cell values.
+
+#### Throws
+
+When export or get support is missing, the index is negative, exceeds `lineLimit`, or is out of bounds.
+
 ***
 
 ### import()
 
-> `protected` **import**(`data`): `Promise`\<`boolean`\>
+> `protected` **import**(`newRecords`): `Promise`\<`boolean`\>
 
-Imports data into the widget's data source.
+Replaces all records in the widget's data source with the given CSV content.
+
+The base implementation only emits an action trigger and returns `false`.
+Most widgets should override this to update their internal data and return `true` on success.
 
 #### Parameters
 
-##### data
+##### newRecords
 
 [`CSVData`](../type-aliases/CSVData.md)
 
-The CSV data to import.
+Complete set of records to import.
 
 #### Returns
 
 `Promise`\<`boolean`\>
 
-#### Throws
-
-Error if not implemented.
+`true` when the data was imported; `false` in the base implementation.
 
 ***
 
@@ -352,7 +495,9 @@ Error if not implemented.
 
 > **importProcess**(): `Promise`\<`void`\>
 
-Handles the import process by opening the import dialog and importing data.
+Opens the generic data import dialog and pushes the imported CSV into the connector.
+
+Shows a toast about the result and does not throw on failure.
 
 #### Returns
 
@@ -364,7 +509,9 @@ Handles the import process by opening the import dialog and importing data.
 
 > `protected` **initialize**(): `Promise`\<`void`\>
 
-Initializes the widget (called in constructor).
+Performs common initialization steps for a connector instance.
+
+Subclasses can override this to hook into the lifecycle, but should usually call `super.initialize()`.
 
 #### Returns
 
@@ -374,13 +521,17 @@ Initializes the widget (called in constructor).
 
 ### reset()
 
-> `protected` **reset**(): `Promise`\<`void`\>
+> `protected` **reset**(): `Promise`\<`boolean`\>
 
-Resets the widget's data source.
+Clears the widget's data source.
+
+The base implementation only emits an action trigger and returns `false`.
 
 #### Returns
 
-`Promise`\<`void`\>
+`Promise`\<`boolean`\>
+
+`true` when the data was reset; `false` in the base implementation.
 
 ***
 
@@ -388,7 +539,10 @@ Resets the widget's data source.
 
 > `protected` **setContainerClass**(`className`, `add?`): `void`
 
-Sets an HTML class for the widget container.
+Adds or removes CSS classes from the widget container for styling purposes.
+
+When adding a class, it removes the "not-{className}" variant. When removing a class,
+it adds the "not-{className}" variant instead. This pattern helps with CSS targeting.
 
 #### Parameters
 
@@ -396,13 +550,13 @@ Sets an HTML class for the widget container.
 
 `string`
 
-The class name to set.
+The CSS class name to add or remove.
 
 ##### add?
 
 `boolean` = `true`
 
-Whether to add or remove the class. (if !add the "not-className" class is added, and the original is removed)
+When true, adds the class. When false, removes the class and adds "not-{className}".
 
 #### Returns
 
@@ -410,7 +564,14 @@ Whether to add or remove the class. (if !add the "not-className" class is added,
 
 #### Throws
 
-- If no DOM is available.
+Throws if the widget doesn't have a DOM (e.g., when used in a service context).
+
+#### Example
+
+```typescript
+this.setContainerClass('active', true);  // Adds 'active' class, removes 'not-active'
+this.setContainerClass('active', false); // Removes 'active' class, adds 'not-active'
+```
 
 #### Inherited from
 
@@ -418,11 +579,45 @@ Whether to add or remove the class. (if !add the "not-className" class is added,
 
 ***
 
-### updateDisplayName()
+### setLine()
 
-> `protected` **updateDisplayName**(): `void`
+> `protected` **setLine**(`record`, `recordNumber`): `Promise`\<`boolean`\>
 
-Updates the display name of the widget.
+Replaces a single record in the widget's data source.
+
+The base implementation only emits an action trigger and returns `false`.
+Most widgets should override this to update their internal data and return `true` on success.
+
+#### Parameters
+
+##### record
+
+`string`[]
+
+New record content.
+
+##### recordNumber
+
+`number`
+
+Zero-based index of the record to replace.
+
+#### Returns
+
+`Promise`\<`boolean`\>
+
+`true` when the record was updated; `false` in the base implementation.
+
+***
+
+### updateActions()
+
+> `protected` **updateActions**(): `void`
+
+Registers action effects and triggers for the data connector based on the implemented actions.
+
+This wires the widget into the haptic action system so other widgets and flows can
+call into this connector and listen to its events.
 
 #### Returns
 
@@ -446,9 +641,9 @@ Updates the display name of the widget.
 
 ### isDataConnector()
 
-> `static` **isDataConnector**(`object`, `actionsRequiredSupport`): `boolean`
+> `static` **isDataConnector**(`object`, `actionsRequiredSupport?`): `boolean`
 
-Checks if a board object is a DataConnector and supports required actions.
+Checks if a board object represents a DataConnector widget and, optionally, if it supports given actions.
 
 #### Parameters
 
@@ -456,19 +651,19 @@ Checks if a board object is a DataConnector and supports required actions.
 
 [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
-The board object to check.
+Board object to check.
 
-##### actionsRequiredSupport
+##### actionsRequiredSupport?
 
-[`DataConnectorActions`](../enumerations/DataConnectorActions.md)[] = `[]`
+[`DataConnectorAction`](../enumerations/DataConnectorAction.md)[] = `[]`
 
-Actions that must be supported.
+Actions that must be supported for the object to qualify.
 
 #### Returns
 
 `boolean`
 
-True if the object is a DataConnector and supports the required actions.
+`true` when the object is marked as a data connector and supports at least one of the requested actions.
 
 ***
 
@@ -476,7 +671,9 @@ True if the object is a DataConnector and supports the required actions.
 
 > `static` **saveCSVInBoardAssets**(`file`): `Promise`\<`StorageNodeCreatedResponseDto`\>
 
-Saves a CSV file in board assets and attempts to close the import dialog if open.
+Saves a CSV file into the board assets area and quietly confirms the import dialog if it is open.
+
+This is mostly used by widgets when exporting data for the user.
 
 #### Parameters
 
@@ -484,10 +681,10 @@ Saves a CSV file in board assets and attempts to close the import dialog if open
 
 `File`
 
-The CSV file to upload.
+CSV file to upload as a board asset.
 
 #### Returns
 
 `Promise`\<`StorageNodeCreatedResponseDto`\>
 
-The uploaded file node.
+The uploaded file node returned by the board service.

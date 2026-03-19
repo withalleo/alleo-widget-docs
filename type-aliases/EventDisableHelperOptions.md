@@ -14,15 +14,15 @@ Options for the EventDisableHelper.
 
 ### autoManage?
 
-> `optional` **autoManage**: `boolean`
+> `optional` **autoManage?**: `boolean`
 
 If true, the EventDisableHelper will automatically manage the events based on the interactibility of the widget (default: true).
 
 ***
 
-### callback()?
+### callback?
 
-> `optional` **callback**: (`e`) => `void`
+> `optional` **callback?**: (`e`) => `void`
 
 A callback that will be called when the event is cancelled. (So it can be used to do something else as well)
 

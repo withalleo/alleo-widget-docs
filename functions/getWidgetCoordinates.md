@@ -8,22 +8,36 @@
 
 > **getWidgetCoordinates**(`event`): `Coordinates`
 
-Retrieves the coordinates of a pointer event within the widget.
+Converts browser viewport coordinates from a pointer event to widget-relative coordinates.
+
+Takes a mouse/touch event and calculates the position within the widget's coordinate system,
+accounting for widget scaling, rotation, and viewport position. Essential for accurate
+pointer tracking in interactive widgets.
 
 ## Parameters
 
 ### event
 
-The event to get coordinates from.
+`PointerEvent` \| `MouseEvent` \| `Touch` \| \{ `clientX`: `number`; `clientY`: `number`; \}
 
-`PointerEvent` | `MouseEvent` | `Touch` | \{ `clientX`: `number`; `clientY`: `number`; \}
+The pointer/mouse event or object with clientX/clientY properties.
 
 ## Returns
 
 `Coordinates`
 
-The coordinates of the widget.
+Object with x and y coordinates relative to the widget's top-left corner.
 
 ## Throws
 
-Will throw an error if the widget does not have a DOM.
+Throws if the widget doesn't have a DOM (service widgets).
+
+## Example
+
+```typescript
+element.addEventListener('click', (event) => {
+  const coords = getWidgetCoordinates(event);
+  console.log(`Clicked at widget position: ${coords.x}, ${coords.y}`);
+  drawCircle(coords.x, coords.y);
+});
+```

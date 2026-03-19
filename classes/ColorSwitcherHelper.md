@@ -6,8 +6,36 @@
 
 # Class: ColorSwitcherHelper
 
-A helper class for creating a color switcher (Which is like a color picker, but only changes between two pre-defined colors when clicked)
-Extends the ColorPickerHelper class.
+Provides a simplified color picker that toggles between two predefined colors.
+
+A lightweight alternative to ColorPickerHelper that switches between two colors (typically
+text and textContrast) with a single click. Extends ColorPickerHelper to inherit core
+functionality while simplifying the UI to a toggle button. Ideal for widgets needing
+quick theme switching without full color selection UI.
+
+## Example
+
+```typescript
+// Basic color switcher for text color
+const textSwitcher = new ColorSwitcherHelper(
+  'textColor',
+  '--text-color',
+  DefaultColors.text
+);
+
+// Custom switcher with specific colors and callback
+const customSwitcher = new ColorSwitcherHelper(
+  'bgColor',
+  '--background',
+  DefaultColors.background,
+  {
+    label: 'Toggle Background',
+    icon: { icon: 'moon', set: 'fas' }
+  },
+  '.widget-container',
+  (color) => console.log('Switched to:', color)
+);
+```
 
 ## Extends
 
@@ -19,7 +47,10 @@ Extends the ColorPickerHelper class.
 
 > **new ColorSwitcherHelper**(`handle?`, `CSSVariable?`, `defaultColor?`, `coloPickerSettings?`, `widgetContainerSelector?`, `callbackOnColorChange?`, `displayColorSwitcherButtonOnInit?`): `ColorSwitcherHelper`
 
-Creates a Color Switcher
+Creates a color switcher that toggles between two predefined colors.
+
+Initializes a toggle button that switches between text and textContrast colors
+(or custom colors via callback). Automatically adds a button to the widget toolbar.
 
 #### Parameters
 
@@ -27,43 +58,43 @@ Creates a Color Switcher
 
 `string` = `'fontColor'`
 
-The handle for the color switcher.
+Shared variable name for storing the current color.
 
 ##### CSSVariable?
 
 `string` = `'--widget-font-color'`
 
-The CSS variable for the font color.
+CSS custom property to update with the color.
 
 ##### defaultColor?
 
 `string` = `DefaultColors.text`
 
-The default color.
+Initial color value.
 
 ##### coloPickerSettings?
 
-`Partial`\<\{ `icon`: \{ `icon`: `string`; `set`: `string`; \}; `includeTransparent`: `boolean`; `label`: `string`; `palette`: `string`; \}\> = `...`
+`Partial`\<\{ `icon`: \{ `icon`: `string`; `set`: `string`; \}; `includeTransparent`: `boolean`; `label`: `string`; `palette`: `ColorPalette`; \}\> = `...`
 
-The settings for the color picker.
+UI configuration for the switcher button.
 
 ##### widgetContainerSelector?
 
 `string` = `'.widget-container'`
 
-The CSS selector for the widget container.
+CSS selector for the widget's container.
 
 ##### callbackOnColorChange?
 
 (`color`) => `undefined`
 
-The callback function to call on color change.
+Callback invoked when color changes, receives new color string.
 
 ##### displayColorSwitcherButtonOnInit?
 
 `boolean` = `true`
 
-Whether to display the color switcher button on initialization.
+Whether to show the switcher button immediately.
 
 #### Returns
 
@@ -71,7 +102,7 @@ Whether to display the color switcher button on initialization.
 
 #### Throws
 
-Will throw an error if the DOM is not available.
+Throws if widget doesn't have a DOM (service widgets not supported).
 
 #### Overrides
 
@@ -93,7 +124,7 @@ The current color.
 
 ### createColorPickerButton()
 
-> **createColorPickerButton**(`button?`, `coloPickerSettings?`): `void`
+> **createColorPickerButton**(`button?`, `coloPickerSettings`): `void`
 
 Creates a color picker button.
 
@@ -105,9 +136,9 @@ Creates a color picker button.
 
 The context menu color button.
 
-##### coloPickerSettings?
+##### coloPickerSettings
 
-`Partial`\<\{ `icon`: \{ `icon`: `string`; `set`: `string`; \}; `includeTransparent`: `boolean`; `label`: `string`; `palette`: `string`; \}\>
+`Partial`\<\{ `icon`: \{ `icon`: `string`; `set`: `string`; \}; `includeTransparent`: `boolean`; `label`: `string`; `palette`: `ColorPalette`; \}\>
 
 The settings for the color picker.
 

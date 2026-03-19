@@ -8,15 +8,15 @@
 
 > **Notification** = `object`
 
-Represents a notification to be displayed to the user.
+Configuration object for the content and appearance of a notification.
 
 ## Properties
 
 ### image?
 
-> `optional` **image**: `string`
+> `optional` **image?**: `string`
 
-Optional image URL for the notification.
+Optional image URL displayed alongside the notification.
 
 ***
 
@@ -24,20 +24,20 @@ Optional image URL for the notification.
 
 > **text**: `string`
 
-The notification message (HTML supported).
+The main notification message (supports HTML content).
 
 ***
 
 ### title?
 
-> `optional` **title**: `string`
+> `optional` **title?**: `string`
 
-Optional title for the notification.
+Optional title displayed above the message text.
 
 ***
 
 ### type?
 
-> `optional` **type**: `string`
+> `optional` **type?**: `string`
 
-The type of notification (e.g., info).
+The notification type determining visual style (e.g., 'info').

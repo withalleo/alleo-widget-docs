@@ -16,7 +16,7 @@ Simple notification class for displaying info messages.
 
 ### Constructor
 
-> **new SimpleUserNotification**(`notificationText`, `options`): `SimpleUserNotification`
+> **new SimpleUserNotification**(`notificationText`, `options?`): `SimpleUserNotification`
 
 Creates a SimpleUserNotification instance.
 
@@ -28,7 +28,7 @@ Creates a SimpleUserNotification instance.
 
 The message to display.
 
-##### options
+##### options?
 
 [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) = `undefined`
 
@@ -180,13 +180,13 @@ New notification data.
 
 ### updateOptions()
 
-> **updateOptions**(`options`): `void`
+> **updateOptions**(`options?`): `void`
 
 Updates notification options and redraws content.
 
 #### Parameters
 
-##### options
+##### options?
 
 [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) = `undefined`
 
@@ -224,7 +224,7 @@ New message to display.
 
 ### error()
 
-> `static` **error**(`message`, `actions`, `throttle`): `void`
+> `static` **error**(`message`, `actions?`, `throttle?`): `void`
 
 Shows an error notification.
 
@@ -236,13 +236,13 @@ Shows an error notification.
 
 Message to display.
 
-##### actions
+##### actions?
 
 `string`[] = `[]`
 
 Optional actions.
 
-##### throttle
+##### throttle?
 
 `boolean` = `true`
 
@@ -260,7 +260,7 @@ If true, throttles notifications.
 
 ### info()
 
-> `static` **info**(`message`, `actions`, `throttle`): `void`
+> `static` **info**(`message`, `actions?`, `throttle?`): `void`
 
 Shows an info notification.
 
@@ -272,13 +272,13 @@ Shows an info notification.
 
 Message to display.
 
-##### actions
+##### actions?
 
 `string`[] = `[]`
 
 Optional actions.
 
-##### throttle
+##### throttle?
 
 `boolean` = `true`
 
@@ -296,7 +296,7 @@ If true, throttles notifications.
 
 ### warn()
 
-> `static` **warn**(`message`, `actions`, `throttle`): `void`
+> `static` **warn**(`message`, `actions?`, `throttle?`): `void`
 
 Shows a warning notification.
 
@@ -308,13 +308,13 @@ Shows a warning notification.
 
 Message to display.
 
-##### actions
+##### actions?
 
 `string`[] = `[]`
 
 Optional actions.
 
-##### throttle
+##### throttle?
 
 `boolean` = `true`
 

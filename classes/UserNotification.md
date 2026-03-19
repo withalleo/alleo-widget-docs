@@ -6,7 +6,34 @@
 
 # Class: UserNotification
 
-Displays and manages user notifications in the UI.
+Manages toast-style notifications displayed to users in the Alleo interface.
+
+Provides a simple API for showing informational messages, alerts, and custom notifications
+with configurable timeouts, buttons, and styling. Notifications appear as overlay toasts
+in the top-right corner of the interface by default.
+
+## Example
+
+```typescript
+// Simple info notification
+UserNotification.show('Operation completed successfully');
+
+// Notification with title and image
+UserNotification.show({
+  title: 'Welcome',
+  text: 'Thanks for using our widget!',
+  image: 'https://example.com/icon.png'
+});
+
+// Never-closing notification with custom button
+UserNotification.show('Important message', {
+  neverTimeout: true,
+  alternativeButton: {
+    text: 'Learn More',
+    onClick: () => window.open('https://example.com')
+  }
+});
+```
 
 ## Extended by
 
@@ -16,7 +43,7 @@ Displays and manages user notifications in the UI.
 
 ### Constructor
 
-> **new UserNotification**(`notification`, `options`): `UserNotification`
+> **new UserNotification**(`notification`, `options?`): `UserNotification`
 
 Creates a new UserNotification instance.
 
@@ -28,7 +55,7 @@ Creates a new UserNotification instance.
 
 Notification data.
 
-##### options
+##### options?
 
 [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) = `{}`
 
@@ -136,13 +163,13 @@ New notification data.
 
 ### updateOptions()
 
-> **updateOptions**(`options`): `void`
+> **updateOptions**(`options?`): `void`
 
 Updates notification options and redraws content.
 
 #### Parameters
 
-##### options
+##### options?
 
 [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) = `undefined`
 
@@ -156,7 +183,7 @@ New options to apply.
 
 ### error()
 
-> `static` **error**(`message`, `actions`, `throttle`): `void`
+> `static` **error**(`message`, `actions?`, `throttle?`): `void`
 
 Shows an error notification.
 
@@ -168,13 +195,13 @@ Shows an error notification.
 
 Message to display.
 
-##### actions
+##### actions?
 
 `string`[] = `[]`
 
 Optional actions.
 
-##### throttle
+##### throttle?
 
 `boolean` = `true`
 
@@ -188,7 +215,7 @@ If true, throttles notifications.
 
 ### info()
 
-> `static` **info**(`message`, `actions`, `throttle`): `void`
+> `static` **info**(`message`, `actions?`, `throttle?`): `void`
 
 Shows an info notification.
 
@@ -200,13 +227,13 @@ Shows an info notification.
 
 Message to display.
 
-##### actions
+##### actions?
 
 `string`[] = `[]`
 
 Optional actions.
 
-##### throttle
+##### throttle?
 
 `boolean` = `true`
 
@@ -220,7 +247,7 @@ If true, throttles notifications.
 
 ### warn()
 
-> `static` **warn**(`message`, `actions`, `throttle`): `void`
+> `static` **warn**(`message`, `actions?`, `throttle?`): `void`
 
 Shows a warning notification.
 
@@ -232,13 +259,13 @@ Shows a warning notification.
 
 Message to display.
 
-##### actions
+##### actions?
 
 `string`[] = `[]`
 
 Optional actions.
 
-##### throttle
+##### throttle?
 
 `boolean` = `true`
 

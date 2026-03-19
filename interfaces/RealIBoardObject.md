@@ -16,10 +16,10 @@ Interface extending IBoardObject with allowing the optional properties exposing 
 
 ### component?
 
-> `optional` **component**: `Record`\<`string`, `any`\>
+> `optional` **component?**: `Record`\<`string`, `any`\>
 
 ***
 
 ### obj?
 
-> `optional` **obj**: `Record`\<`string`, `any`\>
+> `optional` **obj?**: `Record`\<`string`, `any`\>

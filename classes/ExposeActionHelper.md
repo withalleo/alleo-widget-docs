@@ -6,7 +6,40 @@
 
 # Class: ExposeActionHelper
 
-Helper class for exposing widget functionality to other objects on the board.
+Enables inter-widget communication by exposing functions to other widgets on the board.
+
+Provides mechanisms for widgets to expose their functionality to other widgets, enabling
+cross-widget interactions and data sharing. Supports both synchronous function calls and
+asynchronous message passing. Essential for building widget ecosystems where multiple
+widgets need to coordinate or share data.
+
+## Example
+
+```typescript
+// Expose functions from a widget
+ExposeActionHelper.exposeActions([
+  {
+    name: 'getData',
+    action: () => myData
+  },
+  {
+    name: 'updateValue',
+    action: (newValue: number) => this.value = newValue
+  }
+]);
+
+// Call exposed function from another widget
+const targetWidget = BoardObjectHelper.getBoardObjectById(widgetId);
+const getData = ExposeActionHelper.getExposedFunction(targetWidget, 'getData');
+const data = getData();
+
+// Send async message to widget
+ExposeActionHelper.sendAsyncMessage(targetWidget, {
+  type: 'update',
+  function: 'refresh',
+  data: [{ timestamp: Date.now() }]
+});
+```
 
 ## Constructors
 
@@ -24,7 +57,10 @@ Helper class for exposing widget functionality to other objects on the board.
 
 > `static` **exposeActions**(`actions`): `void`
 
-Exposes actions by adding them to the widget reference of the root node.
+Exposes functions to make them callable by other widgets on the board.
+
+Registers functions in the widget's reference object, making them discoverable and
+callable by other widgets. Each exposed function can be invoked remotely by name.
 
 #### Parameters
 
@@ -32,19 +68,27 @@ Exposes actions by adding them to the widget reference of the root node.
 
 `object`[]
 
-The actions to expose.
+Array of action objects to expose.
 
 #### Returns
 
 `void`
 
+#### Static
+
 ***
 
 ### getExposedFunction()
 
-> `static` **getExposedFunction**(`widget`, `functionName`): `AnyFunction`
+> `static` **getExposedFunction**\<`T`\>(`widget`, `functionName`): `T`
 
 Gets an exposed function from the widget by its name.
+
+#### Type Parameters
+
+##### T
+
+`T` *extends* `AnyFunction`
 
 #### Parameters
 
@@ -62,7 +106,7 @@ The name of the function to get.
 
 #### Returns
 
-`AnyFunction`
+`T`
 
 The exposed function.
 
@@ -76,17 +120,19 @@ Will throw an error if no DOM is available or if the function is not found.
 
 > `static` **getRootNode**(): `HTMLElementWithWidgetReference`
 
-Gets the root node of the widget.
+Retrieves the widget's root HTML node with widget reference capability.
 
 #### Returns
 
 `HTMLElementWithWidgetReference`
 
-The root node with widget reference.
+The root node element containing widget references.
 
 #### Throws
 
-Will throw an error if no DOM is available.
+Throws if the widget doesn't have a DOM (service widgets not supported).
+
+#### Static
 
 ***
 

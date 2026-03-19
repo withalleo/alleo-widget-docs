@@ -6,7 +6,34 @@
 
 # Class: CSVHelper
 
-Helper class for CSV operations.
+Provides utilities for parsing, manipulating, and generating CSV data.
+
+Handles CSV parsing with automatic delimiter detection, proper quote handling,
+and support for various line ending formats. Includes methods for converting
+between CSV strings and 2D arrays, downloading CSV files, and copying data to
+clipboard. Essential for widgets working with tabular data import/export.
+
+## Example
+
+```typescript
+// Parse CSV string to array
+const csvString = 'Name,Age\nJohn,30\nJane,25';
+const data = CSVHelper.csvToArray(csvString);
+console.log(data); // [['Name', 'Age'], ['John', '30'], ['Jane', '25']]
+
+// Convert array to CSV
+const arrayData = [['Name', 'Age'], ['John', '30']];
+const csv = CSVHelper.arrayToCsv(arrayData);
+
+// Download CSV file
+CSVHelper.downloadCsv(data, 'export.csv');
+
+// Copy to clipboard
+CSVHelper.copyToClipboard(data);
+
+// Make a deep copy
+const copy = CSVHelper.hardCopy(data);
+```
 
 ## Constructors
 
@@ -63,7 +90,7 @@ Loads a CSV from the user's computer.
 
 ### loadCSVFromAssetFile()
 
-> **loadCSVFromAssetFile**(`fileId`, `recordSeparator`, `lineSeparator`): `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
+> **loadCSVFromAssetFile**(`fileId`, `recordSeparator?`, `lineSeparator?`): `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
 
 Loads a CSV from an asset file.
 
@@ -75,11 +102,11 @@ Loads a CSV from an asset file.
 
 The ID of the asset file.
 
-##### recordSeparator
+##### recordSeparator?
 
 `string` = `','`
 
-##### lineSeparator
+##### lineSeparator?
 
 `string` = '\n'
 
@@ -91,7 +118,7 @@ The ID of the asset file.
 
 ### loadCSVFromText()
 
-> **loadCSVFromText**(`text`, `recordSeparator`, `lineSeparator`): `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
+> **loadCSVFromText**(`text`, `recordSeparator?`, `lineSeparator?`): `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
 
 Loads a CSV from a string.
 
@@ -103,11 +130,11 @@ Loads a CSV from a string.
 
 The CSV as string.
 
-##### recordSeparator
+##### recordSeparator?
 
 `string` = `','`
 
-##### lineSeparator
+##### lineSeparator?
 
 `string` = '\n'
 
@@ -119,7 +146,7 @@ The CSV as string.
 
 ### parseCSVFromString()
 
-> `protected` **parseCSVFromString**(`text`, `recordSeparator`, `lineSeparator`): `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
+> `protected` **parseCSVFromString**(`text`, `recordSeparator?`, `lineSeparator?`): `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
 
 Parses a CSV string.
 
@@ -129,11 +156,11 @@ Parses a CSV string.
 
 `string`
 
-##### recordSeparator
+##### recordSeparator?
 
 `string` = `','`
 
-##### lineSeparator
+##### lineSeparator?
 
 `string` = '\n'
 
@@ -145,19 +172,19 @@ Parses a CSV string.
 
 ### arrayToCsv()
 
-> `static` **arrayToCsv**(`contentBlocks`, `recordSeparator`, `lineSeparator`): `string`
+> `static` **arrayToCsv**(`contentBlocks`, `recordSeparator?`, `lineSeparator?`): `string`
 
 #### Parameters
 
 ##### contentBlocks
 
-(`string` \| `number`)[] | (`string` \| `number`)[][]
+(`string` \| `number`)[] \| (`string` \| `number`)[][]
 
-##### recordSeparator
+##### recordSeparator?
 
 `string` = `','`
 
-##### lineSeparator
+##### lineSeparator?
 
 `string` = '\n'
 
@@ -169,7 +196,7 @@ Parses a CSV string.
 
 ### csvToArray()
 
-> `static` **csvToArray**(`csv`, `recordSeparator`, `lineSeparator`): [`CSVData`](../type-aliases/CSVData.md)
+> `static` **csvToArray**(`csv`, `recordSeparator?`, `lineSeparator?`): [`CSVData`](../type-aliases/CSVData.md)
 
 #### Parameters
 
@@ -177,11 +204,11 @@ Parses a CSV string.
 
 `string`
 
-##### recordSeparator
+##### recordSeparator?
 
 `string` = `','`
 
-##### lineSeparator
+##### lineSeparator?
 
 `string` = '\n'
 
@@ -209,7 +236,7 @@ Parses a CSV string.
 
 ### loadCSVFromSpreadsheetAssetFile()
 
-> `static` **loadCSVFromSpreadsheetAssetFile**(`fileId`, `sheetNumber`): `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
+> `static` **loadCSVFromSpreadsheetAssetFile**(`fileId`, `sheetNumber?`): `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
 
 #### Parameters
 
@@ -217,7 +244,7 @@ Parses a CSV string.
 
 `string`
 
-##### sheetNumber
+##### sheetNumber?
 
 `number` = `0`
 

@@ -6,7 +6,7 @@
 
 # Enumeration: NotificationType
 
-Enum for notification types.
+Enum for notification types determining the visual style of notifications.
 
 ## Enumeration Members
 

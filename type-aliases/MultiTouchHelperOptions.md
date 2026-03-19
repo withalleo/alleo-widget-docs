@@ -14,7 +14,7 @@ Options for configuring the MultiTouchHelper.
 
 ### adjustWidgetSizeAutomatically?
 
-> `optional` **adjustWidgetSizeAutomatically**: `boolean`
+> `optional` **adjustWidgetSizeAutomatically?**: `boolean`
 
 If true, the widget size will not be adjusted automatically when the zoom level changes (default: true)
 
@@ -22,7 +22,7 @@ If true, the widget size will not be adjusted automatically when the zoom level 
 
 ### autoManage?
 
-> `optional` **autoManage**: `boolean`
+> `optional` **autoManage?**: `boolean`
 
 If true, the MultiTouchHelper will automatically manage the touch interactions (default: true)
 
@@ -30,7 +30,7 @@ If true, the MultiTouchHelper will automatically manage the touch interactions (
 
 ### element?
 
-> `optional` **element**: `HTMLElement`
+> `optional` **element?**: `HTMLElement`
 
 The element that will be manipulated (default: the whole widget)
 
@@ -38,7 +38,7 @@ The element that will be manipulated (default: the whole widget)
 
 ### enableDblClickToZoom?
 
-> `optional` **enableDblClickToZoom**: `boolean`
+> `optional` **enableDblClickToZoom?**: `boolean`
 
 Enable to double-click to zoom into the widget (default: false)
 
@@ -46,7 +46,7 @@ Enable to double-click to zoom into the widget (default: false)
 
 ### enablePointerOverWidget?
 
-> `optional` **enablePointerOverWidget**: `boolean`
+> `optional` **enablePointerOverWidget?**: `boolean`
 
 If true, the pointer over widget will be shown (default: false)
 
@@ -54,15 +54,15 @@ If true, the pointer over widget will be shown (default: false)
 
 ### eventList?
 
-> `optional` **eventList**: `string`[]
+> `optional` **eventList?**: `string`[]
 
 A list of events that will be disabled when the MultiTouchHelper is enabled
 
 ***
 
-### onScaleAdjustment()?
+### onScaleAdjustment?
 
-> `optional` **onScaleAdjustment**: (`scale`) => `void`
+> `optional` **onScaleAdjustment?**: (`scale`) => `void`
 
 A callback function that will be called when the scale is adjusted
 
@@ -80,7 +80,7 @@ A callback function that will be called when the scale is adjusted
 
 ### showAdjustSizeButton?
 
-> `optional` **showAdjustSizeButton**: `boolean`
+> `optional` **showAdjustSizeButton?**: `boolean`
 
 If true, a button will be shown to adjust the widget size manually (default: false)
 
@@ -88,7 +88,7 @@ If true, a button will be shown to adjust the widget size manually (default: fal
 
 ### unlockHelper?
 
-> `optional` **unlockHelper**: `boolean`
+> `optional` **unlockHelper?**: `boolean`
 
 If true, the widget will display an unlock helper icon for editors. This might be practical when the widget content is not propagating out. (ie. an iframe) (default: false)
 
@@ -96,6 +96,6 @@ If true, the widget will display an unlock helper icon for editors. This might b
 
 ### zoomOutButtonId?
 
-> `optional` **zoomOutButtonId**: `string`
+> `optional` **zoomOutButtonId?**: `string`
 
 the id of the zoom out button data fiueld

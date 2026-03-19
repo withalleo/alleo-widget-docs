@@ -6,7 +6,35 @@
 
 # Class: BoardTextElementHelper
 
-A helper class for handling text element-related operations on the board.
+Provides utilities for reading and writing text content from various board objects.
+
+Handles text extraction and manipulation across multiple object types including containers,
+sticky notes, notepads, text labels, and text-based widgets. Supports multiple formats
+(plain text, HTML, Markdown) and provides consistent APIs for heterogeneous object types.
+Essential for widgets that need to process or generate text content from board objects.
+
+## Example
+
+```typescript
+// Check if object supports text operations
+const obj = BoardObjectHelper.getBoardObjectById(objectId);
+if (BoardTextElementHelper.isSupported(obj)) {
+  // Get text content
+  const texts = await BoardTextElementHelper.getTextContent(obj, {
+    format: TextInputFormat.Text
+  });
+  console.log('Text:', texts.join('\n'));
+
+  // Set text content
+  await BoardTextElementHelper.setTextContent(obj, ['New content'], {
+    format: TextInputFormat.Text,
+    append: false
+  });
+}
+
+// Extract text from container and all children
+const containerText = await BoardTextElementHelper.getTextContent(containerObj);
+```
 
 ## Constructors
 
@@ -24,7 +52,11 @@ A helper class for handling text element-related operations on the board.
 
 > `static` **getTextContent**(`object`, `options?`): `Promise`\<`string`[]\>
 
-Gets the text content of a board object.
+Extracts text content from a board object in the specified format.
+
+Recursively extracts text from containers (including child objects), retrieves
+content from notepads, sticky notes, text labels, and text-based widgets.
+Returns an array of text strings, one per object or content section.
 
 #### Parameters
 
@@ -32,19 +64,21 @@ Gets the text content of a board object.
 
 [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
-The board object.
+The board object to extract text from.
 
 ##### options?
 
 [`GetTextContentOptions`](../type-aliases/GetTextContentOptions.md) = `{}`
 
-The options for getting text content.
+Configuration for text extraction.
 
 #### Returns
 
 `Promise`\<`string`[]\>
 
-The text content of the board object.
+Array of text strings extracted from the object and its children.
+
+#### Static
 
 ***
 
@@ -52,8 +86,11 @@ The text content of the board object.
 
 > `static` **isSupported**(`object`): `boolean`
 
-Checks if the given board object is a supported object type for text content operations.
-Supported types include Container, StickyNote, Notepad, Label (Text) and certain Widgets.
+Determines if a board object supports text content operations.
+
+Checks if the object is one of the supported types: Container, StickyNote, Text label,
+Notepad, or text-based widgets (string, number, boolean). Use this before attempting
+text operations to ensure compatibility.
 
 #### Parameters
 
@@ -61,13 +98,15 @@ Supported types include Container, StickyNote, Notepad, Label (Text) and certain
 
 [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
 
-The board object to check.
+The board object to check for text support.
 
 #### Returns
 
 `boolean`
 
-True if the object is supported, false otherwise.
+True if text operations are supported, false otherwise.
+
+#### Static
 
 ***
 

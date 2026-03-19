@@ -8,12 +8,28 @@
 
 > **waitUntilDomUpdates**(): `Promise`\<`void`\>
 
-Waits until the DOM rendering process is finished.
+Waits for the browser to complete all pending DOM rendering and layout operations.
 
-(ie. if you change the content of a html object it will re-render the DOM asynchronously. This function will wait until the rendering is finished.)
+When you modify DOM elements, the browser updates them asynchronously. This function
+ensures that all visual updates are complete before proceeding, which is useful for
+measuring element dimensions, capturing screenshots, or ensuring animations have started.
 
 ## Returns
 
 `Promise`\<`void`\>
 
-A promise that resolves after the DOM updated and the HTML document is full rendered.
+A promise that resolves after the DOM has fully updated and rendered.
+
+## Example
+
+```typescript
+// Modify DOM and wait for rendering
+element.textContent = 'New text';
+await waitUntilDomUpdates();
+const height = element.offsetHeight; // Now accurate
+
+// Ensure element is visible before interaction
+modal.style.display = 'block';
+await waitUntilDomUpdates();
+modal.querySelector('button').focus();
+```

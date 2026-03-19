@@ -6,7 +6,9 @@
 
 # Class: DataConnector
 
-Helper class for interacting with DataConnector widgets on the board.
+Thin helper wrapper for interacting with a DataConnector widget on the board.
+
+This class calls the exposed connector actions on a specific board object identified by `objectId`.
 
 ## Constructors
 
@@ -14,13 +16,15 @@ Helper class for interacting with DataConnector widgets on the board.
 
 > **new DataConnector**(`objectId`): `DataConnector`
 
+Creates a new helper bound to a specific board object.
+
 #### Parameters
 
 ##### objectId
 
 `string`
 
-The ID of the board object to interact with.
+ID of the board object (widget instance) to interact with.
 
 #### Returns
 
@@ -34,7 +38,7 @@ The ID of the board object to interact with.
 
 > **get** **length**(): `number`
 
-Returns the number of records in the DataConnector widget.
+Number of records reported by the underlying DataConnector widget.
 
 ##### Returns
 
@@ -46,13 +50,13 @@ Returns the number of records in the DataConnector widget.
 
 #### Get Signature
 
-> **get** **supportedActions**(): [`DataConnectorActions`](../enumerations/DataConnectorActions.md)[]
+> **get** **supportedActions**(): [`DataConnectorAction`](../enumerations/DataConnectorAction.md)[]
 
-Returns the actions supported by the DataConnector widget.
+Actions that the underlying DataConnector widget reports as supported.
 
 ##### Returns
 
-[`DataConnectorActions`](../enumerations/DataConnectorActions.md)[]
+[`DataConnectorAction`](../enumerations/DataConnectorAction.md)[]
 
 ## Methods
 
@@ -60,7 +64,7 @@ Returns the actions supported by the DataConnector widget.
 
 > **append**(`row`): `Promise`\<`boolean`\>
 
-Appends a row to the DataConnector widget.
+Appends a single record to the underlying DataConnector.
 
 #### Parameters
 
@@ -68,11 +72,35 @@ Appends a row to the DataConnector widget.
 
 `string`[]
 
-The row to append.
+Record to append.
 
 #### Returns
 
 `Promise`\<`boolean`\>
+
+Whatever the widget's `append` implementation returns, typically `true` on success.
+
+***
+
+### deleteLine()
+
+> **deleteLine**(`lineNumber`): `Promise`\<`boolean`\>
+
+Deletes a specific record from the underlying DataConnector.
+
+#### Parameters
+
+##### lineNumber
+
+`number`
+
+Zero-based index of the record to delete.
+
+#### Returns
+
+`Promise`\<`boolean`\>
+
+Whatever the widget's `deleteLine` implementation returns.
 
 ***
 
@@ -80,13 +108,35 @@ The row to append.
 
 > **export**(): `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
 
-Exports the data from the DataConnector widget.
+Exports all records from the underlying DataConnector.
 
 #### Returns
 
 `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
 
-The exported CSV data.
+Exported records as a 2D CSV array.
+
+***
+
+### getLine()
+
+> **getLine**(`lineNumber?`): `Promise`\<`string`[]\>
+
+Reads a specific record from the underlying DataConnector.
+
+#### Parameters
+
+##### lineNumber?
+
+`number` = `0`
+
+Zero-based index of the record to fetch. Defaults to `0`.
+
+#### Returns
+
+`Promise`\<`string`[]\>
+
+The requested record as an array of string values.
 
 ***
 
@@ -94,7 +144,7 @@ The exported CSV data.
 
 > **import**(`data`): `Promise`\<`boolean`\>
 
-Imports data into the DataConnector widget.
+Imports data into the underlying DataConnector, replacing its current content.
 
 #### Parameters
 
@@ -102,8 +152,46 @@ Imports data into the DataConnector widget.
 
 [`CSVData`](../type-aliases/CSVData.md)
 
-The CSV data to import.
+Records to import.
 
 #### Returns
 
 `Promise`\<`boolean`\>
+
+Whatever the widget's `import` implementation returns, typically `true` on success.
+
+***
+
+### reset()
+
+> **reset**(): `Promise`\<`boolean`\>
+
+Resets the underlying DataConnector widget.
+
+#### Returns
+
+`Promise`\<`boolean`\>
+
+Whatever the widget's `reset` implementation returns.
+
+***
+
+### setLine()
+
+> **setLine**(`row`): `Promise`\<`boolean`\>
+
+Replaces a specific record in the underlying DataConnector.
+
+#### Parameters
+
+##### row
+
+`string`[]
+
+New record content.
+
+#### Returns
+
+`Promise`\<`boolean`\>
+
+Whatever the widget's `setLine` implementation returns.
