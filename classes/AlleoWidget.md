@@ -15,24 +15,55 @@ automatic handling of interactability states, design mode visualization, and pro
 ## Example
 
 ```typescript
-interface MyWidgetData {
-  counter: number;
-  label: string;
+
+class CounterWidget extends AlleoWidget<typeof CounterWidget.defaultSharedVariables> {
+    // "shared variables" are synchronized automatically. you can set the defaults here when a new widget is added.
+    // typescript type is also defined here.
+    private static defaultSharedVariables = {
+       'count': <number>0,
+    }
+
+   // The constructor will be called when the widget loads.
+   constructor() {
+       super(CounterWidget.defaultSharedVariables)
+       console.log('Widget loaded')
+
+       // let's render the UI for our fake widget
+       this.render()
+
+       // the [SharedVariable] class has a lot of tools to deal with synchronized data
+       // including an observer, that triggers a callback when any user on any device changes this variable.
+       new SharedVariable.observer(['count'], () => this.render())
+
+       this.domSelect('button').onclick = () => {
+            // otherwise you can use this as a normal variable.
+             this.shared.count = this.shared.count + 1
+
+             // Note: the observer will trigger immediately.
+             // eg. this.render() will run, before the console.log() in the next line
+            console.log(this.shared.count)
+       }
+   }
+
+   // destroy is called when the widget unloads
+   // (eg. the user closes the browser, the display is turned off, the user navigates to an other board,
+   // or just randomly when offscreen for performance reasons.)
+   public override destroy() {
+       super.destroy()
+       console.log('Widget destroyed')
+   }
+
+   // let's do some fake UI updates
+   private render() {
+       // the value for this.shared.count is always synced between instances.
+       // if you change it, it will change on other devices "live" as well.
+       // See [ShareVariableHelper] for more
+       const displayString = this.shared.count.toString()
+       this.domSelect('.counter-container').innerText = displayString
+   }
 }
 
-class MyWidget extends AlleoWidget<MyWidgetData> {
-  constructor() {
-    super({ counter: 0, label: 'Hello' });
-    this.shared.counter++; // Access and modify shared variables
-  }
-
-  destroy() {
-    // Clean up resources when widget is unloaded
-    console.log('Widget destroyed');
-  }
-}
-
-new MyWidget();
+new CounterWidget()
 ```
 
 ## Extended by

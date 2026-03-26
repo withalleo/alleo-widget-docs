@@ -4,7 +4,7 @@
 
 [@withalleo/alleo-widget](../globals.md) / WatsonxAiHelper
 
-# Class: WatsonxAiHelper
+# ~~Class: WatsonxAiHelper~~
 
 Provides utilities and configurations for IBM Watsonx AI integration.
 
@@ -12,6 +12,11 @@ Offers standardized configuration, model selection, instruction management, and 
 dialogs for widgets using IBM Watsonx AI services. Includes predefined models, customizable
 instructions, and form fields for AI configuration. Essential for widgets requiring
 Watsonx AI capabilities with consistent configuration patterns.
+
+## Deprecated
+
+Abandoned and considered insecure. Do not use for new development.
+Switch to AlleoAiService.
 
 ## Example
 
@@ -52,67 +57,67 @@ const message: AiMessage = {
 
 ## Properties
 
-### backendApiKey
+### ~~backendApiKey~~
 
 > `readonly` `static` **backendApiKey**: `string` = `WidgetSettings.settings.ApiKey`
 
 ***
 
-### backendUrl
+### ~~backendUrl~~
 
 > `readonly` `static` **backendUrl**: `string` = `WidgetSettings.settings.ApiRoot`
 
 ***
 
-### defaultInstructions
+### ~~defaultInstructions~~
 
 > `readonly` `static` **defaultInstructions**: [`Instruction`](../type-aliases/Instruction.md)[]
 
 ***
 
-### defaultModel
+### ~~defaultModel~~
 
 > `readonly` `static` **defaultModel**: `string`
 
 ***
 
-### defaultSharedVariables
+### ~~defaultSharedVariables~~
 
 > `readonly` `static` **defaultSharedVariables**: `object`
 
-#### customModel
+#### ~~customModel~~
 
 > **customModel**: `string`
 
-#### customQuery
+#### ~~customQuery~~
 
 > **customQuery**: `string`
 
-#### instruction
+#### ~~instruction~~
 
 > **instruction**: `string`
 
 ***
 
-### enableCustomQueries
+### ~~enableCustomQueries~~
 
 > `readonly` `static` **enableCustomQueries**: `boolean` = `!WidgetSettings.settings.DisableCustomQuery`
 
 ***
 
-### EnabledModels
+### ~~EnabledModels~~
 
 > `readonly` `static` **EnabledModels**: [`ConfigDialogSetting`](../type-aliases/ConfigDialogSetting.md)[]
 
 ***
 
-### settingsDialogFields
+### ~~settingsDialogFields~~
 
 > `static` **settingsDialogFields**: `FormlyFieldConfig`\<`FormlyFieldProps` & `object`\>[]
 
 ## Accessors
 
-### endpoint
+### ~~endpoint~~
 
 #### Get Signature
 
@@ -124,7 +129,7 @@ const message: AiMessage = {
 
 ***
 
-### instruction
+### ~~instruction~~
 
 #### Get Signature
 
@@ -136,7 +141,7 @@ const message: AiMessage = {
 
 ***
 
-### model
+### ~~model~~
 
 #### Get Signature
 
@@ -148,7 +153,7 @@ const message: AiMessage = {
 
 ***
 
-### projectId
+### ~~projectId~~
 
 #### Get Signature
 
@@ -160,7 +165,7 @@ const message: AiMessage = {
 
 ***
 
-### selectedInstruction
+### ~~selectedInstruction~~
 
 #### Get Signature
 
@@ -172,7 +177,7 @@ const message: AiMessage = {
 
 ***
 
-### advancedSettings
+### ~~advancedSettings~~
 
 #### Get Signature
 
@@ -184,7 +189,7 @@ const message: AiMessage = {
 
 ## Methods
 
-### getChatResponse()
+### ~~getChatResponse()~~
 
 > **getChatResponse**(`messages`, `model?`): `Promise`\<`string`\>
 
@@ -204,7 +209,7 @@ const message: AiMessage = {
 
 ***
 
-### getDiscoveryResponse()
+### ~~getDiscoveryResponse()~~
 
 > **getDiscoveryResponse**(`query`, `region`, `collectionId`, `instanceId`, `projectId`, `wxProjectId?`, `textEndpoint?`): `Promise`\<`any`\>
 
@@ -244,7 +249,7 @@ const message: AiMessage = {
 
 ***
 
-### getTextResponse()
+### ~~getTextResponse()~~
 
 > **getTextResponse**(`input`, `model?`): `Promise`\<`string`\>
 
