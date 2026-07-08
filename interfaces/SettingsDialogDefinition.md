@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / SettingsDialogDefinition
 
@@ -12,12 +12,12 @@
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `FormlyDialogModel` = `FormlyDialogModel`
+| Type Parameter                    | Default type        |
+| --------------------------------- | ------------------- |
+| `T` _extends_ `FormlyDialogModel` | `FormlyDialogModel` |
 
 ## Properties
 
-### fields
-
-> **fields**: [`ExtendedFormlyFieldConfig`](ExtendedFormlyFieldConfig.md)[]
+| Property                              | Type                                                          |
+| ------------------------------------- | ------------------------------------------------------------- |
+| <a id="property-fields"></a> `fields` | [`ExtendedFormlyFieldConfig`](ExtendedFormlyFieldConfig.md)[] |

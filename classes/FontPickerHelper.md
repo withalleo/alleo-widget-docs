@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / FontPickerHelper
 
@@ -20,30 +20,31 @@ text styling needs.
 const fontPicker = new FontPickerHelper();
 
 // Custom font picker with callback
-const customFontPicker = new FontPickerHelper(
-  'myFontHandle',
-  '--custom-font',
-  {
-    label: 'Choose Font',
-    defaultFont: 'Arial, sans-serif',
-    widgetContainerSelector: '.content',
-    callbackOnFontChange: (font) => {
-      console.log('Font changed to:', font);
-      updateTextElements(font);
-    },
-    displayFontPickerButtonOnInit: true
-  }
-);
+const customFontPicker = new FontPickerHelper("myFontHandle", "--custom-font", {
+  label: "Choose Font",
+  defaultFont: "Arial, sans-serif",
+  widgetContainerSelector: ".content",
+  callbackOnFontChange: (font) => {
+    console.log("Font changed to:", font);
+    updateTextElements(font);
+  },
+  displayFontPickerButtonOnInit: true,
+});
 
 // Access current font
-console.log('Current font:', fontPicker.font);
+console.log("Current font:", fontPicker.font);
 ```
 
 ## Constructors
 
 ### Constructor
 
-> **new FontPickerHelper**(`handle?`, `CSSVariable?`, `fontPickerSettings?`): `FontPickerHelper`
+```ts
+new FontPickerHelper(
+   handle?: string,
+   CSSVariable?: string,
+   fontPickerSettings?: FontPickerSettings): FontPickerHelper;
+```
 
 Creates a FontPickerHelper instance with font selection UI.
 
@@ -52,23 +53,11 @@ displays a font selection button in the widget toolbar.
 
 #### Parameters
 
-##### handle?
-
-`string` = `FontPickerHelper.defaultHandle`
-
-Shared variable name for storing the selected font.
-
-##### CSSVariable?
-
-`string` = `FontPickerHelper.defaultCSS`
-
-CSS custom property name to update with the font value.
-
-##### fontPickerSettings?
-
-[`FontPickerSettings`](../type-aliases/FontPickerSettings.md) = `...`
-
-Configuration options for the font picker.
+| Parameter             | Type                                                          | Default value                    | Description                                             |
+| --------------------- | ------------------------------------------------------------- | -------------------------------- | ------------------------------------------------------- |
+| `handle?`             | `string`                                                      | `FontPickerHelper.defaultHandle` | Shared variable name for storing the selected font.     |
+| `CSSVariable?`        | `string`                                                      | `FontPickerHelper.defaultCSS`    | CSS custom property name to update with the font value. |
+| `fontPickerSettings?` | [`FontPickerSettings`](../type-aliases/FontPickerSettings.md) | `...`                            | Configuration options for the font picker.              |
 
 #### Returns
 
@@ -82,21 +71,27 @@ Throws if widget doesn't have a DOM (service widgets not supported).
 
 ### font
 
-> **font**: `string`
+```ts
+font: string;
+```
 
-***
+---
 
 ### defaultCSS
 
-> `readonly` `static` **defaultCSS**: `string` = `'--widget-font'`
+```ts
+readonly static defaultCSS: string = '--widget-font';
+```
 
 Default CSS variable for the widget font.
 
-***
+---
 
 ### defaultHandle
 
-> `readonly` `static` **defaultHandle**: `string` = `'font-selector-font'`
+```ts
+readonly static defaultHandle: string = 'font-selector-font';
+```
 
 Default handle for the font selector.
 
@@ -104,17 +99,17 @@ Default handle for the font selector.
 
 ### createFontPickerButton()
 
-> `protected` **createFontPickerButton**(`button?`): `void`
+```ts
+protected createFontPickerButton(button?: ContextMenuFont): void;
+```
 
 Creates a font picker button on the widget bar.
 
 #### Parameters
 
-##### button?
-
-`ContextMenuFont` = `undefined`
-
-The context menu font button.
+| Parameter | Type              | Default value | Description                   |
+| --------- | ----------------- | ------------- | ----------------------------- |
+| `button?` | `ContextMenuFont` | `undefined`   | The context menu font button. |
 
 #### Returns
 
@@ -124,41 +119,41 @@ The context menu font button.
 
 Will throw an error if no DOM is available.
 
-***
+---
 
 ### onUpdate()
 
-> `protected` **onUpdate**(`font`): `void`
+```ts
+protected onUpdate(font: string): void;
+```
 
 Updates the font in the widget.
 
 #### Parameters
 
-##### font
-
-`string`
-
-The font to update.
+| Parameter | Type     | Description         |
+| --------- | -------- | ------------------- |
+| `font`    | `string` | The font to update. |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### setFont()
 
-> **setFont**(`font`): `void`
+```ts
+setFont(font: string): void;
+```
 
 Sets the font for the widget.
 
 #### Parameters
 
-##### font
-
-`string`
-
-The font to set.
+| Parameter | Type     | Description      |
+| --------- | -------- | ---------------- |
+| `font`    | `string` | The font to set. |
 
 #### Returns
 

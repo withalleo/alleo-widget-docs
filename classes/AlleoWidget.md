@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / AlleoWidget
 
@@ -15,55 +15,56 @@ automatic handling of interactability states, design mode visualization, and pro
 ## Example
 
 ```typescript
+class CounterWidget extends AlleoWidget<
+  typeof CounterWidget.defaultSharedVariables
+> {
+  // "shared variables" are synchronized automatically. you can set the defaults here when a new widget is added.
+  // typescript type is also defined here.
+  private static defaultSharedVariables = {
+    count: <number>0,
+  };
 
-class CounterWidget extends AlleoWidget<typeof CounterWidget.defaultSharedVariables> {
-    // "shared variables" are synchronized automatically. you can set the defaults here when a new widget is added.
-    // typescript type is also defined here.
-    private static defaultSharedVariables = {
-       'count': <number>0,
-    }
+  // The constructor will be called when the widget loads.
+  constructor() {
+    super(CounterWidget.defaultSharedVariables);
+    console.log("Widget loaded");
 
-   // The constructor will be called when the widget loads.
-   constructor() {
-       super(CounterWidget.defaultSharedVariables)
-       console.log('Widget loaded')
+    // let's render the UI for our fake widget
+    this.render();
 
-       // let's render the UI for our fake widget
-       this.render()
+    // the [SharedVariable] class has a lot of tools to deal with synchronized data
+    // including an observer, that triggers a callback when any user on any device changes this variable.
+    new SharedVariable.observer(["count"], () => this.render());
 
-       // the [SharedVariable] class has a lot of tools to deal with synchronized data
-       // including an observer, that triggers a callback when any user on any device changes this variable.
-       new SharedVariable.observer(['count'], () => this.render())
+    this.domSelect("button").onclick = () => {
+      // otherwise you can use this as a normal variable.
+      this.shared.count = this.shared.count + 1;
 
-       this.domSelect('button').onclick = () => {
-            // otherwise you can use this as a normal variable.
-             this.shared.count = this.shared.count + 1
+      // Note: the observer will trigger immediately.
+      // eg. this.render() will run, before the console.log() in the next line
+      console.log(this.shared.count);
+    };
+  }
 
-             // Note: the observer will trigger immediately.
-             // eg. this.render() will run, before the console.log() in the next line
-            console.log(this.shared.count)
-       }
-   }
+  // destroy is called when the widget unloads
+  // (eg. the user closes the browser, the display is turned off, the user navigates to an other board,
+  // or just randomly when offscreen for performance reasons.)
+  public override destroy() {
+    super.destroy();
+    console.log("Widget destroyed");
+  }
 
-   // destroy is called when the widget unloads
-   // (eg. the user closes the browser, the display is turned off, the user navigates to an other board,
-   // or just randomly when offscreen for performance reasons.)
-   public override destroy() {
-       super.destroy()
-       console.log('Widget destroyed')
-   }
-
-   // let's do some fake UI updates
-   private render() {
-       // the value for this.shared.count is always synced between instances.
-       // if you change it, it will change on other devices "live" as well.
-       // See [ShareVariableHelper] for more
-       const displayString = this.shared.count.toString()
-       this.domSelect('.counter-container').innerText = displayString
-   }
+  // let's do some fake UI updates
+  private render() {
+    // the value for this.shared.count is always synced between instances.
+    // if you change it, it will change on other devices "live" as well.
+    // See [ShareVariableHelper] for more
+    const displayString = this.shared.count.toString();
+    this.domSelect(".counter-container").innerText = displayString;
+  }
 }
 
-new CounterWidget()
+new CounterWidget();
 ```
 
 ## Extended by
@@ -72,17 +73,17 @@ new CounterWidget()
 
 ## Type Parameters
 
-### SharedVariableStructure
-
-`SharedVariableStructure` *extends* `Record`\<`string`, `any`\> = `Record`\<`string`, `any`\>
-
-The structure of the shared variables (an object with key-value pairs).
+| Type Parameter                                                  | Default type                | Description                                                             |
+| --------------------------------------------------------------- | --------------------------- | ----------------------------------------------------------------------- |
+| `SharedVariableStructure` _extends_ `Record`\<`string`, `any`\> | `Record`\<`string`, `any`\> | The structure of the shared variables (an object with key-value pairs). |
 
 ## Constructors
 
 ### Constructor
 
-> **new AlleoWidget**\<`SharedVariableStructure`\>(`defaultSharedVariables?`, `settings?`): `AlleoWidget`\<`SharedVariableStructure`\>
+```ts
+new AlleoWidget<SharedVariableStructure>(defaultSharedVariables?: Partial<SharedVariableStructure>, settings?: WidgetInitSettings): AlleoWidget<SharedVariableStructure>;
+```
 
 Creates an instance of AlleoWidget and initializes shared variables, DOM references, and lifecycle handlers.
 
@@ -91,17 +92,10 @@ configures DOM interaction handlers, and registers the widget with the Alleo pla
 
 #### Parameters
 
-##### defaultSharedVariables?
-
-`Partial`\<`SharedVariableStructure`\> = `{}`
-
-Default values for shared variables. These values are used when the widget is first created or when a shared variable hasn't been set yet.
-
-##### settings?
-
-`WidgetInitSettings` = `...`
-
-Configuration options for widget initialization.
+| Parameter                 | Type                                   | Description                                                                                                                                |
+| ------------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `defaultSharedVariables?` | `Partial`\<`SharedVariableStructure`\> | Default values for shared variables. These values are used when the widget is first created or when a shared variable hasn't been set yet. |
+| `settings?`               | `WidgetInitSettings`                   | Configuration options for widget initialization.                                                                                           |
 
 #### Returns
 
@@ -111,35 +105,49 @@ Configuration options for widget initialization.
 
 ### dom
 
-> `protected` **dom**: `HTMLDivElement` = `null`
+```ts
+protected dom: HTMLDivElement = null;
+```
 
-***
+---
 
 ### shared
 
-> `protected` **shared**: `Partial`\<`SharedVariableStructure`\>
+```ts
+protected shared: Partial<SharedVariableStructure>;
+```
 
-***
+---
 
 ### widgetStatus
 
-> `protected` **widgetStatus**: `object`
+```ts
+protected widgetStatus: {
+  loaded: boolean;
+};
+```
 
 #### loaded
 
-> **loaded**: `boolean`
+```ts
+loaded: boolean;
+```
 
-***
+---
 
 ### api
 
-> `static` **api**: `IWidgetServiceApi` = `haptic`
+```ts
+static api: IWidgetServiceApi = haptic;
+```
 
 ## Methods
 
 ### assertWidgetLoaded()
 
-> `protected` **assertWidgetLoaded**(): `void`
+```ts
+protected assertWidgetLoaded(): void;
+```
 
 Validates that the widget is still loaded and has not been destroyed.
 
@@ -165,11 +173,13 @@ async loadData() {
 }
 ```
 
-***
+---
 
 ### destroy()
 
-> **destroy**(): `void` \| `Promise`\<`void`\>
+```ts
+destroy(): void | Promise<void>;
+```
 
 Lifecycle method called when the widget instance is being destroyed.
 
@@ -184,11 +194,13 @@ or releasing resources.
 
 Can return a Promise for async cleanup operations.
 
-***
+---
 
 ### domSelect()
 
-> `protected` **domSelect**\<`HTMLElementType`\>(`query`): `HTMLElementType`
+```ts
+protected domSelect<HTMLElementType>(query: string): HTMLElementType;
+```
 
 Queries for a DOM element within the widget container using a CSS selector.
 
@@ -197,19 +209,15 @@ preventing accidental selection of elements outside the widget.
 
 #### Type Parameters
 
-##### HTMLElementType
-
-`HTMLElementType` *extends* `HTMLElement` = `HTMLElement`
-
-The expected HTML element type (e.g., HTMLButtonElement, HTMLInputElement).
+| Type Parameter                            | Default type  | Description                                                                 |
+| ----------------------------------------- | ------------- | --------------------------------------------------------------------------- |
+| `HTMLElementType` _extends_ `HTMLElement` | `HTMLElement` | The expected HTML element type (e.g., HTMLButtonElement, HTMLInputElement). |
 
 #### Parameters
 
-##### query
-
-`string`
-
-CSS selector string (will be prefixed with the container selector).
+| Parameter | Type     | Description                                                         |
+| --------- | -------- | ------------------------------------------------------------------- |
+| `query`   | `string` | CSS selector string (will be prefixed with the container selector). |
 
 #### Returns
 
@@ -224,15 +232,17 @@ Throws if the widget doesn't have a DOM.
 #### Example
 
 ```typescript
-const button = this.domSelect<HTMLButtonElement>('.my-button');
-button.addEventListener('click', () => console.log('Clicked!'));
+const button = this.domSelect<HTMLButtonElement>(".my-button");
+button.addEventListener("click", () => console.log("Clicked!"));
 ```
 
-***
+---
 
 ### setContainerClass()
 
-> `protected` **setContainerClass**(`className`, `add?`): `void`
+```ts
+protected setContainerClass(className: string, add?: boolean): void;
+```
 
 Adds or removes CSS classes from the widget container for styling purposes.
 
@@ -241,17 +251,10 @@ it adds the "not-{className}" variant instead. This pattern helps with CSS targe
 
 #### Parameters
 
-##### className
-
-`string`
-
-The CSS class name to add or remove.
-
-##### add?
-
-`boolean` = `true`
-
-When true, adds the class. When false, removes the class and adds "not-{className}".
+| Parameter   | Type      | Default value | Description                                                                          |
+| ----------- | --------- | ------------- | ------------------------------------------------------------------------------------ |
+| `className` | `string`  | `undefined`   | The CSS class name to add or remove.                                                 |
+| `add?`      | `boolean` | `true`        | When true, adds the class. When false, removes the class and adds "not-{className}". |
 
 #### Returns
 
@@ -264,15 +267,17 @@ Throws if the widget doesn't have a DOM (e.g., when used in a service context).
 #### Example
 
 ```typescript
-this.setContainerClass('active', true);  // Adds 'active' class, removes 'not-active'
-this.setContainerClass('active', false); // Removes 'active' class, adds 'not-active'
+this.setContainerClass("active", true); // Adds 'active' class, removes 'not-active'
+this.setContainerClass("active", false); // Removes 'active' class, adds 'not-active'
 ```
 
-***
+---
 
 ### updateDomStatus()
 
-> `protected` **updateDomStatus**(): `void`
+```ts
+protected updateDomStatus(): void;
+```
 
 #### Returns
 

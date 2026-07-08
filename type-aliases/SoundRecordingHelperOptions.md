@@ -1,21 +1,30 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / SoundRecordingHelperOptions
 
 # Type Alias: SoundRecordingHelperOptions
 
-> **SoundRecordingHelperOptions** = `object`
+```ts
+type SoundRecordingHelperOptions = {
+  minLength: number;
+  waitForStop: number | undefined;
+};
+```
 
 ## Properties
 
 ### minLength
 
-> **minLength**: `number`
+```ts
+minLength: number;
+```
 
-***
+---
 
 ### waitForStop
 
-> **waitForStop**: `number` \| `undefined`
+```ts
+waitForStop: number | undefined;
+```

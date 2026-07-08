@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / DeploymentSettingsHelper
 
@@ -18,7 +18,9 @@ Use `WidgetSettings` instead. (This provides the same functionality for compatib
 
 ### Constructor
 
-> **new DeploymentSettingsHelper**(): `DeploymentSettingsHelper`
+```ts
+new DeploymentSettingsHelper(): DeploymentSettingsHelper;
+```
 
 #### Returns
 
@@ -32,7 +34,9 @@ Use `WidgetSettings` instead. (This provides the same functionality for compatib
 
 ### ~~manifestConfig~~
 
-> `readonly` `static` **manifestConfig**: `Record`\<`string`, `any`\>
+```ts
+readonly static manifestConfig: Record<string, any>;
+```
 
 Widget's default configuration from the `manifest.json` file.
 
@@ -47,22 +51,26 @@ original default values regardless of customizations.
 const defaultColor = WidgetSettings.manifestConfig.defaultColor;
 
 // Check if user customized a setting
-const isCustomized = WidgetSettings.settings.theme !== WidgetSettings.manifestConfig.theme;
+const isCustomized =
+  WidgetSettings.settings.theme !== WidgetSettings.manifestConfig.theme;
 ```
 
 #### Inherited from
 
 [`WidgetSettings`](WidgetSettings.md).[`manifestConfig`](WidgetSettings.md#manifestconfig)
 
-***
+---
 
 ### ~~settings~~
 
-> `readonly` `static` **settings**: `Record`\<`string`, `any`\>
+```ts
+readonly static settings: Record<string, any>;
+```
 
 Merged widget settings from all configuration sources.
 
 Contains the final, resolved configuration values after merging:
+
 - Organization-level settings (highest priority - overrides everything)
 - Deployment-level settings (medium priority - overrides widget defaults)
 - Widget defaults from `manifest.json` (lowest priority - fallback values)

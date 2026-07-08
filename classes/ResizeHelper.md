@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / ResizeHelper
 
@@ -26,8 +26,8 @@ new ResizeHelper(
     callback: ({ width, height }) => {
       console.log(`Widget resized to ${width}x${height}`);
       updateLayout(width, height);
-    }
-  }
+    },
+  },
 );
 
 // Get current widget size
@@ -38,23 +38,18 @@ const size = ResizeHelper.getWidgetSize();
 
 ### Constructor
 
-> **new ResizeHelper**(`minSize?`, `options?`): `ResizeHelper`
+```ts
+new ResizeHelper(minSize?: Size, options?: ResizeHelperOptions): ResizeHelper;
+```
 
 Enables axis-independent resizing with options-based configuration.
 
 #### Parameters
 
-##### minSize?
-
-[`Size`](../type-aliases/Size.md)
-
-Minimum allowed widget dimensions.
-
-##### options?
-
-`ResizeHelperOptions`
-
-Configuration options for resize behavior.
+| Parameter  | Type                              | Description                                |
+| ---------- | --------------------------------- | ------------------------------------------ |
+| `minSize?` | [`Size`](../type-aliases/Size.md) | Minimum allowed widget dimensions.         |
+| `options?` | `ResizeHelperOptions`             | Configuration options for resize behavior. |
 
 #### Returns
 
@@ -66,35 +61,24 @@ Throws if widget doesn't have a DOM or container element is not found.
 
 ### Constructor
 
-> **new ResizeHelper**(`minSize?`, `callback`, `updateCss?`, `settings?`): `ResizeHelper`
+```ts
+new ResizeHelper(
+   minSize?: Size,
+   callback: (__namedParameters: Size) => void,
+   updateCss?: boolean,
+   settings?: LimitedResizeHelperOptions): ResizeHelper;
+```
 
 Enables axis-independent resizing with legacy parameter-based configuration.
 
 #### Parameters
 
-##### minSize?
-
-[`Size`](../type-aliases/Size.md)
-
-Minimum allowed widget dimensions.
-
-##### callback
-
-(`__namedParameters`) => `void`
-
-Function called when widget is resized with {width, height} parameter.
-
-##### updateCss?
-
-`boolean`
-
-Whether to update CSS custom properties with size values.
-
-##### settings?
-
-`LimitedResizeHelperOptions`
-
-Additional configuration options.
+| Parameter    | Type                                                               | Description                                                            |
+| ------------ | ------------------------------------------------------------------ | ---------------------------------------------------------------------- |
+| `minSize?`   | [`Size`](../type-aliases/Size.md)                                  | Minimum allowed widget dimensions.                                     |
+| `callback?`  | (`__namedParameters`: [`Size`](../type-aliases/Size.md)) => `void` | Function called when widget is resized with {width, height} parameter. |
+| `updateCss?` | `boolean`                                                          | Whether to update CSS custom properties with size values.              |
+| `settings?`  | `LimitedResizeHelperOptions`                                       | Additional configuration options.                                      |
 
 #### Returns
 
@@ -112,29 +96,35 @@ Use the object-based constructor signature instead for better type safety.
 
 ### callback
 
-> **callback**: (`__namedParameters`) => `void`
+```ts
+callback: (__namedParameters: Size) => void;
+```
 
 #### Parameters
 
-##### \_\_namedParameters
-
-[`Size`](../type-aliases/Size.md)
+| Parameter           | Type                              |
+| ------------------- | --------------------------------- |
+| `__namedParameters` | [`Size`](../type-aliases/Size.md) |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### updateCss
 
-> **updateCss**: `boolean` = `true`
+```ts
+updateCss: boolean = true;
+```
 
 ## Methods
 
 ### destroy()
 
-> **destroy**(): `void`
+```ts
+destroy(): void;
+```
 
 Destroys the ResizeHelper instance, disabling resizing and disconnecting the observer.
 
@@ -146,11 +136,13 @@ Destroys the ResizeHelper instance, disabling resizing and disconnecting the obs
 
 Will throw an error if no DOM is available.
 
-***
+---
 
 ### onResize()
 
-> **onResize**(`contentRect`): `void`
+```ts
+onResize(contentRect: Size): void;
+```
 
 Triggers the resize event with the current size of the widget.
 This method is called by the ResizeObserver when the widget is resized.
@@ -159,11 +151,9 @@ Additionally, it tracks the resize event for analytics purposes.
 
 #### Parameters
 
-##### contentRect
-
-[`Size`](../type-aliases/Size.md)
-
-The content rectangle of the resized element.
+| Parameter     | Type                              | Description                                   |
+| ------------- | --------------------------------- | --------------------------------------------- |
+| `contentRect` | [`Size`](../type-aliases/Size.md) | The content rectangle of the resized element. |
 
 #### Returns
 
@@ -173,21 +163,21 @@ The content rectangle of the resized element.
 
 Will throw an error if no DOM is available.
 
-***
+---
 
 ### setMinSize()
 
-> `static` **setMinSize**(`minSize`): `void`
+```ts
+static setMinSize(minSize: Size): void;
+```
 
 Sets the minimum size of the element.
 
 #### Parameters
 
-##### minSize
-
-[`Size`](../type-aliases/Size.md)
-
-The minimum size to set.
+| Parameter | Type                              | Description              |
+| --------- | --------------------------------- | ------------------------ |
+| `minSize` | [`Size`](../type-aliases/Size.md) | The minimum size to set. |
 
 #### Returns
 
@@ -197,21 +187,21 @@ The minimum size to set.
 
 Will throw an error if no DOM is available.
 
-***
+---
 
 ### setSize()
 
-> `static` **setSize**(`size`): `void`
+```ts
+static setSize(size: Size): void;
+```
 
 Sets the size of the element.
 
 #### Parameters
 
-##### size
-
-[`Size`](../type-aliases/Size.md)
-
-The size to set.
+| Parameter | Type                              | Description      |
+| --------- | --------------------------------- | ---------------- |
+| `size`    | [`Size`](../type-aliases/Size.md) | The size to set. |
 
 #### Returns
 

@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / AiMessage
 
@@ -8,12 +8,7 @@
 
 ## Properties
 
-### message
-
-> **message**: `string`
-
-***
-
-### type?
-
-> `optional` **type?**: [`AiMessageType`](../enumerations/AiMessageType.md)
+| Property                                | Type                                                |
+| --------------------------------------- | --------------------------------------------------- |
+| <a id="property-message"></a> `message` | `string`                                            |
+| <a id="property-type"></a> `type?`      | [`AiMessageType`](../enumerations/AiMessageType.md) |

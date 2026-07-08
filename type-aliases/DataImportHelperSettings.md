@@ -1,12 +1,24 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / DataImportHelperSettings
 
 # Type Alias: DataImportHelperSettings
 
-> **DataImportHelperSettings** = `object`
+```ts
+type DataImportHelperSettings = {
+  allowImportFromDataConnector?: boolean;
+  askAboutOverwrite?: boolean;
+  fields: {
+    label: string;
+    name: string;
+  }[];
+  label?: string;
+  lineLimit?: number;
+  warningMessage?: string;
+};
+```
 
 Settings for the DataImportHelper.
 
@@ -14,42 +26,62 @@ Settings for the DataImportHelper.
 
 ### allowImportFromDataConnector?
 
-> `optional` **allowImportFromDataConnector?**: `boolean`
+```ts
+optional allowImportFromDataConnector?: boolean;
+```
 
-***
+---
 
 ### askAboutOverwrite?
 
-> `optional` **askAboutOverwrite?**: `boolean`
+```ts
+optional askAboutOverwrite?: boolean;
+```
 
-***
+---
 
 ### fields
 
-> **fields**: `object`[]
+```ts
+fields: {
+  label: string;
+  name: string;
+}
+[];
+```
 
 #### label
 
-> **label**: `string`
+```ts
+label: string;
+```
 
 #### name
 
-> **name**: `string`
+```ts
+name: string;
+```
 
-***
+---
 
 ### label?
 
-> `optional` **label?**: `string`
+```ts
+optional label?: string;
+```
 
-***
+---
 
 ### lineLimit?
 
-> `optional` **lineLimit?**: `number`
+```ts
+optional lineLimit?: number;
+```
 
-***
+---
 
 ### warningMessage?
 
-> `optional` **warningMessage?**: `string`
+```ts
+optional warningMessage?: string;
+```

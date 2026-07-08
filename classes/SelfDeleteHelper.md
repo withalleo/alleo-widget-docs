@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / SelfDeleteHelper
 
@@ -27,14 +27,15 @@ class MyWidget extends AlleoWidget {
       this.deleteHelper.deleteSelf();
     }
   }
-}
 ```
 
 ## Constructors
 
 ### Constructor
 
-> **new SelfDeleteHelper**(): `SelfDeleteHelper`
+```ts
+new SelfDeleteHelper(): SelfDeleteHelper;
+```
 
 #### Returns
 
@@ -44,13 +45,17 @@ class MyWidget extends AlleoWidget {
 
 ### deleteTriggerContent
 
-> `protected` `static` **deleteTriggerContent**: `string` = `'deleteme'`
+```ts
+protected static deleteTriggerContent: string = 'deleteme';
+```
 
-***
+---
 
 ### storageKey
 
-> `protected` `static` **storageKey**: `string` = `'ThisWidgetShouldBeDeleted'`
+```ts
+protected static storageKey: string = 'ThisWidgetShouldBeDeleted';
+```
 
 ## Accessors
 
@@ -58,7 +63,9 @@ class MyWidget extends AlleoWidget {
 
 #### Get Signature
 
-> **get** **shouldBeDeleted**(): `boolean`
+```ts
+get shouldBeDeleted(): boolean;
+```
 
 ##### Returns
 
@@ -68,17 +75,21 @@ class MyWidget extends AlleoWidget {
 
 ### checkDeleteTrigger()
 
-> `protected` **checkDeleteTrigger**(): `void`
+```ts
+protected checkDeleteTrigger(): void;
+```
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### deleteSelf()
 
-> **deleteSelf**(): `void`
+```ts
+deleteSelf(): void;
+```
 
 Programmatically removes the widget from the board.
 
@@ -99,11 +110,13 @@ setTimeout(() => {
 }, 60000); // Delete after 1 minute
 ```
 
-***
+---
 
 ### setDeleteTrigger()
 
-> `protected` **setDeleteTrigger**(): `void`
+```ts
+protected setDeleteTrigger(): void;
+```
 
 #### Returns
 

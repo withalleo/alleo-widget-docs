@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / AnalyticsHelper
 
@@ -16,13 +16,13 @@ All log messages are automatically prefixed with the widget name for easy identi
 
 ```typescript
 // Track a user action
-AnalyticsHelper.trackEvent('button-clicked', { buttonId: 'submit' });
+AnalyticsHelper.trackEvent("button-clicked", { buttonId: "submit" });
 
 // Log messages at different levels
-AnalyticsHelper.debug('Processing data', { count: 10 });
-AnalyticsHelper.info('User logged in');
-AnalyticsHelper.warn('API rate limit approaching');
-AnalyticsHelper.error('Failed to save data', error);
+AnalyticsHelper.debug("Processing data", { count: 10 });
+AnalyticsHelper.info("User logged in");
+AnalyticsHelper.warn("API rate limit approaching");
+AnalyticsHelper.error("Failed to save data", error);
 
 // Use decorators for debugging
 class MyWidget {
@@ -37,7 +37,9 @@ class MyWidget {
 
 ### Constructor
 
-> **new AnalyticsHelper**(): `AnalyticsHelper`
+```ts
+new AnalyticsHelper(): AnalyticsHelper;
+```
 
 #### Returns
 
@@ -47,7 +49,9 @@ class MyWidget {
 
 ### debug()
 
-> `static` **debug**(...`params`): `void`
+```ts
+static debug(...params: any[]): void;
+```
 
 Logs a debug-level message for development and troubleshooting.
 
@@ -56,21 +60,21 @@ Use for verbose logging during development that would be too noisy in production
 
 #### Parameters
 
-##### params
-
-...`any`[]
-
-The values to log (will be prefixed with widget name).
+| Parameter   | Type    | Description                                            |
+| ----------- | ------- | ------------------------------------------------------ |
+| ...`params` | `any`[] | The values to log (will be prefixed with widget name). |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### error()
 
-> `static` **error**(...`params`): `void`
+```ts
+static error(...params: any[]): void;
+```
 
 Logs an error-level message for failures and exceptions.
 
@@ -79,21 +83,21 @@ These messages are always visible and logged, and may trigger error reporting sy
 
 #### Parameters
 
-##### params
-
-...`any`[]
-
-The values to log (will be prefixed with widget name).
+| Parameter   | Type    | Description                                            |
+| ----------- | ------- | ------------------------------------------------------ |
+| ...`params` | `any`[] | The values to log (will be prefixed with widget name). |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### getWidgetName()
 
-> `static` **getWidgetName**(): `string`
+```ts
+static getWidgetName(): string;
+```
 
 Retrieves the unique widget identifier from the configuration or URL.
 
@@ -106,11 +110,13 @@ and is used to categorize analytics events and log messages.
 
 The widget identifier (e.g., 'hello-world', 'ai-chat'), or undefined if not available.
 
-***
+---
 
 ### info()
 
-> `static` **info**(...`params`): `void`
+```ts
+static info(...params: any[]): void;
+```
 
 Logs an info-level message for notable events that aren't errors.
 
@@ -119,21 +125,24 @@ Use for tracking significant state changes or milestones in widget execution.
 
 #### Parameters
 
-##### params
-
-...`any`[]
-
-The values to log (will be prefixed with widget name).
+| Parameter   | Type    | Description                                            |
+| ----------- | ------- | ------------------------------------------------------ |
+| ...`params` | `any`[] | The values to log (will be prefixed with widget name). |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### LogAccessor()
 
-> `static` **LogAccessor**(`target`, `propertyKey`, `descriptor?`): `void`
+```ts
+static LogAccessor(
+   target: any,
+   propertyKey: any,
+   descriptor?: PropertyDescriptor): void;
+```
 
 TypeScript decorator that logs getter and setter calls on class properties.
 
@@ -142,23 +151,11 @@ Useful for debugging reactive properties or tracking state changes.
 
 #### Parameters
 
-##### target
-
-`any`
-
-The prototype of the class containing the accessor.
-
-##### propertyKey
-
-`any`
-
-The name of the property being decorated.
-
-##### descriptor?
-
-`PropertyDescriptor` = `undefined`
-
-The property descriptor containing get/set methods.
+| Parameter     | Type                 | Default value | Description                                         |
+| ------------- | -------------------- | ------------- | --------------------------------------------------- |
+| `target`      | `any`                | `undefined`   | The prototype of the class containing the accessor. |
+| `propertyKey` | `any`                | `undefined`   | The name of the property being decorated.           |
+| `descriptor?` | `PropertyDescriptor` | `undefined`   | The property descriptor containing get/set methods. |
 
 #### Returns
 
@@ -171,19 +168,28 @@ class MyWidget {
   private _value: number = 0;
 
   @AnalyticsHelper.LogAccessor
-  get value(): number { return this._value; }
-  set value(v: number) { this._value = v; }
+  get value(): number {
+    return this._value;
+  }
+  set value(v: number) {
+    this._value = v;
+  }
 }
 // Logs: "Getter Called", "value"
 // Logs: "Getter Result", "value", 0
 // Logs: "Setter Called", "value", 42
 ```
 
-***
+---
 
 ### LogClass()
 
-> `static` **LogClass**\<`T`\>(`constructor`): \{(...`args`): `(Anonymous class)`\<`T`\>; `prototype`: `(Anonymous class)`\<`any`\>; \} & `T`
+```ts
+static LogClass<T>(constructor: T): {
+(...args: any[]): (Anonymous class)<T>;
+  prototype: (Anonymous class)<any>;
+} & T;
+```
 
 TypeScript decorator that logs class instantiation, including constructor arguments and the created instance.
 
@@ -192,21 +198,22 @@ Logs both the constructor parameters and the final created object.
 
 #### Type Parameters
 
-##### T
-
-`T` *extends* (...`args`) => `object`
+| Type Parameter                              |
+| ------------------------------------------- |
+| `T` _extends_ (...`args`: `any`[]) => \{ \} |
 
 #### Parameters
 
-##### constructor
-
-`T`
-
-The class constructor function to be decorated.
+| Parameter     | Type | Description                                     |
+| ------------- | ---- | ----------------------------------------------- |
+| `constructor` | `T`  | The class constructor function to be decorated. |
 
 #### Returns
 
-\{(...`args`): `(Anonymous class)`\<`T`\>; `prototype`: `(Anonymous class)`\<`any`\>; \} & `T`
+\{
+(...`args`: `any`[]): `(Anonymous class)`\<`T`\>;
+`prototype`: `(Anonymous class)`\<`any`\>;
+\} & `T`
 
 A new class that extends the original with logging capabilities.
 
@@ -223,11 +230,16 @@ class DataManager {
 // Logs: "Class Created", "DataManager", { ... instance details ... }
 ```
 
-***
+---
 
 ### LogMethod()
 
-> `static` **LogMethod**(`target`, `propertyKey`, `descriptor?`): `void`
+```ts
+static LogMethod(
+   target: any,
+   propertyKey: any,
+   descriptor?: PropertyDescriptor): void;
+```
 
 TypeScript decorator that logs all calls to a method, including arguments and return values.
 
@@ -236,23 +248,11 @@ and the returned result for each method invocation.
 
 #### Parameters
 
-##### target
-
-`any`
-
-The prototype of the class containing the method.
-
-##### propertyKey
-
-`any`
-
-The name of the method being decorated.
-
-##### descriptor?
-
-`PropertyDescriptor` = `undefined`
-
-The property descriptor of the method.
+| Parameter     | Type                 | Default value | Description                                       |
+| ------------- | -------------------- | ------------- | ------------------------------------------------- |
+| `target`      | `any`                | `undefined`   | The prototype of the class containing the method. |
+| `propertyKey` | `any`                | `undefined`   | The name of the method being decorated.           |
+| `descriptor?` | `PropertyDescriptor` | `undefined`   | The property descriptor of the method.            |
 
 #### Returns
 
@@ -271,11 +271,16 @@ class MyWidget {
 // Logs: "Method Result", "calculateTotal", 6
 ```
 
-***
+---
 
 ### LogParameter()
 
-> `static` **LogParameter**(`target`, `propertyKey`, `parameterIndex?`): `void`
+```ts
+static LogParameter(
+   target: any,
+   propertyKey: any,
+   parameterIndex?: number): void;
+```
 
 TypeScript parameter decorator that logs when a parameter decorator is applied during class definition.
 
@@ -284,23 +289,11 @@ Useful for debugging parameter metadata and decorator application.
 
 #### Parameters
 
-##### target
-
-`any`
-
-The prototype of the class containing the method.
-
-##### propertyKey
-
-`any`
-
-The name of the method whose parameter is being decorated.
-
-##### parameterIndex?
-
-`number` = `undefined`
-
-The zero-based index of the parameter in the method's parameter list.
+| Parameter         | Type     | Default value | Description                                                           |
+| ----------------- | -------- | ------------- | --------------------------------------------------------------------- |
+| `target`          | `any`    | `undefined`   | The prototype of the class containing the method.                     |
+| `propertyKey`     | `any`    | `undefined`   | The name of the method whose parameter is being decorated.            |
+| `parameterIndex?` | `number` | `undefined`   | The zero-based index of the parameter in the method's parameter list. |
 
 #### Returns
 
@@ -317,11 +310,13 @@ class MyWidget {
 // Logs: "Parameter Decorator Applied", "processData", "Parameter index: 0"
 ```
 
-***
+---
 
 ### LogProperty()
 
-> `static` **LogProperty**(`target`, `propertyKey`): `void`
+```ts
+static LogProperty(target: any, propertyKey: any): void;
+```
 
 TypeScript decorator that logs when a property decorator is applied during class definition.
 
@@ -330,17 +325,10 @@ Primarily useful for debugging decorator application order and property metadata
 
 #### Parameters
 
-##### target
-
-`any`
-
-The prototype of the class containing the property.
-
-##### propertyKey
-
-`any`
-
-The name of the property being decorated.
+| Parameter     | Type  | Description                                         |
+| ------------- | ----- | --------------------------------------------------- |
+| `target`      | `any` | The prototype of the class containing the property. |
+| `propertyKey` | `any` | The name of the property being decorated.           |
 
 #### Returns
 
@@ -356,11 +344,13 @@ class MyWidget {
 // Logs: "Property Decorator Applied", "username" (at class definition time)
 ```
 
-***
+---
 
 ### trackEvent()
 
-> `static` **trackEvent**(`action`, `payload?`): `void`
+```ts
+static trackEvent(action: string, payload?: Record<string, any>): void;
+```
 
 Tracks an analytics event for monitoring widget usage and user behavior.
 
@@ -370,17 +360,10 @@ present on the board.
 
 #### Parameters
 
-##### action
-
-`string`
-
-The name of the action being tracked (e.g., 'button-clicked', 'data-loaded', 'error-occurred').
-
-##### payload?
-
-`Record`\<`string`, `any`\> = `{}`
-
-Additional contextual data about the event (e.g., button ID, error message, data size).
+| Parameter  | Type                        | Description                                                                                     |
+| ---------- | --------------------------- | ----------------------------------------------------------------------------------------------- |
+| `action`   | `string`                    | The name of the action being tracked (e.g., 'button-clicked', 'data-loaded', 'error-occurred'). |
+| `payload?` | `Record`\<`string`, `any`\> | Additional contextual data about the event (e.g., button ID, error message, data size).         |
 
 #### Returns
 
@@ -390,21 +373,23 @@ Additional contextual data about the event (e.g., button ID, error message, data
 
 ```typescript
 // Track a simple button click
-AnalyticsHelper.trackEvent('submit-clicked');
+AnalyticsHelper.trackEvent("submit-clicked");
 
 // Track with additional context
-AnalyticsHelper.trackEvent('data-exported', {
-  format: 'csv',
+AnalyticsHelper.trackEvent("data-exported", {
+  format: "csv",
   rowCount: 150,
-  timestamp: Date.now()
+  timestamp: Date.now(),
 });
 ```
 
-***
+---
 
 ### warn()
 
-> `static` **warn**(...`params`): `void`
+```ts
+static warn(...params: any[]): void;
+```
 
 Logs a warning-level message for recoverable issues or potential problems.
 
@@ -413,11 +398,9 @@ These messages are visible in both development and production.
 
 #### Parameters
 
-##### params
-
-...`any`[]
-
-The values to log (will be prefixed with widget name).
+| Parameter   | Type    | Description                                            |
+| ----------- | ------- | ------------------------------------------------------ |
+| ...`params` | `any`[] | The values to log (will be prefixed with widget name). |
 
 #### Returns
 

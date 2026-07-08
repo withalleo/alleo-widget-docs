@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / BackendProxyHelper
 
@@ -17,17 +17,22 @@ token refresh. Essential for widgets that need to communicate with external APIs
 
 ```typescript
 // Initialize with connection ID from manifest
-const backend = new BackendProxyHelper('myApiConnection');
+const backend = new BackendProxyHelper("myApiConnection");
 
 // Make authenticated GET request
-const data = await backend.get('/api/users');
+const response = await backend.request("/api/users");
+const data = await response.json();
 
-// Make POST request with body
-const result = await backend.post('/api/data', { name: 'John' });
+// Make POST request with JSON body and parse the response
+const result = await backend.requestJson("/api/data", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ name: "John" }),
+});
 
 // Check connection status
-if (backend.isKeyConfigured()) {
-  console.log('API key is configured');
+if (await backend.getStatus()) {
+  console.log("Connection is operational");
 }
 ```
 
@@ -35,7 +40,9 @@ if (backend.isKeyConfigured()) {
 
 ### Constructor
 
-> **new BackendProxyHelper**(`connectionId?`, `helperSettings?`): `BackendProxyHelper`
+```ts
+new BackendProxyHelper(connectionId?: string, helperSettings?: BackendProxyHelperSettings): BackendProxyHelper;
+```
 
 Creates a BackendProxyHelper instance for managing authenticated backend connections.
 
@@ -45,17 +52,10 @@ deployment settings.
 
 #### Parameters
 
-##### connectionId?
-
-`string` = `'default'`
-
-The connection identifier from deployment settings matching the backend configuration.
-
-##### helperSettings?
-
-`BackendProxyHelperSettings` = `{}`
-
-Additional configuration options.
+| Parameter         | Type                                                                          | Default value | Description                                                                            |
+| ----------------- | ----------------------------------------------------------------------------- | ------------- | -------------------------------------------------------------------------------------- |
+| `connectionId?`   | `string`                                                                      | `'default'`   | The connection identifier from deployment settings matching the backend configuration. |
+| `helperSettings?` | [`BackendProxyHelperSettings`](../type-aliases/BackendProxyHelperSettings.md) | `{}`          | Additional configuration options.                                                      |
 
 #### Returns
 
@@ -65,29 +65,62 @@ Additional configuration options.
 
 ### cachedToken
 
-> `protected` **cachedToken**: `string` = `undefined`
+```ts
+protected cachedToken: string = undefined;
+```
 
-***
+Cached authorization token. Cleared on scope or API key change and on expiry.
+
+---
 
 ### connectionId
 
-> `readonly` **connectionId**: `string` = `'default'`
+```ts
+readonly connectionId: string = 'default';
+```
 
 The connection identifier from deployment settings matching the backend configuration.
 
-***
+---
 
 ### helperSettings
 
-> `protected` `readonly` **helperSettings**: `BackendProxyHelperSettings` = `{}`
+```ts
+protected readonly helperSettings: BackendProxyHelperSettings = {};
+```
 
 Additional configuration options.
 
-***
+---
+
+### optionListHideAdditionalCheck
+
+```ts
+optionListHideAdditionalCheck: (m: FormlyFieldConfig) => boolean;
+```
+
+Additional hide predicate evaluated for every settings UI field.
+When it returns `true` the field is hidden. Reassign to conditionally suppress backend UI options.
+
+#### Parameters
+
+| Parameter | Type                |
+| --------- | ------------------- |
+| `m`       | `FormlyFieldConfig` |
+
+#### Returns
+
+`boolean`
+
+---
 
 ### defaultTimeoutInMs
 
-> `readonly` `static` **defaultTimeoutInMs**: `number`
+```ts
+readonly static defaultTimeoutInMs: number;
+```
+
+Fallback timeout in milliseconds used for all proxy requests when no per-request timeout is specified.
 
 ## Accessors
 
@@ -95,31 +128,46 @@ Additional configuration options.
 
 #### Get Signature
 
-> **get** **customKeyHandler**(): `string`
+```ts
+get customKeyHandler(): string;
+```
+
+Widget data field key used to persist and retrieve the custom API key for this connection.
 
 ##### Returns
 
 `string`
 
-***
+---
 
 ### options
 
 #### Get Signature
 
-> **get** **options**(): `FormlyFieldConfig`\<`FormlyFieldProps` & `object`\>[]
+```ts
+get options(): FormlyFieldConfig<FormlyFieldProps & {
+[additionalProperties: string]: any;
+}>[];
+```
+
+Formly field configurations for the backend connection settings panel.
+Returns an empty array when `EnableUI` is `false` in deployment settings.
 
 ##### Returns
 
-`FormlyFieldConfig`\<`FormlyFieldProps` & `object`\>[]
+`FormlyFieldConfig`\<`FormlyFieldProps` & \{
+\[`additionalProperties`: `string`\]: `any`;
+\}\>[]
 
-***
+---
 
 ### scope
 
 #### Get Signature
 
-> **get** **scope**(): [`BackendKeyConfigurationScope`](../enumerations/BackendKeyConfigurationScope.md)
+```ts
+get scope(): BackendKeyConfigurationScope;
+```
 
 Returns the currently used secret scope.
 
@@ -133,242 +181,296 @@ TODO This does not recognizes organization keys, and reports them as 'deployment
 
 #### Set Signature
 
-> **set** **scope**(`value`): `void`
+```ts
+set scope(value: BackendKeyConfigurationScope): void;
+```
 
 ##### Parameters
 
-###### value
-
-[`BackendKeyConfigurationScope`](../enumerations/BackendKeyConfigurationScope.md)
+| Parameter | Type                                                                              |
+| --------- | --------------------------------------------------------------------------------- |
+| `value`   | [`BackendKeyConfigurationScope`](../enumerations/BackendKeyConfigurationScope.md) |
 
 ##### Returns
 
 `void`
 
-***
+---
 
 ### scopeHandler
 
 #### Get Signature
 
-> **get** **scopeHandler**(): `string`
+```ts
+get scopeHandler(): string;
+```
+
+Widget data field key used to persist and retrieve the selected [BackendScope](../enumerations/BackendKeyConfigurationScope.md) for this connection.
 
 ##### Returns
 
 `string`
 
+---
+
+### settings
+
+#### Get Signature
+
+```ts
+get settings(): Required<BackendConfiguration>;
+```
+
+##### Returns
+
+`Required`\<`BackendConfiguration`\>
+
+#### Set Signature
+
+```ts
+set settings(value: Required<BackendConfiguration>): void;
+```
+
+##### Parameters
+
+| Parameter | Type                                 |
+| --------- | ------------------------------------ |
+| `value`   | `Required`\<`BackendConfiguration`\> |
+
+##### Returns
+
+`void`
+
 ## Methods
 
-### getStatus()
+### addAndConfigurePresetKey()
 
-> **getStatus**(): `Promise`\<`boolean`\>
-
-#### Returns
-
-`Promise`\<`boolean`\>
-
-***
-
-### getStatusDisplay()
-
-> **getStatusDisplay**(`serviceDisplayName?`): `FormlyFieldConfig`\<`FormlyFieldProps` & `object`\>[]
-
-#### Parameters
-
-##### serviceDisplayName?
-
-`string` = `''`
-
-#### Returns
-
-`FormlyFieldConfig`\<`FormlyFieldProps` & `object`\>[]
-
-***
-
-### getToken()
-
-> `protected` **getToken**(): `Promise`\<`string`\>
-
-Retrieves the authorization token, either from cache or by requesting a new one.
+```ts
+addAndConfigurePresetKey(): Promise<string>;
+```
 
 #### Returns
 
 `Promise`\<`string`\>
 
-- The authorization token.
+---
 
-#### Throws
+### getStatus()
 
-Will throw an error if no key or provider is found for the shared secret, or if the token cannot be retrieved.
+```ts
+getStatus(): Promise<boolean>;
+```
 
-***
+Returns `true` if a valid authorization token can be obtained for the current connection scope.
 
-### request()
+#### Returns
 
-> **request**(`url`, `params?`, `retryNumber?`, `timeoutMs?`): `Promise`\<`Response`\>
+`Promise`\<`boolean`\>
 
-Makes a request to the specified URL with the provided parameters.
-Retries the request once if the token is expired.
+---
+
+### getStatusDisplay()
+
+```ts
+getStatusDisplay(serviceDisplayName?: string): FormlyFieldConfig<FormlyFieldProps & {
+[additionalProperties: string]: any;
+}>[];
+```
+
+Returns Formly field configurations for a status indicator showing whether the current connection is operational.
+The indicator updates on init by attempting to retrieve a token.
 
 #### Parameters
 
-##### url
+| Parameter             | Type     | Default value | Description                                           |
+| --------------------- | -------- | ------------- | ----------------------------------------------------- |
+| `serviceDisplayName?` | `string` | `''`          | Optional label shown alongside the connection status. |
 
-`string`
+#### Returns
 
-The URL to request.
+`FormlyFieldConfig`\<`FormlyFieldProps` & \{
+\[`additionalProperties`: `string`\]: `any`;
+\}\>[]
 
-##### params?
+Formly fields containing the status template.
 
-`Omit`\<`RequestInit`, `"credentials"` \| `"mode"`\> = `...`
+---
 
-The request parameters.
+### getToken()
 
-##### retryNumber?
+```ts
+protected getToken(): Promise<string>;
+```
 
-`number` \| `boolean`
+Retrieves the authorization token, either from cache or by requesting a new one.
+Tokens are cached until they expire (with a 30-second safety margin).
 
-The number of retries to attempt if the request fails. (set to 0 to disable retry)
+#### Returns
 
-##### timeoutMs?
+`Promise`\<`string`\>
 
-`number` = `...`
+The authorization token.
 
-The timeout in milliseconds for the request.
+#### Throws
+
+If no key or provider is found for the configured shared secret, or if the token exchange fails.
+
+---
+
+### request()
+
+```ts
+request(
+   url: string,
+   params?: Omit<RequestInit, "credentials" | "mode">,
+   retryNumber?: number | boolean,
+timeoutMs?: number): Promise<Response>;
+```
+
+Makes an authenticated request to the specified URL through the backend proxy.
+Automatically obtains and attaches an authorization token. Retries once on timeout
+with an increased timeout (1.75×).
+
+#### Parameters
+
+| Parameter      | Type                                                 | Default value | Description                                                                                               |
+| -------------- | ---------------------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------- |
+| `url`          | `string`                                             | `undefined`   | The URL to request.                                                                                       |
+| `params?`      | `Omit`\<`RequestInit`, `"credentials"` \| `"mode"`\> | `...`         | Standard fetch options (defaults to a JSON GET request).                                                  |
+| `retryNumber?` | `number` \| `boolean`                                | `1`           | Number of retries on timeout. Pass `0` or `true` to disable retries. A boolean `false` is treated as `1`. |
+| `timeoutMs?`   | `number`                                             | `...`         | Timeout in milliseconds. Defaults to the connection's configured timeout.                                 |
 
 #### Returns
 
 `Promise`\<`Response`\>
 
-- The response from the request.
+The proxied response.
 
 #### Throws
 
-Will throw an error if the request fails and doNotRetry is true.
+If the authorization token cannot be obtained or the request fails after all retries.
 
-***
+---
 
 ### requestJson()
 
-> **requestJson**\<`T`\>(`url`, `params?`, `retryNumber?`, `timeoutMs?`, `returnContentOnError?`): `Promise`\<`T`\>
+```ts
+requestJson<T>(
+   url: string,
+   params?: Omit<RequestInit, "credentials" | "mode">,
+   retryNumber?: number | boolean,
+   timeoutMs?: number,
+returnContentOnError?: boolean): Promise<T>;
+```
 
-Makes a request to the specified URL and returns the JSON response.
+Makes an authenticated request and returns the parsed JSON response.
 
 #### Type Parameters
 
-##### T
-
-`T`
+| Type Parameter |
+| -------------- |
+| `T`            |
 
 #### Parameters
 
-##### url
-
-`string`
-
-The URL to request.
-
-##### params?
-
-`Omit`\<`RequestInit`, `"credentials"` \| `"mode"`\> = `...`
-
-The request parameters.
-
-##### retryNumber?
-
-`number` \| `boolean`
-
-The number of retries to attempt if the request fails. (set to 0 to disable retry)
-
-##### timeoutMs?
-
-`number` = `...`
-
-The timeout in milliseconds for the request.
-
-##### returnContentOnError?
-
-`boolean` = `false`
-
-Whether to try to return the JSON on error responses.
+| Parameter               | Type                                                 | Default value | Description                                                                                                |
+| ----------------------- | ---------------------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------- |
+| `url`                   | `string`                                             | `undefined`   | The URL to request.                                                                                        |
+| `params?`               | `Omit`\<`RequestInit`, `"credentials"` \| `"mode"`\> | `...`         | Standard fetch options (defaults to a JSON GET request).                                                   |
+| `retryNumber?`          | `number` \| `boolean`                                | `1`           | Number of retries on timeout. Pass `0` or `true` to disable retries.                                       |
+| `timeoutMs?`            | `number`                                             | `...`         | Timeout in milliseconds. Defaults to the connection's configured timeout.                                  |
+| `returnContentOnError?` | `boolean`                                            | `false`       | When `true`, attempts to parse and return the JSON body even on non-success responses instead of throwing. |
 
 #### Returns
 
 `Promise`\<`T`\>
 
-- The parsed JSON response from the request.
+The parsed JSON response body.
 
 #### Throws
 
-Will throw an error if the response is not successful.
+If the response is not successful (and `returnContentOnError` is `false`), or if the body cannot be parsed as JSON.
 
-***
+---
 
 ### getAuthorizationToken()
 
-> `static` **getAuthorizationToken**(`id`): `Promise`\<`OAuthTokenDto`\>
+```ts
+static getAuthorizationToken(id: string): Promise<OAuthTokenDto>;
+```
+
+Exchanges a secret provider ID for a time-limited authorization token.
 
 #### Parameters
 
-##### id
-
-`string`
+| Parameter | Type     | Description             |
+| --------- | -------- | ----------------------- |
+| `id`      | `string` | The secret provider ID. |
 
 #### Returns
 
 `Promise`\<`OAuthTokenDto`\>
 
-***
+---
 
 ### getAuthorizationTokenForObject()
 
-> `static` **getAuthorizationTokenForObject**(`id`): `Promise`\<`OAuthTokenDto`\>
+```ts
+static getAuthorizationTokenForObject(id: string): Promise<OAuthTokenDto>;
+```
+
+Exchanges a widget-object-scoped secret ID for a time-limited authorization token.
 
 #### Parameters
 
-##### id
-
-`string`
+| Parameter | Type     | Description                  |
+| --------- | -------- | ---------------------------- |
+| `id`      | `string` | The object-scoped secret ID. |
 
 #### Returns
 
 `Promise`\<`OAuthTokenDto`\>
 
-***
+---
 
 ### listSecretsAvailableForBoard()
 
-> `static` **listSecretsAvailableForBoard**(`id`): `Promise`\<`ThirdPartyConnectionApiDto`[]\>
+```ts
+static listSecretsAvailableForBoard(id: string): Promise<ThirdPartyConnectionApiDto[]>;
+```
+
+Retrieves all secrets available to the current board for the given provider ID.
 
 #### Parameters
 
-##### id
-
-`string`
+| Parameter | Type     | Description                        |
+| --------- | -------- | ---------------------------------- |
+| `id`      | `string` | The secret provider ID to look up. |
 
 #### Returns
 
 `Promise`\<`ThirdPartyConnectionApiDto`[]\>
 
-***
+---
 
 ### proxyRequest()
 
-> `static` **proxyRequest**(`url`, `token`, `params`): `Promise`\<`Response`\>
+```ts
+static proxyRequest(
+   url: string,
+   token: string,
+params: Omit<RequestInit, "credentials" | "mode">): Promise<Response>;
+```
+
+Forwards an authenticated HTTP request through the Alleo backend proxy.
 
 #### Parameters
 
-##### url
-
-`string`
-
-##### token
-
-`string`
-
-##### params
-
-`Omit`\<`RequestInit`, `"credentials"` \| `"mode"`\>
+| Parameter | Type                                                 | Description                                                                            |
+| --------- | ---------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `url`     | `string`                                             | The target URL.                                                                        |
+| `token`   | `string`                                             | The authorization token obtained from [getAuthorizationToken](#getauthorizationtoken). |
+| `params`  | `Omit`\<`RequestInit`, `"credentials"` \| `"mode"`\> | Standard fetch options excluding credentials and mode.                                 |
 
 #### Returns
 

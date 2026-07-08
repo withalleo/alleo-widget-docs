@@ -1,21 +1,30 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / ConfigDialogSetting
 
 # Type Alias: ConfigDialogSetting
 
-> **ConfigDialogSetting** = `object`
+```ts
+type ConfigDialogSetting = {
+  label: string;
+  value: string;
+};
+```
 
 ## Properties
 
 ### label
 
-> **label**: `string`
+```ts
+label: string;
+```
 
-***
+---
 
 ### value
 
-> **value**: `string`
+```ts
+value: string;
+```

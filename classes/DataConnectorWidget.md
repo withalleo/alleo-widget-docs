@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / DataConnectorWidget
 
@@ -19,32 +19,31 @@ and the metadata getters (`implemented`, `length`, `widgetName`, `widgetDescript
 
 ## Type Parameters
 
-### SharedVariableStructure
-
-`SharedVariableStructure`
-
-Structure of the widget's shared variables stored on the board.
+| Type Parameter            | Description                                                     |
+| ------------------------- | --------------------------------------------------------------- |
+| `SharedVariableStructure` | Structure of the widget's shared variables stored on the board. |
 
 ## Constructors
 
 ### Constructor
 
-> **new DataConnectorWidget**\<`SharedVariableStructure`\>(`defaultSharedVariables?`): `DataConnectorWidget`\<`SharedVariableStructure`\>
+```ts
+new DataConnectorWidget<SharedVariableStructure>(defaultSharedVariables?: Partial<SharedVariableStructure>): DataConnectorWidget<SharedVariableStructure>;
+```
 
 Creates a data connector widget.
 
 The constructor:
+
 - sets up the settings dialog (including Import/Export/Preview buttons when supported),
 - exposes standard data connector actions and
 - initializes the widget name and action effects.
 
 #### Parameters
 
-##### defaultSharedVariables?
-
-`Partial`\<`SharedVariableStructure`\> = `{}`
-
-Optional initial values for the widget's shared variables.
+| Parameter                | Type                                   | Description                                                |
+| ------------------------ | -------------------------------------- | ---------------------------------------------------------- |
+| `defaultSharedVariables` | `Partial`\<`SharedVariableStructure`\> | Optional initial values for the widget's shared variables. |
 
 #### Returns
 
@@ -58,33 +57,41 @@ Optional initial values for the widget's shared variables.
 
 ### dom
 
-> `protected` **dom**: `HTMLDivElement` = `null`
+```ts
+protected dom: HTMLDivElement = null;
+```
 
 #### Inherited from
 
 [`AlleoWidget`](AlleoWidget.md).[`dom`](AlleoWidget.md#dom)
 
-***
+---
 
 ### lineLimit
 
-> `protected` **lineLimit**: `number` = `0`
+```ts
+protected lineLimit: number = 0;
+```
 
 Maximum number of records allowed for import; `0` means "no explicit limit".
 
-***
+---
 
 ### nameHelper
 
-> `protected` **nameHelper**: [`WidgetNameHelper`](WidgetNameHelper.md)
+```ts
+protected nameHelper: WidgetNameHelper;
+```
 
 Helper responsible for keeping the visible widget name in sync.
 
-***
+---
 
 ### onChangeCallbacks
 
-> **onChangeCallbacks**: () => `void`[] = `[]`
+```ts
+onChangeCallbacks: () => void[] = [];
+```
 
 Optional callbacks that run when the widget's data changes.
 
@@ -92,45 +99,57 @@ Optional callbacks that run when the widget's data changes.
 
 `void`
 
-***
+---
 
 ### shared
 
-> `protected` **shared**: `Partial`\<`SharedVariableStructure`\>
+```ts
+protected shared: Partial<SharedVariableStructure>;
+```
 
 #### Inherited from
 
 [`AlleoWidget`](AlleoWidget.md).[`shared`](AlleoWidget.md#shared)
 
-***
+---
 
 ### widgetStatus
 
-> `protected` **widgetStatus**: `object`
+```ts
+protected widgetStatus: {
+  loaded: boolean;
+};
+```
 
 #### loaded
 
-> **loaded**: `boolean`
+```ts
+loaded: boolean;
+```
 
 #### Inherited from
 
 [`AlleoWidget`](AlleoWidget.md).[`widgetStatus`](AlleoWidget.md#widgetstatus)
 
-***
+---
 
 ### api
 
-> `static` **api**: `IWidgetServiceApi` = `haptic`
+```ts
+static api: IWidgetServiceApi = haptic;
+```
 
 #### Inherited from
 
 [`AlleoWidget`](AlleoWidget.md).[`api`](AlleoWidget.md#api)
 
-***
+---
 
 ### widgetNamePrefix
 
-> `readonly` `static` **widgetNamePrefix**: `string` = `'▤ '`
+```ts
+readonly static widgetNamePrefix: string = '▤ ';
+```
 
 Prefix used when showing the widget name on the board.
 
@@ -140,7 +159,9 @@ Prefix used when showing the widget name on the board.
 
 #### Get Signature
 
-> **get** **displayName**(): `string`
+```ts
+get displayName(): string;
+```
 
 Resolved display name of the widget as shown on the board.
 
@@ -150,13 +171,15 @@ Uses the custom `displayName` shared variable when present, otherwise falls back
 
 `string`
 
-***
+---
 
 ### implemented
 
 #### Get Signature
 
-> **get** **implemented**(): [`DataConnectorAction`](../enumerations/DataConnectorAction.md)[]
+```ts
+get implemented(): DataConnectorAction[];
+```
 
 List of data connector actions that this concrete widget actually implements.
 
@@ -166,13 +189,15 @@ Subclasses should override this to advertise their supported features.
 
 [`DataConnectorAction`](../enumerations/DataConnectorAction.md)[]
 
-***
+---
 
 ### length
 
 #### Get Signature
 
-> **get** **length**(): `number`
+```ts
+get length(): number;
+```
 
 Number of records currently stored by the widget, when known.
 
@@ -182,13 +207,15 @@ Subclasses can override this to expose their own length; `undefined` means "not 
 
 `number`
 
-***
+---
 
 ### settings
 
 #### Get Signature
 
-> **get** `protected` **settings**(): [`ExtendedFormlyFieldConfig`](../interfaces/ExtendedFormlyFieldConfig.md)[]
+```ts
+get protected settings(): ExtendedFormlyFieldConfig[];
+```
 
 Additional settings fields contributed by the concrete widget.
 
@@ -198,13 +225,15 @@ These are injected into the shared settings dialog for the data connector instan
 
 [`ExtendedFormlyFieldConfig`](../interfaces/ExtendedFormlyFieldConfig.md)[]
 
-***
+---
 
 ### widgetDescription
 
 #### Get Signature
 
-> **get** **widgetDescription**(): `string`
+```ts
+get widgetDescription(): string;
+```
 
 Short description of what this data connector does.
 
@@ -214,13 +243,15 @@ Used in the settings dialog footer.
 
 `string`
 
-***
+---
 
 ### widgetName
 
 #### Get Signature
 
-> **get** **widgetName**(): `string`
+```ts
+get widgetName(): string;
+```
 
 Human friendly base name of the widget (without the connector prefix).
 
@@ -234,7 +265,9 @@ Subclasses should override this to provide a more specific name.
 
 ### append()
 
-> `protected` **append**(`newRecord`): `Promise`\<`boolean`\>
+```ts
+protected append(newRecord: string[]): Promise<boolean>;
+```
 
 Appends a new record to the widget's data source.
 
@@ -243,11 +276,9 @@ Most widgets should override this to update their internal data and return `true
 
 #### Parameters
 
-##### newRecord
-
-`string`[]
-
-Record to append.
+| Parameter   | Type       | Description       |
+| ----------- | ---------- | ----------------- |
+| `newRecord` | `string`[] | Record to append. |
 
 #### Returns
 
@@ -255,11 +286,13 @@ Record to append.
 
 `true` when the record was added; `false` in the base implementation.
 
-***
+---
 
 ### assertWidgetLoaded()
 
-> `protected` **assertWidgetLoaded**(): `void`
+```ts
+protected assertWidgetLoaded(): void;
+```
 
 Validates that the widget is still loaded and has not been destroyed.
 
@@ -289,11 +322,13 @@ async loadData() {
 
 [`AlleoWidget`](AlleoWidget.md).[`assertWidgetLoaded`](AlleoWidget.md#assertwidgetloaded)
 
-***
+---
 
 ### deleteLine()
 
-> `protected` **deleteLine**(`recordNumber`): `Promise`\<`boolean`\>
+```ts
+protected deleteLine(recordNumber: number): Promise<boolean>;
+```
 
 Deletes a single record from the widget's data source.
 
@@ -301,11 +336,9 @@ The base implementation only emits an action trigger and returns `false`.
 
 #### Parameters
 
-##### recordNumber
-
-`number`
-
-Zero-based index of the record to delete.
+| Parameter      | Type     | Description                               |
+| -------------- | -------- | ----------------------------------------- |
+| `recordNumber` | `number` | Zero-based index of the record to delete. |
 
 #### Returns
 
@@ -313,11 +346,13 @@ Zero-based index of the record to delete.
 
 `true` when the record was deleted; `false` in the base implementation.
 
-***
+---
 
 ### destroy()
 
-> **destroy**(): `void` \| `Promise`\<`void`\>
+```ts
+destroy(): void | Promise<void>;
+```
 
 Lifecycle method called when the widget instance is being destroyed.
 
@@ -336,11 +371,13 @@ Can return a Promise for async cleanup operations.
 
 [`AlleoWidget`](AlleoWidget.md).[`destroy`](AlleoWidget.md#destroy)
 
-***
+---
 
 ### domSelect()
 
-> `protected` **domSelect**\<`HTMLElementType`\>(`query`): `HTMLElementType`
+```ts
+protected domSelect<HTMLElementType>(query: string): HTMLElementType;
+```
 
 Queries for a DOM element within the widget container using a CSS selector.
 
@@ -349,19 +386,15 @@ preventing accidental selection of elements outside the widget.
 
 #### Type Parameters
 
-##### HTMLElementType
-
-`HTMLElementType` *extends* `HTMLElement` = `HTMLElement`
-
-The expected HTML element type (e.g., HTMLButtonElement, HTMLInputElement).
+| Type Parameter                            | Default type  | Description                                                                 |
+| ----------------------------------------- | ------------- | --------------------------------------------------------------------------- |
+| `HTMLElementType` _extends_ `HTMLElement` | `HTMLElement` | The expected HTML element type (e.g., HTMLButtonElement, HTMLInputElement). |
 
 #### Parameters
 
-##### query
-
-`string`
-
-CSS selector string (will be prefixed with the container selector).
+| Parameter | Type     | Description                                                         |
+| --------- | -------- | ------------------------------------------------------------------- |
+| `query`   | `string` | CSS selector string (will be prefixed with the container selector). |
 
 #### Returns
 
@@ -376,19 +409,21 @@ Throws if the widget doesn't have a DOM.
 #### Example
 
 ```typescript
-const button = this.domSelect<HTMLButtonElement>('.my-button');
-button.addEventListener('click', () => console.log('Clicked!'));
+const button = this.domSelect<HTMLButtonElement>(".my-button");
+button.addEventListener("click", () => console.log("Clicked!"));
 ```
 
 #### Inherited from
 
 [`AlleoWidget`](AlleoWidget.md).[`domSelect`](AlleoWidget.md#domselect)
 
-***
+---
 
 ### export()
 
-> `protected` **export**(): `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
+```ts
+protected export(): Promise<CSVData>;
+```
 
 Exports the widget's data as a 2D CSV array.
 
@@ -404,11 +439,13 @@ All records currently stored by this data connector.
 
 Always throws in the base class; concrete implementations must provide a working version.
 
-***
+---
 
 ### exportProcess()
 
-> **exportProcess**(`name?`, `download?`): `Promise`\<`void`\>
+```ts
+exportProcess(name?: string, download?: boolean): Promise<void>;
+```
 
 Exports data from the connector and uploads it as a CSV file to board assets.
 
@@ -416,17 +453,10 @@ Optionally triggers a download for the current user.
 
 #### Parameters
 
-##### name?
-
-`string` = `'Exported data'`
-
-Base name to use for the exported file (without extension).
-
-##### download?
-
-`boolean` = `true`
-
-When `true`, also downloads the file to the local machine.
+| Parameter  | Type      | Default value     | Description                                                 |
+| ---------- | --------- | ----------------- | ----------------------------------------------------------- |
+| `name`     | `string`  | `'Exported data'` | Base name to use for the exported file (without extension). |
+| `download` | `boolean` | `true`            | When `true`, also downloads the file to the local machine.  |
 
 #### Returns
 
@@ -436,11 +466,13 @@ When `true`, also downloads the file to the local machine.
 
 When the uploaded file has no public URL.
 
-***
+---
 
 ### getLine()
 
-> `protected` **getLine**(`recordNumber?`): `Promise`\<`string`[]\>
+```ts
+protected getLine(recordNumber?: number): Promise<string[]>;
+```
 
 Reads a single record from the widget's data source by index.
 
@@ -448,11 +480,9 @@ This method relies on `export` and enforces `lineLimit` when it is greater than 
 
 #### Parameters
 
-##### recordNumber?
-
-`number` = `0`
-
-Zero-based index of the record to read. Defaults to `0`.
+| Parameter      | Type     | Default value | Description                                              |
+| -------------- | -------- | ------------- | -------------------------------------------------------- |
+| `recordNumber` | `number` | `0`           | Zero-based index of the record to read. Defaults to `0`. |
 
 #### Returns
 
@@ -464,11 +494,13 @@ The requested record as an array of string cell values.
 
 When export or get support is missing, the index is negative, exceeds `lineLimit`, or is out of bounds.
 
-***
+---
 
 ### import()
 
-> `protected` **import**(`newRecords`): `Promise`\<`boolean`\>
+```ts
+protected import(newRecords: CSVData): Promise<boolean>;
+```
 
 Replaces all records in the widget's data source with the given CSV content.
 
@@ -477,11 +509,9 @@ Most widgets should override this to update their internal data and return `true
 
 #### Parameters
 
-##### newRecords
-
-[`CSVData`](../type-aliases/CSVData.md)
-
-Complete set of records to import.
+| Parameter    | Type                                    | Description                        |
+| ------------ | --------------------------------------- | ---------------------------------- |
+| `newRecords` | [`CSVData`](../type-aliases/CSVData.md) | Complete set of records to import. |
 
 #### Returns
 
@@ -489,11 +519,13 @@ Complete set of records to import.
 
 `true` when the data was imported; `false` in the base implementation.
 
-***
+---
 
 ### importProcess()
 
-> **importProcess**(): `Promise`\<`void`\>
+```ts
+importProcess(): Promise<void>;
+```
 
 Opens the generic data import dialog and pushes the imported CSV into the connector.
 
@@ -503,11 +535,13 @@ Shows a toast about the result and does not throw on failure.
 
 `Promise`\<`void`\>
 
-***
+---
 
 ### initialize()
 
-> `protected` **initialize**(): `Promise`\<`void`\>
+```ts
+protected initialize(): Promise<void>;
+```
 
 Performs common initialization steps for a connector instance.
 
@@ -517,11 +551,13 @@ Subclasses can override this to hook into the lifecycle, but should usually call
 
 `Promise`\<`void`\>
 
-***
+---
 
 ### reset()
 
-> `protected` **reset**(): `Promise`\<`boolean`\>
+```ts
+protected reset(): Promise<boolean>;
+```
 
 Clears the widget's data source.
 
@@ -533,11 +569,13 @@ The base implementation only emits an action trigger and returns `false`.
 
 `true` when the data was reset; `false` in the base implementation.
 
-***
+---
 
 ### setContainerClass()
 
-> `protected` **setContainerClass**(`className`, `add?`): `void`
+```ts
+protected setContainerClass(className: string, add?: boolean): void;
+```
 
 Adds or removes CSS classes from the widget container for styling purposes.
 
@@ -546,17 +584,10 @@ it adds the "not-{className}" variant instead. This pattern helps with CSS targe
 
 #### Parameters
 
-##### className
-
-`string`
-
-The CSS class name to add or remove.
-
-##### add?
-
-`boolean` = `true`
-
-When true, adds the class. When false, removes the class and adds "not-{className}".
+| Parameter   | Type      | Default value | Description                                                                          |
+| ----------- | --------- | ------------- | ------------------------------------------------------------------------------------ |
+| `className` | `string`  | `undefined`   | The CSS class name to add or remove.                                                 |
+| `add?`      | `boolean` | `true`        | When true, adds the class. When false, removes the class and adds "not-{className}". |
 
 #### Returns
 
@@ -569,19 +600,21 @@ Throws if the widget doesn't have a DOM (e.g., when used in a service context).
 #### Example
 
 ```typescript
-this.setContainerClass('active', true);  // Adds 'active' class, removes 'not-active'
-this.setContainerClass('active', false); // Removes 'active' class, adds 'not-active'
+this.setContainerClass("active", true); // Adds 'active' class, removes 'not-active'
+this.setContainerClass("active", false); // Removes 'active' class, adds 'not-active'
 ```
 
 #### Inherited from
 
 [`AlleoWidget`](AlleoWidget.md).[`setContainerClass`](AlleoWidget.md#setcontainerclass)
 
-***
+---
 
 ### setLine()
 
-> `protected` **setLine**(`record`, `recordNumber`): `Promise`\<`boolean`\>
+```ts
+protected setLine(record: string[], recordNumber: number): Promise<boolean>;
+```
 
 Replaces a single record in the widget's data source.
 
@@ -590,17 +623,10 @@ Most widgets should override this to update their internal data and return `true
 
 #### Parameters
 
-##### record
-
-`string`[]
-
-New record content.
-
-##### recordNumber
-
-`number`
-
-Zero-based index of the record to replace.
+| Parameter      | Type       | Description                                |
+| -------------- | ---------- | ------------------------------------------ |
+| `record`       | `string`[] | New record content.                        |
+| `recordNumber` | `number`   | Zero-based index of the record to replace. |
 
 #### Returns
 
@@ -608,11 +634,13 @@ Zero-based index of the record to replace.
 
 `true` when the record was updated; `false` in the base implementation.
 
-***
+---
 
 ### updateActions()
 
-> `protected` **updateActions**(): `void`
+```ts
+protected updateActions(): void;
+```
 
 Registers action effects and triggers for the data connector based on the implemented actions.
 
@@ -623,11 +651,13 @@ call into this connector and listen to its events.
 
 `void`
 
-***
+---
 
 ### updateDomStatus()
 
-> `protected` **updateDomStatus**(): `void`
+```ts
+protected updateDomStatus(): void;
+```
 
 #### Returns
 
@@ -637,27 +667,22 @@ call into this connector and listen to its events.
 
 [`AlleoWidget`](AlleoWidget.md).[`updateDomStatus`](AlleoWidget.md#updatedomstatus)
 
-***
+---
 
 ### isDataConnector()
 
-> `static` **isDataConnector**(`object`, `actionsRequiredSupport?`): `boolean`
+```ts
+static isDataConnector(object: RealIBoardObject, actionsRequiredSupport?: DataConnectorAction[]): boolean;
+```
 
 Checks if a board object represents a DataConnector widget and, optionally, if it supports given actions.
 
 #### Parameters
 
-##### object
-
-[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
-
-Board object to check.
-
-##### actionsRequiredSupport?
-
-[`DataConnectorAction`](../enumerations/DataConnectorAction.md)[] = `[]`
-
-Actions that must be supported for the object to qualify.
+| Parameter                | Type                                                              | Default value | Description                                               |
+| ------------------------ | ----------------------------------------------------------------- | ------------- | --------------------------------------------------------- |
+| `object`                 | [`RealIBoardObject`](../interfaces/RealIBoardObject.md)           | `undefined`   | Board object to check.                                    |
+| `actionsRequiredSupport` | [`DataConnectorAction`](../enumerations/DataConnectorAction.md)[] | `[]`          | Actions that must be supported for the object to qualify. |
 
 #### Returns
 
@@ -665,11 +690,13 @@ Actions that must be supported for the object to qualify.
 
 `true` when the object is marked as a data connector and supports at least one of the requested actions.
 
-***
+---
 
 ### saveCSVInBoardAssets()
 
-> `static` **saveCSVInBoardAssets**(`file`): `Promise`\<`StorageNodeCreatedResponseDto`\>
+```ts
+static saveCSVInBoardAssets(file: File): Promise<StorageNodeCreatedResponseDto>;
+```
 
 Saves a CSV file into the board assets area and quietly confirms the import dialog if it is open.
 
@@ -677,11 +704,9 @@ This is mostly used by widgets when exporting data for the user.
 
 #### Parameters
 
-##### file
-
-`File`
-
-CSV file to upload as a board asset.
+| Parameter | Type   | Description                          |
+| --------- | ------ | ------------------------------------ |
+| `file`    | `File` | CSV file to upload as a board asset. |
 
 #### Returns
 

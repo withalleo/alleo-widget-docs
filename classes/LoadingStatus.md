@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / LoadingStatus
 
@@ -40,7 +40,9 @@ try {
 
 ### Constructor
 
-> **new LoadingStatus**(`id?`): `LoadingStatus`
+```ts
+new LoadingStatus(id?: string): LoadingStatus;
+```
 
 Creates a LoadingStatus instance with a unique identifier.
 
@@ -49,11 +51,9 @@ widget is destroyed.
 
 #### Parameters
 
-##### id?
-
-`string` = `...`
-
-Unique identifier for this loading indicator instance.
+| Parameter | Type     | Description                                            |
+| --------- | -------- | ------------------------------------------------------ |
+| `id?`     | `string` | Unique identifier for this loading indicator instance. |
 
 #### Returns
 
@@ -63,7 +63,9 @@ Unique identifier for this loading indicator instance.
 
 ### showing
 
-> **showing**: `boolean` = `false`
+```ts
+showing: boolean = false;
+```
 
 ## Accessors
 
@@ -71,7 +73,9 @@ Unique identifier for this loading indicator instance.
 
 #### Get Signature
 
-> **get** `protected` **loadingButtonHTML**(): `string`
+```ts
+get protected loadingButtonHTML(): string;
+```
 
 The HTML template for the animated loading spinner.
 
@@ -87,7 +91,9 @@ HTML string with embedded styles and spinner markup.
 
 ### hide()
 
-> **hide**(): `void`
+```ts
+hide(): void;
+```
 
 Hides the loading status by setting the opacity of the DOM element to 0.
 
@@ -95,11 +101,13 @@ Hides the loading status by setting the opacity of the DOM element to 0.
 
 `void`
 
-***
+---
 
 ### show()
 
-> **show**(): `void`
+```ts
+show(): void;
+```
 
 Displays the loading indicator with a fade-in animation.
 

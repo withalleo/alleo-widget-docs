@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / FormButtonHelper
 
@@ -18,27 +18,21 @@ Essential for creating interactive form controls and action buttons.
 ```typescript
 // Create a refresh button with timer
 const refreshButton = new FormButtonHelper(
-  'Refresh Data',
+  "Refresh Data",
   () => {
-    console.log('Refreshing...');
+    console.log("Refreshing...");
     loadData();
   },
   {
-    interval: 5000, // Refresh every 5 seconds
     primary: true,
-    loadingPlaceholder: 'Loading...'
-  }
+    loadingPlaceholder: "Loading...",
+  },
 );
 
 // Single-use action button
-const importButton = new FormButtonHelper(
-  'Import Data',
-  () => importData(),
-  {
-    singleUse: true,
-    primary: false
-  }
-);
+const importButton = new FormButtonHelper("Import Data", () => importData(), {
+  primary: false,
+});
 
 // Get Formly field config
 const fieldConfig = refreshButton.field;
@@ -48,7 +42,12 @@ const fieldConfig = refreshButton.field;
 
 ### Constructor
 
-> **new FormButtonHelper**(`label`, `callback?`, `settings?`): `FormButtonHelper`
+```ts
+new FormButtonHelper(
+   label: string,
+   callback?: (field: FormlyFieldConfig<FormlyFieldProps>) => void,
+   settings?: FormButtonHelperSettings): FormButtonHelper;
+```
 
 Creates a FormButtonHelper instance for managing interactive form buttons.
 
@@ -57,23 +56,11 @@ Automatically handles cleanup when widget is destroyed and respects user edit pe
 
 #### Parameters
 
-##### label
-
-`string`
-
-Text displayed on the button.
-
-##### callback?
-
-(`field`) => `void`
-
-Function invoked when button is clicked, receives the field configuration.
-
-##### settings?
-
-[`FormButtonHelperSettings`](../type-aliases/FormButtonHelperSettings.md) = `{}`
-
-Configuration options.
+| Parameter   | Type                                                                      | Default value | Description                         |
+| ----------- | ------------------------------------------------------------------------- | ------------- | ----------------------------------- |
+| `label`     | `string`                                                                  | `undefined`   | Text displayed on the button.       |
+| `callback?` | (`field`: `FormlyFieldConfig`\<`FormlyFieldProps`\>) => `void`            | `undefined`   | Invoked when the button is clicked. |
+| `settings?` | [`FormButtonHelperSettings`](../type-aliases/FormButtonHelperSettings.md) | `{}`          | Configuration options.              |
 
 #### Returns
 
@@ -83,41 +70,59 @@ Configuration options.
 
 ### callback
 
-> **callback**: (`field`) => `void`
+```ts
+callback: (field: FormlyFieldConfig<FormlyFieldProps>) => void;
+```
 
 #### Parameters
 
-##### field
-
-`FormlyFieldConfig`\<`FormlyFieldProps`\>
+| Parameter | Type                                      |
+| --------- | ----------------------------------------- |
+| `field`   | `FormlyFieldConfig`\<`FormlyFieldProps`\> |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### label
 
-> `readonly` **label**: `string`
+```ts
+readonly label: string;
+```
 
-***
+---
 
 ### settings
 
-> `readonly` **settings**: [`FormButtonHelperSettings`](../type-aliases/FormButtonHelperSettings.md)
+```ts
+readonly settings: FormButtonHelperSettings;
+```
 
-***
+---
 
 ### widgetId
 
-> `readonly` **widgetId**: `string`
+```ts
+readonly widgetId: string;
+```
 
-***
+---
+
+### DEBUG
+
+```ts
+static DEBUG: boolean = false;
+```
+
+---
 
 ### defaultTimerInterval
 
-> `protected` `readonly` `static` **defaultTimerInterval**: `number` = `2500`
+```ts
+protected readonly static defaultTimerInterval: number = 500;
+```
 
 ## Accessors
 
@@ -125,7 +130,9 @@ Configuration options.
 
 #### Get Signature
 
-> **get** **button**(): `FormlyFieldConfig`\<`FormlyFieldProps`\>
+```ts
+get button(): FormlyFieldConfig<FormlyFieldProps>;
+```
 
 Gets the Formly field configuration for the button.
 
@@ -135,13 +142,29 @@ Gets the Formly field configuration for the button.
 
 The Formly field configuration.
 
-***
+---
+
+### isAnyDialogOpen
+
+#### Get Signature
+
+```ts
+get isAnyDialogOpen(): boolean;
+```
+
+##### Returns
+
+`boolean`
+
+---
 
 ### isTimerRunning
 
 #### Get Signature
 
-> **get** **isTimerRunning**(): `boolean`
+```ts
+get isTimerRunning(): boolean;
+```
 
 Checks if the timer is running.
 
@@ -155,7 +178,9 @@ True if the timer is running, false otherwise.
 
 ### destroy()
 
-> **destroy**(): `void`
+```ts
+destroy(): void;
+```
 
 Destroys the form button helper.
 
@@ -163,11 +188,13 @@ Destroys the form button helper.
 
 `void`
 
-***
+---
 
 ### onTimerTick()
 
-> `protected` **onTimerTick**(): `Promise`\<`void`\>
+```ts
+protected onTimerTick(): Promise<void>;
+```
 
 Handles the timer tick event.
 
@@ -175,29 +202,33 @@ Handles the timer tick event.
 
 `Promise`\<`void`\>
 
-***
+---
 
 ### startTimer()
 
-> **startTimer**(`interval?`): `void`
+```ts
+startTimer(interval?: number): void;
+```
 
 Starts the timer.
 
 #### Parameters
 
-##### interval?
-
-`number` = `undefined`
+| Parameter  | Type     | Default value |
+| ---------- | -------- | ------------- |
+| `interval` | `number` | `undefined`   |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### stopTimer()
 
-> **stopTimer**(): `void`
+```ts
+stopTimer(): void;
+```
 
 Stops the timer.
 
@@ -205,11 +236,13 @@ Stops the timer.
 
 `void`
 
-***
+---
 
 ### updateButtonUI()
 
-> **updateButtonUI**(): `Promise`\<`void`\>
+```ts
+updateButtonUI(): Promise<void>;
+```
 
 #### Returns
 

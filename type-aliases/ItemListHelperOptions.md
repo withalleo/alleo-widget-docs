@@ -1,12 +1,39 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / ItemListHelperOptions
 
 # Type Alias: ItemListHelperOptions
 
-> **ItemListHelperOptions** = `object`
+```ts
+type ItemListHelperOptions = {
+  allowDataConnectors?: boolean;
+  allowImport?: boolean;
+  allowLocalEdit?: boolean;
+  allowReordering?: boolean;
+  dataSourceLabel?: string;
+  defaultValue?: ListRecord[];
+  disableAllEdits?: boolean;
+  elements?: FormlyFieldConfig<
+    FormlyFieldProps & {
+      [p: string]: any;
+    }
+  >[];
+  importSettings?: Omit<DataImportHelperSettings, "fields">;
+  label?: string;
+  localListProps?: Record<string, any>;
+  migrateIdGenerateFunction?: (
+    element: unknown,
+    list: unknown[],
+    index: number,
+  ) => string;
+  migrateOldArrayTypeList?: boolean;
+  newIdGenerateFunction?: () => string;
+  onListChangeCallback?: (list: ListRecord[]) => void;
+  readonlyApi?: boolean;
+};
+```
 
 Options for configuring the ItemListHelper.
 
@@ -14,126 +41,154 @@ Options for configuring the ItemListHelper.
 
 ### allowDataConnectors?
 
-> `optional` **allowDataConnectors?**: `boolean`
+```ts
+optional allowDataConnectors?: boolean;
+```
 
-***
+---
 
 ### allowImport?
 
-> `optional` **allowImport?**: `boolean`
+```ts
+optional allowImport?: boolean;
+```
 
-***
+---
 
 ### allowLocalEdit?
 
-> `optional` **allowLocalEdit?**: `boolean`
+```ts
+optional allowLocalEdit?: boolean;
+```
 
-***
+---
 
 ### allowReordering?
 
-> `optional` **allowReordering?**: `boolean`
+```ts
+optional allowReordering?: boolean;
+```
 
-***
+---
 
 ### dataSourceLabel?
 
-> `optional` **dataSourceLabel?**: `string`
+```ts
+optional dataSourceLabel?: string;
+```
 
-***
+---
 
 ### defaultValue?
 
-> `optional` **defaultValue?**: [`ListRecord`](ListRecord.md)[]
+```ts
+optional defaultValue?: ListRecord[];
+```
 
-***
+---
 
 ### disableAllEdits?
 
-> `optional` **disableAllEdits?**: `boolean`
+```ts
+optional disableAllEdits?: boolean;
+```
 
-***
+---
 
 ### elements?
 
-> `optional` **elements?**: `FormlyFieldConfig`\<`FormlyFieldProps` & `object`\>[]
+```ts
+optional elements?: FormlyFieldConfig<FormlyFieldProps & {
+[p: string]: any;
+}>[];
+```
 
-***
+---
 
 ### importSettings?
 
-> `optional` **importSettings?**: `Omit`\<[`DataImportHelperSettings`](DataImportHelperSettings.md), `"fields"`\>
+```ts
+optional importSettings?: Omit<DataImportHelperSettings, "fields">;
+```
 
-***
+---
 
 ### label?
 
-> `optional` **label?**: `string`
+```ts
+optional label?: string;
+```
 
-***
+---
 
 ### localListProps?
 
-> `optional` **localListProps?**: `Record`\<`string`, `any`\>
+```ts
+optional localListProps?: Record<string, any>;
+```
 
-***
+---
 
 ### migrateIdGenerateFunction?
 
-> `optional` **migrateIdGenerateFunction?**: (`element`, `list`, `index`) => `string`
+```ts
+optional migrateIdGenerateFunction?: (element: unknown, list: unknown[], index: number) => string;
+```
 
 #### Parameters
 
-##### element
-
-`unknown`
-
-##### list
-
-`unknown`[]
-
-##### index
-
-`number`
+| Parameter | Type        |
+| --------- | ----------- |
+| `element` | `unknown`   |
+| `list`    | `unknown`[] |
+| `index`   | `number`    |
 
 #### Returns
 
 `string`
 
-***
+---
 
 ### migrateOldArrayTypeList?
 
-> `optional` **migrateOldArrayTypeList?**: `boolean`
+```ts
+optional migrateOldArrayTypeList?: boolean;
+```
 
-***
+---
 
 ### newIdGenerateFunction?
 
-> `optional` **newIdGenerateFunction?**: () => `string`
+```ts
+optional newIdGenerateFunction?: () => string;
+```
 
 #### Returns
 
 `string`
 
-***
+---
 
 ### onListChangeCallback?
 
-> `optional` **onListChangeCallback?**: (`list`) => `void`
+```ts
+optional onListChangeCallback?: (list: ListRecord[]) => void;
+```
 
 #### Parameters
 
-##### list
-
-[`ListRecord`](ListRecord.md)[]
+| Parameter | Type                            |
+| --------- | ------------------------------- |
+| `list`    | [`ListRecord`](ListRecord.md)[] |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### readonlyApi?
 
-> `optional` **readonlyApi?**: `boolean`
+```ts
+optional readonlyApi?: boolean;
+```

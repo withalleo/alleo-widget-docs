@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / RateLimitUpdateHelper
 
@@ -17,13 +17,13 @@ changes into a single update.
 
 ```typescript
 // Rate-limit scroll position updates
-const scrollPosition = new RateLimitUpdateHelper<{x: number, y: number}>(
-  'scrollPos',
-  200 // Update at most every 200ms
+const scrollPosition = new RateLimitUpdateHelper<{ x: number; y: number }>(
+  "scrollPos",
+  200, // Update at most every 200ms
 );
 
 // Rapid updates are automatically throttled
-element.addEventListener('scroll', () => {
+element.addEventListener("scroll", () => {
   scrollPosition.set({ x: element.scrollLeft, y: element.scrollTop });
 });
 
@@ -36,33 +36,26 @@ const remotePos = scrollPosition.stored;
 
 ## Type Parameters
 
-### T
-
-`T` = `any`
-
-The type of value being rate-limited.
+| Type Parameter | Default type | Description                           |
+| -------------- | ------------ | ------------------------------------- |
+| `T`            | `any`        | The type of value being rate-limited. |
 
 ## Constructors
 
 ### Constructor
 
-> **new RateLimitUpdateHelper**\<`T`\>(`key`, `maxDelay?`): `RateLimitUpdateHelper`\<`T`\>
+```ts
+new RateLimitUpdateHelper<T>(key: string, maxDelay?: number): RateLimitUpdateHelper<T>;
+```
 
 Creates a RateLimitUpdateHelper for managing rate-limited shared variable updates.
 
 #### Parameters
 
-##### key
-
-`string`
-
-Shared variable name to store the rate-limited value.
-
-##### maxDelay?
-
-`number` = `250`
-
-Maximum milliseconds between updates. Rapid changes within this window are batched.
+| Parameter   | Type     | Default value | Description                                                                         |
+| ----------- | -------- | ------------- | ----------------------------------------------------------------------------------- |
+| `key`       | `string` | `undefined`   | Shared variable name to store the rate-limited value.                               |
+| `maxDelay?` | `number` | `250`         | Maximum milliseconds between updates. Rapid changes within this window are batched. |
 
 #### Returns
 
@@ -74,7 +67,9 @@ Maximum milliseconds between updates. Rapid changes within this window are batch
 
 #### Get Signature
 
-> **get** **latest**(): `T`
+```ts
+get latest(): T;
+```
 
 The most current value, considering both local and remote timing.
 
@@ -87,13 +82,15 @@ returns the stored remote value. Useful for getting the authoritative current va
 
 The latest value from either local or remote source.
 
-***
+---
 
 ### newest
 
 #### Get Signature
 
-> **get** **newest**(): `T`
+```ts
+get newest(): T;
+```
 
 The most recent value set locally, whether or not it has been synced yet.
 
@@ -106,13 +103,15 @@ if an update is pending.
 
 The newest locally set value, or the stored value if no local updates pending.
 
-***
+---
 
 ### stored
 
 #### Get Signature
 
-> **get** **stored**(): `T`
+```ts
+get stored(): T;
+```
 
 The current value stored in the shared variable (remote/synchronized value).
 
@@ -129,7 +128,9 @@ The remotely stored shared variable value.
 
 ### set()
 
-> **set**(`value`): `void`
+```ts
+set(value: T): void;
+```
 
 Sets a new value with automatic rate limiting.
 
@@ -138,21 +139,21 @@ only the final value is synced, reducing unnecessary updates.
 
 #### Parameters
 
-##### value
-
-`T`
-
-The new value to set and eventually sync.
+| Parameter | Type | Description                               |
+| --------- | ---- | ----------------------------------------- |
+| `value`   | `T`  | The new value to set and eventually sync. |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### update()
 
-> `protected` **update**(): `void`
+```ts
+protected update(): void;
+```
 
 Performs the actual update to the shared variable storage.
 

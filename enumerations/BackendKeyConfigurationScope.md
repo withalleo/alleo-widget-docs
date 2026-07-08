@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / BackendKeyConfigurationScope
 
@@ -10,16 +10,22 @@
 
 ### Custom
 
-> **Custom**: `"custom"`
+```ts
+Custom: "custom";
+```
 
-***
+---
 
 ### Deployment
 
-> **Deployment**: `"deployment"`
+```ts
+Deployment: "deployment";
+```
 
-***
+---
 
 ### Organization
 
-> **Organization**: `"org"`
+```ts
+Organization: "org";
+```

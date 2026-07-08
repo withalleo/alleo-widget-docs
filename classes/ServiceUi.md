@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / ServiceUi
 
@@ -20,16 +20,16 @@ class MyServiceWidget {
   constructor() {
     // Add a button to the service UI
     this.ui.buttons.add({
-      label: 'Start Process',
-      onClick: () => this.startProcess()
+      label: "Start Process",
+      onClick: () => this.startProcess(),
     });
 
     // Show loading status
-    this.ui.loadingStatus.show('Processing...');
+    this.ui.loadingStatus.show("Processing...");
   }
 
   async startProcess() {
-    this.ui.loadingStatus.show('Working...');
+    this.ui.loadingStatus.show("Working...");
     await doWork();
     this.ui.loadingStatus.hide();
   }
@@ -40,7 +40,9 @@ class MyServiceWidget {
 
 ### Constructor
 
-> **new ServiceUi**(): `ServiceUi`
+```ts
+new ServiceUi(): ServiceUi;
+```
 
 Creates an instance of ServiceUi with initialized button and loading status helpers.
 
@@ -52,18 +54,22 @@ Creates an instance of ServiceUi with initialized button and loading status help
 
 ### buttons
 
-> **buttons**: [`UiButtonHelper`](UiButtonHelper.md)
+```ts
+buttons: UiButtonHelper;
+```
 
 Helper for managing UI buttons in the service interface.
 
 Provides methods to add, remove, and configure interactive buttons that appear
 in the service widget's UI panel.
 
-***
+---
 
 ### loadingStatus
 
-> **loadingStatus**: [`LoadingStatus`](LoadingStatus.md)
+```ts
+loadingStatus: LoadingStatus;
+```
 
 Helper for displaying loading status indicators to users.
 

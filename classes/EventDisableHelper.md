@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / EventDisableHelper
 
@@ -16,25 +16,25 @@ temporarily prevent default browser behaviors. Stores and restores original even
 ## Example
 
 ```typescript
-const element = document.querySelector('.interactive');
+const element = document.querySelector(".interactive");
 
 // Disable all pointer events
 const pointerDisabler = new EventDisableHelper(
   element,
-  EventDisableHelper.POINTER_EVENTS
+  EventDisableHelper.POINTER_EVENTS,
 );
 
 // Disable scroll events with auto-management
 const scrollDisabler = new EventDisableHelper(
   element,
   EventDisableHelper.SCROLL_EVENTS,
-  { autoManage: true }
+  { autoManage: true },
 );
 
 // Manually control event disabling
-const customDisabler = new EventDisableHelper(element, ['click', 'dblclick'], {
+const customDisabler = new EventDisableHelper(element, ["click", "dblclick"], {
   autoManage: false,
-  callback: (e) => console.log('Event prevented:', e.type)
+  callback: (e) => console.log("Event prevented:", e.type),
 });
 customDisabler.disable();
 // ... do work ...
@@ -45,29 +45,22 @@ customDisabler.enable();
 
 ### Constructor
 
-> **new EventDisableHelper**(`element?`, `events?`, `options?`): `EventDisableHelper`
+```ts
+new EventDisableHelper(
+   element?: HTMLElement | Window,
+   events?: string[],
+   options?: EventDisableHelperOptions): EventDisableHelper;
+```
 
 Constructor for EventDisableHelper.
 
 #### Parameters
 
-##### element?
-
-`HTMLElement` \| `Window`
-
-The HTML element or window to which events are attached.
-
-##### events?
-
-`string`[] = `EventDisableHelper.POINTER_EVENTS`
-
-List of events to be managed.
-
-##### options?
-
-[`EventDisableHelperOptions`](../type-aliases/EventDisableHelperOptions.md) = `{}`
-
-Options for the EventDisableHelper.
+| Parameter | Type                                                                        | Default value                       | Description                                              |
+| --------- | --------------------------------------------------------------------------- | ----------------------------------- | -------------------------------------------------------- |
+| `element` | `HTMLElement` \| `Window`                                                   | `...`                               | The HTML element or window to which events are attached. |
+| `events`  | `string`[]                                                                  | `EventDisableHelper.POINTER_EVENTS` | List of events to be managed.                            |
+| `options` | [`EventDisableHelperOptions`](../type-aliases/EventDisableHelperOptions.md) | `{}`                                | Options for the EventDisableHelper.                      |
 
 #### Returns
 
@@ -77,89 +70,111 @@ Options for the EventDisableHelper.
 
 ### disabled
 
-> **disabled**: `boolean` = `false`
+```ts
+disabled: boolean = false;
+```
 
 Flag indicating whether events are disabled.
 
-***
+---
 
 ### events
 
-> **events**: `string`[]
+```ts
+events: string[];
+```
 
 List of events to be managed.
 
-***
+---
 
 ### htmlElement
 
-> `protected` **htmlElement**: `HTMLElement` \| `Window`
+```ts
+protected htmlElement: HTMLElement | Window;
+```
 
 The HTML element or window to which events are attached.
 
-***
+---
 
 ### ALL\_EVENTS
 
-> `static` **ALL\_EVENTS**: `string`[]
+```ts
+static ALL_EVENTS: string[];
+```
 
 A list of all events.
 
-***
+---
 
 ### EXTENDED\_EVENTS
 
-> `static` **EXTENDED\_EVENTS**: `string`[]
+```ts
+static EXTENDED_EVENTS: string[];
+```
 
 A list of all events that have been ever used in Alleo... waaaay overkill usually.
 
-***
+---
 
 ### KEYBOARD\_EVENTS
 
-> `static` **KEYBOARD\_EVENTS**: `string`[]
+```ts
+static KEYBOARD_EVENTS: string[];
+```
 
 A list of keyboard related events.
 
-***
+---
 
 ### MULTI\_TOUCH\_EVENTS
 
-> `static` **MULTI\_TOUCH\_EVENTS**: `string`[]
+```ts
+static MULTI_TOUCH_EVENTS: string[];
+```
 
 A list of JavaScript events that are related to multi-touch.
 
-***
+---
 
 ### POINTER\_EVENTS
 
-> `static` **POINTER\_EVENTS**: `string`[]
+```ts
+static POINTER_EVENTS: string[];
+```
 
 A list of pointer events to enable dragging.
 
-***
+---
 
 ### ~~POINTER\_EVENTS\_EXTENDED~~
 
-> `static` **POINTER\_EVENTS\_EXTENDED**: `string`[] = `EventDisableHelper.POINTER_EVENTS_MULTI_TOUCH`
+```ts
+static POINTER_EVENTS_EXTENDED: string[] = EventDisableHelper.POINTER_EVENTS_MULTI_TOUCH;
+```
 
 #### Deprecated
 
 Use MULTI_TOUCH_EVENTS instead.
 
-***
+---
 
 ### POINTER\_EVENTS\_NO\_UNLOCK
 
-> `static` **POINTER\_EVENTS\_NO\_UNLOCK**: `string`[]
+```ts
+static POINTER_EVENTS_NO_UNLOCK: string[];
+```
 
 A list of pointer events to enable dragging without unlocking.
 
-***
+---
 
 ### SCROLL\_EVENTS
 
-> `static` **SCROLL\_EVENTS**: `string`[]
+```ts
+static SCROLL_EVENTS: string[];
+```
 
 A list of scrolling related events.
 
@@ -167,7 +182,9 @@ A list of scrolling related events.
 
 ### autoManage()
 
-> **autoManage**(): `void`
+```ts
+autoManage(): void;
+```
 
 Automatically manages events based on the interactibility of the widget.
 
@@ -175,11 +192,13 @@ Automatically manages events based on the interactibility of the widget.
 
 `void`
 
-***
+---
 
 ### destroy()
 
-> **destroy**(): `void`
+```ts
+destroy(): void;
+```
 
 Destroys the EventDisableHelper instance, stopping auto-management and enabling all events.
 
@@ -187,75 +206,62 @@ Destroys the EventDisableHelper instance, stopping auto-management and enabling 
 
 `void`
 
-***
+---
 
 ### disableEvents()
 
-> **disableEvents**(`events?`, `preventDefault?`, `stopPropagation?`, `stopImmediatePropagation?`, `capture?`): `void`
+```ts
+disableEvents(
+   events?: string[],
+   preventDefault?: boolean,
+   stopPropagation?: boolean,
+   stopImmediatePropagation?: boolean,
+   capture?: boolean): void;
+```
 
 Disables events on the element.
 
 #### Parameters
 
-##### events?
-
-`string`[] = `...`
-
-List of events to be disabled.
-
-##### preventDefault?
-
-`boolean` = `false`
-
-Whether to call preventDefault on the event.
-
-##### stopPropagation?
-
-`boolean` = `true`
-
-Whether to call stopPropagation on the event.
-
-##### stopImmediatePropagation?
-
-`boolean` = `false`
-
-Whether to call stopImmediatePropagation on the event.
-
-##### capture?
-
-`boolean` = `false`
-
-Whether to capture the event.
+| Parameter                  | Type       | Default value | Description                                            |
+| -------------------------- | ---------- | ------------- | ------------------------------------------------------ |
+| `events`                   | `string`[] | `...`         | List of events to be disabled.                         |
+| `preventDefault`           | `boolean`  | `false`       | Whether to call preventDefault on the event.           |
+| `stopPropagation`          | `boolean`  | `true`        | Whether to call stopPropagation on the event.          |
+| `stopImmediatePropagation` | `boolean`  | `false`       | Whether to call stopImmediatePropagation on the event. |
+| `capture`                  | `boolean`  | `false`       | Whether to capture the event.                          |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### enableEvents()
 
-> **enableEvents**(`events?`): `void`
+```ts
+enableEvents(events?: string[]): void;
+```
 
 Enables events on the element.
 
 #### Parameters
 
-##### events?
-
-`string`[] = `...`
-
-List of events to be enabled.
+| Parameter | Type       | Description                   |
+| --------- | ---------- | ----------------------------- |
+| `events`  | `string`[] | List of events to be enabled. |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### stopAutoManage()
 
-> **stopAutoManage**(): `void`
+```ts
+stopAutoManage(): void;
+```
 
 Stops automatically managing events.
 
@@ -263,65 +269,50 @@ Stops automatically managing events.
 
 `void`
 
-***
+---
 
 ### cancelEvent()
 
-> `static` **cancelEvent**(`e`, `preventDefault?`, `stopPropagation?`, `stopImmediatePropagation?`, `callback?`): `void`
+```ts
+static cancelEvent(
+   e: Event,
+   preventDefault?: boolean,
+   stopPropagation?: boolean,
+   stopImmediatePropagation?: boolean,
+   callback?: (e: Event) => void): void;
+```
 
 Cancels an event.
 
 #### Parameters
 
-##### e
-
-`Event`
-
-The event to be cancelled.
-
-##### preventDefault?
-
-`boolean` = `true`
-
-Whether to call preventDefault on the event.
-
-##### stopPropagation?
-
-`boolean` = `true`
-
-Whether to call stopPropagation on the event.
-
-##### stopImmediatePropagation?
-
-`boolean` = `true`
-
-Whether to call stopImmediatePropagation on the event.
-
-##### callback?
-
-(`e`) => `void`
-
-A callback to be called when the event is cancelled.
+| Parameter                  | Type                     | Default value | Description                                            |
+| -------------------------- | ------------------------ | ------------- | ------------------------------------------------------ |
+| `e`                        | `Event`                  | `undefined`   | The event to be cancelled.                             |
+| `preventDefault`           | `boolean`                | `true`        | Whether to call preventDefault on the event.           |
+| `stopPropagation`          | `boolean`                | `true`        | Whether to call stopPropagation on the event.          |
+| `stopImmediatePropagation` | `boolean`                | `true`        | Whether to call stopImmediatePropagation on the event. |
+| `callback`                 | (`e`: `Event`) => `void` | `undefined`   | A callback to be called when the event is cancelled.   |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### makeDraggable()
 
-> `static` **makeDraggable**(`element`): `void`
+```ts
+static makeDraggable(element: HTMLElement): void;
+```
 
 Makes an element draggable.
 
 #### Parameters
 
-##### element
-
-`HTMLElement`
-
-The element to be made draggable.
+| Parameter | Type          | Description                       |
+| --------- | ------------- | --------------------------------- |
+| `element` | `HTMLElement` | The element to be made draggable. |
 
 #### Returns
 

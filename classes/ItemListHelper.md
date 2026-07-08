@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / ItemListHelper
 
@@ -17,29 +17,26 @@ widgets managing collections of user-defined items.
 
 ```typescript
 // Create a list of contacts
-const contactList = new ItemListHelper(
-  'contacts',
-  {
-    label: 'Contact List',
-    allowReordering: true,
-    allowImport: true,
-    elements: [
-      { key: 'name', type: 'input', props: { label: 'Name', required: true } },
-      { key: 'email', type: 'input', props: { label: 'Email', type: 'email' } },
-      { key: 'phone', type: 'input', props: { label: 'Phone' } }
+const contactList = new ItemListHelper("contacts", {
+  label: "Contact List",
+  allowReordering: true,
+  allowImport: true,
+  elements: [
+    { key: "name", type: "input", props: { label: "Name", required: true } },
+    { key: "email", type: "input", props: { label: "Email", type: "email" } },
+    { key: "phone", type: "input", props: { label: "Phone" } },
+  ],
+  importSettings: {
+    fields: [
+      { name: "name", label: "Name" },
+      { name: "email", label: "Email" },
+      { name: "phone", label: "Phone" },
     ],
-    importSettings: {
-      fields: [
-        { name: 'name', label: 'Name' },
-        { name: 'email', label: 'Email' },
-        { name: 'phone', label: 'Phone' }
-      ]
-    },
-    onListChangeCallback: (list) => {
-      console.log('List updated:', list.length, 'items');
-    }
-  }
-);
+  },
+  onListChangeCallback: (list) => {
+    console.log("List updated:", list.length, "items");
+  },
+});
 
 // Get current list
 const items = contactList.list;
@@ -49,23 +46,18 @@ const items = contactList.list;
 
 ### Constructor
 
-> **new ItemListHelper**(`key`, `options?`): `ItemListHelper`
+```ts
+new ItemListHelper(key: string, options?: ItemListHelperOptions): ItemListHelper;
+```
 
 Creates an instance of ItemListHelper.
 
 #### Parameters
 
-##### key
-
-`string`
-
-The key used to store the list data.
-
-##### options?
-
-[`ItemListHelperOptions`](../type-aliases/ItemListHelperOptions.md) = `{}`
-
-Configuration options for the helper.
+| Parameter | Type                                                                | Description                           |
+| --------- | ------------------------------------------------------------------- | ------------------------------------- |
+| `key`     | `string`                                                            | The key used to store the list data.  |
+| `options` | [`ItemListHelperOptions`](../type-aliases/ItemListHelperOptions.md) | Configuration options for the helper. |
 
 #### Returns
 
@@ -75,7 +67,9 @@ Configuration options for the helper.
 
 ### key
 
-> `readonly` **key**: `string`
+```ts
+readonly key: string;
+```
 
 The key used to store the list data.
 
@@ -85,7 +79,9 @@ The key used to store the list data.
 
 #### Get Signature
 
-> **get** `protected` **currentLocallyStoredData**(): `any`
+```ts
+get protected currentLocallyStoredData(): any;
+```
 
 Gets the locally stored data for the list.
 
@@ -95,7 +91,9 @@ Gets the locally stored data for the list.
 
 #### Set Signature
 
-> **set** `protected` **currentLocallyStoredData**(`data`): `void`
+```ts
+set protected currentLocallyStoredData(data: any): void;
+```
 
 Sets the locally stored data for the list.
 
@@ -105,21 +103,23 @@ Error if edits are disabled.
 
 ##### Parameters
 
-###### data
-
-`any`
+| Parameter | Type  |
+| --------- | ----- |
+| `data`    | `any` |
 
 ##### Returns
 
 `void`
 
-***
+---
 
 ### data
 
 #### Get Signature
 
-> **get** **data**(): [`ListRecord`](../type-aliases/ListRecord.md)[]
+```ts
+get data(): ListRecord[];
+```
 
 Gets the current list data.
 
@@ -129,7 +129,9 @@ Gets the current list data.
 
 #### Set Signature
 
-> **set** **data**(`data`): `void`
+```ts
+set data(data: ListRecord[]): void;
+```
 
 Sets the list data.
 
@@ -139,21 +141,23 @@ Error if the list is read-only.
 
 ##### Parameters
 
-###### data
-
-[`ListRecord`](../type-aliases/ListRecord.md)[]
+| Parameter | Type                                            |
+| --------- | ----------------------------------------------- |
+| `data`    | [`ListRecord`](../type-aliases/ListRecord.md)[] |
 
 ##### Returns
 
 `void`
 
-***
+---
 
 ### length
 
 #### Get Signature
 
-> **get** **length**(): `number`
+```ts
+get length(): number;
+```
 
 Gets the number of items in the list.
 
@@ -161,35 +165,41 @@ Gets the number of items in the list.
 
 `number`
 
-***
+---
 
 ### settingsDialogOptions
 
 #### Get Signature
 
-> **get** **settingsDialogOptions**(): `FormlyFieldConfig`\<`FormlyFieldProps` & `object`\>[]
+```ts
+get settingsDialogOptions(): FormlyFieldConfig<FormlyFieldProps & {
+[p: string]: any;
+}>[];
+```
 
 Gets the settings dialog options for configuring the list.
 
 ##### Returns
 
-`FormlyFieldConfig`\<`FormlyFieldProps` & `object`\>[]
+`FormlyFieldConfig`\<`FormlyFieldProps` & \{
+\[`p`: `string`\]: `any`;
+\}\>[]
 
 ## Methods
 
 ### addItems()
 
-> **addItems**(`items`): `void`
+```ts
+addItems(items: Partial<ListRecord>[]): void;
+```
 
 Adds items to the list.
 
 #### Parameters
 
-##### items
-
-`Partial`\<[`ListRecord`](../type-aliases/ListRecord.md)\>[]
-
-Array of items to add.
+| Parameter | Type                                                         | Description            |
+| --------- | ------------------------------------------------------------ | ---------------------- |
+| `items`   | `Partial`\<[`ListRecord`](../type-aliases/ListRecord.md)\>[] | Array of items to add. |
 
 #### Returns
 
@@ -199,73 +209,75 @@ Array of items to add.
 
 Error if the list is read-only.
 
-***
+---
 
 ### getFieldList()
 
-> **getFieldList**\<`FieldType`\>(`key?`): `FieldType`[]
+```ts
+getFieldList<FieldType>(key?: string): FieldType[];
+```
 
 Gets a list of field values for a given key.
 
 #### Type Parameters
 
-##### FieldType
-
-`FieldType` = `string`
+| Type Parameter | Default type |
+| -------------- | ------------ |
+| `FieldType`    | `string`     |
 
 #### Parameters
 
-##### key?
-
-`string` = `...`
-
-The field key to retrieve values for.
+| Parameter | Type     | Description                           |
+| --------- | -------- | ------------------------------------- |
+| `key`     | `string` | The field key to retrieve values for. |
 
 #### Returns
 
 `FieldType`[]
 
-***
+---
 
 ### getFieldListById()
 
-> **getFieldListById**\<`FieldType`\>(`key?`): `Record`\<`string`, `FieldType`\>
+```ts
+getFieldListById<FieldType>(key?: string): Record<string, FieldType>;
+```
 
 Gets a record of field values by item id for a given key.
 
 #### Type Parameters
 
-##### FieldType
-
-`FieldType` = `string`
+| Type Parameter | Default type |
+| -------------- | ------------ |
+| `FieldType`    | `string`     |
 
 #### Parameters
 
-##### key?
-
-`string` = `...`
-
-The field key to retrieve values for.
+| Parameter | Type     | Description                           |
+| --------- | -------- | ------------------------------------- |
+| `key`     | `string` | The field key to retrieve values for. |
 
 #### Returns
 
 `Record`\<`string`, `FieldType`\>
 
-***
+---
 
 ### importFromCSV()
 
-> **importFromCSV**(`data`): `any`
+```ts
+importFromCSV(data: {
+[key: string]: string;
+}[]): any;
+```
 
 Imports items from CSV data.
 
 #### Parameters
 
-##### data
-
-`object`[]
-
-Array of objects representing CSV rows.
+| Parameter | Type                                   | Description                             |
+| --------- | -------------------------------------- | --------------------------------------- |
+| `data`    | \{ \[`key`: `string`\]: `string`; \}[] | Array of objects representing CSV rows. |
 
 #### Returns
 
@@ -277,11 +289,13 @@ Array of imported items.
 
 Error if no items are found in the CSV file.
 
-***
+---
 
 ### openImportDialog()
 
-> **openImportDialog**(): `Promise`\<`void`\>
+```ts
+openImportDialog(): Promise<void>;
+```
 
 Opens the import dialog for importing items.
 

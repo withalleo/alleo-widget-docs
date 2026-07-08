@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / UiButtonHelper
 
@@ -20,28 +20,30 @@ const buttonHelper = new UiButtonHelper();
 
 // Add a simple button
 buttonHelper.add({
-  id: 'my-action',
-  label: 'Click Me',
-  onClick: () => console.log('Button clicked!')
+  id: "my-action",
+  label: "Click Me",
+  onClick: () => console.log("Button clicked!"),
 });
 
 // Add button with icon
 buttonHelper.add({
-  id: 'settings',
-  icon: 'settings',
-  label: 'Settings',
-  onClick: () => openSettings()
+  id: "settings",
+  icon: "settings",
+  label: "Settings",
+  onClick: () => openSettings(),
 });
 
 // Remove a button
-buttonHelper.remove('my-action');
+buttonHelper.remove("my-action");
 ```
 
 ## Constructors
 
 ### Constructor
 
-> **new UiButtonHelper**(): `UiButtonHelper`
+```ts
+new UiButtonHelper(): UiButtonHelper;
+```
 
 Creates a new UiButtonHelper instance and initializes the button container.
 
@@ -57,13 +59,17 @@ Cleans up automatically when the widget is destroyed.
 
 ### container
 
-> `readonly` **container**: `HTMLElement`
+```ts
+readonly container: HTMLElement;
+```
 
-***
+---
 
 ### containerId
 
-> `static` **containerId**: `string` = `'widget-service-ui-helper-main-buttons'`
+```ts
+static containerId: string = 'widget-service-ui-helper-main-buttons';
+```
 
 ## Accessors
 
@@ -71,7 +77,9 @@ Cleans up automatically when the widget is destroyed.
 
 #### Get Signature
 
-> **get** **backgroundColor**(): `string`
+```ts
+get backgroundColor(): string;
+```
 
 The background color used for buttons, automatically matching the UI theme.
 
@@ -84,13 +92,15 @@ otherwise returns the toolbar background color.
 
 CSS color value for button backgrounds.
 
-***
+---
 
 ### buttons
 
 #### Get Signature
 
-> **get** **buttons**(): `HTMLElement`[]
+```ts
+get buttons(): HTMLElement[];
+```
 
 Array of all button HTML elements managed by this helper.
 
@@ -104,59 +114,37 @@ Array of button elements currently displayed.
 
 ### addButton()
 
-> **addButton**(`html`, `callback`, `settings?`): `string`
+```ts
+addButton(
+   html: string,
+   callback: (e: PointerEvent) => void,
+   settings?: {
+  backgroundColor?: string;
+  buttonId?: string;
+  callbackAltClick?: (e: PointerEvent) => void;
+  callbackPointerDown?: (e: PointerEvent) => void;
+  callbackPointerUp?: (e: PointerEvent) => void;
+  color?: string;
+  position?: number | UiButtonPosition;
+}): string;
+```
 
 Adds a new button to the UI.
 
 #### Parameters
 
-##### html
-
-`string`
-
-The HTML content of the button.
-
-##### callback
-
-(`e`) => `void`
-
-The callback function to execute when the button is clicked.
-
-##### settings?
-
-The settings for the button.
-
-###### backgroundColor?
-
-`string`
-
-###### buttonId?
-
-`string`
-
-The ID of the button.
-
-###### callbackAltClick?
-
-(`e`) => `void`
-
-###### callbackPointerDown?
-
-(`e`) => `void`
-
-###### callbackPointerUp?
-
-(`e`) => `void`
-
-###### color?
-
-`string`
-
-###### position?
-
-`number` \| [`UiButtonPosition`](../enumerations/UiButtonPosition.md)
-
-The position of the button.
+| Parameter                       | Type                                                                                                                                                                                                                                                                                                                                     | Description                                                  |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| `html`                          | `string`                                                                                                                                                                                                                                                                                                                                 | The HTML content of the button.                              |
+| `callback`                      | (`e`: `PointerEvent`) => `void`                                                                                                                                                                                                                                                                                                          | The callback function to execute when the button is clicked. |
+| `settings`                      | \{ `backgroundColor?`: `string`; `buttonId?`: `string`; `callbackAltClick?`: (`e`: `PointerEvent`) => `void`; `callbackPointerDown?`: (`e`: `PointerEvent`) => `void`; `callbackPointerUp?`: (`e`: `PointerEvent`) => `void`; `color?`: `string`; `position?`: `number` \| [`UiButtonPosition`](../enumerations/UiButtonPosition.md); \} | The settings for the button.                                 |
+| `settings.backgroundColor?`     | `string`                                                                                                                                                                                                                                                                                                                                 | -                                                            |
+| `settings.buttonId?`            | `string`                                                                                                                                                                                                                                                                                                                                 | The ID of the button.                                        |
+| `settings.callbackAltClick?`    | (`e`: `PointerEvent`) => `void`                                                                                                                                                                                                                                                                                                          | -                                                            |
+| `settings.callbackPointerDown?` | (`e`: `PointerEvent`) => `void`                                                                                                                                                                                                                                                                                                          | -                                                            |
+| `settings.callbackPointerUp?`   | (`e`: `PointerEvent`) => `void`                                                                                                                                                                                                                                                                                                          | -                                                            |
+| `settings.color?`               | `string`                                                                                                                                                                                                                                                                                                                                 | -                                                            |
+| `settings.position?`            | `number` \| [`UiButtonPosition`](../enumerations/UiButtonPosition.md)                                                                                                                                                                                                                                                                    | The position of the button.                                  |
 
 #### Returns
 
@@ -164,11 +152,13 @@ The position of the button.
 
 The ID of the newly added button.
 
-***
+---
 
 ### destroy()
 
-> **destroy**(): `void`
+```ts
+destroy(): void;
+```
 
 Destroys all buttons managed by this helper.
 
@@ -176,21 +166,21 @@ Destroys all buttons managed by this helper.
 
 `void`
 
-***
+---
 
 ### getButton()
 
-> **getButton**(`buttonId`): `HTMLElement`
+```ts
+getButton(buttonId: string): HTMLElement;
+```
 
 Retrieves the HTML element for a button by its ID.
 
 #### Parameters
 
-##### buttonId
-
-`string`
-
-The unique identifier of the button to retrieve.
+| Parameter  | Type     | Description                                      |
+| ---------- | -------- | ------------------------------------------------ |
+| `buttonId` | `string` | The unique identifier of the button to retrieve. |
 
 #### Returns
 
@@ -198,21 +188,21 @@ The unique identifier of the button to retrieve.
 
 The button element, or undefined if not found.
 
-***
+---
 
 ### isVisible()
 
-> **isVisible**(`buttonId`): `boolean`
+```ts
+isVisible(buttonId: string): boolean;
+```
 
 Checks whether a button with the specified ID is currently visible.
 
 #### Parameters
 
-##### buttonId
-
-`string`
-
-The unique identifier of the button to check.
+| Parameter  | Type     | Description                                   |
+| ---------- | -------- | --------------------------------------------- |
+| `buttonId` | `string` | The unique identifier of the button to check. |
 
 #### Returns
 
@@ -220,31 +210,33 @@ The unique identifier of the button to check.
 
 True if a button with this ID exists and is displayed, false otherwise.
 
-***
+---
 
 ### removeButton()
 
-> **removeButton**(`buttonId`): `void`
+```ts
+removeButton(buttonId: string): void;
+```
 
 Removes a button with the given ID.
 
 #### Parameters
 
-##### buttonId
-
-`string`
-
-The ID of the button to remove.
+| Parameter  | Type     | Description                     |
+| ---------- | -------- | ------------------------------- |
+| `buttonId` | `string` | The ID of the button to remove. |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### reOrderButtons()
 
-> `protected` **reOrderButtons**(): `void`
+```ts
+protected reOrderButtons(): void;
+```
 
 #### Returns
 

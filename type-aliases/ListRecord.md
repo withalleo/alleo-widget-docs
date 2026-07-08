@@ -1,21 +1,30 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / ListRecord
 
 # Type Alias: ListRecord
 
-> **ListRecord** = `object`
+```ts
+type ListRecord = {
+  [p: string]: any;
+  id: string;
+};
+```
 
 Represents a record in the item list.
 
 ## Indexable
 
-> \[`p`: `string`\]: `any`
+```ts
+[p: string]: any
+```
 
 ## Properties
 
 ### id
 
-> **id**: `string`
+```ts
+id: string;
+```

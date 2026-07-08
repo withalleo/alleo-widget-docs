@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / WidgetNameHelper
 
@@ -18,38 +18,33 @@ identify themselves or display their name to users.
 ```typescript
 // Get widget display name
 const displayName = WidgetNameHelper.displayName;
-console.log('Widget:', displayName); // e.g., "AI Chat"
+console.log("Widget:", displayName); // e.g., "AI Chat"
 
 // Get widget ID (technical name)
 const widgetId = WidgetNameHelper.widgetId;
-console.log('ID:', widgetId); // e.g., "ai-chat"
+console.log("ID:", widgetId); // e.g., "ai-chat"
 
 // Create instance with preferred name
-const nameHelper = new WidgetNameHelper('custom-widget');
-console.log('Name:', nameHelper.name);
+const nameHelper = new WidgetNameHelper("custom-widget");
+console.log("Name:", nameHelper.name);
 ```
 
 ## Constructors
 
 ### Constructor
 
-> **new WidgetNameHelper**(`preferredName?`, `currentNote?`): `WidgetNameHelper`
+```ts
+new WidgetNameHelper(preferredName?: string, currentNote?: string): WidgetNameHelper;
+```
 
 Creates a WidgetNameHelper instance with optional custom naming.
 
 #### Parameters
 
-##### preferredName?
-
-`string` = `undefined`
-
-Optional preferred name to use for the widget instead of auto-detection.
-
-##### currentNote?
-
-`string` = `undefined`
-
-Optional current note/caption text for the widget.
+| Parameter        | Type     | Default value | Description                                                              |
+| ---------------- | -------- | ------------- | ------------------------------------------------------------------------ |
+| `preferredName?` | `string` | `undefined`   | Optional preferred name to use for the widget instead of auto-detection. |
+| `currentNote?`   | `string` | `undefined`   | Optional current note/caption text for the widget.                       |
 
 #### Returns
 
@@ -61,7 +56,9 @@ Optional current note/caption text for the widget.
 
 #### Get Signature
 
-> **get** **name**(): `string`
+```ts
+get name(): string;
+```
 
 Gets the name of the widget.
 
@@ -73,29 +70,31 @@ The name of the widget.
 
 #### Set Signature
 
-> **set** **name**(`name`): `void`
+```ts
+set name(name: string): void;
+```
 
 Sets the name of the widget.
 
 ##### Parameters
 
-###### name
-
-`string`
-
-The new name of the widget.
+| Parameter | Type     | Description                 |
+| --------- | -------- | --------------------------- |
+| `name`    | `string` | The new name of the widget. |
 
 ##### Returns
 
 `void`
 
-***
+---
 
 ### note
 
 #### Get Signature
 
-> **get** **note**(): `string`
+```ts
+get note(): string;
+```
 
 Gets the note associated with the widget.
 
@@ -107,29 +106,31 @@ The note associated with the widget.
 
 #### Set Signature
 
-> **set** **note**(`note`): `void`
+```ts
+set note(note: string): void;
+```
 
 Sets the note associated with the widget.
 
 ##### Parameters
 
-###### note
-
-`string`
-
-The new note for the widget.
+| Parameter | Type     | Description                  |
+| --------- | -------- | ---------------------------- |
+| `note`    | `string` | The new note for the widget. |
 
 ##### Returns
 
 `void`
 
-***
+---
 
 ### displayName
 
 #### Get Signature
 
-> **get** `static` **displayName**(): `string`
+```ts
+get static displayName(): string;
+```
 
 Retrieves the human-readable display name of the widget.
 
@@ -144,13 +145,15 @@ settings, then manifest configuration, then auto-detected names.
 
 The widget's display name (e.g., "AI Chat", "Hello World").
 
-***
+---
 
 ### manifest
 
 #### Get Signature
 
-> **get** `static` **manifest**(): `Record`\<`string`, `any`\>
+```ts
+get static manifest(): Record<string, any>;
+```
 
 Gets the manifest of the widget.
 
@@ -160,13 +163,15 @@ Gets the manifest of the widget.
 
 The manifest of the widget.
 
-***
+---
 
 ### widgetId
 
 #### Get Signature
 
-> **get** `static` **widgetId**(): `string`
+```ts
+get static widgetId(): string;
+```
 
 Retrieves the technical widget identifier.
 
@@ -185,7 +190,9 @@ The widget's ID (e.g., "ai-chat", "hello-world").
 
 ### getFullName()
 
-> `protected` **getFullName**(): `string`
+```ts
+protected getFullName(): string;
+```
 
 Gets the full name of the widget, including the note.
 
@@ -195,11 +202,13 @@ Gets the full name of the widget, including the note.
 
 The full name of the widget.
 
-***
+---
 
 ### updateWidgetName()
 
-> `protected` **updateWidgetName**(): `void`
+```ts
+protected updateWidgetName(): void;
+```
 
 Updates the widget name.
 
@@ -207,21 +216,21 @@ Updates the widget name.
 
 `void`
 
-***
+---
 
 ### setOnlyNote()
 
-> `static` **setOnlyNote**(`note?`): `void`
+```ts
+static setOnlyNote(note?: string): void;
+```
 
 Sets the note for the widget.
 
 #### Parameters
 
-##### note?
-
-`string`
-
-The note to set.
+| Parameter | Type     | Description      |
+| --------- | -------- | ---------------- |
+| `note?`   | `string` | The note to set. |
 
 #### Returns
 

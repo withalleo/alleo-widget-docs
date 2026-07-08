@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / MultiTouchHelper
 
@@ -25,16 +25,16 @@ const customTouch = new MultiTouchHelper({
   showAdjustSizeButton: true,
   adjustWidgetSizeAutomatically: false,
   onScaleAdjustment: (scale) => {
-    console.log('Zoom level:', scale);
+    console.log("Zoom level:", scale);
     updateContent(scale);
-  }
+  },
 });
 
 // For iframe or canvas content
 const iframeTouch = new MultiTouchHelper({
-  element: document.querySelector('iframe'),
+  element: document.querySelector("iframe"),
   unlockHelper: true,
-  enablePointerOverWidget: true
+  enablePointerOverWidget: true,
 });
 ```
 
@@ -42,17 +42,17 @@ const iframeTouch = new MultiTouchHelper({
 
 ### Constructor
 
-> **new MultiTouchHelper**(`options?`): `MultiTouchHelper`
+```ts
+new MultiTouchHelper(options?: MultiTouchHelperOptions): MultiTouchHelper;
+```
 
 Constructor for MultiTouchHelper.
 
 #### Parameters
 
-##### options?
-
-[`MultiTouchHelperOptions`](../type-aliases/MultiTouchHelperOptions.md) = `{}`
-
-Configuration options for the MultiTouchHelper.
+| Parameter | Type                                                                    | Description                                     |
+| --------- | ----------------------------------------------------------------------- | ----------------------------------------------- |
+| `options` | [`MultiTouchHelperOptions`](../type-aliases/MultiTouchHelperOptions.md) | Configuration options for the MultiTouchHelper. |
 
 #### Returns
 
@@ -62,33 +62,51 @@ Configuration options for the MultiTouchHelper.
 
 ### disabled
 
-> `protected` **disabled**: `boolean` = `true`
+```ts
+protected disabled: boolean = true;
+```
 
-***
+---
 
 ### enableZoomOutButton
 
-> **enableZoomOutButton**: `boolean` = `true`
+```ts
+enableZoomOutButton: boolean = true;
+```
 
 Checks if the zoom-out button is enabled for this user (resets to default if not).
 
-***
+---
 
 ### eventDisableHelper
 
-> `protected` **eventDisableHelper**: [`EventDisableHelper`](EventDisableHelper.md)
+```ts
+protected eventDisableHelper: EventDisableHelper;
+```
 
-***
+---
 
 ### eventList
 
-> `protected` **eventList**: `string`[]
+```ts
+protected eventList: string[];
+```
 
-***
+---
 
 ### htmlElement
 
-> `readonly` **htmlElement**: `HTMLElement`
+```ts
+readonly htmlElement: HTMLElement;
+```
+
+---
+
+### DEBUG
+
+```ts
+static DEBUG: boolean = false;
+```
 
 ## Accessors
 
@@ -96,7 +114,9 @@ Checks if the zoom-out button is enabled for this user (resets to default if not
 
 #### Get Signature
 
-> **get** **enableZoomOutButtonOption**(): `boolean`
+```ts
+get enableZoomOutButtonOption(): boolean;
+```
 
 Checks if the zoom-out button is enabled in the settings.
 
@@ -106,27 +126,31 @@ Checks if the zoom-out button is enabled in the settings.
 
 #### Set Signature
 
-> **set** **enableZoomOutButtonOption**(`enable`): `void`
+```ts
+set enableZoomOutButtonOption(enable: boolean): void;
+```
 
 Sets the zoom-out button option in the settings.
 
 ##### Parameters
 
-###### enable
-
-`boolean`
+| Parameter | Type      | Description |
+| --------- | --------- | ----------- |
+| `enable`  | `boolean` | -           |
 
 ##### Returns
 
 `void`
 
-***
+---
 
 ### settingsDialogContent
 
 #### Get Signature
 
-> **get** **settingsDialogContent**(): `FormlyFieldConfig`\<`FormlyFieldProps`\>[]
+```ts
+get settingsDialogContent(): FormlyFieldConfig<FormlyFieldProps>[];
+```
 
 ##### Returns
 
@@ -136,7 +160,9 @@ Sets the zoom-out button option in the settings.
 
 ### adjustScaleTransform()
 
-> **adjustScaleTransform**(): `void`
+```ts
+adjustScaleTransform(): void;
+```
 
 Adjusts the scale transform of the widget.
 
@@ -144,11 +170,13 @@ Adjusts the scale transform of the widget.
 
 `void`
 
-***
+---
 
 ### destroy()
 
-> **destroy**(): `void`
+```ts
+destroy(): void;
+```
 
 Destroys the MultiTouchHelper, stopping all managed interactions and observers.
 
@@ -156,11 +184,13 @@ Destroys the MultiTouchHelper, stopping all managed interactions and observers.
 
 `void`
 
-***
+---
 
 ### hideZoomOut()
 
-> `protected` **hideZoomOut**(): `void`
+```ts
+protected hideZoomOut(): void;
+```
 
 Hides the zoom-out button.
 
@@ -168,11 +198,13 @@ Hides the zoom-out button.
 
 `void`
 
-***
+---
 
 ### showZoomOut()
 
-> `protected` **showZoomOut**(): `void`
+```ts
+protected showZoomOut(): void;
+```
 
 Shows the zoom-out button.
 
@@ -180,11 +212,13 @@ Shows the zoom-out button.
 
 `void`
 
-***
+---
 
 ### start()
 
-> **start**(): `void`
+```ts
+start(): void;
+```
 
 Starts the MultiTouchHelper, enabling managed interactions.
 
@@ -192,11 +226,13 @@ Starts the MultiTouchHelper, enabling managed interactions.
 
 `void`
 
-***
+---
 
 ### stop()
 
-> **stop**(): `void`
+```ts
+stop(): void;
+```
 
 Stops the MultiTouchHelper, disabling managed interactions.
 
@@ -204,31 +240,33 @@ Stops the MultiTouchHelper, disabling managed interactions.
 
 `void`
 
-***
+---
 
 ### updateUnlockHelperIcon()
 
-> `protected` **updateUnlockHelperIcon**(`locked?`): `void`
+```ts
+protected updateUnlockHelperIcon(locked?: boolean): void;
+```
 
 Updates the unlock helper icon.
 
 #### Parameters
 
-##### locked?
-
-`boolean` = `undefined`
-
-specifies if the icon should be shown or hidden (undefined means automatic detection)
+| Parameter | Type      | Default value | Description                                                                           |
+| --------- | --------- | ------------- | ------------------------------------------------------------------------------------- |
+| `locked`  | `boolean` | `undefined`   | specifies if the icon should be shown or hidden (undefined means automatic detection) |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### updateZoomOutButtonStatus()
 
-> **updateZoomOutButtonStatus**(): `void`
+```ts
+updateZoomOutButtonStatus(): void;
+```
 
 Updates the visibility status of the zoom-out button.
 
@@ -236,11 +274,13 @@ Updates the visibility status of the zoom-out button.
 
 `void`
 
-***
+---
 
 ### zoomOutToElement()
 
-> `protected` **zoomOutToElement**(): `void`
+```ts
+protected zoomOutToElement(): void;
+```
 
 Zooms out to the element.
 
@@ -248,11 +288,13 @@ Zooms out to the element.
 
 `void`
 
-***
+---
 
 ### zoomOutVisible()
 
-> `protected` **zoomOutVisible**(): `boolean`
+```ts
+protected zoomOutVisible(): boolean;
+```
 
 Checks if the zoom-out button should be visible.
 
@@ -262,47 +304,42 @@ Checks if the zoom-out button should be visible.
 
 True if the zoom-out button should be visible, false otherwise.
 
-***
+---
 
 ### dispatchPointerEvent()
 
-> `static` **dispatchPointerEvent**(`event`): `void`
+```ts
+static dispatchPointerEvent(event: string | PointerEvent): void;
+```
 
 Dispatches a pointer event to the widget's root node.
 
 #### Parameters
 
-##### event
-
-`string` \| `PointerEvent`
-
-The event to dispatch.
+| Parameter | Type                       | Description            |
+| --------- | -------------------------- | ---------------------- |
+| `event`   | `string` \| `PointerEvent` | The event to dispatch. |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### resizeObserver()
 
-> `static` **resizeObserver**(`obj`, `callback`): `ResizeObserver`
+```ts
+static resizeObserver(obj: HTMLElement, callback: ResizeObserverCallback): ResizeObserver;
+```
 
 Creates a safe ResizeObserver for the given element.
 
 #### Parameters
 
-##### obj
-
-`HTMLElement`
-
-The element to observe.
-
-##### callback
-
-`ResizeObserverCallback`
-
-The callback to execute when the element is resized.
+| Parameter  | Type                     | Description                                          |
+| ---------- | ------------------------ | ---------------------------------------------------- |
+| `obj`      | `HTMLElement`            | The element to observe.                              |
+| `callback` | `ResizeObserverCallback` | The callback to execute when the element is resized. |
 
 #### Returns
 

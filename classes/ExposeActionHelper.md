@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / ExposeActionHelper
 
@@ -19,25 +19,25 @@ widgets need to coordinate or share data.
 // Expose functions from a widget
 ExposeActionHelper.exposeActions([
   {
-    name: 'getData',
-    action: () => myData
+    name: "getData",
+    action: () => myData,
   },
   {
-    name: 'updateValue',
-    action: (newValue: number) => this.value = newValue
-  }
+    name: "updateValue",
+    action: (newValue: number) => (this.value = newValue),
+  },
 ]);
 
 // Call exposed function from another widget
 const targetWidget = BoardObjectHelper.getBoardObjectById(widgetId);
-const getData = ExposeActionHelper.getExposedFunction(targetWidget, 'getData');
+const getData = ExposeActionHelper.getExposedFunction(targetWidget, "getData");
 const data = getData();
 
 // Send async message to widget
 ExposeActionHelper.sendAsyncMessage(targetWidget, {
-  type: 'update',
-  function: 'refresh',
-  data: [{ timestamp: Date.now() }]
+  type: "update",
+  function: "refresh",
+  data: [{ timestamp: Date.now() }],
 });
 ```
 
@@ -45,7 +45,9 @@ ExposeActionHelper.sendAsyncMessage(targetWidget, {
 
 ### Constructor
 
-> **new ExposeActionHelper**(): `ExposeActionHelper`
+```ts
+new ExposeActionHelper(): ExposeActionHelper;
+```
 
 #### Returns
 
@@ -55,7 +57,12 @@ ExposeActionHelper.sendAsyncMessage(targetWidget, {
 
 ### exposeActions()
 
-> `static` **exposeActions**(`actions`): `void`
+```ts
+static exposeActions(actions: {
+  action: AnyFunction;
+  name: string;
+}[]): void;
+```
 
 Exposes functions to make them callable by other widgets on the board.
 
@@ -64,11 +71,9 @@ callable by other widgets. Each exposed function can be invoked remotely by name
 
 #### Parameters
 
-##### actions
-
-`object`[]
-
-Array of action objects to expose.
+| Parameter | Type                                               | Description                        |
+| --------- | -------------------------------------------------- | ---------------------------------- |
+| `actions` | \{ `action`: `AnyFunction`; `name`: `string`; \}[] | Array of action objects to expose. |
 
 #### Returns
 
@@ -76,33 +81,28 @@ Array of action objects to expose.
 
 #### Static
 
-***
+---
 
 ### getExposedFunction()
 
-> `static` **getExposedFunction**\<`T`\>(`widget`, `functionName`): `T`
+```ts
+static getExposedFunction<T>(widget: IBoardObject, functionName: string): T;
+```
 
 Gets an exposed function from the widget by its name.
 
 #### Type Parameters
 
-##### T
-
-`T` *extends* `AnyFunction`
+| Type Parameter              |
+| --------------------------- |
+| `T` _extends_ `AnyFunction` |
 
 #### Parameters
 
-##### widget
-
-`IBoardObject`
-
-The widget object.
-
-##### functionName
-
-`string`
-
-The name of the function to get.
+| Parameter      | Type           | Description                      |
+| -------------- | -------------- | -------------------------------- |
+| `widget`       | `IBoardObject` | The widget object.               |
+| `functionName` | `string`       | The name of the function to get. |
 
 #### Returns
 
@@ -114,11 +114,13 @@ The exposed function.
 
 Will throw an error if no DOM is available or if the function is not found.
 
-***
+---
 
 ### getRootNode()
 
-> `static` **getRootNode**(): `HTMLElementWithWidgetReference`
+```ts
+static getRootNode(): HTMLElementWithWidgetReference;
+```
 
 Retrieves the widget's root HTML node with widget reference capability.
 
@@ -134,47 +136,42 @@ Throws if the widget doesn't have a DOM (service widgets not supported).
 
 #### Static
 
-***
+---
 
 ### handleAsyncMessage()
 
-> `static` **handleAsyncMessage**(`widgetSyncMessage`, `filterType?`): `Promise`\<`void`\>
+```ts
+static handleAsyncMessage(widgetSyncMessage: WidgetSyncMessage, filterType?: string): Promise<void>;
+```
 
 Handles an incoming asynchronous message from another widget.
 
 #### Parameters
 
-##### widgetSyncMessage
-
-[`WidgetSyncMessage`](../type-aliases/WidgetSyncMessage.md)
-
-The widget synchronization message.
-
-##### filterType?
-
-`string` = `undefined`
-
-Optional filter type to process specific messages.
+| Parameter           | Type                                                        | Default value | Description                                        |
+| ------------------- | ----------------------------------------------------------- | ------------- | -------------------------------------------------- |
+| `widgetSyncMessage` | [`WidgetSyncMessage`](../type-aliases/WidgetSyncMessage.md) | `undefined`   | The widget synchronization message.                |
+| `filterType?`       | `string`                                                    | `undefined`   | Optional filter type to process specific messages. |
 
 #### Returns
 
 `Promise`\<`void`\>
 
-***
+---
 
 ### listExposedFunctions()
 
-> `static` **listExposedFunctions**(`widget`): `Record`\<`string`, `AnyFunction`\>
+```ts
+static listExposedFunctions(widget: IBoardObject): Record<string, AnyFunction>;
+```
 
 Lists all exposed functions of the widget.
 
 #### Parameters
 
-##### widget
-
-`IBoardObject`
-
-The widget object.
+| Parameter | Type           | Description        |
+| --------- | -------------- | ------------------ |
+| `widget`  | `IBoardObject` | The widget object. |
 
 #### Returns
 
@@ -186,33 +183,26 @@ A record of exposed functions.
 
 Will throw an error if no DOM is available.
 
-***
+---
 
 ### sendAsyncMessage()
 
-> `static` **sendAsyncMessage**(`functionName`, `type?`, `args?`): `any`
+```ts
+static sendAsyncMessage(
+   functionName: string,
+   type?: string,
+   args?: any): any;
+```
 
 Sends an asynchronous message to connected widgets
 
 #### Parameters
 
-##### functionName
-
-`string`
-
-The name of the function to call.
-
-##### type?
-
-`string` = `''`
-
-The type of the message.
-
-##### args?
-
-`any` = `undefined`
-
-The arguments to pass to the function.
+| Parameter      | Type     | Default value | Description                            |
+| -------------- | -------- | ------------- | -------------------------------------- |
+| `functionName` | `string` | `undefined`   | The name of the function to call.      |
+| `type?`        | `string` | `''`          | The type of the message.               |
+| `args?`        | `any`    | `undefined`   | The arguments to pass to the function. |
 
 #### Returns
 
@@ -220,21 +210,21 @@ The arguments to pass to the function.
 
 The result of the function call.
 
-***
+---
 
 ### sendAsyncMessages()
 
-> `static` **sendAsyncMessages**(`messages`): `any`
+```ts
+static sendAsyncMessages(messages: StandardSyncMessage[]): any;
+```
 
 Sends multiple asynchronous messages to connected widgets.
 
 #### Parameters
 
-##### messages
-
-[`StandardSyncMessage`](../type-aliases/StandardSyncMessage.md)[]
-
-The list of messages to send.
+| Parameter  | Type                                                              | Description                   |
+| ---------- | ----------------------------------------------------------------- | ----------------------------- |
+| `messages` | [`StandardSyncMessage`](../type-aliases/StandardSyncMessage.md)[] | The list of messages to send. |
 
 #### Returns
 
@@ -242,21 +232,24 @@ The list of messages to send.
 
 The result of the function calls.
 
-***
+---
 
 ### unExposeActions()
 
-> `static` **unExposeActions**(`actions`): `void`
+```ts
+static unExposeActions(actions: {
+  action?: AnyFunction;
+  name: string;
+}[]): void;
+```
 
 Removes an exposed functionality.
 
 #### Parameters
 
-##### actions
-
-`object`[]
-
-The actions to unexpose.
+| Parameter | Type                                                | Description              |
+| --------- | --------------------------------------------------- | ------------------------ |
+| `actions` | \{ `action?`: `AnyFunction`; `name`: `string`; \}[] | The actions to unexpose. |
 
 #### Returns
 

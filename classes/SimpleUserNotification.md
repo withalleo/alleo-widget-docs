@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / SimpleUserNotification
 
@@ -16,23 +16,18 @@ Simple notification class for displaying info messages.
 
 ### Constructor
 
-> **new SimpleUserNotification**(`notificationText`, `options?`): `SimpleUserNotification`
+```ts
+new SimpleUserNotification(notificationText: string, options?: UserNotificationOptions): SimpleUserNotification;
+```
 
 Creates a SimpleUserNotification instance.
 
 #### Parameters
 
-##### notificationText
-
-`string`
-
-The message to display.
-
-##### options?
-
-[`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) = `undefined`
-
-Notification options.
+| Parameter          | Type                                                                    | Default value | Description             |
+| ------------------ | ----------------------------------------------------------------------- | ------------- | ----------------------- |
+| `notificationText` | `string`                                                                | `undefined`   | The message to display. |
+| `options`          | [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) | `undefined`   | Notification options.   |
 
 #### Returns
 
@@ -46,7 +41,9 @@ Notification options.
 
 ### notification
 
-> `protected` **notification**: [`Notification`](../type-aliases/Notification.md)
+```ts
+protected notification: Notification;
+```
 
 Notification data.
 
@@ -54,19 +51,23 @@ Notification data.
 
 [`UserNotification`](UserNotification.md).[`notification`](UserNotification.md#notification)
 
-***
+---
 
 ### notificationText
 
-> `protected` **notificationText**: `string`
+```ts
+protected notificationText: string;
+```
 
 The message to display.
 
-***
+---
 
 ### options
 
-> **options**: [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) = `{}`
+```ts
+options: UserNotificationOptions = {};
+```
 
 Notification options.
 
@@ -74,11 +75,13 @@ Notification options.
 
 [`UserNotification`](UserNotification.md).[`options`](UserNotification.md#options)
 
-***
+---
 
 ### DEBUG
 
-> `static` **DEBUG**: `boolean` = `true`
+```ts
+static DEBUG: boolean = true;
+```
 
 Enable debug logging.
 
@@ -92,7 +95,9 @@ Enable debug logging.
 
 #### Get Signature
 
-> **get** **isOpen**(): `boolean`
+```ts
+get isOpen(): boolean;
+```
 
 Returns true if the notification is open.
 
@@ -108,7 +113,9 @@ Returns true if the notification is open.
 
 ### close()
 
-> **close**(): `Promise`\<`void`\>
+```ts
+close(): Promise<void>;
+```
 
 Closes the notification and removes it from the UI.
 
@@ -120,11 +127,13 @@ Closes the notification and removes it from the UI.
 
 [`UserNotification`](UserNotification.md).[`close`](UserNotification.md#close)
 
-***
+---
 
 ### destroy()
 
-> **destroy**(): `void`
+```ts
+destroy(): void;
+```
 
 Destroys the notification and cleans up resources.
 
@@ -136,11 +145,13 @@ Destroys the notification and cleans up resources.
 
 [`UserNotification`](UserNotification.md).[`destroy`](UserNotification.md#destroy)
 
-***
+---
 
 ### open()
 
-> **open**(): `Promise`\<`void`\>
+```ts
+open(): Promise<void>;
+```
 
 Opens the notification in the UI.
 
@@ -152,21 +163,21 @@ Opens the notification in the UI.
 
 [`UserNotification`](UserNotification.md).[`open`](UserNotification.md#open)
 
-***
+---
 
 ### updateContent()
 
-> **updateContent**(`notification`): `Promise`\<`void`\>
+```ts
+updateContent(notification: Notification): Promise<void>;
+```
 
 Updates the notification content.
 
 #### Parameters
 
-##### notification
-
-[`Notification`](../type-aliases/Notification.md)
-
-New notification data.
+| Parameter      | Type                                              | Description            |
+| -------------- | ------------------------------------------------- | ---------------------- |
+| `notification` | [`Notification`](../type-aliases/Notification.md) | New notification data. |
 
 #### Returns
 
@@ -176,21 +187,21 @@ New notification data.
 
 [`UserNotification`](UserNotification.md).[`updateContent`](UserNotification.md#updatecontent)
 
-***
+---
 
 ### updateOptions()
 
-> **updateOptions**(`options?`): `void`
+```ts
+updateOptions(options?: UserNotificationOptions): void;
+```
 
 Updates notification options and redraws content.
 
 #### Parameters
 
-##### options?
-
-[`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) = `undefined`
-
-New options to apply.
+| Parameter | Type                                                                    | Default value | Description           |
+| --------- | ----------------------------------------------------------------------- | ------------- | --------------------- |
+| `options` | [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) | `undefined`   | New options to apply. |
 
 #### Returns
 
@@ -200,53 +211,46 @@ New options to apply.
 
 [`UserNotification`](UserNotification.md).[`updateOptions`](UserNotification.md#updateoptions)
 
-***
+---
 
 ### updateText()
 
-> **updateText**(`notificationText`): `void`
+```ts
+updateText(notificationText: string): void;
+```
 
 Updates the notification text.
 
 #### Parameters
 
-##### notificationText
-
-`string`
-
-New message to display.
+| Parameter          | Type     | Description             |
+| ------------------ | -------- | ----------------------- |
+| `notificationText` | `string` | New message to display. |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### error()
 
-> `static` **error**(`message`, `actions?`, `throttle?`): `void`
+```ts
+static error(
+   message: string,
+   actions?: string[],
+   throttle?: boolean): void;
+```
 
 Shows an error notification.
 
 #### Parameters
 
-##### message
-
-`string`
-
-Message to display.
-
-##### actions?
-
-`string`[] = `[]`
-
-Optional actions.
-
-##### throttle?
-
-`boolean` = `true`
-
-If true, throttles notifications.
+| Parameter  | Type       | Default value | Description                       |
+| ---------- | ---------- | ------------- | --------------------------------- |
+| `message`  | `string`   | `undefined`   | Message to display.               |
+| `actions`  | `string`[] | `[]`          | Optional actions.                 |
+| `throttle` | `boolean`  | `true`        | If true, throttles notifications. |
 
 #### Returns
 
@@ -256,33 +260,26 @@ If true, throttles notifications.
 
 [`UserNotification`](UserNotification.md).[`error`](UserNotification.md#error)
 
-***
+---
 
 ### info()
 
-> `static` **info**(`message`, `actions?`, `throttle?`): `void`
+```ts
+static info(
+   message: string,
+   actions?: string[],
+   throttle?: boolean): void;
+```
 
 Shows an info notification.
 
 #### Parameters
 
-##### message
-
-`string`
-
-Message to display.
-
-##### actions?
-
-`string`[] = `[]`
-
-Optional actions.
-
-##### throttle?
-
-`boolean` = `true`
-
-If true, throttles notifications.
+| Parameter  | Type       | Default value | Description                       |
+| ---------- | ---------- | ------------- | --------------------------------- |
+| `message`  | `string`   | `undefined`   | Message to display.               |
+| `actions`  | `string`[] | `[]`          | Optional actions.                 |
+| `throttle` | `boolean`  | `true`        | If true, throttles notifications. |
 
 #### Returns
 
@@ -292,33 +289,26 @@ If true, throttles notifications.
 
 [`UserNotification`](UserNotification.md).[`info`](UserNotification.md#info)
 
-***
+---
 
 ### warn()
 
-> `static` **warn**(`message`, `actions?`, `throttle?`): `void`
+```ts
+static warn(
+   message: string,
+   actions?: string[],
+   throttle?: boolean): void;
+```
 
 Shows a warning notification.
 
 #### Parameters
 
-##### message
-
-`string`
-
-Message to display.
-
-##### actions?
-
-`string`[] = `[]`
-
-Optional actions.
-
-##### throttle?
-
-`boolean` = `true`
-
-If true, throttles notifications.
+| Parameter  | Type       | Default value | Description                       |
+| ---------- | ---------- | ------------- | --------------------------------- |
+| `message`  | `string`   | `undefined`   | Message to display.               |
+| `actions`  | `string`[] | `[]`          | Optional actions.                 |
+| `throttle` | `boolean`  | `true`        | If true, throttles notifications. |
 
 #### Returns
 

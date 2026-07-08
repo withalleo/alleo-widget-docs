@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / DefaultLocale
 
@@ -17,20 +17,22 @@ Automatically detects browser locale preferences as fallbacks.
 ```typescript
 // Use locale settings
 const timezone = DefaultLocale.timeZone; // 'America/New_York'
-const lang = DefaultLocale.language;     // 'EN-US'
-const units = DefaultLocale.unitSystem;  // 'imperial' or 'si'
-const time = DefaultLocale.timeFormat;   // '12hrs' or '24hrs'
+const lang = DefaultLocale.language; // 'EN-US'
+const units = DefaultLocale.unitSystem; // 'imperial' or 'si'
+const time = DefaultLocale.timeFormat; // '12hrs' or '24hrs'
 
 // Translate text
-const greeting = DefaultLocale.txt('Hello');           // Gets translation if available
-const original = DefaultLocale.txt('Hello', 'original'); // Always returns English
+const greeting = DefaultLocale.txt("Hello"); // Gets translation if available
+const original = DefaultLocale.txt("Hello", "original"); // Always returns English
 ```
 
 ## Constructors
 
 ### Constructor
 
-> **new DefaultLocale**(): `DefaultLocale`
+```ts
+new DefaultLocale(): DefaultLocale;
+```
 
 #### Returns
 
@@ -40,7 +42,9 @@ const original = DefaultLocale.txt('Hello', 'original'); // Always returns Engli
 
 ### dateFormat
 
-> `static` **dateFormat**: `unknown` = `undefined`
+```ts
+static dateFormat: unknown = undefined;
+```
 
 The date format string (currently not implemented).
 
@@ -48,22 +52,26 @@ The date format string (currently not implemented).
 
 Add date format implementation
 
-***
+---
 
 ### language
 
-> `static` **language**: `string`
+```ts
+static language: string;
+```
 
 The language code for localization.
 
 Follows ISO 639-1 language codes with optional region (e.g., 'EN-US', 'FR', 'DE-DE').
 Used by the translation system to display text in the user's preferred language.
 
-***
+---
 
 ### timeZone
 
-> `static` **timeZone**: `string`
+```ts
+static timeZone: string;
+```
 
 The IANA time zone identifier for the user's location.
 
@@ -73,7 +81,7 @@ Can be overridden via widget settings, otherwise uses browser's time zone.
 #### Example
 
 ```ts
-'America/New_York', 'Europe/London', 'Asia/Tokyo'
+("America/New_York", "Europe/London", "Asia/Tokyo");
 ```
 
 ## Accessors
@@ -82,7 +90,9 @@ Can be overridden via widget settings, otherwise uses browser's time zone.
 
 #### Get Signature
 
-> **get** `static` **timeFormat**(): `"12hrs"` \| `"24hrs"`
+```ts
+get static timeFormat(): "12hrs" | "24hrs";
+```
 
 The time format preference: '12hrs' (AM/PM) or '24hrs' (military time).
 
@@ -92,10 +102,10 @@ widget settings. Use this to display times in the user's familiar format.
 ##### Example
 
 ```typescript
-if (DefaultLocale.timeFormat === '12hrs') {
-  displayTime('3:30 PM');
+if (DefaultLocale.timeFormat === "12hrs") {
+  displayTime("3:30 PM");
 } else {
-  displayTime('15:30');
+  displayTime("15:30");
 }
 ```
 
@@ -103,13 +113,15 @@ if (DefaultLocale.timeFormat === '12hrs') {
 
 `"12hrs"` \| `"24hrs"`
 
-***
+---
 
 ### unitSystem
 
 #### Get Signature
 
-> **get** `static` **unitSystem**(): `"imperial"` \| `"si"`
+```ts
+get static unitSystem(): "imperial" | "si";
+```
 
 The measurement unit system preference: 'imperial' (US) or 'si' (metric).
 
@@ -119,10 +131,10 @@ and SI (metric) for all other regions. Can be overridden via widget settings.
 ##### Example
 
 ```typescript
-if (DefaultLocale.unitSystem === 'imperial') {
-  displayDistance(miles, 'mi');
+if (DefaultLocale.unitSystem === "imperial") {
+  displayDistance(miles, "mi");
 } else {
-  displayDistance(kilometers, 'km');
+  displayDistance(kilometers, "km");
 }
 ```
 
@@ -130,20 +142,23 @@ if (DefaultLocale.unitSystem === 'imperial') {
 
 `"imperial"` \| `"si"`
 
-***
+---
 
 ### weekStartsSunday
 
 #### Get Signature
 
-> **get** `static` **weekStartsSunday**(): `boolean`
+```ts
+get static weekStartsSunday(): boolean;
+```
 
 Whether the UI should treat Sunday as the first day of the week.
 
 Priority:
-1) Explicit WidgetSettings.settings.WeekStartsSunday (boolean) if provided.
-2) Locale override on DefaultLocale (if present in DefaultLocale.localeOverrides.weekStartsSunday).
-3) Browser language heuristic: US default to Sunday-first, others Monday-first.
+
+1. Explicit WidgetSettings.settings.WeekStartsSunday (boolean) if provided.
+2. Locale override on DefaultLocale (if present in DefaultLocale.localeOverrides.weekStartsSunday).
+3. Browser language heuristic: US default to Sunday-first, others Monday-first.
 
 ##### Returns
 
@@ -153,11 +168,14 @@ Priority:
 
 ### txt()
 
-> `static` **txt**(`englishDefaultText`, `languageCode?`): `string`
+```ts
+static txt(englishDefaultText: string, languageCode?: string): string;
+```
 
 Retrieves translated text based on language settings with fallback to English.
 
 Looks up translations in the following order:
+
 1. Deployment-specific translations
 2. Language-specific translations (exact match)
 3. Language-specific translations (two-letter code only)
@@ -166,17 +184,10 @@ Looks up translations in the following order:
 
 #### Parameters
 
-##### englishDefaultText
-
-`string`
-
-The English text to translate (also used as lookup key).
-
-##### languageCode?
-
-`string` = `DefaultLocale.language`
-
-Target language code, or 'original' to skip translation.
+| Parameter            | Type     | Default value            | Description                                              |
+| -------------------- | -------- | ------------------------ | -------------------------------------------------------- |
+| `englishDefaultText` | `string` | `undefined`              | The English text to translate (also used as lookup key). |
+| `languageCode?`      | `string` | `DefaultLocale.language` | Target language code, or 'original' to skip translation. |
 
 #### Returns
 
@@ -188,10 +199,10 @@ The translated text, or the original English if no translation exists.
 
 ```typescript
 // With translations configured
-DefaultLocale.txt('Hello');           // 'Bonjour' (if French is configured)
-DefaultLocale.txt('Hello', 'FR');     // 'Bonjour'
-DefaultLocale.txt('Hello', 'original'); // 'Hello' (always English)
+DefaultLocale.txt("Hello"); // 'Bonjour' (if French is configured)
+DefaultLocale.txt("Hello", "FR"); // 'Bonjour'
+DefaultLocale.txt("Hello", "original"); // 'Hello' (always English)
 
 // Without translation
-DefaultLocale.txt('Goodbye');         // 'Goodbye' (falls back to English)
+DefaultLocale.txt("Goodbye"); // 'Goodbye' (falls back to English)
 ```

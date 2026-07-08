@@ -1,12 +1,14 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / waitUntilDomUpdates
 
 # Function: waitUntilDomUpdates()
 
-> **waitUntilDomUpdates**(): `Promise`\<`void`\>
+```ts
+function waitUntilDomUpdates(): Promise<void>;
+```
 
 Waits for the browser to complete all pending DOM rendering and layout operations.
 
@@ -24,12 +26,12 @@ A promise that resolves after the DOM has fully updated and rendered.
 
 ```typescript
 // Modify DOM and wait for rendering
-element.textContent = 'New text';
+element.textContent = "New text";
 await waitUntilDomUpdates();
 const height = element.offsetHeight; // Now accurate
 
 // Ensure element is visible before interaction
-modal.style.display = 'block';
+modal.style.display = "block";
 await waitUntilDomUpdates();
-modal.querySelector('button').focus();
+modal.querySelector("button").focus();
 ```

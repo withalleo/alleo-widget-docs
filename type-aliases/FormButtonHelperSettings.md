@@ -1,109 +1,135 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / FormButtonHelperSettings
 
 # Type Alias: FormButtonHelperSettings
 
-> **FormButtonHelperSettings** = `object`
+```ts
+type FormButtonHelperSettings = {
+  align?: "left" | "right" | "center" | "justify" | "start" | "end";
+  callbackOnFormOpened?: (button: HTMLElement) => void;
+  displayInline?: boolean;
+  doNotStartFormTimer?: boolean;
+  doNotStartInitialTimer?: boolean;
+  formlyKey?: string;
+  id?: string;
+  interval?: number;
+  loadingPlaceholder?: string;
+  primary?: boolean;
+  singleUse?: boolean;
+  timeout?: number;
+};
+```
+
+Settings for [FormButtonHelper](../classes/FormButtonHelper.md).
+
+Note: this file is TypeScript-first. The canonical shape is the exported
+FormButtonHelperSettings type below.
 
 ## Properties
 
 ### align?
 
-> `optional` **align?**: `"left"` \| `"right"` \| `"center"` \| `"justify"` \| `"start"` \| `"end"`
+```ts
+optional align?: "left" | "right" | "center" | "justify" | "start" | "end";
+```
 
-***
+---
 
 ### callbackOnFormOpened?
 
-> `optional` **callbackOnFormOpened?**: (`button`) => `void`
-
-Callback function to be called when the form is opened.
+```ts
+optional callbackOnFormOpened?: (button: HTMLElement) => void;
+```
 
 #### Parameters
 
-##### button
-
-`HTMLElement`
+| Parameter | Type          |
+| --------- | ------------- |
+| `button`  | `HTMLElement` |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### displayInline?
 
-> `optional` **displayInline?**: `boolean`
+```ts
+optional displayInline?: boolean;
+```
 
-Flag to indicate if the button should be displayed inline.
-
-***
+---
 
 ### doNotStartFormTimer?
 
-> `optional` **doNotStartFormTimer?**: `boolean`
+```ts
+optional doNotStartFormTimer?: boolean;
+```
 
-***
+---
 
-### doNotStartTimer?
+### doNotStartInitialTimer?
 
-> `optional` **doNotStartTimer?**: `boolean`
+```ts
+optional doNotStartInitialTimer?: boolean;
+```
 
-Flag to indicate if the timer should not start.
-
-***
+---
 
 ### formlyKey?
 
-> `optional` **formlyKey?**: `string`
+```ts
+optional formlyKey?: string;
+```
 
-Key for the Formly field configuration.
-
-***
+---
 
 ### id?
 
-> `optional` **id?**: `string`
+```ts
+optional id?: string;
+```
 
-ID of the form button.
-
-***
+---
 
 ### interval?
 
-> `optional` **interval?**: `number`
+```ts
+optional interval?: number;
+```
 
-Interval for the timer in milliseconds.
-
-***
+---
 
 ### loadingPlaceholder?
 
-> `optional` **loadingPlaceholder?**: `string`
+```ts
+optional loadingPlaceholder?: string;
+```
 
-Placeholder text to display while loading.
-
-***
+---
 
 ### primary?
 
-> `optional` **primary?**: `boolean`
+```ts
+optional primary?: boolean;
+```
 
-***
+---
 
 ### singleUse?
 
-> `optional` **singleUse?**: `boolean`
+```ts
+optional singleUse?: boolean;
+```
 
-Flag to indicate if the button should be single-use.
-
-***
+---
 
 ### timeout?
 
-> `optional` **timeout?**: `number`
-
-Timeout in milliseconds after which the button should be destroyed.
+```ts
+optional timeout?: number;
+```

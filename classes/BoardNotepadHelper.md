@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / BoardNotepadHelper
 
@@ -25,10 +25,10 @@ if (BoardNotepadHelper.isNotepad(notepadObj)) {
 
   // Read content
   const text = await notepadHelper.getText();
-  console.log('Notepad content:', text);
+  console.log("Notepad content:", text);
 
   // Write content
-  await notepadHelper.setText('New content', TextInputFormat.Markdown);
+  await notepadHelper.setText("New content", TextInputFormat.Markdown);
 
   // Get notepad label
   const label = BoardNotepadHelper.getNotepadLabel(notepadObj);
@@ -39,7 +39,9 @@ if (BoardNotepadHelper.isNotepad(notepadObj)) {
 
 ### Constructor
 
-> **new BoardNotepadHelper**(`notepad`): `BoardNotepadHelper`
+```ts
+new BoardNotepadHelper(notepad: RealIBoardObject): BoardNotepadHelper;
+```
 
 Creates a BoardNotepadHelper instance for manipulating a specific notepad.
 
@@ -48,11 +50,9 @@ infrastructure. Requires a widget with DOM access.
 
 #### Parameters
 
-##### notepad
-
-[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
-
-The board object representing the collaborative notepad.
+| Parameter | Type                                                    | Description                                              |
+| --------- | ------------------------------------------------------- | -------------------------------------------------------- |
+| `notepad` | [`RealIBoardObject`](../interfaces/RealIBoardObject.md) | The board object representing the collaborative notepad. |
 
 #### Returns
 
@@ -66,7 +66,9 @@ Throws if widget doesn't have DOM or notepad object is invalid.
 
 ### notepad
 
-> **notepad**: [`RealIBoardObject`](../interfaces/RealIBoardObject.md)
+```ts
+notepad: RealIBoardObject;
+```
 
 The board object representing the collaborative notepad.
 
@@ -74,43 +76,38 @@ The board object representing the collaborative notepad.
 
 ### appendContent()
 
-> **appendContent**(`content`, `inputFormat?`): `Promise`\<`void`\>
+```ts
+appendContent(content: string | string[], inputFormat?: TextInputFormat): Promise<void>;
+```
 
 Appends content to the notepad.
 
 #### Parameters
 
-##### content
-
-`string` \| `string`[]
-
-The content to append.
-
-##### inputFormat?
-
-[`TextInputFormat`](../enumerations/TextInputFormat.md) = `TextInputFormat.Text`
-
-The format of the content.
+| Parameter      | Type                                                    | Default value          | Description                |
+| -------------- | ------------------------------------------------------- | ---------------------- | -------------------------- |
+| `content`      | `string` \| `string`[]                                  | `undefined`            | The content to append.     |
+| `inputFormat?` | [`TextInputFormat`](../enumerations/TextInputFormat.md) | `TextInputFormat.Text` | The format of the content. |
 
 #### Returns
 
 `Promise`\<`void`\>
 
-***
+---
 
 ### getContent()
 
-> **getContent**(`inputFormat?`): `Promise`\<`string`\>
+```ts
+getContent(inputFormat?: TextInputFormat): Promise<string>;
+```
 
 Gets the content of the notepad.
 
 #### Parameters
 
-##### inputFormat?
-
-[`TextInputFormat`](../enumerations/TextInputFormat.md) = `TextInputFormat.Text`
-
-The format of the content.
+| Parameter      | Type                                                    | Default value          | Description                |
+| -------------- | ------------------------------------------------------- | ---------------------- | -------------------------- |
+| `inputFormat?` | [`TextInputFormat`](../enumerations/TextInputFormat.md) | `TextInputFormat.Text` | The format of the content. |
 
 #### Returns
 
@@ -118,37 +115,34 @@ The format of the content.
 
 The content of the notepad.
 
-***
+---
 
 ### replaceContent()
 
-> **replaceContent**(`content`, `inputFormat?`): `Promise`\<`void`\>
+```ts
+replaceContent(content: string | string[], inputFormat?: TextInputFormat): Promise<void>;
+```
 
 Replaces the content of the notepad.
 
 #### Parameters
 
-##### content
-
-`string` \| `string`[]
-
-The new content.
-
-##### inputFormat?
-
-[`TextInputFormat`](../enumerations/TextInputFormat.md) = `TextInputFormat.Text`
-
-The format of the content.
+| Parameter      | Type                                                    | Default value          | Description                |
+| -------------- | ------------------------------------------------------- | ---------------------- | -------------------------- |
+| `content`      | `string` \| `string`[]                                  | `undefined`            | The new content.           |
+| `inputFormat?` | [`TextInputFormat`](../enumerations/TextInputFormat.md) | `TextInputFormat.Text` | The format of the content. |
 
 #### Returns
 
 `Promise`\<`void`\>
 
-***
+---
 
 ### getNotepadLabel()
 
-> `static` **getNotepadLabel**(`notepadObject`, `len?`): `string`
+```ts
+static getNotepadLabel(notepadObject: RealIBoardObject, len?: number): string;
+```
 
 Retrieves a display label for a notepad object.
 
@@ -157,17 +151,10 @@ of the content. Automatically truncates long text and adds ellipsis.
 
 #### Parameters
 
-##### notepadObject
-
-[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
-
-The notepad board object.
-
-##### len?
-
-`number` = `30`
-
-Maximum length of the returned label. Longer text is truncated with '...'.
+| Parameter       | Type                                                    | Default value | Description                                                                |
+| --------------- | ------------------------------------------------------- | ------------- | -------------------------------------------------------------------------- |
+| `notepadObject` | [`RealIBoardObject`](../interfaces/RealIBoardObject.md) | `undefined`   | The notepad board object.                                                  |
+| `len?`          | `number`                                                | `30`          | Maximum length of the returned label. Longer text is truncated with '...'. |
 
 #### Returns
 
@@ -177,11 +164,13 @@ The notepad label (title or content preview).
 
 #### Static
 
-***
+---
 
 ### isNotepad()
 
-> `static` **isNotepad**(`obj`): `boolean`
+```ts
+static isNotepad(obj: RealIBoardObject): boolean;
+```
 
 Determines if a board object is a collaborative notepad.
 
@@ -189,11 +178,9 @@ Checks the object's type and data properties to identify notepad objects.
 
 #### Parameters
 
-##### obj
-
-[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
-
-The board object to check.
+| Parameter | Type                                                    | Description                |
+| --------- | ------------------------------------------------------- | -------------------------- |
+| `obj`     | [`RealIBoardObject`](../interfaces/RealIBoardObject.md) | The board object to check. |
 
 #### Returns
 

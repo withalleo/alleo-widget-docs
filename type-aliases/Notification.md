@@ -1,12 +1,19 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / Notification
 
 # Type Alias: Notification
 
-> **Notification** = `object`
+```ts
+type Notification = {
+  image?: string;
+  text: string;
+  title?: string;
+  type?: string;
+};
+```
 
 Configuration object for the content and appearance of a notification.
 
@@ -14,30 +21,38 @@ Configuration object for the content and appearance of a notification.
 
 ### image?
 
-> `optional` **image?**: `string`
+```ts
+optional image?: string;
+```
 
 Optional image URL displayed alongside the notification.
 
-***
+---
 
 ### text
 
-> **text**: `string`
+```ts
+text: string;
+```
 
 The main notification message (supports HTML content).
 
-***
+---
 
 ### title?
 
-> `optional` **title?**: `string`
+```ts
+optional title?: string;
+```
 
 Optional title displayed above the message text.
 
-***
+---
 
 ### type?
 
-> `optional` **type?**: `string`
+```ts
+optional type?: string;
+```
 
 The notification type determining visual style (e.g., 'info').

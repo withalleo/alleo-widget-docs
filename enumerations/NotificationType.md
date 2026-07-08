@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / NotificationType
 
@@ -12,4 +12,6 @@ Enum for notification types determining the visual style of notifications.
 
 ### Info
 
-> **Info**: `"info"`
+```ts
+Info: "info";
+```

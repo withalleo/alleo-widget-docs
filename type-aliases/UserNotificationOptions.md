@@ -1,12 +1,23 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / UserNotificationOptions
 
 # Type Alias: UserNotificationOptions
 
-> **UserNotificationOptions** = `object`
+```ts
+type UserNotificationOptions = {
+  alternativeButton?: {
+    onClick: () => void;
+    text: string;
+  };
+  autoOpen?: boolean;
+  hideButton?: boolean;
+  neverTimeout?: boolean;
+  timeout?: number;
+};
+```
 
 Configuration options for controlling notification behavior and appearance.
 
@@ -14,13 +25,20 @@ Configuration options for controlling notification behavior and appearance.
 
 ### alternativeButton?
 
-> `optional` **alternativeButton?**: `object`
+```ts
+optional alternativeButton?: {
+  onClick: () => void;
+  text: string;
+};
+```
 
 Custom action button configuration.
 
 #### onClick
 
-> **onClick**: () => `void`
+```ts
+onClick: () => void;
+```
 
 ##### Returns
 
@@ -28,36 +46,46 @@ Custom action button configuration.
 
 #### text
 
-> **text**: `string`
+```ts
+text: string;
+```
 
-***
+---
 
 ### autoOpen?
 
-> `optional` **autoOpen?**: `boolean`
+```ts
+optional autoOpen?: boolean;
+```
 
 When true, notification opens immediately upon creation.
 
-***
+---
 
 ### hideButton?
 
-> `optional` **hideButton?**: `boolean`
+```ts
+optional hideButton?: boolean;
+```
 
 When true, hides the default dismiss button.
 
-***
+---
 
 ### neverTimeout?
 
-> `optional` **neverTimeout?**: `boolean`
+```ts
+optional neverTimeout?: boolean;
+```
 
 When true, notification stays visible until manually dismissed.
 
-***
+---
 
 ### timeout?
 
-> `optional` **timeout?**: `number`
+```ts
+optional timeout?: number;
+```
 
 Duration in milliseconds before the notification automatically closes (default varies by type).

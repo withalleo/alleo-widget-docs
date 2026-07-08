@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / AiMessageType
 
@@ -10,16 +10,22 @@
 
 ### Ai
 
-> **Ai**: `"assistant"`
+```ts
+Ai: "assistant";
+```
 
-***
+---
 
 ### System
 
-> **System**: `"system"`
+```ts
+System: "system";
+```
 
-***
+---
 
 ### User
 
-> **User**: `"user"`
+```ts
+User: "user";
+```

@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / BrowserContextHelper
 
@@ -18,12 +18,12 @@ interaction patterns for room-based scenarios.
 ```typescript
 // Check if running in a Room context
 if (BrowserContextHelper.isRoomApp()) {
-  console.log('Running in Room mode');
+  console.log("Running in Room mode");
   // Enable room-specific features
   enableFullscreenMode();
   disableDetailedControls();
 } else {
-  console.log('Running in web interface');
+  console.log("Running in web interface");
   // Enable standard web features
   showDetailedUI();
 }
@@ -33,7 +33,9 @@ if (BrowserContextHelper.isRoomApp()) {
 
 ### Constructor
 
-> **new BrowserContextHelper**(): `BrowserContextHelper`
+```ts
+new BrowserContextHelper(): BrowserContextHelper;
+```
 
 #### Returns
 
@@ -43,7 +45,9 @@ if (BrowserContextHelper.isRoomApp()) {
 
 ### isRoomApp()
 
-> `static` **isRoomApp**(): `boolean`
+```ts
+static isRoomApp(): boolean;
+```
 
 Determines if the widget is currently running in a Room application context.
 

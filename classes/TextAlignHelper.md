@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / TextAlignHelper
 
@@ -15,35 +15,30 @@ switch alignments and the DOM updates automatically.
 ## Examples
 
 ```ts
-const helper = new TextAlignHelper(this.domSelect<HTMLElement>('.label')!, {
+const helper = new TextAlignHelper(this.domSelect<HTMLElement>(".label")!, {
   defaultAlign: TextAlignment.Left,
   supportedAlignments: [TextAlignment.Left, TextAlignment.Right],
-})
+});
 ```
 
 ```ts
-const helper = new TextAlignHelper(this.domSelect('.label'))
+const helper = new TextAlignHelper(this.domSelect(".label"));
 ```
 
 ## Constructors
 
 ### Constructor
 
-> **new TextAlignHelper**(`element`, `options?`): `TextAlignHelper`
+```ts
+new TextAlignHelper(element: HTMLElement | HTMLElement[], options?: TextAlignOptions): TextAlignHelper;
+```
 
 #### Parameters
 
-##### element
-
-`HTMLElement` \| `HTMLElement`[]
-
-Element whose `textAlign` style is controlled.
-
-##### options?
-
-`TextAlignOptions` = `{}`
-
-Configuration overrides such as default alignment and available submenu entries.
+| Parameter | Type                             | Description                                                                      |
+| --------- | -------------------------------- | -------------------------------------------------------------------------------- |
+| `element` | `HTMLElement` \| `HTMLElement`[] | Element whose `textAlign` style is controlled.                                   |
+| `options` | `TextAlignOptions`               | Configuration overrides such as default alignment and available submenu entries. |
 
 #### Returns
 
@@ -55,7 +50,9 @@ Configuration overrides such as default alignment and available submenu entries.
 
 #### Get Signature
 
-> **get** **align**(): [`TextAlignment`](../enumerations/TextAlignment.md)
+```ts
+get align(): TextAlignment;
+```
 
 Returns the currently active text alignment.
 
@@ -65,7 +62,9 @@ Returns the currently active text alignment.
 
 #### Set Signature
 
-> **set** **align**(`textAlignment`): `void`
+```ts
+set align(textAlignment: TextAlignment): void;
+```
 
 Applies a new alignment, and saves it as a shared variable, and triggers a local callback.
 
@@ -77,9 +76,9 @@ Error when the requested alignment is not available in `supportedAlignments`.
 
 ##### Parameters
 
-###### textAlignment
-
-[`TextAlignment`](../enumerations/TextAlignment.md)
+| Parameter       | Type                                                |
+| --------------- | --------------------------------------------------- |
+| `textAlignment` | [`TextAlignment`](../enumerations/TextAlignment.md) |
 
 ##### Returns
 
@@ -89,7 +88,9 @@ Error when the requested alignment is not available in `supportedAlignments`.
 
 ### renderContextMenu()
 
-> `protected` **renderContextMenu**(): `void`
+```ts
+protected renderContextMenu(): void;
+```
 
 Adds or rebuilds the toolbar submenu, ensuring the icon matches the current alignment.
 
@@ -97,11 +98,13 @@ Adds or rebuilds the toolbar submenu, ensuring the icon matches the current alig
 
 `void`
 
-***
+---
 
 ### updateAlignment()
 
-> `protected` **updateAlignment**(): `void`
+```ts
+protected updateAlignment(): void;
+```
 
 Ensures the DOM element's `textAlign` style matches the stored alignment.
 

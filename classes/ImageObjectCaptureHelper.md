@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / ImageObjectCaptureHelper
 
@@ -26,12 +26,12 @@ if (ImageObjectCaptureHelper.supportedObjectTypes.includes(imageObj.type)) {
     maxWidth: 512,
     maxHeight: 512,
     returnDataUrl: true,
-    imageQuality: 0.9
+    imageQuality: 0.9,
   });
 
   // Capture as Uint8Array for processing
   const imageData = await ImageObjectCaptureHelper.getContentAsImage(imageObj, {
-    returnImageData: false
+    returnImageData: false,
   });
 }
 ```
@@ -40,7 +40,9 @@ if (ImageObjectCaptureHelper.supportedObjectTypes.includes(imageObj.type)) {
 
 ### Constructor
 
-> **new ImageObjectCaptureHelper**(): `ImageObjectCaptureHelper`
+```ts
+new ImageObjectCaptureHelper(): ImageObjectCaptureHelper;
+```
 
 #### Returns
 
@@ -50,47 +52,48 @@ if (ImageObjectCaptureHelper.supportedObjectTypes.includes(imageObj.type)) {
 
 ### supportedImageObjectTypes
 
-> `static` **supportedImageObjectTypes**: `BoardFabricObjectType`[]
+```ts
+static supportedImageObjectTypes: BoardFabricObjectType[];
+```
 
-***
+---
 
 ### supportedObjectTypes
 
-> `static` **supportedObjectTypes**: `BoardFabricObjectType`[]
+```ts
+static supportedObjectTypes: BoardFabricObjectType[];
+```
 
-***
+---
 
 ### supportedVideoObjectTypes
 
-> `static` **supportedVideoObjectTypes**: `BoardFabricObjectType`[]
+```ts
+static supportedVideoObjectTypes: BoardFabricObjectType[];
+```
 
 ## Methods
 
 ### getContentAsImage()
 
-> `static` **getContentAsImage**\<`FunctionResultType`\>(`object`, `options?`): `FunctionResultType`
+```ts
+static getContentAsImage<FunctionResultType>(object: RealIBoardObject, options?: GetContentAsImageOptions): FunctionResultType;
+```
 
 Captures the content of a board object as an image.
 
 #### Type Parameters
 
-##### FunctionResultType
-
-`FunctionResultType` *extends* `string` \| `Uint8Array`\<`ArrayBufferLike`\> \| `Uint8ClampedArray`\<`ArrayBufferLike`\> \| `CanvasRenderingContext2D` = `Uint8Array`\<`ArrayBufferLike`\>
+| Type Parameter                                                                                                                                            | Default type                      |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
+| `FunctionResultType` _extends_ \| `string` \| `Uint8Array`\<`ArrayBufferLike`\> \| `Uint8ClampedArray`\<`ArrayBufferLike`\> \| `CanvasRenderingContext2D` | `Uint8Array`\<`ArrayBufferLike`\> |
 
 #### Parameters
 
-##### object
-
-[`RealIBoardObject`](../interfaces/RealIBoardObject.md)
-
-The board object to capture.
-
-##### options?
-
-`GetContentAsImageOptions` = `{}`
-
-Options for capturing the content.
+| Parameter | Type                                                    | Description                        |
+| --------- | ------------------------------------------------------- | ---------------------------------- |
+| `object`  | [`RealIBoardObject`](../interfaces/RealIBoardObject.md) | The board object to capture.       |
+| `options` | `GetContentAsImageOptions`                              | Options for capturing the content. |
 
 #### Returns
 
@@ -102,11 +105,13 @@ The captured content in the specified format.
 
 Will throw an error if the object type is not supported or if the media is not ready.
 
-***
+---
 
 ### getImageOrVideoContentImage()
 
-> `static` **getImageOrVideoContentImage**\<`FunctionResultType`\>(`element`, `options?`): `FunctionResultType`
+```ts
+static getImageOrVideoContentImage<FunctionResultType>(element: ImageBitmap | HTMLImageElement | HTMLVideoElement, options?: GetContentAsImageOptions): FunctionResultType;
+```
 
 Captures the visual content of an image or video element.
 
@@ -115,25 +120,16 @@ Automatically handles resizing while maintaining aspect ratio and quality settin
 
 #### Type Parameters
 
-##### FunctionResultType
-
-`FunctionResultType` *extends* `string` \| `Uint8Array`\<`ArrayBufferLike`\> \| `Uint8ClampedArray`\<`ArrayBufferLike`\> \| `CanvasRenderingContext2D` = `Uint8Array`\<`ArrayBufferLike`\>
-
-The return type based on options (Uint8Array, string, CanvasRenderingContext2D, or Uint8ClampedArray).
+| Type Parameter                                                                                                                                            | Default type                      | Description                                                                                            |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `FunctionResultType` _extends_ \| `string` \| `Uint8Array`\<`ArrayBufferLike`\> \| `Uint8ClampedArray`\<`ArrayBufferLike`\> \| `CanvasRenderingContext2D` | `Uint8Array`\<`ArrayBufferLike`\> | The return type based on options (Uint8Array, string, CanvasRenderingContext2D, or Uint8ClampedArray). |
 
 #### Parameters
 
-##### element
-
-`ImageBitmap` \| `HTMLImageElement` \| `HTMLVideoElement`
-
-The source element to capture from.
-
-##### options?
-
-`GetContentAsImageOptions` = `{}`
-
-Capture configuration options.
+| Parameter  | Type                                                      | Description                         |
+| ---------- | --------------------------------------------------------- | ----------------------------------- |
+| `element`  | `ImageBitmap` \| `HTMLImageElement` \| `HTMLVideoElement` | The source element to capture from. |
+| `options?` | `GetContentAsImageOptions`                                | Capture configuration options.      |
 
 #### Returns
 

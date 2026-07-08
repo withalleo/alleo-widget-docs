@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / TextInputFormat
 
@@ -12,16 +12,22 @@ Enum for supported text input formats.
 
 ### Html
 
-> **Html**: `"html"`
+```ts
+Html: "html";
+```
 
-***
+---
 
 ### Markdown
 
-> **Markdown**: `"md"`
+```ts
+Markdown: "md";
+```
 
-***
+---
 
 ### Text
 
-> **Text**: `"text"`
+```ts
+Text: "text";
+```

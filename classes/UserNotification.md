@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / UserNotification
 
@@ -16,22 +16,22 @@ in the top-right corner of the interface by default.
 
 ```typescript
 // Simple info notification
-UserNotification.show('Operation completed successfully');
+UserNotification.show("Operation completed successfully");
 
 // Notification with title and image
 UserNotification.show({
-  title: 'Welcome',
-  text: 'Thanks for using our widget!',
-  image: 'https://example.com/icon.png'
+  title: "Welcome",
+  text: "Thanks for using our widget!",
+  image: "https://example.com/icon.png",
 });
 
 // Never-closing notification with custom button
-UserNotification.show('Important message', {
+UserNotification.show("Important message", {
   neverTimeout: true,
   alternativeButton: {
-    text: 'Learn More',
-    onClick: () => window.open('https://example.com')
-  }
+    text: "Learn More",
+    onClick: () => window.open("https://example.com"),
+  },
 });
 ```
 
@@ -43,23 +43,18 @@ UserNotification.show('Important message', {
 
 ### Constructor
 
-> **new UserNotification**(`notification`, `options?`): `UserNotification`
+```ts
+new UserNotification(notification: Notification, options?: UserNotificationOptions): UserNotification;
+```
 
 Creates a new UserNotification instance.
 
 #### Parameters
 
-##### notification
-
-[`Notification`](../type-aliases/Notification.md)
-
-Notification data.
-
-##### options?
-
-[`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) = `{}`
-
-Notification options.
+| Parameter      | Type                                                                    | Description           |
+| -------------- | ----------------------------------------------------------------------- | --------------------- |
+| `notification` | [`Notification`](../type-aliases/Notification.md)                       | Notification data.    |
+| `options`      | [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) | Notification options. |
 
 #### Returns
 
@@ -69,23 +64,29 @@ Notification options.
 
 ### notification
 
-> `protected` **notification**: [`Notification`](../type-aliases/Notification.md)
+```ts
+protected notification: Notification;
+```
 
 Notification data.
 
-***
+---
 
 ### options
 
-> **options**: [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) = `{}`
+```ts
+options: UserNotificationOptions = {};
+```
 
 Notification options.
 
-***
+---
 
 ### DEBUG
 
-> `static` **DEBUG**: `boolean` = `true`
+```ts
+static DEBUG: boolean = true;
+```
 
 Enable debug logging.
 
@@ -95,7 +96,9 @@ Enable debug logging.
 
 #### Get Signature
 
-> **get** **isOpen**(): `boolean`
+```ts
+get isOpen(): boolean;
+```
 
 Returns true if the notification is open.
 
@@ -107,7 +110,9 @@ Returns true if the notification is open.
 
 ### close()
 
-> **close**(): `Promise`\<`void`\>
+```ts
+close(): Promise<void>;
+```
 
 Closes the notification and removes it from the UI.
 
@@ -115,11 +120,13 @@ Closes the notification and removes it from the UI.
 
 `Promise`\<`void`\>
 
-***
+---
 
 ### destroy()
 
-> **destroy**(): `void`
+```ts
+destroy(): void;
+```
 
 Destroys the notification and cleans up resources.
 
@@ -127,11 +134,13 @@ Destroys the notification and cleans up resources.
 
 `void`
 
-***
+---
 
 ### open()
 
-> **open**(): `Promise`\<`void`\>
+```ts
+open(): Promise<void>;
+```
 
 Opens the notification in the UI.
 
@@ -139,137 +148,116 @@ Opens the notification in the UI.
 
 `Promise`\<`void`\>
 
-***
+---
 
 ### updateContent()
 
-> **updateContent**(`notification`): `Promise`\<`void`\>
+```ts
+updateContent(notification: Notification): Promise<void>;
+```
 
 Updates the notification content.
 
 #### Parameters
 
-##### notification
-
-[`Notification`](../type-aliases/Notification.md)
-
-New notification data.
+| Parameter      | Type                                              | Description            |
+| -------------- | ------------------------------------------------- | ---------------------- |
+| `notification` | [`Notification`](../type-aliases/Notification.md) | New notification data. |
 
 #### Returns
 
 `Promise`\<`void`\>
 
-***
+---
 
 ### updateOptions()
 
-> **updateOptions**(`options?`): `void`
+```ts
+updateOptions(options?: UserNotificationOptions): void;
+```
 
 Updates notification options and redraws content.
 
 #### Parameters
 
-##### options?
-
-[`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) = `undefined`
-
-New options to apply.
+| Parameter | Type                                                                    | Default value | Description           |
+| --------- | ----------------------------------------------------------------------- | ------------- | --------------------- |
+| `options` | [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) | `undefined`   | New options to apply. |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### error()
 
-> `static` **error**(`message`, `actions?`, `throttle?`): `void`
+```ts
+static error(
+   message: string,
+   actions?: string[],
+   throttle?: boolean): void;
+```
 
 Shows an error notification.
 
 #### Parameters
 
-##### message
-
-`string`
-
-Message to display.
-
-##### actions?
-
-`string`[] = `[]`
-
-Optional actions.
-
-##### throttle?
-
-`boolean` = `true`
-
-If true, throttles notifications.
+| Parameter  | Type       | Default value | Description                       |
+| ---------- | ---------- | ------------- | --------------------------------- |
+| `message`  | `string`   | `undefined`   | Message to display.               |
+| `actions`  | `string`[] | `[]`          | Optional actions.                 |
+| `throttle` | `boolean`  | `true`        | If true, throttles notifications. |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### info()
 
-> `static` **info**(`message`, `actions?`, `throttle?`): `void`
+```ts
+static info(
+   message: string,
+   actions?: string[],
+   throttle?: boolean): void;
+```
 
 Shows an info notification.
 
 #### Parameters
 
-##### message
-
-`string`
-
-Message to display.
-
-##### actions?
-
-`string`[] = `[]`
-
-Optional actions.
-
-##### throttle?
-
-`boolean` = `true`
-
-If true, throttles notifications.
+| Parameter  | Type       | Default value | Description                       |
+| ---------- | ---------- | ------------- | --------------------------------- |
+| `message`  | `string`   | `undefined`   | Message to display.               |
+| `actions`  | `string`[] | `[]`          | Optional actions.                 |
+| `throttle` | `boolean`  | `true`        | If true, throttles notifications. |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### warn()
 
-> `static` **warn**(`message`, `actions?`, `throttle?`): `void`
+```ts
+static warn(
+   message: string,
+   actions?: string[],
+   throttle?: boolean): void;
+```
 
 Shows a warning notification.
 
 #### Parameters
 
-##### message
-
-`string`
-
-Message to display.
-
-##### actions?
-
-`string`[] = `[]`
-
-Optional actions.
-
-##### throttle?
-
-`boolean` = `true`
-
-If true, throttles notifications.
+| Parameter  | Type       | Default value | Description                       |
+| ---------- | ---------- | ------------- | --------------------------------- |
+| `message`  | `string`   | `undefined`   | Message to display.               |
+| `actions`  | `string`[] | `[]`          | Optional actions.                 |
+| `throttle` | `boolean`  | `true`        | If true, throttles notifications. |
 
 #### Returns
 

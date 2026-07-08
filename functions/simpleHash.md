@@ -1,12 +1,14 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / simpleHash
 
 # Function: simpleHash()
 
-> **simpleHash**(`input`): `string`
+```ts
+function simpleHash(input: string): string;
+```
 
 Creates a case-insensitive, whitespace-normalized hash string from input text.
 
@@ -16,11 +18,9 @@ minor formatting differences should be ignored.
 
 ## Parameters
 
-### input
-
-`string`
-
-The string to hash.
+| Parameter | Type     | Description         |
+| --------- | -------- | ------------------- |
+| `input`   | `string` | The string to hash. |
 
 ## Returns
 
@@ -31,10 +31,10 @@ A base-36 hash string that's consistent for equivalent inputs.
 ## Example
 
 ```typescript
-simpleHash('Hello World');     // 'abc123'
-simpleHash('hello  world');    // 'abc123' (same hash)
-simpleHash('HELLO WORLD');     // 'abc123' (same hash)
-simpleHash('Hello World!');    // 'def456' (different due to punctuation)
+simpleHash("Hello World"); // 'abc123'
+simpleHash("hello  world"); // 'abc123' (same hash)
+simpleHash("HELLO WORLD"); // 'abc123' (same hash)
+simpleHash("Hello World!"); // 'def456' (different due to punctuation)
 
 // Use for deduplication
 const seen = new Set();

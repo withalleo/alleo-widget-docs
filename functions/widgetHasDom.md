@@ -1,12 +1,14 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / widgetHasDom
 
 # Function: widgetHasDom()
 
-> **widgetHasDom**(`h?`): `h is IWidgetApi`
+```ts
+function widgetHasDom(h?: IWidgetApi | IWidgetServiceApi): h is IWidgetApi;
+```
 
 Type guard to determine if the current widget has a DOM presence (is a board object vs. a service).
 
@@ -16,11 +18,9 @@ the widget is and narrows the TypeScript type accordingly.
 
 ## Parameters
 
-### h?
-
-`IWidgetApi` \| `IWidgetServiceApi`
-
-The widget API instance to check.
+| Parameter | Type                                | Default value | Description                       |
+| --------- | ----------------------------------- | ------------- | --------------------------------- |
+| `h?`      | `IWidgetApi` \| `IWidgetServiceApi` | `haptic`      | The widget API instance to check. |
 
 ## Returns
 
@@ -33,9 +33,9 @@ True if the widget has DOM (is a board object), false if it's a service.
 ```typescript
 if (widgetHasDom(haptic)) {
   // TypeScript knows haptic.rootNode exists
-  const container = haptic.rootNode.querySelector('.container');
+  const container = haptic.rootNode.querySelector(".container");
 } else {
   // Widget is a service, no DOM available
-  console.log('Running as background service');
+  console.log("Running as background service");
 }
 ```

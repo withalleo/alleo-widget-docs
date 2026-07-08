@@ -1,12 +1,17 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / EventDisableHelperOptions
 
 # Type Alias: EventDisableHelperOptions
 
-> **EventDisableHelperOptions** = `object`
+```ts
+type EventDisableHelperOptions = {
+  autoManage?: boolean;
+  callback?: (e: Event) => void;
+};
+```
 
 Options for the EventDisableHelper.
 
@@ -14,23 +19,27 @@ Options for the EventDisableHelper.
 
 ### autoManage?
 
-> `optional` **autoManage?**: `boolean`
+```ts
+optional autoManage?: boolean;
+```
 
 If true, the EventDisableHelper will automatically manage the events based on the interactibility of the widget (default: true).
 
-***
+---
 
 ### callback?
 
-> `optional` **callback?**: (`e`) => `void`
+```ts
+optional callback?: (e: Event) => void;
+```
 
 A callback that will be called when the event is cancelled. (So it can be used to do something else as well)
 
 #### Parameters
 
-##### e
-
-`Event`
+| Parameter | Type    |
+| --------- | ------- |
+| `e`       | `Event` |
 
 #### Returns
 

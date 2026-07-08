@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / PointerHelper
 
@@ -16,18 +16,18 @@ and touch-friendly interactions.
 ## Example
 
 ```typescript
-const element = document.querySelector('.interactive-area');
+const element = document.querySelector(".interactive-area");
 const pointer = new PointerHelper(element);
 
 // Handle normal clicks
 pointer.registerOnclick((e) => {
-  console.log('Clicked at:', e.clientX, e.clientY);
+  console.log("Clicked at:", e.clientX, e.clientY);
   performAction();
 });
 
 // Handle alt-click or long-press for context menu
 pointer.registerOnAltClick((e) => {
-  console.log('Alt-click detected');
+  console.log("Alt-click detected");
   showContextMenu(e);
 });
 ```
@@ -36,7 +36,9 @@ pointer.registerOnAltClick((e) => {
 
 ### Constructor
 
-> **new PointerHelper**(`element`): `PointerHelper`
+```ts
+new PointerHelper(element: HTMLElement): PointerHelper;
+```
 
 Creates a PointerHelper instance for managing pointer interactions on an element.
 
@@ -45,11 +47,9 @@ Automatically manages pointer state and distinguishes between different interact
 
 #### Parameters
 
-##### element
-
-`HTMLElement`
-
-The HTML element to attach pointer event handlers to.
+| Parameter | Type          | Description                                           |
+| --------- | ------------- | ----------------------------------------------------- |
+| `element` | `HTMLElement` | The HTML element to attach pointer event handlers to. |
 
 #### Returns
 
@@ -59,43 +59,49 @@ The HTML element to attach pointer event handlers to.
 
 ### altCallbacks
 
-> `protected` **altCallbacks**: (`e`) => `void`[] = `[]`
+```ts
+protected altCallbacks: (e: PointerEvent) => void[] = [];
+```
 
 Registered alt-click callbacks.
 
 #### Parameters
 
-##### e
-
-`PointerEvent`
+| Parameter | Type           |
+| --------- | -------------- |
+| `e`       | `PointerEvent` |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### callbacks
 
-> `protected` **callbacks**: (`e`) => `void`[] = `[]`
+```ts
+protected callbacks: (e: PointerEvent) => void[] = [];
+```
 
 Registered click callbacks.
 
 #### Parameters
 
-##### e
-
-`PointerEvent`
+| Parameter | Type           |
+| --------- | -------------- |
+| `e`       | `PointerEvent` |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### element
 
-> `protected` **element**: `HTMLElement`
+```ts
+protected element: HTMLElement;
+```
 
 The HTML element to attach pointer event handlers to.
 
@@ -103,47 +109,49 @@ The HTML element to attach pointer event handlers to.
 
 ### onAltClick()
 
-> `protected` **onAltClick**(`e`): `void`
+```ts
+protected onAltClick(e: PointerEvent): void;
+```
 
 Invokes all registered alt-click callbacks.
 
 #### Parameters
 
-##### e
-
-`PointerEvent`
-
-The pointer event that triggered the alt-click.
+| Parameter | Type           | Description                                     |
+| --------- | -------------- | ----------------------------------------------- |
+| `e`       | `PointerEvent` | The pointer event that triggered the alt-click. |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### onClick()
 
-> `protected` **onClick**(`e`): `void`
+```ts
+protected onClick(e: PointerEvent): void;
+```
 
 Invokes all registered normal click callbacks.
 
 #### Parameters
 
-##### e
-
-`PointerEvent`
-
-The pointer event that triggered the click.
+| Parameter | Type           | Description                                 |
+| --------- | -------------- | ------------------------------------------- |
+| `e`       | `PointerEvent` | The pointer event that triggered the click. |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### registerOnAltClick()
 
-> **registerOnAltClick**(`callback`): `void`
+```ts
+registerOnAltClick(callback: (e: PointerEvent) => void): void;
+```
 
 Registers a callback function for alt-click or long-press events.
 
@@ -153,21 +161,21 @@ callbacks can be registered.
 
 #### Parameters
 
-##### callback
-
-(`e`) => `void`
-
-Function to execute on alt-click, receives the PointerEvent.
+| Parameter  | Type                            | Description                                                  |
+| ---------- | ------------------------------- | ------------------------------------------------------------ |
+| `callback` | (`e`: `PointerEvent`) => `void` | Function to execute on alt-click, receives the PointerEvent. |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### registerOnclick()
 
-> **registerOnclick**(`callback`): `void`
+```ts
+registerOnclick(callback: (e: PointerEvent) => void): void;
+```
 
 Registers a callback function to be invoked on normal click events.
 
@@ -176,11 +184,9 @@ long-presses. Multiple callbacks can be registered.
 
 #### Parameters
 
-##### callback
-
-(`e`) => `void`
-
-Function to execute on click, receives the PointerEvent.
+| Parameter  | Type                            | Description                                              |
+| ---------- | ------------------------------- | -------------------------------------------------------- |
+| `callback` | (`e`: `PointerEvent`) => `void` | Function to execute on click, receives the PointerEvent. |
 
 #### Returns
 

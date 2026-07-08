@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / LoadSharingHelper
 
@@ -20,20 +20,20 @@ across all active sessions.
 // Only one widget instance will fetch weather data
 const weatherUpdater = new LoadSharingHelper(
   (lastUpdateTime) => {
-    console.log('I am the leader, fetching weather data');
-    fetchWeatherData().then(data => {
+    console.log("I am the leader, fetching weather data");
+    fetchWeatherData().then((data) => {
       // Share data via shared variable
-      haptic.setDataField('weatherData', data, false);
+      haptic.setDataField("weatherData", data, false);
     });
   },
-  60000,  // Check every 60 seconds
-  70000,  // Take over if leader hasn't updated in 70 seconds
-  'weatherUpdateLock'
+  60000, // Check every 60 seconds
+  70000, // Take over if leader hasn't updated in 70 seconds
+  "weatherUpdateLock",
 );
 
 // Check if this instance is the leader
 if (weatherUpdater.isResponsible) {
-  console.log('I am managing updates');
+  console.log("I am managing updates");
 }
 ```
 
@@ -41,7 +41,13 @@ if (weatherUpdater.isResponsible) {
 
 ### Constructor
 
-> **new LoadSharingHelper**(`callback`, `checkInterval?`, `takeOverTimeout?`, `dataFieldName?`): `LoadSharingHelper`
+```ts
+new LoadSharingHelper(
+   callback: (lastEntryRelativeTime?: number) => void,
+   checkInterval?: number,
+   takeOverTimeout?: number,
+   dataFieldName?: string): LoadSharingHelper;
+```
 
 Creates a LoadSharingHelper for coordinated task execution across widget instances.
 
@@ -50,29 +56,12 @@ on the instance that holds the lock (the "leader").
 
 #### Parameters
 
-##### callback
-
-(`lastEntryRelativeTime?`) => `void`
-
-Function to execute when this instance is the leader. Receives time since last update.
-
-##### checkInterval?
-
-`number` = `300`
-
-Milliseconds between lock status checks and callback execution.
-
-##### takeOverTimeout?
-
-`number` = `...`
-
-Milliseconds of inactivity before another instance can take over leadership.
-
-##### dataFieldName?
-
-`string` = `'processLock'`
-
-Shared variable name for storing lock information.
+| Parameter          | Type                                           | Default value   | Description                                                                            |
+| ------------------ | ---------------------------------------------- | --------------- | -------------------------------------------------------------------------------------- |
+| `callback`         | (`lastEntryRelativeTime?`: `number`) => `void` | `undefined`     | Function to execute when this instance is the leader. Receives time since last update. |
+| `checkInterval?`   | `number`                                       | `300`           | Milliseconds between lock status checks and callback execution.                        |
+| `takeOverTimeout?` | `number`                                       | `...`           | Milliseconds of inactivity before another instance can take over leadership.           |
+| `dataFieldName?`   | `string`                                       | `'processLock'` | Shared variable name for storing lock information.                                     |
 
 #### Returns
 
@@ -82,7 +71,9 @@ Shared variable name for storing lock information.
 
 ### defaultLock
 
-> `static` **defaultLock**: [`SharedLock`](../type-aliases/SharedLock.md)
+```ts
+static defaultLock: SharedLock;
+```
 
 The default shared lock.
 
@@ -92,19 +83,23 @@ The default shared lock.
 
 #### Get Signature
 
-> **get** **currentLock**(): [`SharedLock`](../type-aliases/SharedLock.md)
+```ts
+get currentLock(): SharedLock;
+```
 
 ##### Returns
 
 [`SharedLock`](../type-aliases/SharedLock.md)
 
-***
+---
 
 ### isMyResponsibility
 
 #### Get Signature
 
-> **get** **isMyResponsibility**(): `boolean`
+```ts
+get isMyResponsibility(): boolean;
+```
 
 Indicates whether the current widget instance is the leader responsible for task execution.
 
@@ -118,7 +113,9 @@ True if this instance holds the lock and should execute tasks, false otherwise.
 
 ### onDestroy()
 
-> **onDestroy**(): `void`
+```ts
+onDestroy(): void;
+```
 
 Handles the destruction of the widget by stopping the timer.
 
@@ -126,37 +123,34 @@ Handles the destruction of the widget by stopping the timer.
 
 `void`
 
-***
+---
 
 ### restartTimer()
 
-> **restartTimer**(`interval?`, `takeOverTimeOut?`): `void`
+```ts
+restartTimer(interval?: number, takeOverTimeOut?: number): void;
+```
 
 Restarts the timer with a new interval and takeover timeout.
 
 #### Parameters
 
-##### interval?
-
-`number` = `undefined`
-
-The new interval in milliseconds to check the lock status.
-
-##### takeOverTimeOut?
-
-`number` = `...`
-
-The new timeout in milliseconds to take over the lock if not updated.
+| Parameter         | Type     | Default value | Description                                                           |
+| ----------------- | -------- | ------------- | --------------------------------------------------------------------- |
+| `interval`        | `number` | `undefined`   | The new interval in milliseconds to check the lock status.            |
+| `takeOverTimeOut` | `number` | `...`         | The new timeout in milliseconds to take over the lock if not updated. |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### startTimer()
 
-> **startTimer**(): `void`
+```ts
+startTimer(): void;
+```
 
 Starts the timer that checks the lock status.
 
@@ -164,11 +158,13 @@ Starts the timer that checks the lock status.
 
 `void`
 
-***
+---
 
 ### stopTimer()
 
-> **stopTimer**(): `void`
+```ts
+stopTimer(): void;
+```
 
 Stops the timer that checks the lock status.
 

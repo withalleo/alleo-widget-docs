@@ -1,12 +1,17 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / Coordinates
 
 # Type Alias: Coordinates
 
-> **Coordinates** = `object`
+```ts
+type Coordinates = {
+  x: number;
+  y: number;
+};
+```
 
 Represents coordinates with x and y values.
 
@@ -14,10 +19,14 @@ Represents coordinates with x and y values.
 
 ### x
 
-> **x**: `number`
+```ts
+x: number;
+```
 
-***
+---
 
 ### y
 
-> **y**: `number`
+```ts
+y: number;
+```

@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / AssetHelper
 
@@ -16,15 +16,23 @@ automatically adapting paths based on the widget's configuration and hosting env
 
 ```typescript
 // Get the path to an asset file
-const iconPath = AssetHelper.assetsRoot + 'icons/star.png';
-const img = document.createElement('img');
+const iconPath = AssetHelper.assetsRoot + "icons/star.png";
+const img = document.createElement("img");
 img.src = iconPath;
 
 // Set up CSS background images
-const helper = new AssetHelper('.my-widget');
+const helper = new AssetHelper(".my-widget");
 helper.setupCSSUrls([
-  { query: '.header', variable: '--bg-image', value: AssetHelper.assetsRoot + 'bg.jpg' },
-  { query: '.icon', variable: '--icon', value: AssetHelper.assetsRoot + 'icon.svg' }
+  {
+    query: ".header",
+    variable: "--bg-image",
+    value: AssetHelper.assetsRoot + "bg.jpg",
+  },
+  {
+    query: ".icon",
+    variable: "--icon",
+    value: AssetHelper.assetsRoot + "icon.svg",
+  },
 ]);
 ```
 
@@ -32,17 +40,17 @@ helper.setupCSSUrls([
 
 ### Constructor
 
-> **new AssetHelper**(`widgetContainerSelector?`): `AssetHelper`
+```ts
+new AssetHelper(widgetContainerSelector?: string): AssetHelper;
+```
 
 Creates an instance of AssetHelper with a specified widget container selector.
 
 #### Parameters
 
-##### widgetContainerSelector?
-
-`string` = `'.widget-container'`
-
-The CSS selector for the widget's main container element.
+| Parameter                  | Type     | Default value         | Description                                               |
+| -------------------------- | -------- | --------------------- | --------------------------------------------------------- |
+| `widgetContainerSelector?` | `string` | `'.widget-container'` | The CSS selector for the widget's main container element. |
 
 #### Returns
 
@@ -54,7 +62,9 @@ The CSS selector for the widget's main container element.
 
 #### Get Signature
 
-> **get** `static` **assetsRoot**(): `string`
+```ts
+get static assetsRoot(): string;
+```
 
 The absolute root path for widget assets, ending with a slash.
 
@@ -65,7 +75,7 @@ supporting both centralized widget hosting and standalone deployment scenarios.
 ##### Example
 
 ```typescript
-const logoUrl = AssetHelper.assetsRoot + 'logo.png';
+const logoUrl = AssetHelper.assetsRoot + "logo.png";
 // Result: "https://widgets.alleo.com/my-widget/assets/widgetAssets/logo.png"
 ```
 
@@ -73,13 +83,15 @@ const logoUrl = AssetHelper.assetsRoot + 'logo.png';
 
 `string`
 
-***
+---
 
 ### widgetRoot
 
 #### Get Signature
 
-> **get** `static` **widgetRoot**(): `string`
+```ts
+get static widgetRoot(): string;
+```
 
 The absolute root path for the widget's base directory, ending with a slash.
 
@@ -89,7 +101,7 @@ Used as a base for resolving relative paths to widget resources and configuratio
 ##### Example
 
 ```typescript
-const configUrl = AssetHelper.widgetRoot + 'config.json';
+const configUrl = AssetHelper.widgetRoot + "config.json";
 // Result: "https://widgets.alleo.com/my-widget/config.json"
 ```
 
@@ -101,7 +113,13 @@ const configUrl = AssetHelper.widgetRoot + 'config.json';
 
 ### setupCSSUrls()
 
-> **setupCSSUrls**(`cssArray`): `void`
+```ts
+setupCSSUrls(cssArray: {
+  query: string;
+  value: string;
+  variable: string;
+}[]): void;
+```
 
 Configures CSS custom properties (variables) with URL values for multiple elements.
 
@@ -111,11 +129,9 @@ images, masks, or other URL-based CSS properties.
 
 #### Parameters
 
-##### cssArray
-
-`object`[]
-
-Array of CSS configuration objects.
+| Parameter  | Type                                                                | Description                         |
+| ---------- | ------------------------------------------------------------------- | ----------------------------------- |
+| `cssArray` | \{ `query`: `string`; `value`: `string`; `variable`: `string`; \}[] | Array of CSS configuration objects. |
 
 #### Returns
 
@@ -124,18 +140,18 @@ Array of CSS configuration objects.
 #### Example
 
 ```typescript
-const assetHelper = new AssetHelper('.my-widget');
+const assetHelper = new AssetHelper(".my-widget");
 assetHelper.setupCSSUrls([
   {
-    query: '.hero-section',
-    variable: '--hero-bg',
-    value: AssetHelper.assetsRoot + 'backgrounds/hero.jpg'
+    query: ".hero-section",
+    variable: "--hero-bg",
+    value: AssetHelper.assetsRoot + "backgrounds/hero.jpg",
   },
   {
-    query: '.button',
-    variable: '--button-icon',
-    value: AssetHelper.assetsRoot + 'icons/arrow.svg'
-  }
+    query: ".button",
+    variable: "--button-icon",
+    value: AssetHelper.assetsRoot + "icons/arrow.svg",
+  },
 ]);
 // CSS can then use: background-image: var(--hero-bg);
 ```

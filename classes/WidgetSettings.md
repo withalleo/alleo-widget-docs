@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / WidgetSettings
 
@@ -9,6 +9,7 @@
 Provides access to widget configuration settings from multiple sources.
 
 Settings are merged from three levels in order of priority:
+
 1. Organization-level settings (highest priority)
 2. Deployment-level settings
 3. Widget defaults from manifest.json (lowest priority)
@@ -40,7 +41,9 @@ if (WidgetSettings.settings.enableAdvancedMode) {
 
 ### Constructor
 
-> **new WidgetSettings**(): `WidgetSettings`
+```ts
+new WidgetSettings(): WidgetSettings;
+```
 
 #### Returns
 
@@ -50,7 +53,9 @@ if (WidgetSettings.settings.enableAdvancedMode) {
 
 ### manifestConfig
 
-> `readonly` `static` **manifestConfig**: `Record`\<`string`, `any`\>
+```ts
+readonly static manifestConfig: Record<string, any>;
+```
 
 Widget's default configuration from the `manifest.json` file.
 
@@ -65,18 +70,22 @@ original default values regardless of customizations.
 const defaultColor = WidgetSettings.manifestConfig.defaultColor;
 
 // Check if user customized a setting
-const isCustomized = WidgetSettings.settings.theme !== WidgetSettings.manifestConfig.theme;
+const isCustomized =
+  WidgetSettings.settings.theme !== WidgetSettings.manifestConfig.theme;
 ```
 
-***
+---
 
 ### settings
 
-> `readonly` `static` **settings**: `Record`\<`string`, `any`\>
+```ts
+readonly static settings: Record<string, any>;
+```
 
 Merged widget settings from all configuration sources.
 
 Contains the final, resolved configuration values after merging:
+
 - Organization-level settings (highest priority - overrides everything)
 - Deployment-level settings (medium priority - overrides widget defaults)
 - Widget defaults from `manifest.json` (lowest priority - fallback values)

@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](README.md)
 
-***
+---
 
 # @withalleo/alleo-widget
 
@@ -48,6 +48,7 @@
 - [~~OptionalContainerSelectorSupportingSettingsDialogHelper~~](classes/OptionalContainerSelectorSupportingSettingsDialogHelper.md)
 - [OptionalLocationSelectorSupportingSettingsDialogHelper](classes/OptionalLocationSelectorSupportingSettingsDialogHelper.md)
 - [PointerHelper](classes/PointerHelper.md)
+- [PreventSelect](classes/PreventSelect.md)
 - [RateLimitFunctionHelper](classes/RateLimitFunctionHelper.md)
 - [RateLimitUpdateHelper](classes/RateLimitUpdateHelper.md)
 - [ResizeHelper](classes/ResizeHelper.md)
@@ -63,7 +64,7 @@
 - [UiButtonHelper](classes/UiButtonHelper.md)
 - [UserNotification](classes/UserNotification.md)
 - [ViewportSizeHelper](classes/ViewportSizeHelper.md)
-- [WatsonxAiHelper](classes/WatsonxAiHelper.md)
+- [~~WatsonxAiHelper~~](classes/WatsonxAiHelper.md)
 - [WidgetDetails](classes/WidgetDetails.md)
 - [WidgetNameHelper](classes/WidgetNameHelper.md)
 - [WidgetSettings](classes/WidgetSettings.md)
@@ -77,6 +78,7 @@
 
 ## Type Aliases
 
+- [BackendProxyHelperSettings](type-aliases/BackendProxyHelperSettings.md)
 - [Color](type-aliases/Color.md)
 - [ConfigDialogSetting](type-aliases/ConfigDialogSetting.md)
 - [Coordinates](type-aliases/Coordinates.md)

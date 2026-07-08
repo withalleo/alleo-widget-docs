@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / SettingsDialogHelper
 
@@ -17,29 +17,32 @@ sections, and custom field types. Essential for widgets requiring user configura
 
 ```typescript
 // Define settings fields
-const settings = new SettingsDialogHelper({
-  fields: [
-    {
-      key: 'apiKey',
-      type: 'input',
-      props: { label: 'API Key', required: true }
+const settings = new SettingsDialogHelper(
+  {
+    fields: [
+      {
+        key: "apiKey",
+        type: "input",
+        props: { label: "API Key", required: true },
+      },
+      {
+        key: "refreshInterval",
+        type: "input",
+        props: { label: "Refresh (seconds)", type: "number", min: 1 },
+      },
+    ],
+  },
+  {
+    title: "Widget Configuration",
+    createSettingsButtonOnInit: true,
+    callbackOnSettingsDialogClose: (changed, keys, values) => {
+      if (changed) {
+        console.log("Settings changed:", keys);
+        applyNewSettings(values);
+      }
     },
-    {
-      key: 'refreshInterval',
-      type: 'input',
-      props: { label: 'Refresh (seconds)', type: 'number', min: 1 }
-    }
-  ]
-}, {
-  title: 'Widget Configuration',
-  createSettingsButtonOnInit: true,
-  callbackOnSettingsDialogClose: (changed, keys, values) => {
-    if (changed) {
-      console.log('Settings changed:', keys);
-      applyNewSettings(values);
-    }
-  }
-});
+  },
+);
 
 // Programmatically show dialog
 settings.showSettingsDialog();
@@ -54,23 +57,18 @@ settings.showSettingsDialog();
 
 ### Constructor
 
-> **new SettingsDialogHelper**(`settings?`, `options?`): `SettingsDialogHelper`
+```ts
+new SettingsDialogHelper(settings?: SettingsDialogDefinition, options?: SettingsDialogOptions): SettingsDialogHelper;
+```
 
 Constructs a new Settings Dialog.
 
 #### Parameters
 
-##### settings?
-
-[`SettingsDialogDefinition`](../interfaces/SettingsDialogDefinition.md)
-
-The settings for the dialog.
-
-##### options?
-
-`SettingsDialogOptions`
-
-Options for the settings dialog.
+| Parameter   | Type                                                                    | Description                      |
+| ----------- | ----------------------------------------------------------------------- | -------------------------------- |
+| `settings?` | [`SettingsDialogDefinition`](../interfaces/SettingsDialogDefinition.md) | The settings for the dialog.     |
+| `options?`  | `SettingsDialogOptions`                                                 | Options for the settings dialog. |
 
 #### Returns
 
@@ -78,27 +76,20 @@ Options for the settings dialog.
 
 ### Constructor
 
-> **new SettingsDialogHelper**(`settings`, `createSettingsButtonOnInit?`, `callbackOnSettingsDialogClose?`): `SettingsDialogHelper`
+```ts
+new SettingsDialogHelper(
+   settings: SettingsDialogDefinition,
+   createSettingsButtonOnInit?: boolean,
+   callbackOnSettingsDialogClose?: (didAnythingChanged: boolean, changedProperties: string[], ret: false | "" | FormlyDialogModel) => void): SettingsDialogHelper;
+```
 
 #### Parameters
 
-##### settings
-
-[`SettingsDialogDefinition`](../interfaces/SettingsDialogDefinition.md)
-
-The settings for the dialog.
-
-##### createSettingsButtonOnInit?
-
-`boolean`
-
-Whether to create the settings button on initialization.
-
-##### callbackOnSettingsDialogClose?
-
-(`didAnythingChanged`, `changedProperties`, `ret`) => `void`
-
-Callback function when the settings dialog is closed.
+| Parameter                        | Type                                                                                                                        | Description                                              |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| `settings`                       | [`SettingsDialogDefinition`](../interfaces/SettingsDialogDefinition.md)                                                     | The settings for the dialog.                             |
+| `createSettingsButtonOnInit?`    | `boolean`                                                                                                                   | Whether to create the settings button on initialization. |
+| `callbackOnSettingsDialogClose?` | (`didAnythingChanged`: `boolean`, `changedProperties`: `string`[], `ret`: `false` \| `""` \| `FormlyDialogModel`) => `void` | Callback function when the settings dialog is closed.    |
 
 #### Returns
 
@@ -112,7 +103,9 @@ Use the constructor with SettingsDialogOptions.
 
 ### title
 
-> `readonly` **title**: `string` = `undefined`
+```ts
+readonly title: string = undefined;
+```
 
 ## Accessors
 
@@ -120,7 +113,9 @@ Use the constructor with SettingsDialogOptions.
 
 #### Get Signature
 
-> **get** **dialogSettings**(): [`SettingsDialogDefinition`](../interfaces/SettingsDialogDefinition.md)
+```ts
+get dialogSettings(): SettingsDialogDefinition;
+```
 
 The current settings for the dialog.
 
@@ -130,17 +125,17 @@ The current settings for the dialog.
 
 #### Set Signature
 
-> **set** **dialogSettings**(`settings`): `void`
+```ts
+set dialogSettings(settings: SettingsDialogDefinition): void;
+```
 
 Sets the settings for the dialog.
 
 ##### Parameters
 
-###### settings
-
-[`SettingsDialogDefinition`](../interfaces/SettingsDialogDefinition.md)
-
-The settings to set.
+| Parameter  | Type                                                                    | Description          |
+| ---------- | ----------------------------------------------------------------------- | -------------------- |
+| `settings` | [`SettingsDialogDefinition`](../interfaces/SettingsDialogDefinition.md) | The settings to set. |
 
 ##### Returns
 
@@ -150,27 +145,29 @@ The settings to set.
 
 ### addSettingsButtonToWidgetContextMenu()
 
-> **addSettingsButtonToWidgetContextMenu**(`button?`): `void`
+```ts
+addSettingsButtonToWidgetContextMenu(button?: ContextMenuButton): void;
+```
 
 Creates a settings button on the widget bar.
 
 #### Parameters
 
-##### button?
-
-`ContextMenuButton` = `undefined`
-
-The context menu button to create.
+| Parameter | Type                | Default value | Description                        |
+| --------- | ------------------- | ------------- | ---------------------------------- |
+| `button`  | `ContextMenuButton` | `undefined`   | The context menu button to create. |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### addSettingsToWidgetObjectSettings()
 
-> **addSettingsToWidgetObjectSettings**(): `Promise`\<`void`\>
+```ts
+addSettingsToWidgetObjectSettings(): Promise<void>;
+```
 
 Adds settings to the widget object settings (ie. service, or advanced settings)
 
@@ -178,11 +175,13 @@ Adds settings to the widget object settings (ie. service, or advanced settings)
 
 `Promise`\<`void`\>
 
-***
+---
 
 ### destroy()
 
-> **destroy**(): `void`
+```ts
+destroy(): void;
+```
 
 Destroys the settings dialog, removing any settings buttons and custom object settings from the widget.
 
@@ -190,21 +189,21 @@ Destroys the settings dialog, removing any settings buttons and custom object se
 
 `void`
 
-***
+---
 
 ### initialSettingsTransformation()
 
-> `protected` **initialSettingsTransformation**(`settings`): `FormlyDialogSettings`
+```ts
+protected initialSettingsTransformation(settings: FormlyDialogSettings): FormlyDialogSettings;
+```
 
 Updates the settings with the current options.
 
 #### Parameters
 
-##### settings
-
-`FormlyDialogSettings`
-
-The settings to update.
+| Parameter  | Type                   | Description             |
+| ---------- | ---------------------- | ----------------------- |
+| `settings` | `FormlyDialogSettings` | The settings to update. |
 
 #### Returns
 
@@ -212,11 +211,13 @@ The settings to update.
 
 The updated settings.
 
-***
+---
 
 ### openSettingsDialog()
 
-> **openSettingsDialog**(): `Promise`\<`false` \| `void` \| `""` \| `FormlyDialogModel`\>
+```ts
+openSettingsDialog(): Promise<false | void | "" | FormlyDialogModel>;
+```
 
 Opens the settings dialog.
 
@@ -224,21 +225,21 @@ Opens the settings dialog.
 
 `Promise`\<`false` \| `void` \| `""` \| `FormlyDialogModel`\>
 
-***
+---
 
 ### processFormDialogResult()
 
-> `protected` **processFormDialogResult**(`ret`): `boolean`
+```ts
+protected processFormDialogResult(ret: false | "" | FormlyDialogModel): boolean;
+```
 
 Processes the result of the form dialog. (including saving the settings)
 
 #### Parameters
 
-##### ret
-
-`false` \| `""` \| `FormlyDialogModel`
-
-The result of the form dialog.
+| Parameter | Type                                   | Description                    |
+| --------- | -------------------------------------- | ------------------------------ |
+| `ret`     | `false` \| `""` \| `FormlyDialogModel` | The result of the form dialog. |
 
 #### Returns
 
@@ -246,46 +247,50 @@ The result of the form dialog.
 
 Whether any settings were changed.
 
-***
+---
 
 ### refreshFormData()
 
-> `protected` **refreshFormData**(`settings`): `FormlyDialogSettings`\<`FormlyDialogModel`\> \| `Promise`\<`FormlyDialogSettings`\<`FormlyDialogModel`\>\>
+```ts
+protected refreshFormData(settings: FormlyDialogSettings):
+  | FormlyDialogSettings<FormlyDialogModel>
+| Promise<FormlyDialogSettings<FormlyDialogModel>>;
+```
 
 Refreshes the form data, before opening the dialog
 by default it:
+
 - fills the form with the current values before showing the dialog
 - adds adjustments to fix issues related to tabs and required fields
 
 #### Parameters
 
-##### settings
-
-`FormlyDialogSettings`
-
-The settings to refresh.
+| Parameter  | Type                   | Description              |
+| ---------- | ---------------------- | ------------------------ |
+| `settings` | `FormlyDialogSettings` | The settings to refresh. |
 
 #### Returns
 
-`FormlyDialogSettings`\<`FormlyDialogModel`\> \| `Promise`\<`FormlyDialogSettings`\<`FormlyDialogModel`\>\>
+\| `FormlyDialogSettings`\<`FormlyDialogModel`\>
+\| `Promise`\<`FormlyDialogSettings`\<`FormlyDialogModel`\>\>
 
 The refreshed settings.
 
-***
+---
 
 ### updateDialogUiSettings()
 
-> `protected` **updateDialogUiSettings**(`settings`): `FormlyDialogSettings`
+```ts
+protected updateDialogUiSettings(settings: FormlyDialogSettings): FormlyDialogSettings;
+```
 
 Updates the UI settings of the dialog.
 
 #### Parameters
 
-##### settings
-
-`FormlyDialogSettings`
-
-The settings to update.
+| Parameter  | Type                   | Description             |
+| ---------- | ---------------------- | ----------------------- |
+| `settings` | `FormlyDialogSettings` | The settings to update. |
 
 #### Returns
 
@@ -293,21 +298,33 @@ The settings to update.
 
 The updated settings.
 
-***
+---
+
+### closeAllSettingDialogs()
+
+```ts
+static closeAllSettingDialogs(): void;
+```
+
+#### Returns
+
+`void`
+
+---
 
 ### shouldDisableRequiredParam()
 
-> `static` **shouldDisableRequiredParam**(`model`): `boolean`
+```ts
+static shouldDisableRequiredParam(model: FormlyFieldConfig): boolean;
+```
 
 Determines whether to disable required parameter for a field. (due to conflicts with being hidden)
 
 #### Parameters
 
-##### model
-
-`FormlyFieldConfig`
-
-The Formly form model to check.
+| Parameter | Type                | Description                     |
+| --------- | ------------------- | ------------------------------- |
+| `model`   | `FormlyFieldConfig` | The Formly form model to check. |
 
 #### Returns
 

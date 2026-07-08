@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / SoundRecordingHelper
 
@@ -19,27 +19,27 @@ recording capabilities.
 // Basic audio recording
 const recorder = new SoundRecordingHelper(
   (audioBlob) => {
-    console.log('Recording complete:', audioBlob.size, 'bytes');
+    console.log("Recording complete:", audioBlob.size, "bytes");
     // Upload or process the audio blob
     uploadAudio(audioBlob);
   },
   {
-    waitForStop: 500,   // Wait 500ms before actually stopping
-    minLength: 1000     // Require at least 1 second of audio
-  }
+    waitForStop: 500, // Wait 500ms before actually stopping
+    minLength: 1000, // Require at least 1 second of audio
+  },
 );
 
 // Start recording
 await recorder.start();
-console.log('Recording started...');
+console.log("Recording started...");
 
 // Stop recording
 await recorder.stop();
-console.log('Recording stopped');
+console.log("Recording stopped");
 
 // Check if recording
 if (recorder.isRecording) {
-  console.log('Currently recording');
+  console.log("Currently recording");
 }
 ```
 
@@ -47,23 +47,18 @@ if (recorder.isRecording) {
 
 ### Constructor
 
-> **new SoundRecordingHelper**(`callback?`, `options?`): `SoundRecordingHelper`
+```ts
+new SoundRecordingHelper(callback?: (blob: Blob) => void, options?: SoundRecordingHelperOptions): SoundRecordingHelper;
+```
 
 Creates a SoundRecordingHelper for managing audio recording sessions.
 
 #### Parameters
 
-##### callback?
-
-(`blob`) => `void`
-
-Function invoked when recording completes, receives audio Blob.
-
-##### options?
-
-[`SoundRecordingHelperOptions`](../type-aliases/SoundRecordingHelperOptions.md) = `...`
-
-Recording configuration.
+| Parameter   | Type                                                                            | Default value | Description                                                     |
+| ----------- | ------------------------------------------------------------------------------- | ------------- | --------------------------------------------------------------- |
+| `callback?` | (`blob`: `Blob`) => `void`                                                      | `undefined`   | Function invoked when recording completes, receives audio Blob. |
+| `options?`  | [`SoundRecordingHelperOptions`](../type-aliases/SoundRecordingHelperOptions.md) | `...`         | Recording configuration.                                        |
 
 #### Returns
 
@@ -75,7 +70,9 @@ The new SoundRecordingHelper instance.
 
 ### destroy()
 
-> **destroy**(): `void`
+```ts
+destroy(): void;
+```
 
 Destroys the SoundRecordingHelper instance, and stops the recording if it is still running, without calling the callback.
 
@@ -83,11 +80,13 @@ Destroys the SoundRecordingHelper instance, and stops the recording if it is sti
 
 `void`
 
-***
+---
 
 ### start()
 
-> **start**(): `Promise`\<`void`\>
+```ts
+start(): Promise<void>;
+```
 
 Initiates audio recording from the user's microphone.
 
@@ -100,11 +99,13 @@ Recording continues until stop() is called.
 
 Resolves when recording has started successfully.
 
-***
+---
 
 ### stop()
 
-> **stop**(): `Promise`\<`void`\>
+```ts
+stop(): Promise<void>;
+```
 
 Stops recording sound. Stopping usually triggers the callback function with the recorded sound.
 

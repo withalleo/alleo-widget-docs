@@ -1,12 +1,21 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / ViewportSize
 
 # Type Alias: ViewportSize
 
-> **ViewportSize** = `object`
+```ts
+type ViewportSize = {
+  bottom: number;
+  height: number;
+  left: number;
+  right: number;
+  top: number;
+  width: number;
+};
+```
 
 Represents the size and position of a viewport element.
 
@@ -14,34 +23,46 @@ Represents the size and position of a viewport element.
 
 ### bottom
 
-> **bottom**: `number`
+```ts
+bottom: number;
+```
 
-***
+---
 
 ### height
 
-> **height**: `number`
+```ts
+height: number;
+```
 
-***
+---
 
 ### left
 
-> **left**: `number`
+```ts
+left: number;
+```
 
-***
+---
 
 ### right
 
-> **right**: `number`
+```ts
+right: number;
+```
 
-***
+---
 
 ### top
 
-> **top**: `number`
+```ts
+top: number;
+```
 
-***
+---
 
 ### width
 
-> **width**: `number`
+```ts
+width: number;
+```

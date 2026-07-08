@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / SettingsButtonPosition
 
@@ -10,10 +10,14 @@
 
 ### End
 
-> **End**: `"end"`
+```ts
+End: "end";
+```
 
-***
+---
 
 ### Start
 
-> **Start**: `"start"`
+```ts
+Start: "start";
+```

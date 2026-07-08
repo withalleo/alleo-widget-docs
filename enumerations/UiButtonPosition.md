@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / UiButtonPosition
 
@@ -12,10 +12,14 @@ Enum representing the position of the UI button.
 
 ### First
 
-> **First**: `"first"`
+```ts
+First: "first";
+```
 
-***
+---
 
 ### Last
 
-> **Last**: `"last"`
+```ts
+Last: "last";
+```

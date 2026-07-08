@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / HelpButtonHelper
 
@@ -21,13 +21,13 @@ const helpButton = new HelpButtonHelper();
 
 // Custom help file URL
 const customHelp = new HelpButtonHelper({
-  mdUrl: 'https://example.com/docs/widget-help.md'
+  mdUrl: "https://example.com/docs/widget-help.md",
 });
 
 // Without automatic button creation
 const manualHelp = new HelpButtonHelper({
   doNotAddButton: true,
-  id: 'custom-help'
+  id: "custom-help",
 });
 // Later, manually show help
 manualHelp.showHelp();
@@ -37,13 +37,15 @@ manualHelp.showHelp();
 
 ### Constructor
 
-> **new HelpButtonHelper**(`settings?`): `HelpButtonHelper`
+```ts
+new HelpButtonHelper(settings?: HelpButtonHelperSettings): HelpButtonHelper;
+```
 
 #### Parameters
 
-##### settings?
-
-`HelpButtonHelperSettings` = `{}`
+| Parameter  | Type                       |
+| ---------- | -------------------------- |
+| `settings` | `HelpButtonHelperSettings` |
 
 #### Returns
 
@@ -55,7 +57,9 @@ manualHelp.showHelp();
 
 #### Get Signature
 
-> **get** **button**(): `ContextMenuButtonDefinition`
+```ts
+get button(): ContextMenuButtonDefinition;
+```
 
 Returns the definition of the help button for the context menu.
 
@@ -65,13 +69,15 @@ Returns the definition of the help button for the context menu.
 
 The button definition.
 
-***
+---
 
 ### helpFileUrl
 
 #### Get Signature
 
-> **get** `protected` **helpFileUrl**(): `string`
+```ts
+get helpFileUrl(): string;
+```
 
 ##### Returns
 
@@ -81,7 +87,9 @@ The button definition.
 
 ### addButton()
 
-> **addButton**(): `void`
+```ts
+addButton(): void;
+```
 
 Adds the help button to the context menu if conditions are met.
 
@@ -93,11 +101,13 @@ Adds the help button to the context menu if conditions are met.
 
 If the DOM is not available.
 
-***
+---
 
 ### getHtmlHelpContent()
 
-> **getHtmlHelpContent**(): `Promise`\<`string`\>
+```ts
+getHtmlHelpContent(): Promise<string>;
+```
 
 Converts the markdown help content to HTML.
 
@@ -107,11 +117,13 @@ Converts the markdown help content to HTML.
 
 The HTML content as a string.
 
-***
+---
 
 ### getMarkdownHelpContent()
 
-> **getMarkdownHelpContent**(): `Promise`\<`string`\>
+```ts
+getMarkdownHelpContent(): Promise<string>;
+```
 
 Fetches the markdown content for the help file.
 
@@ -125,27 +137,22 @@ The markdown content as a string.
 
 If the fetch request fails.
 
-***
+---
 
 ### getSettingsButton()
 
-> **getSettingsButton**(`label?`, `buttonOptions?`): `FormlyFieldConfig`\<`FormlyFieldProps`\>
+```ts
+getSettingsButton(label?: string, buttonOptions?: FormButtonHelperSettings): FormlyFieldConfig<FormlyFieldProps>;
+```
 
 Creates a settings button with the provided label and options.
 
 #### Parameters
 
-##### label?
-
-`string` = `'Help'`
-
-The label for the button.
-
-##### buttonOptions?
-
-[`FormButtonHelperSettings`](../type-aliases/FormButtonHelperSettings.md) = `undefined`
-
-Additional options for the button.
+| Parameter        | Type                                                                      | Default value | Description                        |
+| ---------------- | ------------------------------------------------------------------------- | ------------- | ---------------------------------- |
+| `label?`         | `string`                                                                  | `'Help'`      | The label for the button.          |
+| `buttonOptions?` | [`FormButtonHelperSettings`](../type-aliases/FormButtonHelperSettings.md) | `undefined`   | Additional options for the button. |
 
 #### Returns
 
@@ -153,11 +160,13 @@ Additional options for the button.
 
 The configuration for the settings button.
 
-***
+---
 
 ### showHelp()
 
-> **showHelp**(): `Promise`\<`void`\>
+```ts
+showHelp(): Promise<void>;
+```
 
 Displays the help dialog with the help content.
 Tracks the button click event and shows the dialog with the help content.
@@ -166,27 +175,27 @@ Tracks the button click event and shows the dialog with the help content.
 
 `Promise`\<`void`\>
 
-***
+---
 
 ### openFormWithoutPrimaryButton()
 
-> `static` **openFormWithoutPrimaryButton**\<`FormlyDialogModel`\>(`settings`): `Promise`\<`false` \| `""` \| `FormlyDialogModel`\>
+```ts
+static openFormWithoutPrimaryButton<FormlyDialogModel>(settings: FormlyDialogSettings<FormlyDialogModel>): Promise<false | "" | FormlyDialogModel>;
+```
 
 Opens a form dialog without a primary button.
 
 #### Type Parameters
 
-##### FormlyDialogModel
-
-`FormlyDialogModel` = `Record`\<`string`, `any`\>
+| Type Parameter      | Default type                | Description |
+| ------------------- | --------------------------- | ----------- |
+| `FormlyDialogModel` | `Record`\<`string`, `any`\> |             |
 
 #### Parameters
 
-##### settings
-
-`FormlyDialogSettings`\<`FormlyDialogModel`\>
-
-The settings for the dialog.
+| Parameter  | Type                                          | Description                  |
+| ---------- | --------------------------------------------- | ---------------------------- |
+| `settings` | `FormlyDialogSettings`\<`FormlyDialogModel`\> | The settings for the dialog. |
 
 #### Returns
 

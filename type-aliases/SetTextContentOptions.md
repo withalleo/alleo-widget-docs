@@ -1,12 +1,17 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / SetTextContentOptions
 
 # Type Alias: SetTextContentOptions
 
-> **SetTextContentOptions** = `object`
+```ts
+type SetTextContentOptions = {
+  append?: boolean;
+  format?: Html | Text | Markdown;
+};
+```
 
 Options for setting text content.
 
@@ -14,10 +19,17 @@ Options for setting text content.
 
 ### append?
 
-> `optional` **append?**: `boolean`
+```ts
+optional append?: boolean;
+```
 
-***
+---
 
 ### format?
 
-> `optional` **format?**: [`Html`](../enumerations/TextInputFormat.md#html) \| [`Text`](../enumerations/TextInputFormat.md#text) \| [`Markdown`](../enumerations/TextInputFormat.md#markdown)
+```ts
+optional format?:
+  | Html
+  | Text
+  | Markdown;
+```

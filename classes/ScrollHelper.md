@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / ScrollHelper
 
@@ -16,7 +16,7 @@ Includes rate-limiting to prevent excessive updates during rapid scrolling.
 ## Example
 
 ```typescript
-const scrollContainer = document.querySelector('.scrollable-content');
+const scrollContainer = document.querySelector(".scrollable-content");
 
 // Basic scroll management with synchronization
 const scrollHelper = new ScrollHelper(scrollContainer);
@@ -24,11 +24,11 @@ const scrollHelper = new ScrollHelper(scrollContainer);
 // Scroll with custom settings
 const customScroll = new ScrollHelper(
   scrollContainer,
-  true,  // auto-enable
-  true,  // sync scrolling
+  true, // auto-enable
+  true, // sync scrolling
   false, // allow all users to control scroll
   false, // allow user scrolling
-  'myScrollPosition'
+  "myScrollPosition",
 );
 
 // Programmatically scroll to position
@@ -39,7 +39,15 @@ scrollHelper.scrollTo({ x: 0, y: 100 });
 
 ### Constructor
 
-> **new ScrollHelper**(`element`, `autoEnableScroll?`, `syncScrolling?`, `syncScrollingLeaderOnly?`, `disableUserScrolling?`, `sharedVariableName?`): `ScrollHelper`
+```ts
+new ScrollHelper(
+   element: HTMLElement,
+   autoEnableScroll?: boolean,
+   syncScrolling?: boolean,
+   syncScrollingLeaderOnly?: boolean,
+   disableUserScrolling?: boolean,
+   sharedVariableName?: string): ScrollHelper;
+```
 
 Creates a ScrollHelper to manage scrolling behavior on an HTML element.
 
@@ -48,41 +56,14 @@ coordinate updates. Automatically enables scrolling unless specified otherwise.
 
 #### Parameters
 
-##### element
-
-`HTMLElement`
-
-The HTML element to make scrollable and manage.
-
-##### autoEnableScroll?
-
-`boolean` = `true`
-
-Whether to enable scrolling immediately upon creation.
-
-##### syncScrolling?
-
-`boolean` = `true`
-
-Whether to synchronize scroll position across users.
-
-##### syncScrollingLeaderOnly?
-
-`boolean` = `true`
-
-When true, only the session leader can control scrolling. When false, any user can control it.
-
-##### disableUserScrolling?
-
-`boolean` = `false`
-
-When true, prevents users from manually scrolling (programmatic scrolling still works).
-
-##### sharedVariableName?
-
-`string` = `'_AlleoWidget_ScrollHelper_coords'`
-
-Shared variable name for storing scroll coordinates.
+| Parameter                  | Type          | Default value                        | Description                                                                                    |
+| -------------------------- | ------------- | ------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| `element`                  | `HTMLElement` | `undefined`                          | The HTML element to make scrollable and manage.                                                |
+| `autoEnableScroll?`        | `boolean`     | `true`                               | Whether to enable scrolling immediately upon creation.                                         |
+| `syncScrolling?`           | `boolean`     | `true`                               | Whether to synchronize scroll position across users.                                           |
+| `syncScrollingLeaderOnly?` | `boolean`     | `true`                               | When true, only the session leader can control scrolling. When false, any user can control it. |
+| `disableUserScrolling?`    | `boolean`     | `false`                              | When true, prevents users from manually scrolling (programmatic scrolling still works).        |
+| `sharedVariableName?`      | `string`      | `'_AlleoWidget_ScrollHelper_coords'` | Shared variable name for storing scroll coordinates.                                           |
 
 #### Returns
 
@@ -92,55 +73,73 @@ Shared variable name for storing scroll coordinates.
 
 ### coordinates
 
-> **coordinates**: [`Coordinates`](../type-aliases/Coordinates.md)
+```ts
+coordinates: Coordinates;
+```
 
-***
+---
 
 ### disableUserScrolling
 
-> **disableUserScrolling**: `boolean`
+```ts
+disableUserScrolling: boolean;
+```
 
-***
+---
 
 ### enabled
 
-> `protected` **enabled**: `boolean` = `false`
+```ts
+protected enabled: boolean = false;
+```
 
-***
+---
 
 ### eventDisableHelper
 
-> `protected` `readonly` **eventDisableHelper**: [`EventDisableHelper`](EventDisableHelper.md)
+```ts
+protected readonly eventDisableHelper: EventDisableHelper;
+```
 
-***
+---
 
 ### htmlElement
 
-> `protected` `readonly` **htmlElement**: `HTMLElement`
+```ts
+protected readonly htmlElement: HTMLElement;
+```
 
-***
+---
 
 ### sharedVariableName
 
-> `protected` `readonly` **sharedVariableName**: `string`
+```ts
+protected readonly sharedVariableName: string;
+```
 
-***
+---
 
 ### syncScrolling
 
-> **syncScrolling**: `boolean`
+```ts
+syncScrolling: boolean;
+```
 
-***
+---
 
 ### syncScrollingLeaderOnly
 
-> **syncScrollingLeaderOnly**: `boolean`
+```ts
+syncScrollingLeaderOnly: boolean;
+```
 
 ## Methods
 
 ### disableScroll()
 
-> **disableScroll**(): `void`
+```ts
+disableScroll(): void;
+```
 
 Disables scrolling on the HTML element.
 
@@ -148,11 +147,13 @@ Disables scrolling on the HTML element.
 
 `void`
 
-***
+---
 
 ### enableScroll()
 
-> **enableScroll**(): `void`
+```ts
+enableScroll(): void;
+```
 
 Enables scrolling on the HTML element.
 
@@ -160,57 +161,54 @@ Enables scrolling on the HTML element.
 
 `void`
 
-***
+---
 
 ### onScroll()
 
-> `protected` **onScroll**(`event`): `void`
+```ts
+protected onScroll(event: Event): void;
+```
 
 Handles the scroll event on the HTML element.
 
 #### Parameters
 
-##### event
-
-`Event`
-
-The scroll event.
+| Parameter | Type    | Description       |
+| --------- | ------- | ----------------- |
+| `event`   | `Event` | The scroll event. |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### scrollTo()
 
-> **scrollTo**(`coords`, `behavior?`): `void`
+```ts
+scrollTo(coords: Coordinates, behavior?: "auto" | "instant" | "smooth"): void;
+```
 
 Scrolls the HTML element to the specified coordinates.
 
 #### Parameters
 
-##### coords
-
-[`Coordinates`](../type-aliases/Coordinates.md)
-
-The coordinates to scroll to.
-
-##### behavior?
-
-`"auto"` \| `"instant"` \| `"smooth"`
-
-The scrolling behavior ('auto', 'smooth', or 'instant').
+| Parameter  | Type                                            | Default value | Description                                              |
+| ---------- | ----------------------------------------------- | ------------- | -------------------------------------------------------- |
+| `coords`   | [`Coordinates`](../type-aliases/Coordinates.md) | `undefined`   | The coordinates to scroll to.                            |
+| `behavior` | `"auto"` \| `"instant"` \| `"smooth"`           | `'auto'`      | The scrolling behavior ('auto', 'smooth', or 'instant'). |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### scrollToSavedPosition()
 
-> `protected` **scrollToSavedPosition**(): `void`
+```ts
+protected scrollToSavedPosition(): void;
+```
 
 Scrolls the HTML element to the saved position.
 

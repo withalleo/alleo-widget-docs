@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / ViewportSizeHelper
 
@@ -19,8 +19,8 @@ for efficient change detection.
 ```typescript
 // Monitor viewport changes for responsive layout
 const viewportHelper = new ViewportSizeHelper((canvas, body) => {
-  console.log('Canvas size:', canvas.width, canvas.height);
-  console.log('Body size:', body.width, body.height);
+  console.log("Canvas size:", canvas.width, canvas.height);
+  console.log("Body size:", body.width, body.height);
   updateLayout(canvas, body);
 });
 
@@ -30,8 +30,8 @@ const customHelper = new ViewportSizeHelper(
   {
     triggerOnBodyResize: true,
     triggerOnCanvasResize: true,
-    triggerOnInit: false // Don't trigger immediately
-  }
+    triggerOnInit: false, // Don't trigger immediately
+  },
 );
 ```
 
@@ -39,7 +39,9 @@ const customHelper = new ViewportSizeHelper(
 
 ### Constructor
 
-> **new ViewportSizeHelper**(`callback?`, `settings?`): `ViewportSizeHelper`
+```ts
+new ViewportSizeHelper(callback?: (canvas: ViewportSize, body: ViewportSize) => unknown, settings?: ViewportSizeHelperSettings): ViewportSizeHelper;
+```
 
 Creates a ViewportSizeHelper instance to monitor viewport dimension changes.
 
@@ -48,17 +50,10 @@ Automatically cleans up observers when the widget is destroyed.
 
 #### Parameters
 
-##### callback?
-
-(`canvas`, `body`) => `unknown`
-
-Function called when viewport size changes. Receives canvas and body ViewportSize objects.
-
-##### settings?
-
-`ViewportSizeHelperSettings` = `{}`
-
-Configuration options.
+| Parameter   | Type                                                                                                                                  | Default value | Description                                                                                |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------ |
+| `callback?` | (`canvas`: [`ViewportSize`](../type-aliases/ViewportSize.md), `body`: [`ViewportSize`](../type-aliases/ViewportSize.md)) => `unknown` | `undefined`   | Function called when viewport size changes. Receives canvas and body ViewportSize objects. |
+| `settings?` | `ViewportSizeHelperSettings`                                                                                                          | `{}`          | Configuration options.                                                                     |
 
 #### Returns
 
@@ -72,19 +67,18 @@ Throws if the mainCanvas element is not found in the document.
 
 ### callback
 
-> `readonly` **callback**: (`canvas`, `body`) => `unknown` = `undefined`
+```ts
+readonly callback: (canvas: ViewportSize, body: ViewportSize) => unknown = undefined;
+```
 
 Function called when viewport size changes. Receives canvas and body ViewportSize objects.
 
 #### Parameters
 
-##### canvas
-
-[`ViewportSize`](../type-aliases/ViewportSize.md)
-
-##### body
-
-[`ViewportSize`](../type-aliases/ViewportSize.md)
+| Parameter | Type                                              |
+| --------- | ------------------------------------------------- |
+| `canvas`  | [`ViewportSize`](../type-aliases/ViewportSize.md) |
+| `body`    | [`ViewportSize`](../type-aliases/ViewportSize.md) |
 
 #### Returns
 
@@ -96,7 +90,9 @@ Function called when viewport size changes. Receives canvas and body ViewportSiz
 
 #### Get Signature
 
-> **get** `static` **body**(): [`ViewportSize`](../type-aliases/ViewportSize.md)
+```ts
+get static body(): ViewportSize;
+```
 
 Static method to get the current size of the body element.
 
@@ -106,13 +102,15 @@ Static method to get the current size of the body element.
 
 The size of the body.
 
-***
+---
 
 ### canvas
 
 #### Get Signature
 
-> **get** `static` **canvas**(): [`ViewportSize`](../type-aliases/ViewportSize.md)
+```ts
+get static canvas(): ViewportSize;
+```
 
 Static method to get the current size and position (compared to the body) of the Alleo canvas.
 
@@ -129,43 +127,46 @@ The size and position of the canvas.
 
 ### destroy()
 
-> **destroy**(): `void`
+```ts
+destroy(): void;
+```
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### onChange()
 
-> `protected` **onChange**(`canvasSize`, `bodySize`): `void`
+```ts
+protected onChange(canvasSize: ViewportSize, bodySize: ViewportSize): void;
+```
 
 #### Parameters
 
-##### canvasSize
-
-[`ViewportSize`](../type-aliases/ViewportSize.md)
-
-##### bodySize
-
-[`ViewportSize`](../type-aliases/ViewportSize.md)
+| Parameter    | Type                                              |
+| ------------ | ------------------------------------------------- |
+| `canvasSize` | [`ViewportSize`](../type-aliases/ViewportSize.md) |
+| `bodySize`   | [`ViewportSize`](../type-aliases/ViewportSize.md) |
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### triggerChange()
 
-> **triggerChange**(`force?`): `void`
+```ts
+triggerChange(force?: boolean): void;
+```
 
 #### Parameters
 
-##### force?
-
-`boolean` = `false`
+| Parameter | Type      | Default value |
+| --------- | --------- | ------------- |
+| `force`   | `boolean` | `false`       |
 
 #### Returns
 

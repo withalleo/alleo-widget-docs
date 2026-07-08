@@ -1,12 +1,17 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / isPermissionEnough
 
 # Function: isPermissionEnough()
 
-> **isPermissionEnough**(`requiredPermission`, `permission?`): `boolean`
+```ts
+function isPermissionEnough(
+  requiredPermission: BoardMemberPermission,
+  permission?: BoardMemberPermission,
+): boolean;
+```
 
 Checks if a user's board permission level meets or exceeds a required permission level.
 
@@ -16,17 +21,10 @@ Use this to control feature access based on user permissions.
 
 ## Parameters
 
-### requiredPermission
-
-`BoardMemberPermission`
-
-The minimum required permission level.
-
-### permission?
-
-`BoardMemberPermission` = `haptic.currentUser.permission`
-
-The user's permission to check (defaults to current user).
+| Parameter            | Type                    | Default value                   | Description                                                |
+| -------------------- | ----------------------- | ------------------------------- | ---------------------------------------------------------- |
+| `requiredPermission` | `BoardMemberPermission` | `undefined`                     | The minimum required permission level.                     |
+| `permission?`        | `BoardMemberPermission` | `haptic.currentUser.permission` | The user's permission to check (defaults to current user). |
 
 ## Returns
 
@@ -45,7 +43,7 @@ if (isPermissionEnough(BoardMemberPermission.Editor)) {
 // Check if specific permission allows action
 const canDelete = isPermissionEnough(
   BoardMemberPermission.Owner,
-  userPermission
+  userPermission,
 );
 
 // Viewers can always view

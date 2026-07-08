@@ -1,39 +1,57 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / Instruction
 
 # Type Alias: Instruction
 
-> **Instruction** = `object`
+```ts
+type Instruction = {
+  defaultText?: string;
+  id: string;
+  instruction: string;
+  model: string;
+  name: string;
+};
+```
 
 ## Properties
 
 ### defaultText?
 
-> `optional` **defaultText?**: `string`
+```ts
+optional defaultText?: string;
+```
 
-***
+---
 
 ### id
 
-> **id**: `string`
+```ts
+id: string;
+```
 
-***
+---
 
 ### instruction
 
-> **instruction**: `string`
+```ts
+instruction: string;
+```
 
-***
+---
 
 ### model
 
-> **model**: `string`
+```ts
+model: string;
+```
 
-***
+---
 
 ### name
 
-> **name**: `string`
+```ts
+name: string;
+```

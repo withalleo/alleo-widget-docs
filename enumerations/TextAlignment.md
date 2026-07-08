@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / TextAlignment
 
@@ -13,22 +13,30 @@ Note: The values map directly to the CSS `text-align` property.
 
 ### Center
 
-> **Center**: `"center"`
+```ts
+Center: "center";
+```
 
-***
+---
 
 ### Justify
 
-> **Justify**: `"justify"`
+```ts
+Justify: "justify";
+```
 
-***
+---
 
 ### Left
 
-> **Left**: `"left"`
+```ts
+Left: "left";
+```
 
-***
+---
 
 ### Right
 
-> **Right**: `"right"`
+```ts
+Right: "right";
+```

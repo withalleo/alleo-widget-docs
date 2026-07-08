@@ -1,12 +1,18 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / StandardSyncMessage
 
 # Type Alias: StandardSyncMessage
 
-> **StandardSyncMessage** = `object`
+```ts
+type StandardSyncMessage = {
+  data?: any[];
+  function: string;
+  type: string;
+};
+```
 
 Type representing a standard synchronization message.
 
@@ -14,16 +20,22 @@ Type representing a standard synchronization message.
 
 ### data?
 
-> `optional` **data?**: `any`[]
+```ts
+optional data?: any[];
+```
 
-***
+---
 
 ### function
 
-> **function**: `string`
+```ts
+function: string;
+```
 
-***
+---
 
 ### type
 
-> **type**: `string`
+```ts
+type: string;
+```

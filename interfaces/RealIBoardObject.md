@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / RealIBoardObject
 
@@ -14,12 +14,7 @@ Interface extending IBoardObject with allowing the optional properties exposing 
 
 ## Properties
 
-### component?
-
-> `optional` **component?**: `Record`\<`string`, `any`\>
-
-***
-
-### obj?
-
-> `optional` **obj?**: `Record`\<`string`, `any`\>
+| Property                                     | Type                        |
+| -------------------------------------------- | --------------------------- |
+| <a id="property-component"></a> `component?` | `Record`\<`string`, `any`\> |
+| <a id="property-obj"></a> `obj?`             | `Record`\<`string`, `any`\> |

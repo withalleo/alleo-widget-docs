@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / DataConnector
 
@@ -14,17 +14,17 @@ This class calls the exposed connector actions on a specific board object identi
 
 ### Constructor
 
-> **new DataConnector**(`objectId`): `DataConnector`
+```ts
+new DataConnector(objectId: string): DataConnector;
+```
 
 Creates a new helper bound to a specific board object.
 
 #### Parameters
 
-##### objectId
-
-`string`
-
-ID of the board object (widget instance) to interact with.
+| Parameter  | Type     | Description                                                |
+| ---------- | -------- | ---------------------------------------------------------- |
+| `objectId` | `string` | ID of the board object (widget instance) to interact with. |
 
 #### Returns
 
@@ -36,7 +36,9 @@ ID of the board object (widget instance) to interact with.
 
 #### Get Signature
 
-> **get** **length**(): `number`
+```ts
+get length(): number;
+```
 
 Number of records reported by the underlying DataConnector widget.
 
@@ -44,13 +46,15 @@ Number of records reported by the underlying DataConnector widget.
 
 `number`
 
-***
+---
 
 ### supportedActions
 
 #### Get Signature
 
-> **get** **supportedActions**(): [`DataConnectorAction`](../enumerations/DataConnectorAction.md)[]
+```ts
+get supportedActions(): DataConnectorAction[];
+```
 
 Actions that the underlying DataConnector widget reports as supported.
 
@@ -62,17 +66,17 @@ Actions that the underlying DataConnector widget reports as supported.
 
 ### append()
 
-> **append**(`row`): `Promise`\<`boolean`\>
+```ts
+append(row: string[]): Promise<boolean>;
+```
 
 Appends a single record to the underlying DataConnector.
 
 #### Parameters
 
-##### row
-
-`string`[]
-
-Record to append.
+| Parameter | Type       | Description       |
+| --------- | ---------- | ----------------- |
+| `row`     | `string`[] | Record to append. |
 
 #### Returns
 
@@ -80,21 +84,21 @@ Record to append.
 
 Whatever the widget's `append` implementation returns, typically `true` on success.
 
-***
+---
 
 ### deleteLine()
 
-> **deleteLine**(`lineNumber`): `Promise`\<`boolean`\>
+```ts
+deleteLine(lineNumber: number): Promise<boolean>;
+```
 
 Deletes a specific record from the underlying DataConnector.
 
 #### Parameters
 
-##### lineNumber
-
-`number`
-
-Zero-based index of the record to delete.
+| Parameter    | Type     | Description                               |
+| ------------ | -------- | ----------------------------------------- |
+| `lineNumber` | `number` | Zero-based index of the record to delete. |
 
 #### Returns
 
@@ -102,11 +106,13 @@ Zero-based index of the record to delete.
 
 Whatever the widget's `deleteLine` implementation returns.
 
-***
+---
 
 ### export()
 
-> **export**(): `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
+```ts
+export(): Promise<CSVData>;
+```
 
 Exports all records from the underlying DataConnector.
 
@@ -116,21 +122,21 @@ Exports all records from the underlying DataConnector.
 
 Exported records as a 2D CSV array.
 
-***
+---
 
 ### getLine()
 
-> **getLine**(`lineNumber?`): `Promise`\<`string`[]\>
+```ts
+getLine(lineNumber?: number): Promise<string[]>;
+```
 
 Reads a specific record from the underlying DataConnector.
 
 #### Parameters
 
-##### lineNumber?
-
-`number` = `0`
-
-Zero-based index of the record to fetch. Defaults to `0`.
+| Parameter    | Type     | Default value | Description                                               |
+| ------------ | -------- | ------------- | --------------------------------------------------------- |
+| `lineNumber` | `number` | `0`           | Zero-based index of the record to fetch. Defaults to `0`. |
 
 #### Returns
 
@@ -138,21 +144,21 @@ Zero-based index of the record to fetch. Defaults to `0`.
 
 The requested record as an array of string values.
 
-***
+---
 
 ### import()
 
-> **import**(`data`): `Promise`\<`boolean`\>
+```ts
+import(data: CSVData): Promise<boolean>;
+```
 
 Imports data into the underlying DataConnector, replacing its current content.
 
 #### Parameters
 
-##### data
-
-[`CSVData`](../type-aliases/CSVData.md)
-
-Records to import.
+| Parameter | Type                                    | Description        |
+| --------- | --------------------------------------- | ------------------ |
+| `data`    | [`CSVData`](../type-aliases/CSVData.md) | Records to import. |
 
 #### Returns
 
@@ -160,11 +166,13 @@ Records to import.
 
 Whatever the widget's `import` implementation returns, typically `true` on success.
 
-***
+---
 
 ### reset()
 
-> **reset**(): `Promise`\<`boolean`\>
+```ts
+reset(): Promise<boolean>;
+```
 
 Resets the underlying DataConnector widget.
 
@@ -174,21 +182,21 @@ Resets the underlying DataConnector widget.
 
 Whatever the widget's `reset` implementation returns.
 
-***
+---
 
 ### setLine()
 
-> **setLine**(`row`): `Promise`\<`boolean`\>
+```ts
+setLine(row: string[]): Promise<boolean>;
+```
 
 Replaces a specific record in the underlying DataConnector.
 
 #### Parameters
 
-##### row
-
-`string`[]
-
-New record content.
+| Parameter | Type       | Description         |
+| --------- | ---------- | ------------------- |
+| `row`     | `string`[] | New record content. |
 
 #### Returns
 

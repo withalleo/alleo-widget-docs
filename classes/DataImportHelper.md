@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / DataImportHelper
 
@@ -19,23 +19,23 @@ mapping validation. Essential for widgets that need to import structured data.
 // Configure import with field mapping
 const importHelper = new DataImportHelper({
   fields: [
-    { name: 'name', label: 'Full Name' },
-    { name: 'email', label: 'Email Address' },
-    { name: 'phone', label: 'Phone Number' }
+    { name: "name", label: "Full Name" },
+    { name: "email", label: "Email Address" },
+    { name: "phone", label: "Phone Number" },
   ],
   allowImportFromDataConnector: true,
-  label: 'Import Contacts',
+  label: "Import Contacts",
   askAboutOverwrite: true,
   lineLimit: 500,
-  warningMessage: 'Large imports may take time'
+  warningMessage: "Large imports may take time",
 });
 
 // Import data from file
 const csvData = await importHelper.importToCsv(true);
-console.log('Imported rows:', csvData.length);
+console.log("Imported rows:", csvData.length);
 
 // Process imported data
-csvData.forEach(row => {
+csvData.forEach((row) => {
   processContact(row);
 });
 ```
@@ -44,17 +44,17 @@ csvData.forEach(row => {
 
 ### Constructor
 
-> **new DataImportHelper**(`settings`): `DataImportHelper`
+```ts
+new DataImportHelper(settings: DataImportHelperSettings): DataImportHelper;
+```
 
 Creates a DataImportHelper instance configured for data import workflows.
 
 #### Parameters
 
-##### settings
-
-[`DataImportHelperSettings`](../type-aliases/DataImportHelperSettings.md)
-
-Configuration for the import process.
+| Parameter  | Type                                                                      | Description                           |
+| ---------- | ------------------------------------------------------------------------- | ------------------------------------- |
+| `settings` | [`DataImportHelperSettings`](../type-aliases/DataImportHelperSettings.md) | Configuration for the import process. |
 
 #### Returns
 
@@ -64,7 +64,9 @@ Configuration for the import process.
 
 ### settings
 
-> `protected` **settings**: [`DataImportHelperSettings`](../type-aliases/DataImportHelperSettings.md)
+```ts
+protected settings: DataImportHelperSettings;
+```
 
 Configuration for the import process.
 
@@ -72,7 +74,9 @@ Configuration for the import process.
 
 ### getColumnNames()
 
-> **getColumnNames**(`limit?`): `string`[]
+```ts
+getColumnNames(limit?: number): string[];
+```
 
 Generates column names in spreadsheet format (A, B, C... Z, AA, AB...).
 
@@ -80,11 +84,9 @@ Creates Excel-style column labels for use in column mapping interfaces.
 
 #### Parameters
 
-##### limit?
-
-`number` = `100`
-
-Number of column names to generate.
+| Parameter | Type     | Default value | Description                         |
+| --------- | -------- | ------------- | ----------------------------------- |
+| `limit?`  | `number` | `100`         | Number of column names to generate. |
 
 #### Returns
 
@@ -92,25 +94,41 @@ Number of column names to generate.
 
 Array of column names (e.g., ['A', 'B', 'C'...]).
 
-***
+---
 
 ### import()
 
-> **import**(): `Promise`\<\{ `data`: `object`[]; `shouldOverwrite`: `boolean`; `totalCSVLines`: `number`; \}\>
+```ts
+import(): Promise<{
+  data: {
+   [p: string]: string;
+  }[];
+  shouldOverwrite: boolean;
+  totalCSVLines: number;
+}>;
+```
 
 Imports data.
 
 #### Returns
 
-`Promise`\<\{ `data`: `object`[]; `shouldOverwrite`: `boolean`; `totalCSVLines`: `number`; \}\>
+`Promise`\<\{
+`data`: \{
+\[`p`: `string`\]: `string`;
+\}[];
+`shouldOverwrite`: `boolean`;
+`totalCSVLines`: `number`;
+\}\>
 
 An object containing import results.
 
-***
+---
 
 ### importToCsv()
 
-> **importToCsv**(`finalStep?`): `Promise`\<[`CSVData`](../type-aliases/CSVData.md)\>
+```ts
+importToCsv(finalStep?: boolean): Promise<CSVData>;
+```
 
 Imports data from a spreadsheet file with interactive dialogs.
 
@@ -119,11 +137,9 @@ mapping columns to fields, and importing the data as CSV format.
 
 #### Parameters
 
-##### finalStep?
-
-`boolean` = `false`
-
-Whether this is the final step in a multi-step process.
+| Parameter    | Type      | Default value | Description                                             |
+| ------------ | --------- | ------------- | ------------------------------------------------------- |
+| `finalStep?` | `boolean` | `false`       | Whether this is the final step in a multi-step process. |
 
 #### Returns
 

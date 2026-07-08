@@ -1,12 +1,17 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / SharedLock
 
 # Type Alias: SharedLock
 
-> **SharedLock** = `object`
+```ts
+type SharedLock = {
+  connectionId: string;
+  lastUpdate: number;
+};
+```
 
 Represents a shared lock with a connection ID and last update timestamp.
 
@@ -14,10 +19,14 @@ Represents a shared lock with a connection ID and last update timestamp.
 
 ### connectionId
 
-> **connectionId**: `string`
+```ts
+connectionId: string;
+```
 
-***
+---
 
 ### lastUpdate
 
-> **lastUpdate**: `number`
+```ts
+lastUpdate: number;
+```

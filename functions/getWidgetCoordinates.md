@@ -1,12 +1,23 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / getWidgetCoordinates
 
 # Function: getWidgetCoordinates()
 
-> **getWidgetCoordinates**(`event`): `Coordinates`
+```ts
+function getWidgetCoordinates(
+  event:
+    | PointerEvent
+    | MouseEvent
+    | Touch
+    | {
+        clientX: number;
+        clientY: number;
+      },
+): Coordinates;
+```
 
 Converts browser viewport coordinates from a pointer event to widget-relative coordinates.
 
@@ -16,11 +27,9 @@ pointer tracking in interactive widgets.
 
 ## Parameters
 
-### event
-
-`PointerEvent` \| `MouseEvent` \| `Touch` \| \{ `clientX`: `number`; `clientY`: `number`; \}
-
-The pointer/mouse event or object with clientX/clientY properties.
+| Parameter | Type                                                                                            | Description                                                        |
+| --------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| `event`   | \| `PointerEvent` \| `MouseEvent` \| `Touch` \| \{ `clientX`: `number`; `clientY`: `number`; \} | The pointer/mouse event or object with clientX/clientY properties. |
 
 ## Returns
 
@@ -35,7 +44,7 @@ Throws if the widget doesn't have a DOM (service widgets).
 ## Example
 
 ```typescript
-element.addEventListener('click', (event) => {
+element.addEventListener("click", (event) => {
   const coords = getWidgetCoordinates(event);
   console.log(`Clicked at widget position: ${coords.x}, ${coords.y}`);
   drawCircle(coords.x, coords.y);

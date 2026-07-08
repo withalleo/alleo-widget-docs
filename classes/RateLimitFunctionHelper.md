@@ -1,6 +1,6 @@
 [**@withalleo/alleo-widget**](../README.md)
 
-***
+---
 
 [@withalleo/alleo-widget](../globals.md) / RateLimitFunctionHelper
 
@@ -13,29 +13,26 @@ But the arrives too rapidly so you might want to limit the rate of processing.
 
 ## Template
 
+**T**
+
 The type of the value being managed.
 
 ## Constructors
 
 ### Constructor
 
-> **new RateLimitFunctionHelper**(`callback`, `maxDelay?`): `RateLimitFunctionHelper`
+```ts
+new RateLimitFunctionHelper(callback: () => void, maxDelay?: number): RateLimitFunctionHelper;
+```
 
 Creates an instance of RateLimitFunctionHelper.
 
 #### Parameters
 
-##### callback
-
-() => `void`
-
-The callback function to be called
-
-##### maxDelay?
-
-`number` = `250`
-
-The maximum delay between updates in milliseconds.
+| Parameter   | Type         | Default value | Description                                        |
+| ----------- | ------------ | ------------- | -------------------------------------------------- |
+| `callback`  | () => `void` | `undefined`   | The callback function to be called                 |
+| `maxDelay?` | `number`     | `250`         | The maximum delay between updates in milliseconds. |
 
 #### Returns
 
@@ -45,7 +42,9 @@ The maximum delay between updates in milliseconds.
 
 ### call()
 
-> **call**(): `void`
+```ts
+call(): void;
+```
 
 #### Returns
 
