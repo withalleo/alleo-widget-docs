@@ -7,13 +7,13 @@
 # Type Alias: Prettify\<T\>
 
 ```ts
-type Prettify<T> = { [K in keyof T]: T[K] } & {};
+type Prettify<T> = { [K in keyof T]: T[K] } & {}
 ```
 
 Prettifies a TypeScript type by flattening its structure for better readability.
 
 ## Type Parameters
 
-| Type Parameter |
-| -------------- |
-| `T`            |
+| Type Parameter                    |
+| --------------------------------- |
+| <a id="type-parameter-t"></a> `T` |

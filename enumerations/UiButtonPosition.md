@@ -13,7 +13,7 @@ Enum representing the position of the UI button.
 ### First
 
 ```ts
-First: "first";
+First: 'first'
 ```
 
 ---
@@ -21,5 +21,5 @@ First: "first";
 ### Last
 
 ```ts
-Last: "last";
+Last: 'last'
 ```

@@ -11,7 +11,7 @@
 ### Ai
 
 ```ts
-Ai: "assistant";
+Ai: 'assistant'
 ```
 
 ---
@@ -19,7 +19,7 @@ Ai: "assistant";
 ### System
 
 ```ts
-System: "system";
+System: 'system'
 ```
 
 ---
@@ -27,5 +27,5 @@ System: "system";
 ### User
 
 ```ts
-User: "user";
+User: 'user'
 ```

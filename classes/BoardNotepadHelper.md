@@ -17,21 +17,21 @@ integrate with or manipulate notepad content programmatically.
 
 ```typescript
 // Get notepad from board
-const notepadObj = BoardObjectHelper.getBoardObjectById(notepadId);
+const notepadObj = BoardObjectHelper.getBoardObjectById(notepadId)
 
 // Check if object is a notepad
 if (BoardNotepadHelper.isNotepad(notepadObj)) {
-  const notepadHelper = new BoardNotepadHelper(notepadObj);
+    const notepadHelper = new BoardNotepadHelper(notepadObj)
 
-  // Read content
-  const text = await notepadHelper.getText();
-  console.log("Notepad content:", text);
+    // Read content
+    const text = await notepadHelper.getText()
+    console.log('Notepad content:', text)
 
-  // Write content
-  await notepadHelper.setText("New content", TextInputFormat.Markdown);
+    // Write content
+    await notepadHelper.setText('New content', TextInputFormat.Markdown)
 
-  // Get notepad label
-  const label = BoardNotepadHelper.getNotepadLabel(notepadObj);
+    // Get notepad label
+    const label = BoardNotepadHelper.getNotepadLabel(notepadObj)
 }
 ```
 
@@ -67,7 +67,7 @@ Throws if widget doesn't have DOM or notepad object is invalid.
 ### notepad
 
 ```ts
-notepad: RealIBoardObject;
+notepad: RealIBoardObject
 ```
 
 The board object representing the collaborative notepad.

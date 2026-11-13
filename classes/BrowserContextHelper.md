@@ -18,14 +18,14 @@ interaction patterns for room-based scenarios.
 ```typescript
 // Check if running in a Room context
 if (BrowserContextHelper.isRoomApp()) {
-  console.log("Running in Room mode");
-  // Enable room-specific features
-  enableFullscreenMode();
-  disableDetailedControls();
+    console.log('Running in Room mode')
+    // Enable room-specific features
+    enableFullscreenMode()
+    disableDetailedControls()
 } else {
-  console.log("Running in web interface");
-  // Enable standard web features
-  showDetailedUI();
+    console.log('Running in web interface')
+    // Enable standard web features
+    showDetailedUI()
 }
 ```
 

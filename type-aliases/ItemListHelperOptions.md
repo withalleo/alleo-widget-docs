@@ -8,31 +8,27 @@
 
 ```ts
 type ItemListHelperOptions = {
-  allowDataConnectors?: boolean;
-  allowImport?: boolean;
-  allowLocalEdit?: boolean;
-  allowReordering?: boolean;
-  dataSourceLabel?: string;
-  defaultValue?: ListRecord[];
-  disableAllEdits?: boolean;
-  elements?: FormlyFieldConfig<
-    FormlyFieldProps & {
-      [p: string]: any;
-    }
-  >[];
-  importSettings?: Omit<DataImportHelperSettings, "fields">;
-  label?: string;
-  localListProps?: Record<string, any>;
-  migrateIdGenerateFunction?: (
-    element: unknown,
-    list: unknown[],
-    index: number,
-  ) => string;
-  migrateOldArrayTypeList?: boolean;
-  newIdGenerateFunction?: () => string;
-  onListChangeCallback?: (list: ListRecord[]) => void;
-  readonlyApi?: boolean;
-};
+    allowDataConnectors?: boolean
+    allowImport?: boolean
+    allowLocalEdit?: boolean
+    allowReordering?: boolean
+    dataSourceLabel?: string
+    defaultValue?: ListRecord[]
+    disableAllEdits?: boolean
+    elements?: FormlyFieldConfig<
+        FormlyFieldProps & {
+            [p: string]: any
+        }
+    >[]
+    importSettings?: Omit<DataImportHelperSettings, 'fields'>
+    label?: string
+    localListProps?: Record<string, any>
+    migrateIdGenerateFunction?: (element: unknown, list: unknown[], index: number) => string
+    migrateOldArrayTypeList?: boolean
+    newIdGenerateFunction?: () => string
+    onListChangeCallback?: (list: ListRecord[]) => void
+    readonlyApi?: boolean
+}
 ```
 
 Options for configuring the ItemListHelper.
@@ -42,7 +38,7 @@ Options for configuring the ItemListHelper.
 ### allowDataConnectors?
 
 ```ts
-optional allowDataConnectors?: boolean;
+allowDataConnectors?: boolean;
 ```
 
 ---
@@ -50,7 +46,7 @@ optional allowDataConnectors?: boolean;
 ### allowImport?
 
 ```ts
-optional allowImport?: boolean;
+allowImport?: boolean;
 ```
 
 ---
@@ -58,7 +54,7 @@ optional allowImport?: boolean;
 ### allowLocalEdit?
 
 ```ts
-optional allowLocalEdit?: boolean;
+allowLocalEdit?: boolean;
 ```
 
 ---
@@ -66,7 +62,7 @@ optional allowLocalEdit?: boolean;
 ### allowReordering?
 
 ```ts
-optional allowReordering?: boolean;
+allowReordering?: boolean;
 ```
 
 ---
@@ -74,7 +70,7 @@ optional allowReordering?: boolean;
 ### dataSourceLabel?
 
 ```ts
-optional dataSourceLabel?: string;
+dataSourceLabel?: string;
 ```
 
 ---
@@ -82,7 +78,7 @@ optional dataSourceLabel?: string;
 ### defaultValue?
 
 ```ts
-optional defaultValue?: ListRecord[];
+defaultValue?: ListRecord[];
 ```
 
 ---
@@ -90,7 +86,7 @@ optional defaultValue?: ListRecord[];
 ### disableAllEdits?
 
 ```ts
-optional disableAllEdits?: boolean;
+disableAllEdits?: boolean;
 ```
 
 ---
@@ -98,7 +94,7 @@ optional disableAllEdits?: boolean;
 ### elements?
 
 ```ts
-optional elements?: FormlyFieldConfig<FormlyFieldProps & {
+elements?: FormlyFieldConfig<FormlyFieldProps & {
 [p: string]: any;
 }>[];
 ```
@@ -108,7 +104,7 @@ optional elements?: FormlyFieldConfig<FormlyFieldProps & {
 ### importSettings?
 
 ```ts
-optional importSettings?: Omit<DataImportHelperSettings, "fields">;
+importSettings?: Omit<DataImportHelperSettings, "fields">;
 ```
 
 ---
@@ -116,7 +112,7 @@ optional importSettings?: Omit<DataImportHelperSettings, "fields">;
 ### label?
 
 ```ts
-optional label?: string;
+label?: string;
 ```
 
 ---
@@ -124,7 +120,7 @@ optional label?: string;
 ### localListProps?
 
 ```ts
-optional localListProps?: Record<string, any>;
+localListProps?: Record<string, any>;
 ```
 
 ---
@@ -132,7 +128,7 @@ optional localListProps?: Record<string, any>;
 ### migrateIdGenerateFunction?
 
 ```ts
-optional migrateIdGenerateFunction?: (element: unknown, list: unknown[], index: number) => string;
+migrateIdGenerateFunction?: (element: unknown, list: unknown[], index: number) => string;
 ```
 
 #### Parameters
@@ -152,7 +148,7 @@ optional migrateIdGenerateFunction?: (element: unknown, list: unknown[], index: 
 ### migrateOldArrayTypeList?
 
 ```ts
-optional migrateOldArrayTypeList?: boolean;
+migrateOldArrayTypeList?: boolean;
 ```
 
 ---
@@ -160,7 +156,7 @@ optional migrateOldArrayTypeList?: boolean;
 ### newIdGenerateFunction?
 
 ```ts
-optional newIdGenerateFunction?: () => string;
+newIdGenerateFunction?: () => string;
 ```
 
 #### Returns
@@ -172,7 +168,7 @@ optional newIdGenerateFunction?: () => string;
 ### onListChangeCallback?
 
 ```ts
-optional onListChangeCallback?: (list: ListRecord[]) => void;
+onListChangeCallback?: (list: ListRecord[]) => void;
 ```
 
 #### Parameters
@@ -190,5 +186,5 @@ optional onListChangeCallback?: (list: ListRecord[]) => void;
 ### readonlyApi?
 
 ```ts
-optional readonlyApi?: boolean;
+readonlyApi?: boolean;
 ```

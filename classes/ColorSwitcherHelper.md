@@ -17,24 +17,20 @@ quick theme switching without full color selection UI.
 
 ```typescript
 // Basic color switcher for text color
-const textSwitcher = new ColorSwitcherHelper(
-  "textColor",
-  "--text-color",
-  DefaultColors.text,
-);
+const textSwitcher = new ColorSwitcherHelper('textColor', '--text-color', DefaultColors.text)
 
 // Custom switcher with specific colors and callback
 const customSwitcher = new ColorSwitcherHelper(
-  "bgColor",
-  "--background",
-  DefaultColors.background,
-  {
-    label: "Toggle Background",
-    icon: { icon: "moon", set: "fas" },
-  },
-  ".widget-container",
-  (color) => console.log("Switched to:", color),
-);
+    'bgColor',
+    '--background',
+    DefaultColors.background,
+    {
+        label: 'Toggle Background',
+        icon: { icon: 'moon', set: 'fas' },
+    },
+    '.widget-container',
+    (color) => console.log('Switched to:', color),
+)
 ```
 
 ## Extends
@@ -61,7 +57,8 @@ new ColorSwitcherHelper(
 }>,
    widgetContainerSelector?: string,
    callbackOnColorChange?: (color: string) => undefined,
-   displayColorSwitcherButtonOnInit?: boolean): ColorSwitcherHelper;
+   displayColorSwitcherButtonOnInit?: boolean
+): ColorSwitcherHelper;
 ```
 
 Creates a color switcher that toggles between two predefined colors.
@@ -98,7 +95,7 @@ Throws if widget doesn't have a DOM (service widgets not supported).
 ### color
 
 ```ts
-color: string;
+color: string
 ```
 
 The current color.

@@ -13,7 +13,7 @@ Enum for supported text input formats.
 ### Html
 
 ```ts
-Html: "html";
+Html: 'html'
 ```
 
 ---
@@ -21,7 +21,7 @@ Html: "html";
 ### Markdown
 
 ```ts
-Markdown: "md";
+Markdown: 'md'
 ```
 
 ---
@@ -29,5 +29,5 @@ Markdown: "md";
 ### Text
 
 ```ts
-Text: "text";
+Text: 'text'
 ```

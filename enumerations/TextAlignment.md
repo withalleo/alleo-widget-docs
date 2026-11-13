@@ -14,7 +14,7 @@ Note: The values map directly to the CSS `text-align` property.
 ### Center
 
 ```ts
-Center: "center";
+Center: 'center'
 ```
 
 ---
@@ -22,7 +22,7 @@ Center: "center";
 ### Justify
 
 ```ts
-Justify: "justify";
+Justify: 'justify'
 ```
 
 ---
@@ -30,7 +30,7 @@ Justify: "justify";
 ### Left
 
 ```ts
-Left: "left";
+Left: 'left'
 ```
 
 ---
@@ -38,5 +38,5 @@ Left: "left";
 ### Right
 
 ```ts
-Right: "right";
+Right: 'right'
 ```

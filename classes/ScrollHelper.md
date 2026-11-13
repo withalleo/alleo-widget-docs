@@ -16,23 +16,23 @@ Includes rate-limiting to prevent excessive updates during rapid scrolling.
 ## Example
 
 ```typescript
-const scrollContainer = document.querySelector(".scrollable-content");
+const scrollContainer = document.querySelector('.scrollable-content')
 
 // Basic scroll management with synchronization
-const scrollHelper = new ScrollHelper(scrollContainer);
+const scrollHelper = new ScrollHelper(scrollContainer)
 
 // Scroll with custom settings
 const customScroll = new ScrollHelper(
-  scrollContainer,
-  true, // auto-enable
-  true, // sync scrolling
-  false, // allow all users to control scroll
-  false, // allow user scrolling
-  "myScrollPosition",
-);
+    scrollContainer,
+    true, // auto-enable
+    true, // sync scrolling
+    false, // allow all users to control scroll
+    false, // allow user scrolling
+    'myScrollPosition',
+)
 
 // Programmatically scroll to position
-scrollHelper.scrollTo({ x: 0, y: 100 });
+scrollHelper.scrollTo({ x: 0, y: 100 })
 ```
 
 ## Constructors
@@ -46,7 +46,8 @@ new ScrollHelper(
    syncScrolling?: boolean,
    syncScrollingLeaderOnly?: boolean,
    disableUserScrolling?: boolean,
-   sharedVariableName?: string): ScrollHelper;
+   sharedVariableName?: string
+): ScrollHelper;
 ```
 
 Creates a ScrollHelper to manage scrolling behavior on an HTML element.
@@ -74,7 +75,7 @@ coordinate updates. Automatically enables scrolling unless specified otherwise.
 ### coordinates
 
 ```ts
-coordinates: Coordinates;
+coordinates: Coordinates
 ```
 
 ---
@@ -82,7 +83,7 @@ coordinates: Coordinates;
 ### disableUserScrolling
 
 ```ts
-disableUserScrolling: boolean;
+disableUserScrolling: boolean
 ```
 
 ---
@@ -122,7 +123,7 @@ protected readonly sharedVariableName: string;
 ### syncScrolling
 
 ```ts
-syncScrolling: boolean;
+syncScrolling: boolean
 ```
 
 ---
@@ -130,7 +131,7 @@ syncScrolling: boolean;
 ### syncScrollingLeaderOnly
 
 ```ts
-syncScrollingLeaderOnly: boolean;
+syncScrollingLeaderOnly: boolean
 ```
 
 ## Methods
@@ -193,10 +194,10 @@ Scrolls the HTML element to the specified coordinates.
 
 #### Parameters
 
-| Parameter  | Type                                            | Default value | Description                                              |
-| ---------- | ----------------------------------------------- | ------------- | -------------------------------------------------------- |
-| `coords`   | [`Coordinates`](../type-aliases/Coordinates.md) | `undefined`   | The coordinates to scroll to.                            |
-| `behavior` | `"auto"` \| `"instant"` \| `"smooth"`           | `'auto'`      | The scrolling behavior ('auto', 'smooth', or 'instant'). |
+| Parameter   | Type                                            | Default value | Description                                              |
+| ----------- | ----------------------------------------------- | ------------- | -------------------------------------------------------- |
+| `coords`    | [`Coordinates`](../type-aliases/Coordinates.md) | `undefined`   | The coordinates to scroll to.                            |
+| `behavior?` | `"auto"` \| `"instant"` \| `"smooth"`           | `'auto'`      | The scrolling behavior ('auto', 'smooth', or 'instant'). |
 
 #### Returns
 

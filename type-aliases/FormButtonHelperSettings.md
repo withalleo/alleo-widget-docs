@@ -8,19 +8,19 @@
 
 ```ts
 type FormButtonHelperSettings = {
-  align?: "left" | "right" | "center" | "justify" | "start" | "end";
-  callbackOnFormOpened?: (button: HTMLElement) => void;
-  displayInline?: boolean;
-  doNotStartFormTimer?: boolean;
-  doNotStartInitialTimer?: boolean;
-  formlyKey?: string;
-  id?: string;
-  interval?: number;
-  loadingPlaceholder?: string;
-  primary?: boolean;
-  singleUse?: boolean;
-  timeout?: number;
-};
+    align?: 'left' | 'right' | 'center' | 'justify' | 'start' | 'end'
+    callbackOnFormOpened?: (button: HTMLElement) => void
+    displayInline?: boolean
+    doNotStartFormTimer?: boolean
+    doNotStartInitialTimer?: boolean
+    formlyKey?: string
+    id?: string
+    interval?: number
+    loadingPlaceholder?: string
+    primary?: boolean
+    singleUse?: boolean
+    timeout?: number
+}
 ```
 
 Settings for [FormButtonHelper](../classes/FormButtonHelper.md).
@@ -33,7 +33,7 @@ FormButtonHelperSettings type below.
 ### align?
 
 ```ts
-optional align?: "left" | "right" | "center" | "justify" | "start" | "end";
+align?: "left" | "right" | "center" | "justify" | "start" | "end";
 ```
 
 ---
@@ -41,7 +41,7 @@ optional align?: "left" | "right" | "center" | "justify" | "start" | "end";
 ### callbackOnFormOpened?
 
 ```ts
-optional callbackOnFormOpened?: (button: HTMLElement) => void;
+callbackOnFormOpened?: (button: HTMLElement) => void;
 ```
 
 #### Parameters
@@ -59,7 +59,7 @@ optional callbackOnFormOpened?: (button: HTMLElement) => void;
 ### displayInline?
 
 ```ts
-optional displayInline?: boolean;
+displayInline?: boolean;
 ```
 
 ---
@@ -67,7 +67,7 @@ optional displayInline?: boolean;
 ### doNotStartFormTimer?
 
 ```ts
-optional doNotStartFormTimer?: boolean;
+doNotStartFormTimer?: boolean;
 ```
 
 ---
@@ -75,7 +75,7 @@ optional doNotStartFormTimer?: boolean;
 ### doNotStartInitialTimer?
 
 ```ts
-optional doNotStartInitialTimer?: boolean;
+doNotStartInitialTimer?: boolean;
 ```
 
 ---
@@ -83,7 +83,7 @@ optional doNotStartInitialTimer?: boolean;
 ### formlyKey?
 
 ```ts
-optional formlyKey?: string;
+formlyKey?: string;
 ```
 
 ---
@@ -91,7 +91,7 @@ optional formlyKey?: string;
 ### id?
 
 ```ts
-optional id?: string;
+id?: string;
 ```
 
 ---
@@ -99,7 +99,7 @@ optional id?: string;
 ### interval?
 
 ```ts
-optional interval?: number;
+interval?: number;
 ```
 
 ---
@@ -107,7 +107,7 @@ optional interval?: number;
 ### loadingPlaceholder?
 
 ```ts
-optional loadingPlaceholder?: string;
+loadingPlaceholder?: string;
 ```
 
 ---
@@ -115,7 +115,7 @@ optional loadingPlaceholder?: string;
 ### primary?
 
 ```ts
-optional primary?: boolean;
+primary?: boolean;
 ```
 
 ---
@@ -123,7 +123,7 @@ optional primary?: boolean;
 ### singleUse?
 
 ```ts
-optional singleUse?: boolean;
+singleUse?: boolean;
 ```
 
 ---
@@ -131,5 +131,5 @@ optional singleUse?: boolean;
 ### timeout?
 
 ```ts
-optional timeout?: number;
+timeout?: number;
 ```

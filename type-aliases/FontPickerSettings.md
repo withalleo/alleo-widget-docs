@@ -8,12 +8,12 @@
 
 ```ts
 type FontPickerSettings = Partial<{
-  callbackOnFontChange: (font: string) => void;
-  defaultFont: string;
-  displayFontPickerButtonOnInit: boolean;
-  label: string;
-  widgetContainerSelector: string;
-}>;
+    callbackOnFontChange: (font: string) => void
+    defaultFont: string
+    displayFontPickerButtonOnInit: boolean
+    label: string
+    widgetContainerSelector: string
+}>
 ```
 
 Type representing the settings for the FontPicker.

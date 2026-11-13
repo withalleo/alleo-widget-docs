@@ -8,9 +8,9 @@
 
 ```ts
 type SoundRecordingHelperOptions = {
-  minLength: number;
-  waitForStop: number | undefined;
-};
+    minLength: number
+    waitForStop: number | undefined
+}
 ```
 
 ## Properties
@@ -18,7 +18,7 @@ type SoundRecordingHelperOptions = {
 ### minLength
 
 ```ts
-minLength: number;
+minLength: number
 ```
 
 ---
@@ -26,5 +26,5 @@ minLength: number;
 ### waitForStop
 
 ```ts
-waitForStop: number | undefined;
+waitForStop: number | undefined
 ```

@@ -8,9 +8,9 @@
 
 ```ts
 type Size = {
-  height: number;
-  width: number;
-};
+    height: number
+    width: number
+}
 ```
 
 Represents the size of an element.
@@ -20,7 +20,7 @@ Represents the size of an element.
 ### height
 
 ```ts
-height: number;
+height: number
 ```
 
 ---
@@ -28,5 +28,5 @@ height: number;
 ### width
 
 ```ts
-width: number;
+width: number
 ```

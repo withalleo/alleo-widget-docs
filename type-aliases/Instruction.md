@@ -8,12 +8,12 @@
 
 ```ts
 type Instruction = {
-  defaultText?: string;
-  id: string;
-  instruction: string;
-  model: string;
-  name: string;
-};
+    defaultText?: string
+    id: string
+    instruction: string
+    model: string
+    name: string
+}
 ```
 
 ## Properties
@@ -21,7 +21,7 @@ type Instruction = {
 ### defaultText?
 
 ```ts
-optional defaultText?: string;
+defaultText?: string;
 ```
 
 ---
@@ -29,7 +29,7 @@ optional defaultText?: string;
 ### id
 
 ```ts
-id: string;
+id: string
 ```
 
 ---
@@ -37,7 +37,7 @@ id: string;
 ### instruction
 
 ```ts
-instruction: string;
+instruction: string
 ```
 
 ---
@@ -45,7 +45,7 @@ instruction: string;
 ### model
 
 ```ts
-model: string;
+model: string
 ```
 
 ---
@@ -53,5 +53,5 @@ model: string;
 ### name
 
 ```ts
-name: string;
+name: string
 ```

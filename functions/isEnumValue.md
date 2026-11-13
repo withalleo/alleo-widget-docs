@@ -7,7 +7,7 @@
 # Function: isEnumValue()
 
 ```ts
-function isEnumValue<T>(enumObj: T, value: unknown): value is T[keyof T];
+function isEnumValue<T extends Record<string, string>>(enumObj: T, value: unknown): value is T[keyof T]
 ```
 
 Type guard to check if a value is a valid member of a TypeScript enum.
@@ -17,9 +17,9 @@ providing type safety when working with user input or API responses.
 
 ## Type Parameters
 
-| Type Parameter                               |
-| -------------------------------------------- |
-| `T` _extends_ `Record`\<`string`, `string`\> |
+| Type Parameter                                                             |
+| -------------------------------------------------------------------------- |
+| <a id="type-parameter-t"></a> `T` _extends_ `Record`\<`string`, `string`\> |
 
 ## Parameters
 
@@ -38,17 +38,17 @@ True if value is a valid enum member, false otherwise.
 
 ```typescript
 enum Status {
-  Active = "active",
-  Inactive = "inactive",
-  Pending = "pending",
+    Active = 'active',
+    Inactive = 'inactive',
+    Pending = 'pending',
 }
 
-const userInput: unknown = "active";
+const userInput: unknown = 'active'
 if (isEnumValue(Status, userInput)) {
-  // TypeScript now knows userInput is Status
-  const status: Status = userInput;
+    // TypeScript now knows userInput is Status
+    const status: Status = userInput
 }
 
-isEnumValue(Status, "active"); // true
-isEnumValue(Status, "invalid"); // false
+isEnumValue(Status, 'active') // true
+isEnumValue(Status, 'invalid') // false
 ```

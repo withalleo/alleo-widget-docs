@@ -7,5 +7,5 @@
 # Type Alias: ExtendedObjectTypes
 
 ```ts
-type ExtendedObjectTypes = BoardFabricObjectType | "notepad";
+type ExtendedObjectTypes = BoardFabricObjectType | 'notepad'
 ```

@@ -16,23 +16,23 @@ long-running operations in service widgets.
 ## Example
 
 ```typescript
-const loadingStatus = new LoadingStatus();
+const loadingStatus = new LoadingStatus()
 
 // Show loading indicator
-loadingStatus.show();
+loadingStatus.show()
 
 // Perform async operation
-await processData();
+await processData()
 
 // Hide loading indicator
-loadingStatus.hide();
+loadingStatus.hide()
 
 // With try-finally for reliable cleanup
 try {
-  loadingStatus.show();
-  await performOperation();
+    loadingStatus.show()
+    await performOperation()
 } finally {
-  loadingStatus.hide();
+    loadingStatus.hide()
 }
 ```
 
@@ -64,7 +64,7 @@ widget is destroyed.
 ### showing
 
 ```ts
-showing: boolean = false;
+showing: boolean = false
 ```
 
 ## Accessors

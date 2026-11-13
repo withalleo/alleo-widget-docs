@@ -16,10 +16,10 @@ new PreventSelect(askBeforeDelete?: boolean, canSelect?: () => boolean): Prevent
 
 #### Parameters
 
-| Parameter         | Type            | Default value |
-| ----------------- | --------------- | ------------- |
-| `askBeforeDelete` | `boolean`       | `true`        |
-| `canSelect`       | () => `boolean` | `...`         |
+| Parameter          | Type            | Default value |
+| ------------------ | --------------- | ------------- |
+| `askBeforeDelete?` | `boolean`       | `true`        |
+| `canSelect?`       | () => `boolean` | `...`         |
 
 #### Returns
 

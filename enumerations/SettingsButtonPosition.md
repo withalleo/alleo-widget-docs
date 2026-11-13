@@ -11,7 +11,7 @@
 ### End
 
 ```ts
-End: "end";
+End: 'end'
 ```
 
 ---
@@ -19,5 +19,5 @@ End: "end";
 ### Start
 
 ```ts
-Start: "start";
+Start: 'start'
 ```

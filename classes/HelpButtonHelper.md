@@ -17,20 +17,20 @@ configured through deployment settings.
 
 ```typescript
 // Basic usage with default help file location
-const helpButton = new HelpButtonHelper();
+const helpButton = new HelpButtonHelper()
 
 // Custom help file URL
 const customHelp = new HelpButtonHelper({
-  mdUrl: "https://example.com/docs/widget-help.md",
-});
+    mdUrl: 'https://example.com/docs/widget-help.md',
+})
 
 // Without automatic button creation
 const manualHelp = new HelpButtonHelper({
-  doNotAddButton: true,
-  id: "custom-help",
-});
+    doNotAddButton: true,
+    id: 'custom-help',
+})
 // Later, manually show help
-manualHelp.showHelp();
+manualHelp.showHelp()
 ```
 
 ## Constructors
@@ -43,9 +43,9 @@ new HelpButtonHelper(settings?: HelpButtonHelperSettings): HelpButtonHelper;
 
 #### Parameters
 
-| Parameter  | Type                       |
-| ---------- | -------------------------- |
-| `settings` | `HelpButtonHelperSettings` |
+| Parameter   | Type                       |
+| ----------- | -------------------------- |
+| `settings?` | `HelpButtonHelperSettings` |
 
 #### Returns
 
@@ -103,6 +103,23 @@ If the DOM is not available.
 
 ---
 
+### destroy()
+
+```ts
+destroy(): void;
+```
+
+Destroys the current instance by removing its associated context menu button and
+every service object settings field recorded by addButton from the haptic object if they exist.
+
+#### Returns
+
+`void`
+
+Does not return a value.
+
+---
+
 ### getHtmlHelpContent()
 
 ```ts
@@ -151,7 +168,7 @@ Creates a settings button with the provided label and options.
 
 | Parameter        | Type                                                                      | Default value | Description                        |
 | ---------------- | ------------------------------------------------------------------------- | ------------- | ---------------------------------- |
-| `label?`         | `string`                                                                  | `'Help'`      | The label for the button.          |
+| `label?`         | `string`                                                                  | `...`         | The label for the button.          |
 | `buttonOptions?` | [`FormButtonHelperSettings`](../type-aliases/FormButtonHelperSettings.md) | `undefined`   | Additional options for the button. |
 
 #### Returns
@@ -177,19 +194,31 @@ Tracks the button click event and shows the dialog with the help content.
 
 ---
 
+### getMdRenderer()
+
+```ts
+static getMdRenderer(): Promise<any>;
+```
+
+#### Returns
+
+`Promise`\<`any`\>
+
+---
+
 ### openFormWithoutPrimaryButton()
 
 ```ts
-static openFormWithoutPrimaryButton<FormlyDialogModel>(settings: FormlyDialogSettings<FormlyDialogModel>): Promise<false | "" | FormlyDialogModel>;
+static openFormWithoutPrimaryButton<FormlyDialogModel extends Record<string, any> = Record<string, any>>(settings: FormlyDialogSettings<FormlyDialogModel>): Promise<false | "" | FormlyDialogModel>;
 ```
 
 Opens a form dialog without a primary button.
 
 #### Type Parameters
 
-| Type Parameter      | Default type                | Description |
-| ------------------- | --------------------------- | ----------- |
-| `FormlyDialogModel` | `Record`\<`string`, `any`\> |             |
+| Type Parameter                                                                                          | Default type                | Description |
+| ------------------------------------------------------------------------------------------------------- | --------------------------- | ----------- |
+| <a id="type-parameter-formlydialogmodel"></a> `FormlyDialogModel` _extends_ `Record`\<`string`, `any`\> | `Record`\<`string`, `any`\> |             |
 
 #### Parameters
 

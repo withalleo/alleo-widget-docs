@@ -19,20 +19,17 @@ for efficient change detection.
 ```typescript
 // Monitor viewport changes for responsive layout
 const viewportHelper = new ViewportSizeHelper((canvas, body) => {
-  console.log("Canvas size:", canvas.width, canvas.height);
-  console.log("Body size:", body.width, body.height);
-  updateLayout(canvas, body);
-});
+    console.log('Canvas size:', canvas.width, canvas.height)
+    console.log('Body size:', body.width, body.height)
+    updateLayout(canvas, body)
+})
 
 // With custom settings
-const customHelper = new ViewportSizeHelper(
-  (canvas, body) => adjustUI(canvas),
-  {
+const customHelper = new ViewportSizeHelper((canvas, body) => adjustUI(canvas), {
     triggerOnBodyResize: true,
     triggerOnCanvasResize: true,
     triggerOnInit: false, // Don't trigger immediately
-  },
-);
+})
 ```
 
 ## Constructors
@@ -166,7 +163,7 @@ triggerChange(force?: boolean): void;
 
 | Parameter | Type      | Default value |
 | --------- | --------- | ------------- |
-| `force`   | `boolean` | `false`       |
+| `force?`  | `boolean` | `false`       |
 
 #### Returns
 

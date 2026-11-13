@@ -8,9 +8,9 @@
 
 ```ts
 type Coordinates = {
-  x: number;
-  y: number;
-};
+    x: number
+    y: number
+}
 ```
 
 Represents coordinates with x and y values.
@@ -20,7 +20,7 @@ Represents coordinates with x and y values.
 ### x
 
 ```ts
-x: number;
+x: number
 ```
 
 ---
@@ -28,5 +28,5 @@ x: number;
 ### y
 
 ```ts
-y: number;
+y: number
 ```

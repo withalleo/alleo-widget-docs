@@ -18,26 +18,26 @@ mapping validation. Essential for widgets that need to import structured data.
 ```typescript
 // Configure import with field mapping
 const importHelper = new DataImportHelper({
-  fields: [
-    { name: "name", label: "Full Name" },
-    { name: "email", label: "Email Address" },
-    { name: "phone", label: "Phone Number" },
-  ],
-  allowImportFromDataConnector: true,
-  label: "Import Contacts",
-  askAboutOverwrite: true,
-  lineLimit: 500,
-  warningMessage: "Large imports may take time",
-});
+    fields: [
+        { name: 'name', label: 'Full Name' },
+        { name: 'email', label: 'Email Address' },
+        { name: 'phone', label: 'Phone Number' },
+    ],
+    allowImportFromDataConnector: true,
+    label: 'Import Contacts',
+    askAboutOverwrite: true,
+    lineLimit: 500,
+    warningMessage: 'Large imports may take time',
+})
 
 // Import data from file
-const csvData = await importHelper.importToCsv(true);
-console.log("Imported rows:", csvData.length);
+const csvData = await importHelper.importToCsv(true)
+console.log('Imported rows:', csvData.length)
 
 // Process imported data
 csvData.forEach((row) => {
-  processContact(row);
-});
+    processContact(row)
+})
 ```
 
 ## Constructors

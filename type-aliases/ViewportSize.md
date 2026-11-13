@@ -8,13 +8,13 @@
 
 ```ts
 type ViewportSize = {
-  bottom: number;
-  height: number;
-  left: number;
-  right: number;
-  top: number;
-  width: number;
-};
+    bottom: number
+    height: number
+    left: number
+    right: number
+    top: number
+    width: number
+}
 ```
 
 Represents the size and position of a viewport element.
@@ -24,7 +24,7 @@ Represents the size and position of a viewport element.
 ### bottom
 
 ```ts
-bottom: number;
+bottom: number
 ```
 
 ---
@@ -32,7 +32,7 @@ bottom: number;
 ### height
 
 ```ts
-height: number;
+height: number
 ```
 
 ---
@@ -40,7 +40,7 @@ height: number;
 ### left
 
 ```ts
-left: number;
+left: number
 ```
 
 ---
@@ -48,7 +48,7 @@ left: number;
 ### right
 
 ```ts
-right: number;
+right: number
 ```
 
 ---
@@ -56,7 +56,7 @@ right: number;
 ### top
 
 ```ts
-top: number;
+top: number
 ```
 
 ---
@@ -64,5 +64,5 @@ top: number;
 ### width
 
 ```ts
-width: number;
+width: number
 ```

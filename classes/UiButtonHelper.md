@@ -16,25 +16,25 @@ Primarily used by service widgets that don't have a board presence.
 ## Example
 
 ```typescript
-const buttonHelper = new UiButtonHelper();
+const buttonHelper = new UiButtonHelper()
 
 // Add a simple button
 buttonHelper.add({
-  id: "my-action",
-  label: "Click Me",
-  onClick: () => console.log("Button clicked!"),
-});
+    id: 'my-action',
+    label: 'Click Me',
+    onClick: () => console.log('Button clicked!'),
+})
 
 // Add button with icon
 buttonHelper.add({
-  id: "settings",
-  icon: "settings",
-  label: "Settings",
-  onClick: () => openSettings(),
-});
+    id: 'settings',
+    icon: 'settings',
+    label: 'Settings',
+    onClick: () => openSettings(),
+})
 
 // Remove a button
-buttonHelper.remove("my-action");
+buttonHelper.remove('my-action')
 ```
 
 ## Constructors
@@ -126,7 +126,8 @@ addButton(
   callbackPointerUp?: (e: PointerEvent) => void;
   color?: string;
   position?: number | UiButtonPosition;
-}): string;
+}
+): string;
 ```
 
 Adds a new button to the UI.
@@ -137,7 +138,7 @@ Adds a new button to the UI.
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
 | `html`                          | `string`                                                                                                                                                                                                                                                                                                                                 | The HTML content of the button.                              |
 | `callback`                      | (`e`: `PointerEvent`) => `void`                                                                                                                                                                                                                                                                                                          | The callback function to execute when the button is clicked. |
-| `settings`                      | \{ `backgroundColor?`: `string`; `buttonId?`: `string`; `callbackAltClick?`: (`e`: `PointerEvent`) => `void`; `callbackPointerDown?`: (`e`: `PointerEvent`) => `void`; `callbackPointerUp?`: (`e`: `PointerEvent`) => `void`; `color?`: `string`; `position?`: `number` \| [`UiButtonPosition`](../enumerations/UiButtonPosition.md); \} | The settings for the button.                                 |
+| `settings?`                     | \{ `backgroundColor?`: `string`; `buttonId?`: `string`; `callbackAltClick?`: (`e`: `PointerEvent`) => `void`; `callbackPointerDown?`: (`e`: `PointerEvent`) => `void`; `callbackPointerUp?`: (`e`: `PointerEvent`) => `void`; `color?`: `string`; `position?`: `number` \| [`UiButtonPosition`](../enumerations/UiButtonPosition.md); \} | The settings for the button.                                 |
 | `settings.backgroundColor?`     | `string`                                                                                                                                                                                                                                                                                                                                 | -                                                            |
 | `settings.buttonId?`            | `string`                                                                                                                                                                                                                                                                                                                                 | The ID of the button.                                        |
 | `settings.callbackAltClick?`    | (`e`: `PointerEvent`) => `void`                                                                                                                                                                                                                                                                                                          | -                                                            |

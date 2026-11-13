@@ -17,22 +17,21 @@ backward compatibility with older Alleo versions.
 
 ```typescript
 // Set widget label
-WidgetDetails.label = "Data Analysis Dashboard";
+WidgetDetails.label = 'Data Analysis Dashboard'
 
 // Hide the label
-WidgetDetails.hideLabel = true;
+WidgetDetails.hideLabel = true
 
 // Set search description for better discoverability
-WidgetDetails.searchDescription =
-  "Financial data visualization with charts and graphs";
+WidgetDetails.searchDescription = 'Financial data visualization with charts and graphs'
 
 // Read current label
-const currentLabel = WidgetDetails.label;
-console.log("Widget is labeled:", currentLabel);
+const currentLabel = WidgetDetails.label
+console.log('Widget is labeled:', currentLabel)
 
 // Check if label is hidden
 if (WidgetDetails.hideLabel) {
-  console.log("Label is currently hidden");
+    console.log('Label is currently hidden')
 }
 ```
 

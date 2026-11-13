@@ -8,17 +8,17 @@
 
 ```ts
 type MultiTouchHelperOptions = {
-  adjustWidgetSizeAutomatically?: boolean;
-  autoManage?: boolean;
-  element?: HTMLElement;
-  enableDblClickToZoom?: boolean;
-  enablePointerOverWidget?: boolean;
-  eventList?: string[];
-  onScaleAdjustment?: (scale: number) => void;
-  showAdjustSizeButton?: boolean;
-  unlockHelper?: boolean;
-  zoomOutButtonId?: string;
-};
+    adjustWidgetSizeAutomatically?: boolean
+    autoManage?: boolean
+    element?: HTMLElement
+    enableDblClickToZoom?: boolean
+    enablePointerOverWidget?: boolean
+    eventList?: string[]
+    onScaleAdjustment?: (scale: number) => void
+    showAdjustSizeButton?: boolean
+    unlockHelper?: boolean
+    zoomOutButtonId?: string
+}
 ```
 
 Options for configuring the MultiTouchHelper.
@@ -28,7 +28,7 @@ Options for configuring the MultiTouchHelper.
 ### adjustWidgetSizeAutomatically?
 
 ```ts
-optional adjustWidgetSizeAutomatically?: boolean;
+adjustWidgetSizeAutomatically?: boolean;
 ```
 
 If true, the widget size will not be adjusted automatically when the zoom level changes (default: true)
@@ -38,7 +38,7 @@ If true, the widget size will not be adjusted automatically when the zoom level 
 ### autoManage?
 
 ```ts
-optional autoManage?: boolean;
+autoManage?: boolean;
 ```
 
 If true, the MultiTouchHelper will automatically manage the touch interactions (default: true)
@@ -48,7 +48,7 @@ If true, the MultiTouchHelper will automatically manage the touch interactions (
 ### element?
 
 ```ts
-optional element?: HTMLElement;
+element?: HTMLElement;
 ```
 
 The element that will be manipulated (default: the whole widget)
@@ -58,7 +58,7 @@ The element that will be manipulated (default: the whole widget)
 ### enableDblClickToZoom?
 
 ```ts
-optional enableDblClickToZoom?: boolean;
+enableDblClickToZoom?: boolean;
 ```
 
 Enable to double-click to zoom into the widget (default: false)
@@ -68,7 +68,7 @@ Enable to double-click to zoom into the widget (default: false)
 ### enablePointerOverWidget?
 
 ```ts
-optional enablePointerOverWidget?: boolean;
+enablePointerOverWidget?: boolean;
 ```
 
 If true, the pointer over widget will be shown (default: false)
@@ -78,7 +78,7 @@ If true, the pointer over widget will be shown (default: false)
 ### eventList?
 
 ```ts
-optional eventList?: string[];
+eventList?: string[];
 ```
 
 A list of events that will be disabled when the MultiTouchHelper is enabled
@@ -88,7 +88,7 @@ A list of events that will be disabled when the MultiTouchHelper is enabled
 ### onScaleAdjustment?
 
 ```ts
-optional onScaleAdjustment?: (scale: number) => void;
+onScaleAdjustment?: (scale: number) => void;
 ```
 
 A callback function that will be called when the scale is adjusted
@@ -108,7 +108,7 @@ A callback function that will be called when the scale is adjusted
 ### showAdjustSizeButton?
 
 ```ts
-optional showAdjustSizeButton?: boolean;
+showAdjustSizeButton?: boolean;
 ```
 
 If true, a button will be shown to adjust the widget size manually (default: false)
@@ -118,7 +118,7 @@ If true, a button will be shown to adjust the widget size manually (default: fal
 ### unlockHelper?
 
 ```ts
-optional unlockHelper?: boolean;
+unlockHelper?: boolean;
 ```
 
 If true, the widget will display an unlock helper icon for editors. This might be practical when the widget content is not propagating out. (ie. an iframe) (default: false)
@@ -128,7 +128,7 @@ If true, the widget will display an unlock helper icon for editors. This might b
 ### zoomOutButtonId?
 
 ```ts
-optional zoomOutButtonId?: string;
+zoomOutButtonId?: string;
 ```
 
 the id of the zoom out button data fiueld

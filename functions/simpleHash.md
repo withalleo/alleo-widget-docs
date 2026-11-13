@@ -7,7 +7,7 @@
 # Function: simpleHash()
 
 ```ts
-function simpleHash(input: string): string;
+function simpleHash(input: string): string
 ```
 
 Creates a case-insensitive, whitespace-normalized hash string from input text.
@@ -31,15 +31,15 @@ A base-36 hash string that's consistent for equivalent inputs.
 ## Example
 
 ```typescript
-simpleHash("Hello World"); // 'abc123'
-simpleHash("hello  world"); // 'abc123' (same hash)
-simpleHash("HELLO WORLD"); // 'abc123' (same hash)
-simpleHash("Hello World!"); // 'def456' (different due to punctuation)
+simpleHash('Hello World') // 'abc123'
+simpleHash('hello  world') // 'abc123' (same hash)
+simpleHash('HELLO WORLD') // 'abc123' (same hash)
+simpleHash('Hello World!') // 'def456' (different due to punctuation)
 
 // Use for deduplication
-const seen = new Set();
+const seen = new Set()
 if (!seen.has(simpleHash(userInput))) {
-  seen.add(simpleHash(userInput));
-  processInput(userInput);
+    seen.add(simpleHash(userInput))
+    processInput(userInput)
 }
 ```

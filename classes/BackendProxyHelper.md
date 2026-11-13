@@ -13,28 +13,126 @@ handling API key management at deployment/organization/custom scopes, token cach
 and settings UI generation. Supports multiple authentication scopes and automatic
 token refresh. Essential for widgets that need to communicate with external APIs securely.
 
-## Example
+## Examples
 
 ```typescript
 // Initialize with connection ID from manifest
-const backend = new BackendProxyHelper("myApiConnection");
+const backend = new BackendProxyHelper('myApiConnection')
 
 // Make authenticated GET request
-const response = await backend.request("/api/users");
-const data = await response.json();
+const response = await backend.request('/api/users')
+const data = await response.json()
 
 // Make POST request with JSON body and parse the response
-const result = await backend.requestJson("/api/data", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ name: "John" }),
-});
+const result = await backend.requestJson('/api/data', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: 'John' }),
+})
 
 // Check connection status
 if (await backend.getStatus()) {
-  console.log("Connection is operational");
+    console.log('Connection is operational')
 }
 ```
+
+```typescript
+// Ask ChatGPT a question through the proxy - the API key never reaches the widget
+type ChatCompletion = { choices: { message: { content: string } }[] }
+
+const chatGpt = new BackendProxyHelper(WidgetSettings.settings.OpenAiApiKeyId || 'OpenAiApiKey')
+
+async function askChatGpt(question: string): Promise<string> {
+    if (!(await chatGpt.getStatus())) throw new Error('No OpenAI key configured for this widget')
+
+    const completion = await chatGpt.requestJson<ChatCompletion>(
+        'https://api.openai.com/v1/chat/completions',
+        {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                model: 'gpt-4o-mini',
+                messages: [
+                    { role: 'system', content: 'You are a helpful assistant inside an Alleo widget.' },
+                    { role: 'user', content: question },
+                ],
+            }),
+        },
+        2,
+    )
+
+    return completion.choices[0]?.message?.content ?? ''
+}
+
+// Usage: console.log(await askChatGpt('Summarize this board in one sentence'))
+```
+
+Matching `manifest.json` entry for the ChatGPT connection above. The `config` block becomes
+`WidgetSettings.settings`, and every connection needs its own `backend-proxy-<connectionId>` settings scope.
+`BackendSchemas` is only used for the custom-key flow (`AllowCustomApiConnection`): it tells the platform how the
+secret is attached (`template` uses the `<Name>={{secret.token}}` format) and hard-limits which URLs may receive it.
+
+```json
+{
+    "config": {
+        "OpenAiApiKeyId": "OpenAiApiKey",
+        "ExternalBackendConnections": {
+            "OpenAiApiKey": {
+                "DisplayName": "OpenAI ChatGPT API",
+                "PrivacyPolicyUrl": "https://openai.com/policies/privacy-policy",
+                "EnableUI": true,
+                "DefaultScope": "deployment",
+                "EnableChangingScope": true,
+                "UseOrganizationKeyOverDeploymentKey": true,
+                "DeploymentSharedSecretId": "OpenAiApiKey",
+                "OrganizationSharedSecretId": "OpenAiApiKey",
+                "AllowDeploymentSharedSecret": true,
+                "AllowOrganizationSharedSecret": true,
+                "AllowCustomDeploymentSharedSecret": false,
+                "AllowCustomOrganizationSharedSecret": false,
+                "AllowCustomApiConnection": true,
+                "BackendSchemas": [
+                    {
+                        "method": "Header",
+                        "connection": "Http",
+                        "template": "Authorization=Bearer {{secret.token}}",
+                        "allowedUrls": ["https://api.openai.com/v1/chat/completions"]
+                    }
+                ]
+            }
+        }
+    },
+    "settingsScopes": ["backend-proxy-OpenAiApiKey", "default-network", "settings-dialog"]
+}
+```
+
+```typescript
+// Expose the connection settings (status, scope selector, custom key button) to the user.
+// `options` is already a Formly field list, so it can be spread anywhere into objectSettings.
+haptic.objectSettings = [...ownSettings, ...chatGpt.options]
+
+// Or nest it under an "Advanced settings" group inside a settings dialog
+new SettingsDialogHelper({
+    fields: [
+        {
+            type: 'tabs',
+            vertical: true,
+            fieldGroup: [
+                {
+                    props: { label: 'your settings' },
+                    fieldGroup: [...ownSettings],
+                },
+                {
+                    props: { label: 'Advanced settings' },
+                    fieldGroup: [...chatGpt.options],
+                },
+            ],
+        },
+    ],
+}).openSettingsDialog()
+```
+
+For these examples to work, you might have to add these keys in the Alleo organization admin. You have to name the key as the key ID you used. Eg. `OpenAiApiKey`
 
 ## Constructors
 
@@ -96,7 +194,7 @@ Additional configuration options.
 ### optionListHideAdditionalCheck
 
 ```ts
-optionListHideAdditionalCheck: (m: FormlyFieldConfig) => boolean;
+optionListHideAdditionalCheck: (m: FormlyFieldConfig) => boolean
 ```
 
 Additional hide predicate evaluated for every settings UI field.
@@ -123,6 +221,36 @@ readonly static defaultTimeoutInMs: number;
 Fallback timeout in milliseconds used for all proxy requests when no per-request timeout is specified.
 
 ## Accessors
+
+### customKey
+
+#### Get Signature
+
+```ts
+get customKey(): string;
+```
+
+##### Returns
+
+`string`
+
+#### Set Signature
+
+```ts
+set customKey(value: string): void;
+```
+
+##### Parameters
+
+| Parameter | Type     |
+| --------- | -------- |
+| `value`   | `string` |
+
+##### Returns
+
+`void`
+
+---
 
 ### customKeyHandler
 
@@ -243,18 +371,6 @@ set settings(value: Required<BackendConfiguration>): void;
 
 ## Methods
 
-### addAndConfigurePresetKey()
-
-```ts
-addAndConfigurePresetKey(): Promise<string>;
-```
-
-#### Returns
-
-`Promise`\<`string`\>
-
----
-
 ### getStatus()
 
 ```ts
@@ -317,6 +433,24 @@ If no key or provider is found for the configured shared secret, or if the token
 
 ---
 
+### openKeyManager()
+
+```ts
+openKeyManager(): Promise<void>;
+```
+
+Opens the key manager dialog for editing and updating the custom key.
+If the dialog is closed without providing a key, the method returns undefined.
+If a valid key is provided, it updates the custom key, scope, and cached token information.
+
+#### Returns
+
+`Promise`\<`void`\>
+
+A promise that resolves when the key manager operation is complete.
+
+---
+
 ### request()
 
 ```ts
@@ -324,7 +458,8 @@ request(
    url: string,
    params?: Omit<RequestInit, "credentials" | "mode">,
    retryNumber?: number | boolean,
-timeoutMs?: number): Promise<Response>;
+   timeoutMs?: number
+): Promise<Response>;
 ```
 
 Makes an authenticated request to the specified URL through the backend proxy.
@@ -337,7 +472,7 @@ with an increased timeout (1.75×).
 | -------------- | ---------------------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------- |
 | `url`          | `string`                                             | `undefined`   | The URL to request.                                                                                       |
 | `params?`      | `Omit`\<`RequestInit`, `"credentials"` \| `"mode"`\> | `...`         | Standard fetch options (defaults to a JSON GET request).                                                  |
-| `retryNumber?` | `number` \| `boolean`                                | `1`           | Number of retries on timeout. Pass `0` or `true` to disable retries. A boolean `false` is treated as `1`. |
+| `retryNumber?` | `number` \| `boolean`                                | `0`           | Number of retries on timeout. Pass `0` or `true` to disable retries. A boolean `false` is treated as `1`. |
 | `timeoutMs?`   | `number`                                             | `...`         | Timeout in milliseconds. Defaults to the connection's configured timeout.                                 |
 
 #### Returns
@@ -360,16 +495,17 @@ requestJson<T>(
    params?: Omit<RequestInit, "credentials" | "mode">,
    retryNumber?: number | boolean,
    timeoutMs?: number,
-returnContentOnError?: boolean): Promise<T>;
+   returnContentOnError?: boolean
+): Promise<T>;
 ```
 
 Makes an authenticated request and returns the parsed JSON response.
 
 #### Type Parameters
 
-| Type Parameter |
-| -------------- |
-| `T`            |
+| Type Parameter                    |
+| --------------------------------- |
+| <a id="type-parameter-t"></a> `T` |
 
 #### Parameters
 
@@ -377,7 +513,7 @@ Makes an authenticated request and returns the parsed JSON response.
 | ----------------------- | ---------------------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------- |
 | `url`                   | `string`                                             | `undefined`   | The URL to request.                                                                                        |
 | `params?`               | `Omit`\<`RequestInit`, `"credentials"` \| `"mode"`\> | `...`         | Standard fetch options (defaults to a JSON GET request).                                                   |
-| `retryNumber?`          | `number` \| `boolean`                                | `1`           | Number of retries on timeout. Pass `0` or `true` to disable retries.                                       |
+| `retryNumber?`          | `number` \| `boolean`                                | `0`           | Number of retries on timeout. Pass `0` or `true` to disable retries.                                       |
 | `timeoutMs?`            | `number`                                             | `...`         | Timeout in milliseconds. Defaults to the connection's configured timeout.                                  |
 | `returnContentOnError?` | `boolean`                                            | `false`       | When `true`, attempts to parse and return the JSON body even on non-success responses instead of throwing. |
 
@@ -459,7 +595,8 @@ Retrieves all secrets available to the current board for the given provider ID.
 static proxyRequest(
    url: string,
    token: string,
-params: Omit<RequestInit, "credentials" | "mode">): Promise<Response>;
+   params: Omit<RequestInit, "credentials" | "mode">
+): Promise<Response>;
 ```
 
 Forwards an authenticated HTTP request through the Alleo backend proxy.

@@ -17,16 +17,16 @@ identify themselves or display their name to users.
 
 ```typescript
 // Get widget display name
-const displayName = WidgetNameHelper.displayName;
-console.log("Widget:", displayName); // e.g., "AI Chat"
+const displayName = WidgetNameHelper.displayName
+console.log('Widget:', displayName) // e.g., "AI Chat"
 
 // Get widget ID (technical name)
-const widgetId = WidgetNameHelper.widgetId;
-console.log("ID:", widgetId); // e.g., "ai-chat"
+const widgetId = WidgetNameHelper.widgetId
+console.log('ID:', widgetId) // e.g., "ai-chat"
 
 // Create instance with preferred name
-const nameHelper = new WidgetNameHelper("custom-widget");
-console.log("Name:", nameHelper.name);
+const nameHelper = new WidgetNameHelper('custom-widget')
+console.log('Name:', nameHelper.name)
 ```
 
 ## Constructors

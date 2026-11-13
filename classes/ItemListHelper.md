@@ -17,29 +17,29 @@ widgets managing collections of user-defined items.
 
 ```typescript
 // Create a list of contacts
-const contactList = new ItemListHelper("contacts", {
-  label: "Contact List",
-  allowReordering: true,
-  allowImport: true,
-  elements: [
-    { key: "name", type: "input", props: { label: "Name", required: true } },
-    { key: "email", type: "input", props: { label: "Email", type: "email" } },
-    { key: "phone", type: "input", props: { label: "Phone" } },
-  ],
-  importSettings: {
-    fields: [
-      { name: "name", label: "Name" },
-      { name: "email", label: "Email" },
-      { name: "phone", label: "Phone" },
+const contactList = new ItemListHelper('contacts', {
+    label: 'Contact List',
+    allowReordering: true,
+    allowImport: true,
+    elements: [
+        { key: 'name', type: 'input', props: { label: 'Name', required: true } },
+        { key: 'email', type: 'input', props: { label: 'Email', type: 'email' } },
+        { key: 'phone', type: 'input', props: { label: 'Phone' } },
     ],
-  },
-  onListChangeCallback: (list) => {
-    console.log("List updated:", list.length, "items");
-  },
-});
+    importSettings: {
+        fields: [
+            { name: 'name', label: 'Name' },
+            { name: 'email', label: 'Email' },
+            { name: 'phone', label: 'Phone' },
+        ],
+    },
+    onListChangeCallback: (list) => {
+        console.log('List updated:', list.length, 'items')
+    },
+})
 
 // Get current list
-const items = contactList.list;
+const items = contactList.list
 ```
 
 ## Constructors
@@ -54,10 +54,10 @@ Creates an instance of ItemListHelper.
 
 #### Parameters
 
-| Parameter | Type                                                                | Description                           |
-| --------- | ------------------------------------------------------------------- | ------------------------------------- |
-| `key`     | `string`                                                            | The key used to store the list data.  |
-| `options` | [`ItemListHelperOptions`](../type-aliases/ItemListHelperOptions.md) | Configuration options for the helper. |
+| Parameter  | Type                                                                | Description                           |
+| ---------- | ------------------------------------------------------------------- | ------------------------------------- |
+| `key`      | `string`                                                            | The key used to store the list data.  |
+| `options?` | [`ItemListHelperOptions`](../type-aliases/ItemListHelperOptions.md) | Configuration options for the helper. |
 
 #### Returns
 
@@ -214,22 +214,22 @@ Error if the list is read-only.
 ### getFieldList()
 
 ```ts
-getFieldList<FieldType>(key?: string): FieldType[];
+getFieldList<FieldType = string>(key?: string): FieldType[];
 ```
 
 Gets a list of field values for a given key.
 
 #### Type Parameters
 
-| Type Parameter | Default type |
-| -------------- | ------------ |
-| `FieldType`    | `string`     |
+| Type Parameter                                    | Default type |
+| ------------------------------------------------- | ------------ |
+| <a id="type-parameter-fieldtype"></a> `FieldType` | `string`     |
 
 #### Parameters
 
 | Parameter | Type     | Description                           |
 | --------- | -------- | ------------------------------------- |
-| `key`     | `string` | The field key to retrieve values for. |
+| `key?`    | `string` | The field key to retrieve values for. |
 
 #### Returns
 
@@ -240,22 +240,22 @@ Gets a list of field values for a given key.
 ### getFieldListById()
 
 ```ts
-getFieldListById<FieldType>(key?: string): Record<string, FieldType>;
+getFieldListById<FieldType = string>(key?: string): Record<string, FieldType>;
 ```
 
 Gets a record of field values by item id for a given key.
 
 #### Type Parameters
 
-| Type Parameter | Default type |
-| -------------- | ------------ |
-| `FieldType`    | `string`     |
+| Type Parameter                                      | Default type |
+| --------------------------------------------------- | ------------ |
+| <a id="type-parameter-fieldtype-1"></a> `FieldType` | `string`     |
 
 #### Parameters
 
 | Parameter | Type     | Description                           |
 | --------- | -------- | ------------------------------------- |
-| `key`     | `string` | The field key to retrieve values for. |
+| `key?`    | `string` | The field key to retrieve values for. |
 
 #### Returns
 

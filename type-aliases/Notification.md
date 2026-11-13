@@ -8,11 +8,11 @@
 
 ```ts
 type Notification = {
-  image?: string;
-  text: string;
-  title?: string;
-  type?: string;
-};
+    image?: string
+    text: string
+    title?: string
+    type?: string
+}
 ```
 
 Configuration object for the content and appearance of a notification.
@@ -22,7 +22,7 @@ Configuration object for the content and appearance of a notification.
 ### image?
 
 ```ts
-optional image?: string;
+image?: string;
 ```
 
 Optional image URL displayed alongside the notification.
@@ -32,7 +32,7 @@ Optional image URL displayed alongside the notification.
 ### text
 
 ```ts
-text: string;
+text: string
 ```
 
 The main notification message (supports HTML content).
@@ -42,7 +42,7 @@ The main notification message (supports HTML content).
 ### title?
 
 ```ts
-optional title?: string;
+title?: string;
 ```
 
 Optional title displayed above the message text.
@@ -52,7 +52,7 @@ Optional title displayed above the message text.
 ### type?
 
 ```ts
-optional type?: string;
+type?: string;
 ```
 
 The notification type determining visual style (e.g., 'info').

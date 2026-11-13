@@ -7,5 +7,5 @@
 # Type Alias: CSVData
 
 ```ts
-type CSVData = string[][];
+type CSVData = string[][]
 ```

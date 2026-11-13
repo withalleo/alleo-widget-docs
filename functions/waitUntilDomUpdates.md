@@ -7,7 +7,7 @@
 # Function: waitUntilDomUpdates()
 
 ```ts
-function waitUntilDomUpdates(): Promise<void>;
+function waitUntilDomUpdates(): Promise<void>
 ```
 
 Waits for the browser to complete all pending DOM rendering and layout operations.
@@ -26,12 +26,12 @@ A promise that resolves after the DOM has fully updated and rendered.
 
 ```typescript
 // Modify DOM and wait for rendering
-element.textContent = "New text";
-await waitUntilDomUpdates();
-const height = element.offsetHeight; // Now accurate
+element.textContent = 'New text'
+await waitUntilDomUpdates()
+const height = element.offsetHeight // Now accurate
 
 // Ensure element is visible before interaction
-modal.style.display = "block";
-await waitUntilDomUpdates();
-modal.querySelector("button").focus();
+modal.style.display = 'block'
+await waitUntilDomUpdates()
+modal.querySelector('button').focus()
 ```

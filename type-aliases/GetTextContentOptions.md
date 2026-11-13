@@ -8,8 +8,8 @@
 
 ```ts
 type GetTextContentOptions = {
-  format?: Html | Text | Markdown;
-};
+    format?: Html | Text | Markdown
+}
 ```
 
 Options for getting text content.
@@ -19,7 +19,7 @@ Options for getting text content.
 ### format?
 
 ```ts
-optional format?:
+format?:
   | Html
   | Text
   | Markdown;

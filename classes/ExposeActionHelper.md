@@ -18,27 +18,27 @@ widgets need to coordinate or share data.
 ```typescript
 // Expose functions from a widget
 ExposeActionHelper.exposeActions([
-  {
-    name: "getData",
-    action: () => myData,
-  },
-  {
-    name: "updateValue",
-    action: (newValue: number) => (this.value = newValue),
-  },
-]);
+    {
+        name: 'getData',
+        action: () => myData,
+    },
+    {
+        name: 'updateValue',
+        action: (newValue: number) => (this.value = newValue),
+    },
+])
 
 // Call exposed function from another widget
-const targetWidget = BoardObjectHelper.getBoardObjectById(widgetId);
-const getData = ExposeActionHelper.getExposedFunction(targetWidget, "getData");
-const data = getData();
+const targetWidget = BoardObjectHelper.getBoardObjectById(widgetId)
+const getData = ExposeActionHelper.getExposedFunction(targetWidget, 'getData')
+const data = getData()
 
 // Send async message to widget
 ExposeActionHelper.sendAsyncMessage(targetWidget, {
-  type: "update",
-  function: "refresh",
-  data: [{ timestamp: Date.now() }],
-});
+    type: 'update',
+    function: 'refresh',
+    data: [{ timestamp: Date.now() }],
+})
 ```
 
 ## Constructors
@@ -86,16 +86,16 @@ callable by other widgets. Each exposed function can be invoked remotely by name
 ### getExposedFunction()
 
 ```ts
-static getExposedFunction<T>(widget: IBoardObject, functionName: string): T;
+static getExposedFunction<T extends AnyFunction>(widget: IBoardObject, functionName: string): T;
 ```
 
 Gets an exposed function from the widget by its name.
 
 #### Type Parameters
 
-| Type Parameter              |
-| --------------------------- |
-| `T` _extends_ `AnyFunction` |
+| Type Parameter                                            |
+| --------------------------------------------------------- |
+| <a id="type-parameter-t"></a> `T` _extends_ `AnyFunction` |
 
 #### Parameters
 
@@ -191,7 +191,8 @@ Will throw an error if no DOM is available.
 static sendAsyncMessage(
    functionName: string,
    type?: string,
-   args?: any): any;
+   args?: any
+): any;
 ```
 
 Sends an asynchronous message to connected widgets

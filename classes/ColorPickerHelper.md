@@ -17,26 +17,22 @@ variables and provides callbacks for color change events.
 
 ```typescript
 // Basic color picker for text color
-const textColorPicker = new ColorPickerHelper(
-  "textColor",
-  "--text-color",
-  "#ffffff",
-);
+const textColorPicker = new ColorPickerHelper('textColor', '--text-color', '#ffffff')
 
 // Color picker with custom palette and callback
 const bgColorPicker = new ColorPickerHelper(
-  "backgroundColor",
-  "--bg-color",
-  DefaultColors.background,
-  {
-    label: "Background Color",
-    icon: { icon: "fill-drip", set: "fas" },
-    palette: ColorPalette.Background,
-    includeTransparent: true,
-  },
-  ".widget-container",
-  (color) => console.log("Color changed to:", color),
-);
+    'backgroundColor',
+    '--bg-color',
+    DefaultColors.background,
+    {
+        label: 'Background Color',
+        icon: { icon: 'fill-drip', set: 'fas' },
+        palette: ColorPalette.Background,
+        includeTransparent: true,
+    },
+    '.widget-container',
+    (color) => console.log('Color changed to:', color),
+)
 ```
 
 ## Extended by
@@ -63,7 +59,8 @@ new ColorPickerHelper(
 }>,
    widgetContainerSelector?: string,
    callbackOnColorChange?: (color: string) => void,
-   displayColorPickerButtonOnInit?: boolean): ColorPickerHelper;
+   displayColorPickerButtonOnInit?: boolean
+): ColorPickerHelper;
 ```
 
 Creates a color picker with toolbar button and automatic color management.
@@ -93,7 +90,7 @@ Throws if the widget doesn't have a DOM (service widgets).
 ### color
 
 ```ts
-color: string;
+color: string
 ```
 
 The current color.
