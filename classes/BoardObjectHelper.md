@@ -16,21 +16,18 @@ container management. Essential for widgets that need to interact with other boa
 
 ```typescript
 // Get the current widget object
-const widget = BoardObjectHelper.thisWidget;
+const widget = BoardObjectHelper.thisWidget
 
 // Create a new text object
-const textId = await BoardObjectHelper.createTextObject("Hello World", {
-  x: 100,
-  y: 100,
-});
+const textId = await BoardObjectHelper.createTextObject('Hello World', { x: 100, y: 100 })
 
 // Add object to a container
-const container = BoardObjectHelper.getBoardObjectById(containerId);
-const object = BoardObjectHelper.getBoardObjectById(objectId);
-BoardObjectHelper.addObjectToContainer(container, object);
+const container = BoardObjectHelper.getBoardObjectById(containerId)
+const object = BoardObjectHelper.getBoardObjectById(objectId)
+BoardObjectHelper.addObjectToContainer(container, object)
 
 // Delete the current widget
-BoardObjectHelper.deleteMe();
+BoardObjectHelper.deleteMe()
 ```
 
 ## Constructors
@@ -46,6 +43,24 @@ new BoardObjectHelper(): BoardObjectHelper;
 `BoardObjectHelper`
 
 ## Accessors
+
+### canEdit
+
+#### Get Signature
+
+```ts
+get static canEdit(): boolean;
+```
+
+Whether the current user has edit permissions on the board.
+
+##### Returns
+
+`boolean`
+
+True if the current user can edit, false otherwise (also when unknown).
+
+---
 
 ### thisWidget
 
@@ -63,9 +78,9 @@ of its properties, position, size, and other attributes.
 ##### Example
 
 ```typescript
-const widget = BoardObjectHelper.thisWidget;
-console.log(widget.id, widget.type);
-const position = widget.getPosition();
+const widget = BoardObjectHelper.thisWidget
+console.log(widget.id, widget.type)
+const position = widget.getPosition()
 ```
 
 ##### Returns
@@ -101,14 +116,15 @@ will control the object's positioning and z-order.
 
 #### Throws
 
-Throws if container is not a Container type or if objects are invalid.
+Throws if container is not a Container type, if objects are invalid, if elem is the container
+itself, or if the user does not have edit permissions.
 
 #### Example
 
 ```typescript
-const container = BoardObjectHelper.getBoardObjectById(containerId);
-const textObject = BoardObjectHelper.getBoardObjectById(textId);
-BoardObjectHelper.addObjectToContainer(container, textObject);
+const container = BoardObjectHelper.getBoardObjectById(containerId)
+const textObject = BoardObjectHelper.getBoardObjectById(textId)
+BoardObjectHelper.addObjectToContainer(container, textObject)
 ```
 
 ---
@@ -119,22 +135,27 @@ BoardObjectHelper.addObjectToContainer(container, textObject);
 static addTags(
    object: RealIBoardObject,
    tags: string | string[],
-   replace?: boolean): void;
+   replace?: boolean
+): void;
 ```
 
-Adds tags to a board object.
+Adds tags to a board object. Tags that are already present are skipped.
 
 #### Parameters
 
-| Parameter | Type                                                    | Default value | Description                           |
-| --------- | ------------------------------------------------------- | ------------- | ------------------------------------- |
-| `object`  | [`RealIBoardObject`](../interfaces/RealIBoardObject.md) | `undefined`   | The board object.                     |
-| `tags`    | `string` \| `string`[]                                  | `undefined`   | The tags to add.                      |
-| `replace` | `boolean`                                               | `false`       | Whether to replace the existing tags. |
+| Parameter  | Type                                                    | Default value | Description                           |
+| ---------- | ------------------------------------------------------- | ------------- | ------------------------------------- |
+| `object`   | [`RealIBoardObject`](../interfaces/RealIBoardObject.md) | `undefined`   | The board object.                     |
+| `tags`     | `string` \| `string`[]                                  | `undefined`   | The tags to add.                      |
+| `replace?` | `boolean`                                               | `false`       | Whether to replace the existing tags. |
 
 #### Returns
 
 `void`
+
+#### Throws
+
+Will throw an error if the user does not have edit permissions.
 
 ---
 
@@ -147,14 +168,14 @@ static changeObjectContainerPosition(object: RealIBoardObject, position: number)
 Changes the z-order position of an object within its container's managed objects list.
 
 Reorders objects within a container, affecting their stacking order and layout position.
-The position is clamped to valid indices (0 to container length).
+The position is rounded; negative, too large, or non-finite positions move the object to the end.
 
 #### Parameters
 
-| Parameter  | Type                                                    | Description                                                      |
-| ---------- | ------------------------------------------------------- | ---------------------------------------------------------------- |
-| `object`   | [`RealIBoardObject`](../interfaces/RealIBoardObject.md) | The object to reposition within its container.                   |
-| `position` | `number`                                                | The new zero-based index position (will be rounded and clamped). |
+| Parameter  | Type                                                    | Description                                    |
+| ---------- | ------------------------------------------------------- | ---------------------------------------------- |
+| `object`   | [`RealIBoardObject`](../interfaces/RealIBoardObject.md) | The object to reposition within its container. |
+| `position` | `number`                                                | The new zero-based index position.             |
 
 #### Returns
 
@@ -162,16 +183,16 @@ The position is clamped to valid indices (0 to container length).
 
 #### Throws
 
-Throws if object is not in a container or is invalid.
+Throws if object is not in a container, is invalid, or if the user does not have edit permissions.
 
 #### Example
 
 ```typescript
 // Move object to front (position 0)
-BoardObjectHelper.changeObjectContainerPosition(object, 0);
+BoardObjectHelper.changeObjectContainerPosition(object, 0)
 
 // Move object to back
-BoardObjectHelper.changeObjectContainerPosition(object, 999);
+BoardObjectHelper.changeObjectContainerPosition(object, 999)
 ```
 
 ---
@@ -220,7 +241,8 @@ Will throw an error if the object is not a proper board object or the user does 
 static editStickyNoteContent(
    stickyNote: RealIBoardObject,
    text: string,
-   overwritePermissions?: boolean): void;
+   overwritePermissions?: boolean
+): void;
 ```
 
 Edits the content of a sticky note.
@@ -253,6 +275,8 @@ Programmatically updates the text content of a text object.
 
 Modifies a text object's content and fires the appropriate events to update
 the display and mark the object as modified. Only works on Text-type objects.
+Pass the raw template (placeholders are rendered by the object). Line breaks become spaces
+on objects that disallow line breaks.
 
 #### Parameters
 
@@ -267,13 +291,13 @@ the display and mark the object as modified. Only works on Text-type objects.
 
 #### Throws
 
-Throws if textObject is not valid or not a text object.
+Throws if textObject is not valid, not a text object, or if the user does not have edit permissions.
 
 #### Example
 
 ```typescript
-const textObj = BoardObjectHelper.getBoardObjectById(textId);
-BoardObjectHelper.editTextContent(textObj, "Updated text content");
+const textObj = BoardObjectHelper.getBoardObjectById(textId)
+BoardObjectHelper.editTextContent(textObj, 'Updated text content')
 ```
 
 ---
@@ -287,11 +311,13 @@ static getActionEffects(object: RealIBoardObject): {
 }[];
 ```
 
+Retrieves the action effects exposed by a board object.
+
 #### Parameters
 
-| Parameter | Type                                                    |
-| --------- | ------------------------------------------------------- |
-| `object`  | [`RealIBoardObject`](../interfaces/RealIBoardObject.md) |
+| Parameter | Type                                                    | Description       |
+| --------- | ------------------------------------------------------- | ----------------- |
+| `object`  | [`RealIBoardObject`](../interfaces/RealIBoardObject.md) | The board object. |
 
 #### Returns
 
@@ -299,6 +325,8 @@ static getActionEffects(object: RealIBoardObject): {
 `id`: `string`;
 `label`: `string`;
 \}[]
+
+The id and label of each action effect. Empty if the object exposes none.
 
 ---
 
@@ -328,9 +356,9 @@ The board object, or undefined if not found.
 #### Example
 
 ```typescript
-const object = BoardObjectHelper.getBoardObjectById("abc-123-def");
+const object = BoardObjectHelper.getBoardObjectById('abc-123-def')
 if (object) {
-  console.log(object.type, object.getPosition());
+    console.log(object.type, object.getPosition())
 }
 ```
 
@@ -362,9 +390,9 @@ The container's ID, or undefined if object is not in a container.
 #### Example
 
 ```typescript
-const containerId = BoardObjectHelper.getContainerIdOfObject(object);
+const containerId = BoardObjectHelper.getContainerIdOfObject(object)
 if (containerId) {
-  const container = BoardObjectHelper.getBoardObjectById(containerId);
+    const container = BoardObjectHelper.getBoardObjectById(containerId)
 }
 ```
 
@@ -412,8 +440,8 @@ Array of managed object IDs.
 #### Example
 
 ```typescript
-const objectIds = BoardObjectHelper.getContainerObjectIds(container);
-console.log(`Container manages ${objectIds.length} objects`);
+const objectIds = BoardObjectHelper.getContainerObjectIds(container)
+console.log(`Container manages ${objectIds.length} objects`)
 ```
 
 ---
@@ -445,10 +473,10 @@ Array of managed board objects.
 #### Example
 
 ```typescript
-const objects = BoardObjectHelper.getContainerObjects(container);
+const objects = BoardObjectHelper.getContainerObjects(container)
 objects.forEach((obj) => {
-  console.log(obj.type, obj.id);
-});
+    console.log(obj.type, obj.id)
+})
 ```
 
 ---
@@ -497,19 +525,19 @@ The container object.
 static getElementsByTag(tag: string): RealIBoardObject[];
 ```
 
-Retrieves the current widget's container.
+Retrieves all board objects that have the given tag.
 
 #### Parameters
 
-| Parameter | Type     |
-| --------- | -------- |
-| `tag`     | `string` |
+| Parameter | Type     | Description          |
+| --------- | -------- | -------------------- |
+| `tag`     | `string` | The tag to look for. |
 
 #### Returns
 
 [`RealIBoardObject`](../interfaces/RealIBoardObject.md)[]
 
-The container object.
+The board objects with the tag.
 
 ---
 
@@ -545,10 +573,10 @@ Retrieves the display name of a board object.
 
 #### Parameters
 
-| Parameter     | Type                                                    | Default value | Description                                                                    |
-| ------------- | ------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------ |
-| `object`      | [`RealIBoardObject`](../interfaces/RealIBoardObject.md) | `undefined`   | The board object.                                                              |
-| `addTypeName` | `boolean`                                               | `true`        | Whether to include the type name in the display name. (eg. "Sticky Note: XXX") |
+| Parameter      | Type                                                    | Default value | Description                                                                    |
+| -------------- | ------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------ |
+| `object`       | [`RealIBoardObject`](../interfaces/RealIBoardObject.md) | `undefined`   | The board object.                                                              |
+| `addTypeName?` | `boolean`                                               | `true`        | Whether to include the type name in the display name. (eg. "Sticky Note: XXX") |
 
 #### Returns
 
@@ -584,8 +612,8 @@ The title/caption text, or undefined if not available.
 #### Example
 
 ```typescript
-const title = BoardObjectHelper.getObjectTitle(widget);
-console.log(`Widget title: ${title}`);
+const title = BoardObjectHelper.getObjectTitle(widget)
+console.log(`Widget title: ${title}`)
 ```
 
 ---
@@ -656,6 +684,28 @@ The name of the board object type. (eg. Sticky Note, Notepad, Widget, Image, etc
 
 ---
 
+### getWidgetFlags()
+
+```ts
+static getWidgetFlags(object: RealIBoardObject): Record<WidgetFlag, boolean>;
+```
+
+Retrieves the widget flags of a board object.
+
+#### Parameters
+
+| Parameter | Type                                                    | Description |
+| --------- | ------------------------------------------------------- | ----------- |
+| `object`  | [`RealIBoardObject`](../interfaces/RealIBoardObject.md) | -           |
+
+#### Returns
+
+`Record`\<[`WidgetFlag`](../type-aliases/WidgetFlag.md), `boolean`\>
+
+A record of widget flags and their boolean values.
+
+---
+
 ### isTheSameWidget()
 
 ```ts
@@ -697,6 +747,10 @@ Moves a board object to a new position based on coordinates.
 
 `void`
 
+#### Throws
+
+Will throw an error if the user does not have edit permissions.
+
 ---
 
 ### moveObjectCenterToCoordinate()
@@ -705,16 +759,22 @@ Moves a board object to a new position based on coordinates.
 static moveObjectCenterToCoordinate(object: RealIBoardObject, position: Position): void;
 ```
 
+Moves a board object so that its center is at the given coordinate. Takes the object's origin and rotation into account.
+
 #### Parameters
 
-| Parameter  | Type                                                    |
-| ---------- | ------------------------------------------------------- |
-| `object`   | [`RealIBoardObject`](../interfaces/RealIBoardObject.md) |
-| `position` | `Position`                                              |
+| Parameter  | Type                                                    | Description                                            |
+| ---------- | ------------------------------------------------------- | ------------------------------------------------------ |
+| `object`   | [`RealIBoardObject`](../interfaces/RealIBoardObject.md) | The board object to move.                              |
+| `position` | `Position`                                              | The coordinate the object's center should be moved to. |
 
 #### Returns
 
 `void`
+
+#### Throws
+
+Will throw an error if the user does not have edit permissions.
 
 ---
 
@@ -756,14 +816,14 @@ the container's managed objects list. Does nothing if the object is not in the c
 
 #### Throws
 
-Throws if container or elem are not valid board objects.
+Throws if container or elem are not valid board objects, or if the user does not have edit permissions.
 
 #### Example
 
 ```typescript
-const container = BoardObjectHelper.getBoardObjectById(containerId);
-const textObject = BoardObjectHelper.getBoardObjectById(textId);
-BoardObjectHelper.removeObjectFromContainer(container, textObject);
+const container = BoardObjectHelper.getBoardObjectById(containerId)
+const textObject = BoardObjectHelper.getBoardObjectById(textId)
+BoardObjectHelper.removeObjectFromContainer(container, textObject)
 ```
 
 ---
@@ -787,6 +847,10 @@ Removes tags from a board object.
 
 `void`
 
+#### Throws
+
+Will throw an error if the user does not have edit permissions.
+
 ---
 
 ### triggerActionEffect()
@@ -795,13 +859,19 @@ Removes tags from a board object.
 static triggerActionEffect(object: RealIBoardObject, effectId: string): Promise<void>;
 ```
 
+Triggers an action effect of a board object.
+
 #### Parameters
 
-| Parameter  | Type                                                    |
-| ---------- | ------------------------------------------------------- |
-| `object`   | [`RealIBoardObject`](../interfaces/RealIBoardObject.md) |
-| `effectId` | `string`                                                |
+| Parameter  | Type                                                    | Description                             |
+| ---------- | ------------------------------------------------------- | --------------------------------------- |
+| `object`   | [`RealIBoardObject`](../interfaces/RealIBoardObject.md) | The board object.                       |
+| `effectId` | `string`                                                | The id of the action effect to trigger. |
 
 #### Returns
 
 `Promise`\<`void`\>
+
+#### Throws
+
+Will throw an error if the action effect is not found, or if the effect's callback throws.

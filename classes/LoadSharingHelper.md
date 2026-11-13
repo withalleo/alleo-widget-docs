@@ -19,21 +19,21 @@ across all active sessions.
 ```typescript
 // Only one widget instance will fetch weather data
 const weatherUpdater = new LoadSharingHelper(
-  (lastUpdateTime) => {
-    console.log("I am the leader, fetching weather data");
-    fetchWeatherData().then((data) => {
-      // Share data via shared variable
-      haptic.setDataField("weatherData", data, false);
-    });
-  },
-  60000, // Check every 60 seconds
-  70000, // Take over if leader hasn't updated in 70 seconds
-  "weatherUpdateLock",
-);
+    (lastUpdateTime) => {
+        console.log('I am the leader, fetching weather data')
+        fetchWeatherData().then((data) => {
+            // Share data via shared variable
+            haptic.setDataField('weatherData', data, false)
+        })
+    },
+    60000, // Check every 60 seconds
+    70000, // Take over if leader hasn't updated in 70 seconds
+    'weatherUpdateLock',
+)
 
 // Check if this instance is the leader
 if (weatherUpdater.isResponsible) {
-  console.log("I am managing updates");
+    console.log('I am managing updates')
 }
 ```
 
@@ -46,7 +46,8 @@ new LoadSharingHelper(
    callback: (lastEntryRelativeTime?: number) => void,
    checkInterval?: number,
    takeOverTimeout?: number,
-   dataFieldName?: string): LoadSharingHelper;
+   dataFieldName?: string
+): LoadSharingHelper;
 ```
 
 Creates a LoadSharingHelper for coordinated task execution across widget instances.
@@ -135,10 +136,10 @@ Restarts the timer with a new interval and takeover timeout.
 
 #### Parameters
 
-| Parameter         | Type     | Default value | Description                                                           |
-| ----------------- | -------- | ------------- | --------------------------------------------------------------------- |
-| `interval`        | `number` | `undefined`   | The new interval in milliseconds to check the lock status.            |
-| `takeOverTimeOut` | `number` | `...`         | The new timeout in milliseconds to take over the lock if not updated. |
+| Parameter          | Type     | Default value | Description                                                           |
+| ------------------ | -------- | ------------- | --------------------------------------------------------------------- |
+| `interval?`        | `number` | `undefined`   | The new interval in milliseconds to check the lock status.            |
+| `takeOverTimeOut?` | `number` | `...`         | The new timeout in milliseconds to take over the lock if not updated. |
 
 #### Returns
 

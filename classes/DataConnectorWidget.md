@@ -4,7 +4,7 @@
 
 [@withalleo/alleo-widget](../globals.md) / DataConnectorWidget
 
-# Class: DataConnectorWidget\<SharedVariableStructure\>
+# Class: DataConnectorWidget\<SharedVariableStructure _extends_ `Record`\<`string`, `any`\>\>
 
 Base class for widgets that provide data import/export and act as data sources for other widgets.
 
@@ -19,16 +19,16 @@ and the metadata getters (`implemented`, `length`, `widgetName`, `widgetDescript
 
 ## Type Parameters
 
-| Type Parameter            | Description                                                     |
-| ------------------------- | --------------------------------------------------------------- |
-| `SharedVariableStructure` | Structure of the widget's shared variables stored on the board. |
+| Type Parameter                                                                                                      | Description                                                     |
+| ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| <a id="type-parameter-sharedvariablestructure"></a> `SharedVariableStructure` _extends_ `Record`\<`string`, `any`\> | Structure of the widget's shared variables stored on the board. |
 
 ## Constructors
 
 ### Constructor
 
 ```ts
-new DataConnectorWidget<SharedVariableStructure>(defaultSharedVariables?: Partial<SharedVariableStructure>): DataConnectorWidget<SharedVariableStructure>;
+new DataConnectorWidget<SharedVariableStructure extends Record<string, any>>(defaultSharedVariables?: Partial<SharedVariableStructure>): DataConnectorWidget<SharedVariableStructure>;
 ```
 
 Creates a data connector widget.
@@ -41,9 +41,9 @@ The constructor:
 
 #### Parameters
 
-| Parameter                | Type                                   | Description                                                |
-| ------------------------ | -------------------------------------- | ---------------------------------------------------------- |
-| `defaultSharedVariables` | `Partial`\<`SharedVariableStructure`\> | Optional initial values for the widget's shared variables. |
+| Parameter                 | Type                                   | Description                                                |
+| ------------------------- | -------------------------------------- | ---------------------------------------------------------- |
+| `defaultSharedVariables?` | `Partial`\<`SharedVariableStructure`\> | Optional initial values for the widget's shared variables. |
 
 #### Returns
 
@@ -58,8 +58,10 @@ The constructor:
 ### dom
 
 ```ts
-protected dom: HTMLDivElement = null;
+readonly dom: HTMLDivElement = null;
 ```
+
+The widget container element, or null for service widgets.
 
 #### Inherited from
 
@@ -90,7 +92,7 @@ Helper responsible for keeping the visible widget name in sync.
 ### onChangeCallbacks
 
 ```ts
-onChangeCallbacks: () => void[] = [];
+onChangeCallbacks: (() => void)[] = [];
 ```
 
 Optional callbacks that run when the widget's data changes.
@@ -104,8 +106,10 @@ Optional callbacks that run when the widget's data changes.
 ### shared
 
 ```ts
-protected shared: Partial<SharedVariableStructure>;
+readonly shared: Partial<SharedVariableStructure>;
 ```
+
+Shared variables, synced across all instances. Falls back to the defaults for unset values.
 
 #### Inherited from
 
@@ -113,18 +117,39 @@ protected shared: Partial<SharedVariableStructure>;
 
 ---
 
+### widgetContainerSelector
+
+```ts
+readonly widgetContainerSelector: string;
+```
+
+CSS selector of the widget container, or undefined for service widgets.
+
+#### Inherited from
+
+[`AlleoWidget`](AlleoWidget.md).[`widgetContainerSelector`](AlleoWidget.md#widgetcontainerselector)
+
+---
+
 ### widgetStatus
 
 ```ts
 protected widgetStatus: {
+  creation: boolean;
   loaded: boolean;
 };
+```
+
+#### creation
+
+```ts
+creation: boolean
 ```
 
 #### loaded
 
 ```ts
-loaded: boolean;
+loaded: boolean
 ```
 
 #### Inherited from
@@ -136,12 +161,28 @@ loaded: boolean;
 ### api
 
 ```ts
-static api: IWidgetServiceApi = haptic;
+static api: IWidgetApi | IWidgetServiceApi = haptic;
 ```
+
+The global `haptic` widget API.
 
 #### Inherited from
 
 [`AlleoWidget`](AlleoWidget.md).[`api`](AlleoWidget.md#api)
+
+---
+
+### widgetFlagCollectionFieldName
+
+```ts
+readonly static widgetFlagCollectionFieldName: string = 'WidgetFlags';
+```
+
+Name of the data field that stores the widget flags.
+
+#### Inherited from
+
+[`AlleoWidget`](AlleoWidget.md).[`widgetFlagCollectionFieldName`](AlleoWidget.md#widgetflagcollectionfieldname)
 
 ---
 
@@ -261,6 +302,55 @@ Subclasses should override this to provide a more specific name.
 
 `string`
 
+---
+
+### creation
+
+#### Get Signature
+
+```ts
+get static creation(): boolean;
+```
+
+Indicates whether the widget is being created and loaded for the first time.
+
+Only true on the client that created the widget, and only until the widget is unloaded for the first time
+or any of its settings dialogs is closed (saved or cancelled).
+
+Cancellable by the widget or other widgets to skip configuration.
+
+##### Returns
+
+`boolean`
+
+True during the creation phase, false otherwise.
+
+#### Inherited from
+
+[`AlleoWidget`](AlleoWidget.md).[`creation`](AlleoWidget.md#creation)
+
+---
+
+### widgetFlags
+
+#### Get Signature
+
+```ts
+get static widgetFlags(): Record<WidgetFlag, boolean>;
+```
+
+Returns a copy of the current widget's flags.
+
+##### Returns
+
+`Record`\<[`WidgetFlag`](../type-aliases/WidgetFlag.md), `boolean`\>
+
+A copy of the flags object, mapping each flag to its value.
+
+#### Inherited from
+
+[`AlleoWidget`](AlleoWidget.md).[`widgetFlags`](AlleoWidget.md#widgetflags)
+
 ## Methods
 
 ### append()
@@ -356,8 +446,8 @@ destroy(): void | Promise<void>;
 
 Lifecycle method called when the widget instance is being destroyed.
 
-This method is invoked when the widget is unloaded from memory (e.g., when navigating away from the board
-or when the widget needs to be reloaded). This is NOT called when the widget object is deleted from the board.
+This method is invoked every time the widget is unloaded from memory (e.g., when navigating away from the board,
+when the widget is reloaded or unloaded off-screen), not just when the widget object is deleted from the board.
 Override this method to perform cleanup tasks such as unsubscribing from observables, clearing timers,
 or releasing resources.
 
@@ -376,7 +466,7 @@ Can return a Promise for async cleanup operations.
 ### domSelect()
 
 ```ts
-protected domSelect<HTMLElementType>(query: string): HTMLElementType;
+protected domSelect<HTMLElementType extends HTMLElement = HTMLElement>(query: string): HTMLElementType;
 ```
 
 Queries for a DOM element within the widget container using a CSS selector.
@@ -386,9 +476,9 @@ preventing accidental selection of elements outside the widget.
 
 #### Type Parameters
 
-| Type Parameter                            | Default type  | Description                                                                 |
-| ----------------------------------------- | ------------- | --------------------------------------------------------------------------- |
-| `HTMLElementType` _extends_ `HTMLElement` | `HTMLElement` | The expected HTML element type (e.g., HTMLButtonElement, HTMLInputElement). |
+| Type Parameter                                                                        | Default type  | Description                                                                 |
+| ------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------------------------------- |
+| <a id="type-parameter-htmlelementtype"></a> `HTMLElementType` _extends_ `HTMLElement` | `HTMLElement` | The expected HTML element type (e.g., HTMLButtonElement, HTMLInputElement). |
 
 #### Parameters
 
@@ -409,8 +499,8 @@ Throws if the widget doesn't have a DOM.
 #### Example
 
 ```typescript
-const button = this.domSelect<HTMLButtonElement>(".my-button");
-button.addEventListener("click", () => console.log("Clicked!"));
+const button = this.domSelect<HTMLButtonElement>('.my-button')
+button.addEventListener('click', () => console.log('Clicked!'))
 ```
 
 #### Inherited from
@@ -453,10 +543,10 @@ Optionally triggers a download for the current user.
 
 #### Parameters
 
-| Parameter  | Type      | Default value     | Description                                                 |
-| ---------- | --------- | ----------------- | ----------------------------------------------------------- |
-| `name`     | `string`  | `'Exported data'` | Base name to use for the exported file (without extension). |
-| `download` | `boolean` | `true`            | When `true`, also downloads the file to the local machine.  |
+| Parameter   | Type      | Default value     | Description                                                 |
+| ----------- | --------- | ----------------- | ----------------------------------------------------------- |
+| `name?`     | `string`  | `'Exported data'` | Base name to use for the exported file (without extension). |
+| `download?` | `boolean` | `true`            | When `true`, also downloads the file to the local machine.  |
 
 #### Returns
 
@@ -480,9 +570,9 @@ This method relies on `export` and enforces `lineLimit` when it is greater than 
 
 #### Parameters
 
-| Parameter      | Type     | Default value | Description                                              |
-| -------------- | -------- | ------------- | -------------------------------------------------------- |
-| `recordNumber` | `number` | `0`           | Zero-based index of the record to read. Defaults to `0`. |
+| Parameter       | Type     | Default value | Description                                              |
+| --------------- | -------- | ------------- | -------------------------------------------------------- |
+| `recordNumber?` | `number` | `0`           | Zero-based index of the record to read. Defaults to `0`. |
 
 #### Returns
 
@@ -553,6 +643,59 @@ Subclasses can override this to hook into the lifecycle, but should usually call
 
 ---
 
+### justCreated()
+
+```ts
+justCreated(): void | Promise<void>;
+```
+
+One-time setup on creation, on the creating client only.
+
+Runs after the widget constructor has finished.
+
+For optional UI (eg. settings dialog) use `justCreatedOptionalUI()`.
+
+#### Returns
+
+`void` \| `Promise`\<`void`\>
+
+Can return a Promise for async initialization operations.
+
+#### Inherited from
+
+[`AlleoWidget`](AlleoWidget.md).[`justCreated`](AlleoWidget.md#justcreated)
+
+---
+
+### justCreatedOptionalUI()
+
+```ts
+justCreatedOptionalUI(): void | Promise<void>;
+```
+
+Shows optional UI (e.g. the settings dialog) about 1 s after creation, on the creating client only.
+
+Skipped if
+
+- the widget was unloaded or deleted
+- the widget already has the "widget-initially-configured" flag (e.g. a settings dialog was closed,
+  or another widget set it to skip configuration)
+
+Never put required setup here; use `justCreated()` instead.
+Errors are caught and logged.
+
+#### Returns
+
+`void` \| `Promise`\<`void`\>
+
+Can return a Promise for async UI operations.
+
+#### Inherited from
+
+[`AlleoWidget`](AlleoWidget.md).[`justCreatedOptionalUI`](AlleoWidget.md#justcreatedoptionalui)
+
+---
+
 ### reset()
 
 ```ts
@@ -600,8 +743,8 @@ Throws if the widget doesn't have a DOM (e.g., when used in a service context).
 #### Example
 
 ```typescript
-this.setContainerClass("active", true); // Adds 'active' class, removes 'not-active'
-this.setContainerClass("active", false); // Removes 'active' class, adds 'not-active'
+this.setContainerClass('active', true) // Adds 'active' class, removes 'not-active'
+this.setContainerClass('active', false) // Removes 'active' class, adds 'not-active'
 ```
 
 #### Inherited from
@@ -659,6 +802,8 @@ call into this connector and listen to its events.
 protected updateDomStatus(): void;
 ```
 
+Syncs the container's pointer events and design-mode styling with the current interactibility and design mode.
+
 #### Returns
 
 `void`
@@ -679,16 +824,42 @@ Checks if a board object represents a DataConnector widget and, optionally, if i
 
 #### Parameters
 
-| Parameter                | Type                                                              | Default value | Description                                               |
-| ------------------------ | ----------------------------------------------------------------- | ------------- | --------------------------------------------------------- |
-| `object`                 | [`RealIBoardObject`](../interfaces/RealIBoardObject.md)           | `undefined`   | Board object to check.                                    |
-| `actionsRequiredSupport` | [`DataConnectorAction`](../enumerations/DataConnectorAction.md)[] | `[]`          | Actions that must be supported for the object to qualify. |
+| Parameter                 | Type                                                              | Default value | Description                                               |
+| ------------------------- | ----------------------------------------------------------------- | ------------- | --------------------------------------------------------- |
+| `object`                  | [`RealIBoardObject`](../interfaces/RealIBoardObject.md)           | `undefined`   | Board object to check.                                    |
+| `actionsRequiredSupport?` | [`DataConnectorAction`](../enumerations/DataConnectorAction.md)[] | `[]`          | Actions that must be supported for the object to qualify. |
 
 #### Returns
 
 `boolean`
 
 `true` when the object is marked as a data connector and supports at least one of the requested actions.
+
+---
+
+### isWidgetFlagSet()
+
+```ts
+static isWidgetFlagSet(flag: WidgetFlag): boolean;
+```
+
+Checks if a specific widget flag is set.
+
+#### Parameters
+
+| Parameter | Type                                          | Description               |
+| --------- | --------------------------------------------- | ------------------------- |
+| `flag`    | [`WidgetFlag`](../type-aliases/WidgetFlag.md) | The widget flag to check. |
+
+#### Returns
+
+`boolean`
+
+True if the flag is set, false otherwise.
+
+#### Inherited from
+
+[`AlleoWidget`](AlleoWidget.md).[`isWidgetFlagSet`](AlleoWidget.md#iswidgetflagset)
 
 ---
 
@@ -713,3 +884,28 @@ This is mostly used by widgets when exporting data for the user.
 `Promise`\<`StorageNodeCreatedResponseDto`\>
 
 The uploaded file node returned by the board service.
+
+---
+
+### setWidgetFlag()
+
+```ts
+static setWidgetFlag(flag: WidgetFlag, flagValue?: boolean): void;
+```
+
+Sets a widget flag. If the flag is already set to the desired value, no action is taken.
+
+#### Parameters
+
+| Parameter    | Type                                          | Default value | Description                                                                        |
+| ------------ | --------------------------------------------- | ------------- | ---------------------------------------------------------------------------------- |
+| `flag`       | [`WidgetFlag`](../type-aliases/WidgetFlag.md) | `undefined`   | The widget flag to set.                                                            |
+| `flagValue?` | `boolean`                                     | `true`        | The value to set the flag to. Defaults to true. False can be used to unset a flag. |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`AlleoWidget`](AlleoWidget.md).[`setWidgetFlag`](AlleoWidget.md#setwidgetflag)

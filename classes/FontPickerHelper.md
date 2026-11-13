@@ -17,22 +17,22 @@ text styling needs.
 
 ```typescript
 // Basic font picker with defaults
-const fontPicker = new FontPickerHelper();
+const fontPicker = new FontPickerHelper()
 
 // Custom font picker with callback
-const customFontPicker = new FontPickerHelper("myFontHandle", "--custom-font", {
-  label: "Choose Font",
-  defaultFont: "Arial, sans-serif",
-  widgetContainerSelector: ".content",
-  callbackOnFontChange: (font) => {
-    console.log("Font changed to:", font);
-    updateTextElements(font);
-  },
-  displayFontPickerButtonOnInit: true,
-});
+const customFontPicker = new FontPickerHelper('myFontHandle', '--custom-font', {
+    label: 'Choose Font',
+    defaultFont: 'Arial, sans-serif',
+    widgetContainerSelector: '.content',
+    callbackOnFontChange: (font) => {
+        console.log('Font changed to:', font)
+        updateTextElements(font)
+    },
+    displayFontPickerButtonOnInit: true,
+})
 
 // Access current font
-console.log("Current font:", fontPicker.font);
+console.log('Current font:', fontPicker.font)
 ```
 
 ## Constructors
@@ -43,7 +43,8 @@ console.log("Current font:", fontPicker.font);
 new FontPickerHelper(
    handle?: string,
    CSSVariable?: string,
-   fontPickerSettings?: FontPickerSettings): FontPickerHelper;
+   fontPickerSettings?: FontPickerSettings
+): FontPickerHelper;
 ```
 
 Creates a FontPickerHelper instance with font selection UI.
@@ -72,7 +73,7 @@ Throws if widget doesn't have a DOM (service widgets not supported).
 ### font
 
 ```ts
-font: string;
+font: string
 ```
 
 ---

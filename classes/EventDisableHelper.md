@@ -16,29 +16,22 @@ temporarily prevent default browser behaviors. Stores and restores original even
 ## Example
 
 ```typescript
-const element = document.querySelector(".interactive");
+const element = document.querySelector('.interactive')
 
 // Disable all pointer events
-const pointerDisabler = new EventDisableHelper(
-  element,
-  EventDisableHelper.POINTER_EVENTS,
-);
+const pointerDisabler = new EventDisableHelper(element, EventDisableHelper.POINTER_EVENTS)
 
 // Disable scroll events with auto-management
-const scrollDisabler = new EventDisableHelper(
-  element,
-  EventDisableHelper.SCROLL_EVENTS,
-  { autoManage: true },
-);
+const scrollDisabler = new EventDisableHelper(element, EventDisableHelper.SCROLL_EVENTS, { autoManage: true })
 
 // Manually control event disabling
-const customDisabler = new EventDisableHelper(element, ["click", "dblclick"], {
-  autoManage: false,
-  callback: (e) => console.log("Event prevented:", e.type),
-});
-customDisabler.disable();
+const customDisabler = new EventDisableHelper(element, ['click', 'dblclick'], {
+    autoManage: false,
+    callback: (e) => console.log('Event prevented:', e.type),
+})
+customDisabler.disable()
 // ... do work ...
-customDisabler.enable();
+customDisabler.enable()
 ```
 
 ## Constructors
@@ -49,18 +42,19 @@ customDisabler.enable();
 new EventDisableHelper(
    element?: HTMLElement | Window,
    events?: string[],
-   options?: EventDisableHelperOptions): EventDisableHelper;
+   options?: EventDisableHelperOptions
+): EventDisableHelper;
 ```
 
 Constructor for EventDisableHelper.
 
 #### Parameters
 
-| Parameter | Type                                                                        | Default value                       | Description                                              |
-| --------- | --------------------------------------------------------------------------- | ----------------------------------- | -------------------------------------------------------- |
-| `element` | `HTMLElement` \| `Window`                                                   | `...`                               | The HTML element or window to which events are attached. |
-| `events`  | `string`[]                                                                  | `EventDisableHelper.POINTER_EVENTS` | List of events to be managed.                            |
-| `options` | [`EventDisableHelperOptions`](../type-aliases/EventDisableHelperOptions.md) | `{}`                                | Options for the EventDisableHelper.                      |
+| Parameter  | Type                                                                        | Default value                       | Description                                              |
+| ---------- | --------------------------------------------------------------------------- | ----------------------------------- | -------------------------------------------------------- |
+| `element?` | `HTMLElement` \| `Window`                                                   | `...`                               | The HTML element or window to which events are attached. |
+| `events?`  | `string`[]                                                                  | `EventDisableHelper.POINTER_EVENTS` | List of events to be managed.                            |
+| `options?` | [`EventDisableHelperOptions`](../type-aliases/EventDisableHelperOptions.md) | `{}`                                | Options for the EventDisableHelper.                      |
 
 #### Returns
 
@@ -71,7 +65,7 @@ Constructor for EventDisableHelper.
 ### disabled
 
 ```ts
-disabled: boolean = false;
+disabled: boolean = false
 ```
 
 Flag indicating whether events are disabled.
@@ -216,20 +210,21 @@ disableEvents(
    preventDefault?: boolean,
    stopPropagation?: boolean,
    stopImmediatePropagation?: boolean,
-   capture?: boolean): void;
+   capture?: boolean
+): void;
 ```
 
 Disables events on the element.
 
 #### Parameters
 
-| Parameter                  | Type       | Default value | Description                                            |
-| -------------------------- | ---------- | ------------- | ------------------------------------------------------ |
-| `events`                   | `string`[] | `...`         | List of events to be disabled.                         |
-| `preventDefault`           | `boolean`  | `false`       | Whether to call preventDefault on the event.           |
-| `stopPropagation`          | `boolean`  | `true`        | Whether to call stopPropagation on the event.          |
-| `stopImmediatePropagation` | `boolean`  | `false`       | Whether to call stopImmediatePropagation on the event. |
-| `capture`                  | `boolean`  | `false`       | Whether to capture the event.                          |
+| Parameter                   | Type       | Default value | Description                                            |
+| --------------------------- | ---------- | ------------- | ------------------------------------------------------ |
+| `events?`                   | `string`[] | `...`         | List of events to be disabled.                         |
+| `preventDefault?`           | `boolean`  | `false`       | Whether to call preventDefault on the event.           |
+| `stopPropagation?`          | `boolean`  | `true`        | Whether to call stopPropagation on the event.          |
+| `stopImmediatePropagation?` | `boolean`  | `false`       | Whether to call stopImmediatePropagation on the event. |
+| `capture?`                  | `boolean`  | `false`       | Whether to capture the event.                          |
 
 #### Returns
 
@@ -249,7 +244,7 @@ Enables events on the element.
 
 | Parameter | Type       | Description                   |
 | --------- | ---------- | ----------------------------- |
-| `events`  | `string`[] | List of events to be enabled. |
+| `events?` | `string`[] | List of events to be enabled. |
 
 #### Returns
 
@@ -279,20 +274,21 @@ static cancelEvent(
    preventDefault?: boolean,
    stopPropagation?: boolean,
    stopImmediatePropagation?: boolean,
-   callback?: (e: Event) => void): void;
+   callback?: (e: Event) => void
+): void;
 ```
 
 Cancels an event.
 
 #### Parameters
 
-| Parameter                  | Type                     | Default value | Description                                            |
-| -------------------------- | ------------------------ | ------------- | ------------------------------------------------------ |
-| `e`                        | `Event`                  | `undefined`   | The event to be cancelled.                             |
-| `preventDefault`           | `boolean`                | `true`        | Whether to call preventDefault on the event.           |
-| `stopPropagation`          | `boolean`                | `true`        | Whether to call stopPropagation on the event.          |
-| `stopImmediatePropagation` | `boolean`                | `true`        | Whether to call stopImmediatePropagation on the event. |
-| `callback`                 | (`e`: `Event`) => `void` | `undefined`   | A callback to be called when the event is cancelled.   |
+| Parameter                   | Type                     | Default value | Description                                            |
+| --------------------------- | ------------------------ | ------------- | ------------------------------------------------------ |
+| `e`                         | `Event`                  | `undefined`   | The event to be cancelled.                             |
+| `preventDefault?`           | `boolean`                | `true`        | Whether to call preventDefault on the event.           |
+| `stopPropagation?`          | `boolean`                | `true`        | Whether to call stopPropagation on the event.          |
+| `stopImmediatePropagation?` | `boolean`                | `true`        | Whether to call stopImmediatePropagation on the event. |
+| `callback?`                 | (`e`: `Event`) => `void` | `undefined`   | A callback to be called when the event is cancelled.   |
 
 #### Returns
 

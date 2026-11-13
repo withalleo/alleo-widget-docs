@@ -8,9 +8,9 @@
 
 ```ts
 type ConfigDialogSetting = {
-  label: string;
-  value: string;
-};
+    label: string
+    value: string
+}
 ```
 
 ## Properties
@@ -18,7 +18,7 @@ type ConfigDialogSetting = {
 ### label
 
 ```ts
-label: string;
+label: string
 ```
 
 ---
@@ -26,5 +26,5 @@ label: string;
 ### value
 
 ```ts
-value: string;
+value: string
 ```

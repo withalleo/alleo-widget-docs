@@ -8,12 +8,12 @@
 
 ```ts
 type BackendProxyHelperSettings = {
-  backendSchema?: Prettify<
-    Parameters<IWidgetSecretsProxy["addSecret"]>[1]["configurations"][0]
-  >;
-  hideStatusHeadline?: boolean;
-  onlyWarnOnMissingKey?: boolean;
-};
+    backendSchema?: Prettify<Parameters<IWidgetSecretsProxy['addSecret']>[1]['configurations'][0]>
+    backendSchemas?: Prettify<Parameters<IWidgetSecretsProxy['addSecret']>[1]['configurations']>
+    externalSecretProvider?: Prettify<Parameters<IWidgetSecretsProxy['addSecret']>[1]['externalSecretProvider']>
+    hideStatusHeadline?: boolean
+    onlyWarnOnMissingKey?: boolean
+}
 ```
 
 ## Properties
@@ -21,7 +21,23 @@ type BackendProxyHelperSettings = {
 ### backendSchema?
 
 ```ts
-optional backendSchema?: Prettify<Parameters<IWidgetSecretsProxy["addSecret"]>[1]["configurations"][0]>;
+backendSchema?: Prettify<Parameters<IWidgetSecretsProxy["addSecret"]>[1]["configurations"][0]>;
+```
+
+---
+
+### backendSchemas?
+
+```ts
+backendSchemas?: Prettify<Parameters<IWidgetSecretsProxy["addSecret"]>[1]["configurations"]>;
+```
+
+---
+
+### externalSecretProvider?
+
+```ts
+externalSecretProvider?: Prettify<Parameters<IWidgetSecretsProxy["addSecret"]>[1]["externalSecretProvider"]>;
 ```
 
 ---
@@ -29,7 +45,7 @@ optional backendSchema?: Prettify<Parameters<IWidgetSecretsProxy["addSecret"]>[1
 ### hideStatusHeadline?
 
 ```ts
-optional hideStatusHeadline?: boolean;
+hideStatusHeadline?: boolean;
 ```
 
 ---
@@ -37,5 +53,5 @@ optional hideStatusHeadline?: boolean;
 ### onlyWarnOnMissingKey?
 
 ```ts
-optional onlyWarnOnMissingKey?: boolean;
+onlyWarnOnMissingKey?: boolean;
 ```

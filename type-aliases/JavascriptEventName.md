@@ -7,7 +7,7 @@
 # Type Alias: JavascriptEventName
 
 ```ts
-type JavascriptEventName = NonNullable<string>;
+type JavascriptEventName = NonNullable<string>
 ```
 
 Type representing a JavaScript event names.

@@ -13,5 +13,5 @@ Enum for notification types determining the visual style of notifications.
 ### Info
 
 ```ts
-Info: "info";
+Info: 'info'
 ```

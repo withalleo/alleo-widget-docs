@@ -7,5 +7,5 @@
 # Type Alias: Color
 
 ```ts
-type Color = string;
+type Color = string
 ```

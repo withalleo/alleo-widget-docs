@@ -4,7 +4,7 @@
 
 [@withalleo/alleo-widget](../globals.md) / SharedCache
 
-# Class: SharedCache\<T\>
+# Class: SharedCache\<T = `any`\>
 
 Provides a key-value cache stored in shared variables for cross-session data persistence.
 
@@ -17,37 +17,37 @@ preferences that should be shared across sessions.
 
 ```typescript
 // Create a cache for API responses
-const apiCache = new SharedCache<{ data: any; timestamp: number }>("apiCache");
+const apiCache = new SharedCache<{ data: any; timestamp: number }>('apiCache')
 
 // Store data
-apiCache.set("user-123", { data: userData, timestamp: Date.now() });
+apiCache.set('user-123', { data: userData, timestamp: Date.now() })
 
 // Retrieve data
-const cached = apiCache.get("user-123");
+const cached = apiCache.get('user-123')
 if (cached && Date.now() - cached.timestamp < 3600000) {
-  // Use cached data if less than 1 hour old
-  console.log(cached.data);
+    // Use cached data if less than 1 hour old
+    console.log(cached.data)
 }
 
 // Use delayed write mode for bulk updates
-const bulkCache = new SharedCache("bulkData", true);
-bulkCache.set("key1", "value1");
-bulkCache.set("key2", "value2");
-bulkCache.flush(); // Write all at once
+const bulkCache = new SharedCache('bulkData', true)
+bulkCache.set('key1', 'value1')
+bulkCache.set('key2', 'value2')
+bulkCache.flush() // Write all at once
 ```
 
 ## Type Parameters
 
-| Type Parameter | Default type | Description                                               |
-| -------------- | ------------ | --------------------------------------------------------- |
-| `T`            | `any`        | The type of values stored in the cache (defaults to any). |
+| Type Parameter                    | Default type | Description                                               |
+| --------------------------------- | ------------ | --------------------------------------------------------- |
+| <a id="type-parameter-t"></a> `T` | `any`        | The type of values stored in the cache (defaults to any). |
 
 ## Constructors
 
 ### Constructor
 
 ```ts
-new SharedCache<T>(databaseId?: string, delayedWrite?: boolean): SharedCache<T>;
+new SharedCache<T = any>(databaseId?: string, delayedWrite?: boolean): SharedCache<T>;
 ```
 
 Creates a SharedCache instance for storing key-value pairs in shared variables.

@@ -16,14 +16,14 @@ Automatically detects browser locale preferences as fallbacks.
 
 ```typescript
 // Use locale settings
-const timezone = DefaultLocale.timeZone; // 'America/New_York'
-const lang = DefaultLocale.language; // 'EN-US'
-const units = DefaultLocale.unitSystem; // 'imperial' or 'si'
-const time = DefaultLocale.timeFormat; // '12hrs' or '24hrs'
+const timezone = DefaultLocale.timeZone // 'America/New_York'
+const lang = DefaultLocale.language // 'EN-US'
+const units = DefaultLocale.unitSystem // 'imperial' or 'si'
+const time = DefaultLocale.timeFormat // '12hrs' or '24hrs'
 
 // Translate text
-const greeting = DefaultLocale.txt("Hello"); // Gets translation if available
-const original = DefaultLocale.txt("Hello", "original"); // Always returns English
+const greeting = DefaultLocale.txt('Hello') // Gets translation if available
+const original = DefaultLocale.txt('Hello', 'original') // Always returns English
 ```
 
 ## Constructors
@@ -81,7 +81,7 @@ Can be overridden via widget settings, otherwise uses browser's time zone.
 #### Example
 
 ```ts
-("America/New_York", "Europe/London", "Asia/Tokyo");
+;('America/New_York', 'Europe/London', 'Asia/Tokyo')
 ```
 
 ## Accessors
@@ -102,10 +102,10 @@ widget settings. Use this to display times in the user's familiar format.
 ##### Example
 
 ```typescript
-if (DefaultLocale.timeFormat === "12hrs") {
-  displayTime("3:30 PM");
+if (DefaultLocale.timeFormat === '12hrs') {
+    displayTime('3:30 PM')
 } else {
-  displayTime("15:30");
+    displayTime('15:30')
 }
 ```
 
@@ -131,10 +131,10 @@ and SI (metric) for all other regions. Can be overridden via widget settings.
 ##### Example
 
 ```typescript
-if (DefaultLocale.unitSystem === "imperial") {
-  displayDistance(miles, "mi");
+if (DefaultLocale.unitSystem === 'imperial') {
+    displayDistance(miles, 'mi')
 } else {
-  displayDistance(kilometers, "km");
+    displayDistance(kilometers, 'km')
 }
 ```
 
@@ -199,10 +199,10 @@ The translated text, or the original English if no translation exists.
 
 ```typescript
 // With translations configured
-DefaultLocale.txt("Hello"); // 'Bonjour' (if French is configured)
-DefaultLocale.txt("Hello", "FR"); // 'Bonjour'
-DefaultLocale.txt("Hello", "original"); // 'Hello' (always English)
+DefaultLocale.txt('Hello') // 'Bonjour' (if French is configured)
+DefaultLocale.txt('Hello', 'FR') // 'Bonjour'
+DefaultLocale.txt('Hello', 'original') // 'Hello' (always English)
 
 // Without translation
-DefaultLocale.txt("Goodbye"); // 'Goodbye' (falls back to English)
+DefaultLocale.txt('Goodbye') // 'Goodbye' (falls back to English)
 ```

@@ -8,15 +8,15 @@
 
 ```ts
 type UserNotificationOptions = {
-  alternativeButton?: {
-    onClick: () => void;
-    text: string;
-  };
-  autoOpen?: boolean;
-  hideButton?: boolean;
-  neverTimeout?: boolean;
-  timeout?: number;
-};
+    alternativeButton?: {
+        onClick: () => void
+        text: string
+    }
+    autoOpen?: boolean
+    hideButton?: boolean
+    neverTimeout?: boolean
+    timeout?: number
+}
 ```
 
 Configuration options for controlling notification behavior and appearance.
@@ -26,7 +26,7 @@ Configuration options for controlling notification behavior and appearance.
 ### alternativeButton?
 
 ```ts
-optional alternativeButton?: {
+alternativeButton?: {
   onClick: () => void;
   text: string;
 };
@@ -47,7 +47,7 @@ onClick: () => void;
 #### text
 
 ```ts
-text: string;
+text: string
 ```
 
 ---
@@ -55,7 +55,7 @@ text: string;
 ### autoOpen?
 
 ```ts
-optional autoOpen?: boolean;
+autoOpen?: boolean;
 ```
 
 When true, notification opens immediately upon creation.
@@ -65,7 +65,7 @@ When true, notification opens immediately upon creation.
 ### hideButton?
 
 ```ts
-optional hideButton?: boolean;
+hideButton?: boolean;
 ```
 
 When true, hides the default dismiss button.
@@ -75,7 +75,7 @@ When true, hides the default dismiss button.
 ### neverTimeout?
 
 ```ts
-optional neverTimeout?: boolean;
+neverTimeout?: boolean;
 ```
 
 When true, notification stays visible until manually dismissed.
@@ -85,7 +85,7 @@ When true, notification stays visible until manually dismissed.
 ### timeout?
 
 ```ts
-optional timeout?: number;
+timeout?: number;
 ```
 
 Duration in milliseconds before the notification automatically closes (default varies by type).

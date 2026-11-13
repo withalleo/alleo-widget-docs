@@ -4,7 +4,7 @@
 
 [@withalleo/alleo-widget](../globals.md) / SettingsDialogDefinition
 
-# Interface: SettingsDialogDefinition\<T\>
+# Interface: SettingsDialogDefinition\<T _extends_ `FormlyDialogModel` = `FormlyDialogModel`\>
 
 ## Extends
 
@@ -12,9 +12,9 @@
 
 ## Type Parameters
 
-| Type Parameter                    | Default type        |
-| --------------------------------- | ------------------- |
-| `T` _extends_ `FormlyDialogModel` | `FormlyDialogModel` |
+| Type Parameter                                                  | Default type        |
+| --------------------------------------------------------------- | ------------------- |
+| <a id="type-parameter-t"></a> `T` _extends_ `FormlyDialogModel` | `FormlyDialogModel` |
 
 ## Properties
 

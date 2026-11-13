@@ -17,23 +17,23 @@ Essential for widgets that need to process or generate text content from board o
 
 ```typescript
 // Check if object supports text operations
-const obj = BoardObjectHelper.getBoardObjectById(objectId);
+const obj = BoardObjectHelper.getBoardObjectById(objectId)
 if (BoardTextElementHelper.isSupported(obj)) {
-  // Get text content
-  const texts = await BoardTextElementHelper.getTextContent(obj, {
-    format: TextInputFormat.Text,
-  });
-  console.log("Text:", texts.join("\n"));
+    // Get text content
+    const texts = await BoardTextElementHelper.getTextContent(obj, {
+        format: TextInputFormat.Text,
+    })
+    console.log('Text:', texts.join('\n'))
 
-  // Set text content
-  await BoardTextElementHelper.setTextContent(obj, ["New content"], {
-    format: TextInputFormat.Text,
-    append: false,
-  });
+    // Set text content
+    await BoardTextElementHelper.setTextContent(obj, ['New content'], {
+        format: TextInputFormat.Text,
+        append: false,
+    })
 }
 
 // Extract text from container and all children
-const containerText = await BoardTextElementHelper.getTextContent(containerObj);
+const containerText = await BoardTextElementHelper.getTextContent(containerObj)
 ```
 
 ## Constructors
@@ -113,7 +113,8 @@ True if text operations are supported, false otherwise.
 static setTextContent(
    object: RealIBoardObject,
    text: string[],
-options?: SetTextContentOptions): Promise<void>;
+   options?: SetTextContentOptions
+): Promise<void>;
 ```
 
 Sets the text content of a board object.

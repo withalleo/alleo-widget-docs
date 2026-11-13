@@ -8,15 +8,15 @@
 
 ```ts
 function getWidgetCoordinates(
-  event:
-    | PointerEvent
-    | MouseEvent
-    | Touch
-    | {
-        clientX: number;
-        clientY: number;
-      },
-): Coordinates;
+    event:
+        | PointerEvent
+        | MouseEvent
+        | Touch
+        | {
+              clientX: number
+              clientY: number
+          },
+): Coordinates
 ```
 
 Converts browser viewport coordinates from a pointer event to widget-relative coordinates.
@@ -44,9 +44,9 @@ Throws if the widget doesn't have a DOM (service widgets).
 ## Example
 
 ```typescript
-element.addEventListener("click", (event) => {
-  const coords = getWidgetCoordinates(event);
-  console.log(`Clicked at widget position: ${coords.x}, ${coords.y}`);
-  drawCircle(coords.x, coords.y);
-});
+element.addEventListener('click', (event) => {
+    const coords = getWidgetCoordinates(event)
+    console.log(`Clicked at widget position: ${coords.x}, ${coords.y}`)
+    drawCircle(coords.x, coords.y)
+})
 ```

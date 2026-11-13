@@ -8,6 +8,7 @@
 
 - [AiMessageType](enumerations/AiMessageType.md)
 - [BackendKeyConfigurationScope](enumerations/BackendKeyConfigurationScope.md)
+- [CommonWidgetFlag](enumerations/CommonWidgetFlag.md)
 - [DataConnectorAction](enumerations/DataConnectorAction.md)
 - [NotificationType](enumerations/NotificationType.md)
 - [SettingsButtonPosition](enumerations/SettingsButtonPosition.md)
@@ -17,6 +18,7 @@
 
 ## Classes
 
+- [ActionFlowState](classes/ActionFlowState.md)
 - [AlleoWidget](classes/AlleoWidget.md)
 - [AnalyticsHelper](classes/AnalyticsHelper.md)
 - [AssetHelper](classes/AssetHelper.md)
@@ -47,6 +49,7 @@
 - [MultiTouchHelper](classes/MultiTouchHelper.md)
 - [~~OptionalContainerSelectorSupportingSettingsDialogHelper~~](classes/OptionalContainerSelectorSupportingSettingsDialogHelper.md)
 - [OptionalLocationSelectorSupportingSettingsDialogHelper](classes/OptionalLocationSelectorSupportingSettingsDialogHelper.md)
+- [PermissionHelper](classes/PermissionHelper.md)
 - [PointerHelper](classes/PointerHelper.md)
 - [PreventSelect](classes/PreventSelect.md)
 - [RateLimitFunctionHelper](classes/RateLimitFunctionHelper.md)
@@ -58,6 +61,7 @@
 - [SettingsDialogHelper](classes/SettingsDialogHelper.md)
 - [SharedCache](classes/SharedCache.md)
 - [SharedVariable](classes/SharedVariable.md)
+- [SharedVariableLimitError](classes/SharedVariableLimitError.md)
 - [SimpleUserNotification](classes/SimpleUserNotification.md)
 - [SoundRecordingHelper](classes/SoundRecordingHelper.md)
 - [TextAlignHelper](classes/TextAlignHelper.md)
@@ -78,6 +82,7 @@
 
 ## Type Aliases
 
+- [ActionFlowStateFields](type-aliases/ActionFlowStateFields.md)
 - [BackendProxyHelperSettings](type-aliases/BackendProxyHelperSettings.md)
 - [Color](type-aliases/Color.md)
 - [ConfigDialogSetting](type-aliases/ConfigDialogSetting.md)
@@ -89,6 +94,7 @@
 - [FontPickerSettings](type-aliases/FontPickerSettings.md)
 - [FormButtonHelperSettings](type-aliases/FormButtonHelperSettings.md)
 - [GetTextContentOptions](type-aliases/GetTextContentOptions.md)
+- [IBoardWidgetApi](type-aliases/IBoardWidgetApi.md)
 - [Instruction](type-aliases/Instruction.md)
 - [ItemListHelperOptions](type-aliases/ItemListHelperOptions.md)
 - [JavascriptEventName](type-aliases/JavascriptEventName.md)
@@ -104,6 +110,8 @@
 - [StandardSyncMessage](type-aliases/StandardSyncMessage.md)
 - [UserNotificationOptions](type-aliases/UserNotificationOptions.md)
 - [ViewportSize](type-aliases/ViewportSize.md)
+- [WidgetFlag](type-aliases/WidgetFlag.md)
+- [WidgetInitSettings](type-aliases/WidgetInitSettings.md)
 - [WidgetSyncMessage](type-aliases/WidgetSyncMessage.md)
 
 ## Functions

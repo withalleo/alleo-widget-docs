@@ -16,23 +16,23 @@ in the top-right corner of the interface by default.
 
 ```typescript
 // Simple info notification
-UserNotification.show("Operation completed successfully");
+UserNotification.show('Operation completed successfully')
 
 // Notification with title and image
 UserNotification.show({
-  title: "Welcome",
-  text: "Thanks for using our widget!",
-  image: "https://example.com/icon.png",
-});
+    title: 'Welcome',
+    text: 'Thanks for using our widget!',
+    image: 'https://example.com/icon.png',
+})
 
 // Never-closing notification with custom button
-UserNotification.show("Important message", {
-  neverTimeout: true,
-  alternativeButton: {
-    text: "Learn More",
-    onClick: () => window.open("https://example.com"),
-  },
-});
+UserNotification.show('Important message', {
+    neverTimeout: true,
+    alternativeButton: {
+        text: 'Learn More',
+        onClick: () => window.open('https://example.com'),
+    },
+})
 ```
 
 ## Extended by
@@ -54,7 +54,7 @@ Creates a new UserNotification instance.
 | Parameter      | Type                                                                    | Description           |
 | -------------- | ----------------------------------------------------------------------- | --------------------- |
 | `notification` | [`Notification`](../type-aliases/Notification.md)                       | Notification data.    |
-| `options`      | [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) | Notification options. |
+| `options?`     | [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) | Notification options. |
 
 #### Returns
 
@@ -75,7 +75,7 @@ Notification data.
 ### options
 
 ```ts
-options: UserNotificationOptions = {};
+options: UserNotificationOptions = {}
 ```
 
 Notification options.
@@ -180,9 +180,9 @@ Updates notification options and redraws content.
 
 #### Parameters
 
-| Parameter | Type                                                                    | Default value | Description           |
-| --------- | ----------------------------------------------------------------------- | ------------- | --------------------- |
-| `options` | [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) | `undefined`   | New options to apply. |
+| Parameter  | Type                                                                    | Default value | Description           |
+| ---------- | ----------------------------------------------------------------------- | ------------- | --------------------- |
+| `options?` | [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) | `undefined`   | New options to apply. |
 
 #### Returns
 
@@ -196,18 +196,19 @@ Updates notification options and redraws content.
 static error(
    message: string,
    actions?: string[],
-   throttle?: boolean): void;
+   throttle?: boolean
+): void;
 ```
 
 Shows an error notification.
 
 #### Parameters
 
-| Parameter  | Type       | Default value | Description                       |
-| ---------- | ---------- | ------------- | --------------------------------- |
-| `message`  | `string`   | `undefined`   | Message to display.               |
-| `actions`  | `string`[] | `[]`          | Optional actions.                 |
-| `throttle` | `boolean`  | `true`        | If true, throttles notifications. |
+| Parameter   | Type       | Default value | Description                       |
+| ----------- | ---------- | ------------- | --------------------------------- |
+| `message`   | `string`   | `undefined`   | Message to display.               |
+| `actions?`  | `string`[] | `[]`          | Optional actions.                 |
+| `throttle?` | `boolean`  | `true`        | If true, throttles notifications. |
 
 #### Returns
 
@@ -221,18 +222,19 @@ Shows an error notification.
 static info(
    message: string,
    actions?: string[],
-   throttle?: boolean): void;
+   throttle?: boolean
+): void;
 ```
 
 Shows an info notification.
 
 #### Parameters
 
-| Parameter  | Type       | Default value | Description                       |
-| ---------- | ---------- | ------------- | --------------------------------- |
-| `message`  | `string`   | `undefined`   | Message to display.               |
-| `actions`  | `string`[] | `[]`          | Optional actions.                 |
-| `throttle` | `boolean`  | `true`        | If true, throttles notifications. |
+| Parameter   | Type       | Default value | Description                       |
+| ----------- | ---------- | ------------- | --------------------------------- |
+| `message`   | `string`   | `undefined`   | Message to display.               |
+| `actions?`  | `string`[] | `[]`          | Optional actions.                 |
+| `throttle?` | `boolean`  | `true`        | If true, throttles notifications. |
 
 #### Returns
 
@@ -246,18 +248,19 @@ Shows an info notification.
 static warn(
    message: string,
    actions?: string[],
-   throttle?: boolean): void;
+   throttle?: boolean
+): void;
 ```
 
 Shows a warning notification.
 
 #### Parameters
 
-| Parameter  | Type       | Default value | Description                       |
-| ---------- | ---------- | ------------- | --------------------------------- |
-| `message`  | `string`   | `undefined`   | Message to display.               |
-| `actions`  | `string`[] | `[]`          | Optional actions.                 |
-| `throttle` | `boolean`  | `true`        | If true, throttles notifications. |
+| Parameter   | Type       | Default value | Description                       |
+| ----------- | ---------- | ------------- | --------------------------------- |
+| `message`   | `string`   | `undefined`   | Message to display.               |
+| `actions?`  | `string`[] | `[]`          | Optional actions.                 |
+| `throttle?` | `boolean`  | `true`        | If true, throttles notifications. |
 
 #### Returns
 

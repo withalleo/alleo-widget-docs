@@ -15,24 +15,24 @@ This class provides access to button management and loading status indicators fo
 
 ```typescript
 class MyServiceWidget {
-  private ui: ServiceUi = new ServiceUi();
+    private ui: ServiceUi = new ServiceUi()
 
-  constructor() {
-    // Add a button to the service UI
-    this.ui.buttons.add({
-      label: "Start Process",
-      onClick: () => this.startProcess(),
-    });
+    constructor() {
+        // Add a button to the service UI
+        this.ui.buttons.add({
+            label: 'Start Process',
+            onClick: () => this.startProcess(),
+        })
 
-    // Show loading status
-    this.ui.loadingStatus.show("Processing...");
-  }
+        // Show loading status
+        this.ui.loadingStatus.show('Processing...')
+    }
 
-  async startProcess() {
-    this.ui.loadingStatus.show("Working...");
-    await doWork();
-    this.ui.loadingStatus.hide();
-  }
+    async startProcess() {
+        this.ui.loadingStatus.show('Working...')
+        await doWork()
+        this.ui.loadingStatus.hide()
+    }
 }
 ```
 
@@ -55,7 +55,7 @@ Creates an instance of ServiceUi with initialized button and loading status help
 ### buttons
 
 ```ts
-buttons: UiButtonHelper;
+buttons: UiButtonHelper
 ```
 
 Helper for managing UI buttons in the service interface.
@@ -68,7 +68,7 @@ in the service widget's UI panel.
 ### loadingStatus
 
 ```ts
-loadingStatus: LoadingStatus;
+loadingStatus: LoadingStatus
 ```
 
 Helper for displaying loading status indicators to users.

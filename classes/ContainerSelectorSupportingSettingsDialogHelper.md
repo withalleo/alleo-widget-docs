@@ -61,7 +61,8 @@ Constructs a new Settings Dialog.
 new ContainerSelectorSupportingSettingsDialogHelper(
    settings: SettingsDialogDefinition,
    createSettingsButtonOnInit?: boolean,
-   callbackOnSettingsDialogClose?: (didAnythingChanged: boolean, changedProperties: string[], ret: false | "" | FormlyDialogModel) => void): ContainerSelectorSupportingSettingsDialogHelper;
+   callbackOnSettingsDialogClose?: (didAnythingChanged: boolean, changedProperties: string[], ret: false | "" | FormlyDialogModel) => void
+): ContainerSelectorSupportingSettingsDialogHelper;
 ```
 
 #### Parameters
@@ -97,7 +98,7 @@ protected readonly isContainerOptional: boolean = false;
 ### ~~optionsCallback~~
 
 ```ts
-optionsCallback: Function;
+optionsCallback: Function
 ```
 
 ---
@@ -164,7 +165,7 @@ Creates a settings button on the widget bar.
 
 | Parameter | Type                | Default value | Description                        |
 | --------- | ------------------- | ------------- | ---------------------------------- |
-| `button`  | `ContextMenuButton` | `undefined`   | The context menu button to create. |
+| `button?` | `ContextMenuButton` | `undefined`   | The context menu button to create. |
 
 #### Returns
 
@@ -264,6 +265,8 @@ protected processFormDialogResult(ret: false | "" | FormlyDialogModel): boolean;
 
 Processes the result of the form dialog. (including saving the settings)
 
+Saved or canceled, it also ends the widget's creation phase.
+
 #### Parameters
 
 | Parameter | Type                                   | Description                    |
@@ -341,12 +344,12 @@ The updated settings.
 ### ~~closeAllSettingDialogs()~~
 
 ```ts
-static closeAllSettingDialogs(): void;
+static closeAllSettingDialogs(): Promise<void>;
 ```
 
 #### Returns
 
-`void`
+`Promise`\<`void`\>
 
 #### Inherited from
 

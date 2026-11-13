@@ -17,21 +17,21 @@ their layout based on size.
 
 ```typescript
 // Basic usage with minimum size
-new ResizeHelper({ width: 200, height: 150 });
+new ResizeHelper({ width: 200, height: 150 })
 
 // With callback for custom resize logic
 new ResizeHelper(
-  { width: 300, height: 200 },
-  {
-    callback: ({ width, height }) => {
-      console.log(`Widget resized to ${width}x${height}`);
-      updateLayout(width, height);
+    { width: 300, height: 200 },
+    {
+        callback: ({ width, height }) => {
+            console.log(`Widget resized to ${width}x${height}`)
+            updateLayout(width, height)
+        },
     },
-  },
-);
+)
 
 // Get current widget size
-const size = ResizeHelper.getWidgetSize();
+const size = ResizeHelper.getWidgetSize()
 ```
 
 ## Constructors
@@ -66,7 +66,8 @@ new ResizeHelper(
    minSize?: Size,
    callback: (__namedParameters: Size) => void,
    updateCss?: boolean,
-   settings?: LimitedResizeHelperOptions): ResizeHelper;
+   settings?: LimitedResizeHelperOptions
+): ResizeHelper;
 ```
 
 Enables axis-independent resizing with legacy parameter-based configuration.
@@ -115,7 +116,7 @@ callback: (__namedParameters: Size) => void;
 ### updateCss
 
 ```ts
-updateCss: boolean = true;
+updateCss: boolean = true
 ```
 
 ## Methods

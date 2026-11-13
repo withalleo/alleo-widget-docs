@@ -16,20 +16,20 @@ All log messages are automatically prefixed with the widget name for easy identi
 
 ```typescript
 // Track a user action
-AnalyticsHelper.trackEvent("button-clicked", { buttonId: "submit" });
+AnalyticsHelper.trackEvent('button-clicked', { buttonId: 'submit' })
 
 // Log messages at different levels
-AnalyticsHelper.debug("Processing data", { count: 10 });
-AnalyticsHelper.info("User logged in");
-AnalyticsHelper.warn("API rate limit approaching");
-AnalyticsHelper.error("Failed to save data", error);
+AnalyticsHelper.debug('Processing data', { count: 10 })
+AnalyticsHelper.info('User logged in')
+AnalyticsHelper.warn('API rate limit approaching')
+AnalyticsHelper.error('Failed to save data', error)
 
 // Use decorators for debugging
 class MyWidget {
-  @AnalyticsHelper.LogMethod
-  processData(data: any) {
-    // Method calls will be automatically logged
-  }
+    @AnalyticsHelper.LogMethod
+    processData(data: any) {
+        // Method calls will be automatically logged
+    }
 }
 ```
 
@@ -141,7 +141,8 @@ Use for tracking significant state changes or milestones in widget execution.
 static LogAccessor(
    target: any,
    propertyKey: any,
-   descriptor?: PropertyDescriptor): void;
+   descriptor?: PropertyDescriptor
+): void;
 ```
 
 TypeScript decorator that logs getter and setter calls on class properties.
@@ -165,15 +166,15 @@ Useful for debugging reactive properties or tracking state changes.
 
 ```typescript
 class MyWidget {
-  private _value: number = 0;
+    private _value: number = 0
 
-  @AnalyticsHelper.LogAccessor
-  get value(): number {
-    return this._value;
-  }
-  set value(v: number) {
-    this._value = v;
-  }
+    @AnalyticsHelper.LogAccessor
+    get value(): number {
+        return this._value
+    }
+    set value(v: number) {
+        this._value = v
+    }
 }
 // Logs: "Getter Called", "value"
 // Logs: "Getter Result", "value", 0
@@ -185,8 +186,9 @@ class MyWidget {
 ### LogClass()
 
 ```ts
-static LogClass<T>(constructor: T): {
-(...args: any[]): (Anonymous class)<T>;
+static LogClass<T extends new (...args: any[]) => {
+}>(constructor: T): {
+new (...args: any[]): (Anonymous class)<T>;
   prototype: (Anonymous class)<any>;
 } & T;
 ```
@@ -198,9 +200,9 @@ Logs both the constructor parameters and the final created object.
 
 #### Type Parameters
 
-| Type Parameter                              |
-| ------------------------------------------- |
-| `T` _extends_ (...`args`: `any`[]) => \{ \} |
+| Type Parameter                                                                |
+| ----------------------------------------------------------------------------- |
+| <a id="type-parameter-t"></a> `T` _extends_ new (...`args`: `any`[]) => \{ \} |
 
 #### Parameters
 
@@ -211,7 +213,7 @@ Logs both the constructor parameters and the final created object.
 #### Returns
 
 \{
-(...`args`: `any`[]): `(Anonymous class)`\<`T`\>;
+new (...`args`: `any`[]): `(Anonymous class)`\<`T`\>;
 `prototype`: `(Anonymous class)`\<`any`\>;
 \} & `T`
 
@@ -222,9 +224,9 @@ A new class that extends the original with logging capabilities.
 ```typescript
 @AnalyticsHelper.LogClass
 class DataManager {
-  constructor(apiKey: string) {
-    // ...
-  }
+    constructor(apiKey: string) {
+        // ...
+    }
 }
 // Logs: "Class Instantiated", "DataManager", ["abc123"]
 // Logs: "Class Created", "DataManager", { ... instance details ... }
@@ -238,7 +240,8 @@ class DataManager {
 static LogMethod(
    target: any,
    propertyKey: any,
-   descriptor?: PropertyDescriptor): void;
+   descriptor?: PropertyDescriptor
+): void;
 ```
 
 TypeScript decorator that logs all calls to a method, including arguments and return values.
@@ -262,10 +265,10 @@ and the returned result for each method invocation.
 
 ```typescript
 class MyWidget {
-  @AnalyticsHelper.LogMethod
-  calculateTotal(items: number[]): number {
-    return items.reduce((sum, item) => sum + item, 0);
-  }
+    @AnalyticsHelper.LogMethod
+    calculateTotal(items: number[]): number {
+        return items.reduce((sum, item) => sum + item, 0)
+    }
 }
 // Logs: "Method Called", "calculateTotal", [[1, 2, 3]]
 // Logs: "Method Result", "calculateTotal", 6
@@ -279,7 +282,8 @@ class MyWidget {
 static LogParameter(
    target: any,
    propertyKey: any,
-   parameterIndex?: number): void;
+   parameterIndex?: number
+): void;
 ```
 
 TypeScript parameter decorator that logs when a parameter decorator is applied during class definition.
@@ -303,9 +307,9 @@ Useful for debugging parameter metadata and decorator application.
 
 ```typescript
 class MyWidget {
-  processData(@AnalyticsHelper.LogParameter data: any) {
-    // ...
-  }
+    processData(@AnalyticsHelper.LogParameter data: any) {
+        // ...
+    }
 }
 // Logs: "Parameter Decorator Applied", "processData", "Parameter index: 0"
 ```
@@ -338,8 +342,8 @@ Primarily useful for debugging decorator application order and property metadata
 
 ```typescript
 class MyWidget {
-  @AnalyticsHelper.LogProperty
-  username: string;
+    @AnalyticsHelper.LogProperty
+    username: string
 }
 // Logs: "Property Decorator Applied", "username" (at class definition time)
 ```
@@ -358,6 +362,9 @@ Events are automatically enriched with widget metadata (name, ID, entry point) a
 the Alleo analytics system. The event is also forwarded to any analytics tracking widgets
 present on the board.
 
+Repeated calls are rate limited: events above the per-minute budget of the widget, or above
+the per-second budget of similar events (same widget and same action), are silently dropped.
+
 #### Parameters
 
 | Parameter  | Type                        | Description                                                                                     |
@@ -373,14 +380,14 @@ present on the board.
 
 ```typescript
 // Track a simple button click
-AnalyticsHelper.trackEvent("submit-clicked");
+AnalyticsHelper.trackEvent('submit-clicked')
 
 // Track with additional context
-AnalyticsHelper.trackEvent("data-exported", {
-  format: "csv",
-  rowCount: 150,
-  timestamp: Date.now(),
-});
+AnalyticsHelper.trackEvent('data-exported', {
+    format: 'csv',
+    rowCount: 150,
+    timestamp: Date.now(),
+})
 ```
 
 ---

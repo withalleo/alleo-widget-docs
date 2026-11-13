@@ -8,29 +8,43 @@
 
 ```ts
 type SharedVariableChangeObserverOptions = {
-  runOnInit?: boolean;
-  startSuspended?: boolean;
-};
+    runOnInit?: boolean
+    startSuspended?: boolean
+}
 ```
 
-Configuration options for shared variable change observers.
+Options for [SharedVariable.observer](../classes/SharedVariable.md#observer).
+
+## Example
+
+```typescript
+// render once now, then on every change
+new SharedVariable.observer('title', (data) => this.render(data.title), { runOnInit: true })
+
+// listen only after setup is done
+const observer = new SharedVariable.observer('title', (data) => this.render(data.title), { startSuspended: true })
+await this.setup()
+observer.resume()
+```
 
 ## Properties
 
 ### runOnInit?
 
 ```ts
-optional runOnInit?: boolean;
+runOnInit?: boolean;
 ```
 
-When true, executes the callback immediately with current value upon initialization.
+Run the callback once right away with the current values, reporting every
+observed variable as changed. Handy to render the initial state with the same code that handles updates.
+Runs even when `startSuspended` is set.
 
 ---
 
 ### startSuspended?
 
 ```ts
-optional startSuspended?: boolean;
+startSuspended?: boolean;
 ```
 
-When true, observer starts in suspended state and won't trigger callbacks until resumed.
+Create the observer without listening yet. Call `resume()` to start.

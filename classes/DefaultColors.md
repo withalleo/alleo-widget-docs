@@ -16,18 +16,18 @@ or can be overridden via widget configuration for custom branding.
 
 ```typescript
 // Use predefined semantic colors
-element.style.color = DefaultColors.text;
-element.style.backgroundColor = DefaultColors.background;
+element.style.color = DefaultColors.text
+element.style.backgroundColor = DefaultColors.background
 
 // Status colors
-errorMsg.style.color = DefaultColors.red;
-successMsg.style.color = DefaultColors.green;
+errorMsg.style.color = DefaultColors.red
+successMsg.style.color = DefaultColors.green
 
 // Use multiple colors for charts
-const chartColors = DefaultColors.rainbow; // Array of colors
+const chartColors = DefaultColors.rainbow // Array of colors
 
 // Theme-aware primary color
-button.style.backgroundColor = DefaultColors.primary;
+button.style.backgroundColor = DefaultColors.primary
 ```
 
 ## Constructors

@@ -4,7 +4,7 @@
 
 [@withalleo/alleo-widget](../globals.md) / RateLimitUpdateHelper
 
-# Class: RateLimitUpdateHelper\<T\>
+# Class: RateLimitUpdateHelper\<T = `any`\>
 
 Manages rate-limited updates to shared variables to prevent excessive synchronization.
 
@@ -18,34 +18,34 @@ changes into a single update.
 ```typescript
 // Rate-limit scroll position updates
 const scrollPosition = new RateLimitUpdateHelper<{ x: number; y: number }>(
-  "scrollPos",
-  200, // Update at most every 200ms
-);
+    'scrollPos',
+    200, // Update at most every 200ms
+)
 
 // Rapid updates are automatically throttled
-element.addEventListener("scroll", () => {
-  scrollPosition.set({ x: element.scrollLeft, y: element.scrollTop });
-});
+element.addEventListener('scroll', () => {
+    scrollPosition.set({ x: element.scrollLeft, y: element.scrollTop })
+})
 
 // Get latest value
-const currentPos = scrollPosition.latest;
+const currentPos = scrollPosition.latest
 
 // Get stored remote value
-const remotePos = scrollPosition.stored;
+const remotePos = scrollPosition.stored
 ```
 
 ## Type Parameters
 
-| Type Parameter | Default type | Description                           |
-| -------------- | ------------ | ------------------------------------- |
-| `T`            | `any`        | The type of value being rate-limited. |
+| Type Parameter                    | Default type | Description                           |
+| --------------------------------- | ------------ | ------------------------------------- |
+| <a id="type-parameter-t"></a> `T` | `any`        | The type of value being rate-limited. |
 
 ## Constructors
 
 ### Constructor
 
 ```ts
-new RateLimitUpdateHelper<T>(key: string, maxDelay?: number): RateLimitUpdateHelper<T>;
+new RateLimitUpdateHelper<T = any>(key: string, maxDelay?: number): RateLimitUpdateHelper<T>;
 ```
 
 Creates a RateLimitUpdateHelper for managing rate-limited shared variable updates.

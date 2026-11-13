@@ -8,10 +8,10 @@
 
 ```ts
 type StandardSyncMessage = {
-  data?: any[];
-  function: string;
-  type: string;
-};
+    data?: any[]
+    function: string
+    type: string
+}
 ```
 
 Type representing a standard synchronization message.
@@ -21,7 +21,7 @@ Type representing a standard synchronization message.
 ### data?
 
 ```ts
-optional data?: any[];
+data?: any[];
 ```
 
 ---
@@ -37,5 +37,5 @@ function: string;
 ### type
 
 ```ts
-type: string;
+type: string
 ```

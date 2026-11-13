@@ -18,28 +18,28 @@ recording capabilities.
 ```typescript
 // Basic audio recording
 const recorder = new SoundRecordingHelper(
-  (audioBlob) => {
-    console.log("Recording complete:", audioBlob.size, "bytes");
-    // Upload or process the audio blob
-    uploadAudio(audioBlob);
-  },
-  {
-    waitForStop: 500, // Wait 500ms before actually stopping
-    minLength: 1000, // Require at least 1 second of audio
-  },
-);
+    (audioBlob) => {
+        console.log('Recording complete:', audioBlob.size, 'bytes')
+        // Upload or process the audio blob
+        uploadAudio(audioBlob)
+    },
+    {
+        waitForStop: 500, // Wait 500ms before actually stopping
+        minLength: 1000, // Require at least 1 second of audio
+    },
+)
 
 // Start recording
-await recorder.start();
-console.log("Recording started...");
+await recorder.start()
+console.log('Recording started...')
 
 // Stop recording
-await recorder.stop();
-console.log("Recording stopped");
+await recorder.stop()
+console.log('Recording stopped')
 
 // Check if recording
 if (recorder.isRecording) {
-  console.log("Currently recording");
+    console.log('Currently recording')
 }
 ```
 

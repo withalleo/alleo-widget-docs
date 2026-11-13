@@ -8,9 +8,9 @@
 
 ```ts
 type SharedLock = {
-  connectionId: string;
-  lastUpdate: number;
-};
+    connectionId: string
+    lastUpdate: number
+}
 ```
 
 Represents a shared lock with a connection ID and last update timestamp.
@@ -20,7 +20,7 @@ Represents a shared lock with a connection ID and last update timestamp.
 ### connectionId
 
 ```ts
-connectionId: string;
+connectionId: string
 ```
 
 ---
@@ -28,5 +28,5 @@ connectionId: string;
 ### lastUpdate
 
 ```ts
-lastUpdate: number;
+lastUpdate: number
 ```

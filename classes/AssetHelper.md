@@ -16,24 +16,16 @@ automatically adapting paths based on the widget's configuration and hosting env
 
 ```typescript
 // Get the path to an asset file
-const iconPath = AssetHelper.assetsRoot + "icons/star.png";
-const img = document.createElement("img");
-img.src = iconPath;
+const iconPath = AssetHelper.assetsRoot + 'icons/star.png'
+const img = document.createElement('img')
+img.src = iconPath
 
 // Set up CSS background images
-const helper = new AssetHelper(".my-widget");
+const helper = new AssetHelper('.my-widget')
 helper.setupCSSUrls([
-  {
-    query: ".header",
-    variable: "--bg-image",
-    value: AssetHelper.assetsRoot + "bg.jpg",
-  },
-  {
-    query: ".icon",
-    variable: "--icon",
-    value: AssetHelper.assetsRoot + "icon.svg",
-  },
-]);
+    { query: '.header', variable: '--bg-image', value: AssetHelper.assetsRoot + 'bg.jpg' },
+    { query: '.icon', variable: '--icon', value: AssetHelper.assetsRoot + 'icon.svg' },
+])
 ```
 
 ## Constructors
@@ -75,7 +67,7 @@ supporting both centralized widget hosting and standalone deployment scenarios.
 ##### Example
 
 ```typescript
-const logoUrl = AssetHelper.assetsRoot + "logo.png";
+const logoUrl = AssetHelper.assetsRoot + 'logo.png'
 // Result: "https://widgets.alleo.com/my-widget/assets/widgetAssets/logo.png"
 ```
 
@@ -101,7 +93,7 @@ Used as a base for resolving relative paths to widget resources and configuratio
 ##### Example
 
 ```typescript
-const configUrl = AssetHelper.widgetRoot + "config.json";
+const configUrl = AssetHelper.widgetRoot + 'config.json'
 // Result: "https://widgets.alleo.com/my-widget/config.json"
 ```
 
@@ -140,18 +132,18 @@ images, masks, or other URL-based CSS properties.
 #### Example
 
 ```typescript
-const assetHelper = new AssetHelper(".my-widget");
+const assetHelper = new AssetHelper('.my-widget')
 assetHelper.setupCSSUrls([
-  {
-    query: ".hero-section",
-    variable: "--hero-bg",
-    value: AssetHelper.assetsRoot + "backgrounds/hero.jpg",
-  },
-  {
-    query: ".button",
-    variable: "--button-icon",
-    value: AssetHelper.assetsRoot + "icons/arrow.svg",
-  },
-]);
+    {
+        query: '.hero-section',
+        variable: '--hero-bg',
+        value: AssetHelper.assetsRoot + 'backgrounds/hero.jpg',
+    },
+    {
+        query: '.button',
+        variable: '--button-icon',
+        value: AssetHelper.assetsRoot + 'icons/arrow.svg',
+    },
+])
 // CSS can then use: background-image: var(--hero-bg);
 ```

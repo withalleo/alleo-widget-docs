@@ -106,8 +106,8 @@ the BoardObjectHelper, removing the widget object from the Alleo board.
 ```typescript
 // Delete widget when a timeout expires
 setTimeout(() => {
-  selfDeleteHelper.deleteSelf();
-}, 60000); // Delete after 1 minute
+    selfDeleteHelper.deleteSelf()
+}, 60000) // Delete after 1 minute
 ```
 
 ---

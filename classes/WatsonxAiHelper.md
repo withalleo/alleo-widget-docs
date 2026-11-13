@@ -22,27 +22,27 @@ Watsonx AI capabilities with consistent configuration patterns.
 
 ```typescript
 // Use default model and instructions
-const model = WatsonxAiHelper.defaultModel;
-const instructions = WatsonxAiHelper.defaultInstructions;
+const model = WatsonxAiHelper.defaultModel
+const instructions = WatsonxAiHelper.defaultInstructions
 
 // Access enabled models for selection
-const models = WatsonxAiHelper.EnabledModels;
-console.log("Available models:", models);
+const models = WatsonxAiHelper.EnabledModels
+console.log('Available models:', models)
 
 // Use settings dialog fields in your widget
 const settingsDialog = new SettingsDialogHelper({
-  fields: [
-    ...WatsonxAiHelper.settingsDialogFields,
-    // Add your custom fields
-    { key: "myField", type: "input", props: { label: "My Setting" } },
-  ],
-});
+    fields: [
+        ...WatsonxAiHelper.settingsDialogFields,
+        // Add your custom fields
+        { key: 'myField', type: 'input', props: { label: 'My Setting' } },
+    ],
+})
 
 // Create AI messages
 const message: AiMessage = {
-  type: AiMessageType.User,
-  message: "Hello, AI!",
-};
+    type: AiMessageType.User,
+    message: 'Hello, AI!',
+}
 ```
 
 ## Constructors
@@ -104,19 +104,19 @@ readonly static defaultSharedVariables: {
 #### ~~customModel~~
 
 ```ts
-customModel: string;
+customModel: string
 ```
 
 #### ~~customQuery~~
 
 ```ts
-customQuery: string;
+customQuery: string
 ```
 
 #### ~~instruction~~
 
 ```ts
-instruction: string;
+instruction: string
 ```
 
 ---
@@ -246,7 +246,7 @@ getChatResponse(messages: AiMessage[], model?: string): Promise<string>;
 | Parameter  | Type                                        |
 | ---------- | ------------------------------------------- |
 | `messages` | [`AiMessage`](../interfaces/AiMessage.md)[] |
-| `model`    | `string`                                    |
+| `model?`   | `string`                                    |
 
 #### Returns
 
@@ -264,20 +264,21 @@ getDiscoveryResponse(
    instanceId: string,
    projectId: string,
    wxProjectId?: string,
-textEndpoint?: string): Promise<any>;
+   textEndpoint?: string
+): Promise<any>;
 ```
 
 #### Parameters
 
-| Parameter      | Type     |
-| -------------- | -------- |
-| `query`        | `string` |
-| `region`       | `string` |
-| `collectionId` | `string` |
-| `instanceId`   | `string` |
-| `projectId`    | `string` |
-| `wxProjectId`  | `string` |
-| `textEndpoint` | `string` |
+| Parameter       | Type     |
+| --------------- | -------- |
+| `query`         | `string` |
+| `region`        | `string` |
+| `collectionId`  | `string` |
+| `instanceId`    | `string` |
+| `projectId`     | `string` |
+| `wxProjectId?`  | `string` |
+| `textEndpoint?` | `string` |
 
 #### Returns
 
@@ -296,7 +297,7 @@ getTextResponse(input: string, model?: string): Promise<string>;
 | Parameter | Type     |
 | --------- | -------- |
 | `input`   | `string` |
-| `model`   | `string` |
+| `model?`  | `string` |
 
 #### Returns
 

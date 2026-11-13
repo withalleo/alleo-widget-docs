@@ -8,9 +8,9 @@
 
 ```ts
 type ListRecord = {
-  [p: string]: any;
-  id: string;
-};
+    [p: string]: any
+    id: string
+}
 ```
 
 Represents a record in the item list.
@@ -26,5 +26,5 @@ Represents a record in the item list.
 ### id
 
 ```ts
-id: string;
+id: string
 ```

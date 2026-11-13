@@ -7,10 +7,7 @@
 # Function: isPermissionEnough()
 
 ```ts
-function isPermissionEnough(
-  requiredPermission: BoardMemberPermission,
-  permission?: BoardMemberPermission,
-): boolean;
+function isPermissionEnough(requiredPermission: BoardMemberPermission, permission?: BoardMemberPermission): boolean
 ```
 
 Checks if a user's board permission level meets or exceeds a required permission level.
@@ -37,15 +34,12 @@ True if the user's permission is sufficient, false otherwise.
 ```typescript
 // Check if current user can edit
 if (isPermissionEnough(BoardMemberPermission.Editor)) {
-  showEditButton();
+    showEditButton()
 }
 
 // Check if specific permission allows action
-const canDelete = isPermissionEnough(
-  BoardMemberPermission.Owner,
-  userPermission,
-);
+const canDelete = isPermissionEnough(BoardMemberPermission.Owner, userPermission)
 
 // Viewers can always view
-isPermissionEnough(BoardMemberPermission.Viewer); // Always true
+isPermissionEnough(BoardMemberPermission.Viewer) // Always true
 ```

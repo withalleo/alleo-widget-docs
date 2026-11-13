@@ -16,20 +16,20 @@ and touch-friendly interactions.
 ## Example
 
 ```typescript
-const element = document.querySelector(".interactive-area");
-const pointer = new PointerHelper(element);
+const element = document.querySelector('.interactive-area')
+const pointer = new PointerHelper(element)
 
 // Handle normal clicks
 pointer.registerOnclick((e) => {
-  console.log("Clicked at:", e.clientX, e.clientY);
-  performAction();
-});
+    console.log('Clicked at:', e.clientX, e.clientY)
+    performAction()
+})
 
 // Handle alt-click or long-press for context menu
 pointer.registerOnAltClick((e) => {
-  console.log("Alt-click detected");
-  showContextMenu(e);
-});
+    console.log('Alt-click detected')
+    showContextMenu(e)
+})
 ```
 
 ## Constructors
@@ -60,7 +60,7 @@ Automatically manages pointer state and distinguishes between different interact
 ### altCallbacks
 
 ```ts
-protected altCallbacks: (e: PointerEvent) => void[] = [];
+protected altCallbacks: ((e: PointerEvent) => void)[] = [];
 ```
 
 Registered alt-click callbacks.
@@ -80,7 +80,7 @@ Registered alt-click callbacks.
 ### callbacks
 
 ```ts
-protected callbacks: (e: PointerEvent) => void[] = [];
+protected callbacks: ((e: PointerEvent) => void)[] = [];
 ```
 
 Registered click callbacks.

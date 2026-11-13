@@ -134,9 +134,9 @@ Reads a specific record from the underlying DataConnector.
 
 #### Parameters
 
-| Parameter    | Type     | Default value | Description                                               |
-| ------------ | -------- | ------------- | --------------------------------------------------------- |
-| `lineNumber` | `number` | `0`           | Zero-based index of the record to fetch. Defaults to `0`. |
+| Parameter     | Type     | Default value | Description                                               |
+| ------------- | -------- | ------------- | --------------------------------------------------------- |
+| `lineNumber?` | `number` | `0`           | Zero-based index of the record to fetch. Defaults to `0`. |
 
 #### Returns
 

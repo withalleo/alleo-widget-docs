@@ -15,14 +15,14 @@ switch alignments and the DOM updates automatically.
 ## Examples
 
 ```ts
-const helper = new TextAlignHelper(this.domSelect<HTMLElement>(".label")!, {
-  defaultAlign: TextAlignment.Left,
-  supportedAlignments: [TextAlignment.Left, TextAlignment.Right],
-});
+const helper = new TextAlignHelper(this.domSelect<HTMLElement>('.label')!, {
+    defaultAlign: TextAlignment.Left,
+    supportedAlignments: [TextAlignment.Left, TextAlignment.Right],
+})
 ```
 
 ```ts
-const helper = new TextAlignHelper(this.domSelect(".label"));
+const helper = new TextAlignHelper(this.domSelect('.label'))
 ```
 
 ## Constructors
@@ -35,10 +35,10 @@ new TextAlignHelper(element: HTMLElement | HTMLElement[], options?: TextAlignOpt
 
 #### Parameters
 
-| Parameter | Type                             | Description                                                                      |
-| --------- | -------------------------------- | -------------------------------------------------------------------------------- |
-| `element` | `HTMLElement` \| `HTMLElement`[] | Element whose `textAlign` style is controlled.                                   |
-| `options` | `TextAlignOptions`               | Configuration overrides such as default alignment and available submenu entries. |
+| Parameter  | Type                             | Description                                                                      |
+| ---------- | -------------------------------- | -------------------------------------------------------------------------------- |
+| `element`  | `HTMLElement` \| `HTMLElement`[] | Element whose `textAlign` style is controlled.                                   |
+| `options?` | `TextAlignOptions`               | Configuration overrides such as default alignment and available submenu entries. |
 
 #### Returns
 

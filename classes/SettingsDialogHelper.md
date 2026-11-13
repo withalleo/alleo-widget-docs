@@ -18,34 +18,34 @@ sections, and custom field types. Essential for widgets requiring user configura
 ```typescript
 // Define settings fields
 const settings = new SettingsDialogHelper(
-  {
-    fields: [
-      {
-        key: "apiKey",
-        type: "input",
-        props: { label: "API Key", required: true },
-      },
-      {
-        key: "refreshInterval",
-        type: "input",
-        props: { label: "Refresh (seconds)", type: "number", min: 1 },
-      },
-    ],
-  },
-  {
-    title: "Widget Configuration",
-    createSettingsButtonOnInit: true,
-    callbackOnSettingsDialogClose: (changed, keys, values) => {
-      if (changed) {
-        console.log("Settings changed:", keys);
-        applyNewSettings(values);
-      }
+    {
+        fields: [
+            {
+                key: 'apiKey',
+                type: 'input',
+                props: { label: 'API Key', required: true },
+            },
+            {
+                key: 'refreshInterval',
+                type: 'input',
+                props: { label: 'Refresh (seconds)', type: 'number', min: 1 },
+            },
+        ],
     },
-  },
-);
+    {
+        title: 'Widget Configuration',
+        createSettingsButtonOnInit: true,
+        callbackOnSettingsDialogClose: (changed, keys, values) => {
+            if (changed) {
+                console.log('Settings changed:', keys)
+                applyNewSettings(values)
+            }
+        },
+    },
+)
 
 // Programmatically show dialog
-settings.showSettingsDialog();
+settings.showSettingsDialog()
 ```
 
 ## Extended by
@@ -80,7 +80,8 @@ Constructs a new Settings Dialog.
 new SettingsDialogHelper(
    settings: SettingsDialogDefinition,
    createSettingsButtonOnInit?: boolean,
-   callbackOnSettingsDialogClose?: (didAnythingChanged: boolean, changedProperties: string[], ret: false | "" | FormlyDialogModel) => void): SettingsDialogHelper;
+   callbackOnSettingsDialogClose?: (didAnythingChanged: boolean, changedProperties: string[], ret: false | "" | FormlyDialogModel) => void
+): SettingsDialogHelper;
 ```
 
 #### Parameters
@@ -155,7 +156,7 @@ Creates a settings button on the widget bar.
 
 | Parameter | Type                | Default value | Description                        |
 | --------- | ------------------- | ------------- | ---------------------------------- |
-| `button`  | `ContextMenuButton` | `undefined`   | The context menu button to create. |
+| `button?` | `ContextMenuButton` | `undefined`   | The context menu button to create. |
 
 #### Returns
 
@@ -235,6 +236,8 @@ protected processFormDialogResult(ret: false | "" | FormlyDialogModel): boolean;
 
 Processes the result of the form dialog. (including saving the settings)
 
+Saved or canceled, it also ends the widget's creation phase.
+
 #### Parameters
 
 | Parameter | Type                                   | Description                    |
@@ -303,12 +306,12 @@ The updated settings.
 ### closeAllSettingDialogs()
 
 ```ts
-static closeAllSettingDialogs(): void;
+static closeAllSettingDialogs(): Promise<void>;
 ```
 
 #### Returns
 
-`void`
+`Promise`\<`void`\>
 
 ---
 

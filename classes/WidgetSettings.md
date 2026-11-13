@@ -21,15 +21,15 @@ organization or deployment without requiring code changes.
 
 ```typescript
 // Access merged settings
-const apiEndpoint = WidgetSettings.settings.apiEndpoint;
-const maxRetries = WidgetSettings.settings.maxRetries || 3;
+const apiEndpoint = WidgetSettings.settings.apiEndpoint
+const maxRetries = WidgetSettings.settings.maxRetries || 3
 
 // Access only manifest defaults
-const defaultColor = WidgetSettings.manifestConfig.defaultColor;
+const defaultColor = WidgetSettings.manifestConfig.defaultColor
 
 // Check if a feature is enabled
 if (WidgetSettings.settings.enableAdvancedMode) {
-  // Show advanced features
+    // Show advanced features
 }
 ```
 
@@ -67,11 +67,10 @@ original default values regardless of customizations.
 
 ```typescript
 // Get the default color even if organization changed it
-const defaultColor = WidgetSettings.manifestConfig.defaultColor;
+const defaultColor = WidgetSettings.manifestConfig.defaultColor
 
 // Check if user customized a setting
-const isCustomized =
-  WidgetSettings.settings.theme !== WidgetSettings.manifestConfig.theme;
+const isCustomized = WidgetSettings.settings.theme !== WidgetSettings.manifestConfig.theme
 ```
 
 ---
@@ -96,6 +95,6 @@ organization customizations.
 #### Example
 
 ```typescript
-const maxFileSize = WidgetSettings.settings.maxFileSize || 10 * 1024 * 1024;
-const apiUrl = WidgetSettings.settings.apiEndpoint;
+const maxFileSize = WidgetSettings.settings.maxFileSize || 10 * 1024 * 1024
+const apiUrl = WidgetSettings.settings.apiEndpoint
 ```

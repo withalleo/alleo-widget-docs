@@ -8,16 +8,16 @@
 
 ```ts
 type DataImportHelperSettings = {
-  allowImportFromDataConnector?: boolean;
-  askAboutOverwrite?: boolean;
-  fields: {
-    label: string;
-    name: string;
-  }[];
-  label?: string;
-  lineLimit?: number;
-  warningMessage?: string;
-};
+    allowImportFromDataConnector?: boolean
+    askAboutOverwrite?: boolean
+    fields: {
+        label: string
+        name: string
+    }[]
+    label?: string
+    lineLimit?: number
+    warningMessage?: string
+}
 ```
 
 Settings for the DataImportHelper.
@@ -27,7 +27,7 @@ Settings for the DataImportHelper.
 ### allowImportFromDataConnector?
 
 ```ts
-optional allowImportFromDataConnector?: boolean;
+allowImportFromDataConnector?: boolean;
 ```
 
 ---
@@ -35,7 +35,7 @@ optional allowImportFromDataConnector?: boolean;
 ### askAboutOverwrite?
 
 ```ts
-optional askAboutOverwrite?: boolean;
+askAboutOverwrite?: boolean;
 ```
 
 ---
@@ -44,22 +44,22 @@ optional askAboutOverwrite?: boolean;
 
 ```ts
 fields: {
-  label: string;
-  name: string;
+    label: string
+    name: string
 }
-[];
+;[]
 ```
 
 #### label
 
 ```ts
-label: string;
+label: string
 ```
 
 #### name
 
 ```ts
-name: string;
+name: string
 ```
 
 ---
@@ -67,7 +67,7 @@ name: string;
 ### label?
 
 ```ts
-optional label?: string;
+label?: string;
 ```
 
 ---
@@ -75,7 +75,7 @@ optional label?: string;
 ### lineLimit?
 
 ```ts
-optional lineLimit?: number;
+lineLimit?: number;
 ```
 
 ---
@@ -83,5 +83,5 @@ optional lineLimit?: number;
 ### warningMessage?
 
 ```ts
-optional warningMessage?: string;
+warningMessage?: string;
 ```

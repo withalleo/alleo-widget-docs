@@ -17,25 +17,25 @@ Essential for widgets that need independent zoom/pan controls separate from the 
 
 ```typescript
 // Basic multi-touch support
-const multiTouch = new MultiTouchHelper();
+const multiTouch = new MultiTouchHelper()
 
 // With custom configuration
 const customTouch = new MultiTouchHelper({
-  enableDblClickToZoom: true,
-  showAdjustSizeButton: true,
-  adjustWidgetSizeAutomatically: false,
-  onScaleAdjustment: (scale) => {
-    console.log("Zoom level:", scale);
-    updateContent(scale);
-  },
-});
+    enableDblClickToZoom: true,
+    showAdjustSizeButton: true,
+    adjustWidgetSizeAutomatically: false,
+    onScaleAdjustment: (scale) => {
+        console.log('Zoom level:', scale)
+        updateContent(scale)
+    },
+})
 
 // For iframe or canvas content
 const iframeTouch = new MultiTouchHelper({
-  element: document.querySelector("iframe"),
-  unlockHelper: true,
-  enablePointerOverWidget: true,
-});
+    element: document.querySelector('iframe'),
+    unlockHelper: true,
+    enablePointerOverWidget: true,
+})
 ```
 
 ## Constructors
@@ -50,9 +50,9 @@ Constructor for MultiTouchHelper.
 
 #### Parameters
 
-| Parameter | Type                                                                    | Description                                     |
-| --------- | ----------------------------------------------------------------------- | ----------------------------------------------- |
-| `options` | [`MultiTouchHelperOptions`](../type-aliases/MultiTouchHelperOptions.md) | Configuration options for the MultiTouchHelper. |
+| Parameter  | Type                                                                    | Description                                     |
+| ---------- | ----------------------------------------------------------------------- | ----------------------------------------------- |
+| `options?` | [`MultiTouchHelperOptions`](../type-aliases/MultiTouchHelperOptions.md) | Configuration options for the MultiTouchHelper. |
 
 #### Returns
 
@@ -71,7 +71,7 @@ protected disabled: boolean = true;
 ### enableZoomOutButton
 
 ```ts
-enableZoomOutButton: boolean = true;
+enableZoomOutButton: boolean = true
 ```
 
 Checks if the zoom-out button is enabled for this user (resets to default if not).
@@ -254,7 +254,7 @@ Updates the unlock helper icon.
 
 | Parameter | Type      | Default value | Description                                                                           |
 | --------- | --------- | ------------- | ------------------------------------------------------------------------------------- |
-| `locked`  | `boolean` | `undefined`   | specifies if the icon should be shown or hidden (undefined means automatic detection) |
+| `locked?` | `boolean` | `undefined`   | specifies if the icon should be shown or hidden (undefined means automatic detection) |
 
 #### Returns
 

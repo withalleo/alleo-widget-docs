@@ -48,11 +48,10 @@ original default values regardless of customizations.
 
 ```typescript
 // Get the default color even if organization changed it
-const defaultColor = WidgetSettings.manifestConfig.defaultColor;
+const defaultColor = WidgetSettings.manifestConfig.defaultColor
 
 // Check if user customized a setting
-const isCustomized =
-  WidgetSettings.settings.theme !== WidgetSettings.manifestConfig.theme;
+const isCustomized = WidgetSettings.settings.theme !== WidgetSettings.manifestConfig.theme
 ```
 
 #### Inherited from
@@ -81,8 +80,8 @@ organization customizations.
 #### Example
 
 ```typescript
-const maxFileSize = WidgetSettings.settings.maxFileSize || 10 * 1024 * 1024;
-const apiUrl = WidgetSettings.settings.apiEndpoint;
+const maxFileSize = WidgetSettings.settings.maxFileSize || 10 * 1024 * 1024
+const apiUrl = WidgetSettings.settings.apiEndpoint
 ```
 
 #### Inherited from

@@ -8,9 +8,9 @@
 
 ```ts
 type SetTextContentOptions = {
-  append?: boolean;
-  format?: Html | Text | Markdown;
-};
+    append?: boolean
+    format?: Html | Text | Markdown
+}
 ```
 
 Options for setting text content.
@@ -20,7 +20,7 @@ Options for setting text content.
 ### append?
 
 ```ts
-optional append?: boolean;
+append?: boolean;
 ```
 
 ---
@@ -28,7 +28,7 @@ optional append?: boolean;
 ### format?
 
 ```ts
-optional format?:
+format?:
   | Html
   | Text
   | Markdown;

@@ -18,24 +18,24 @@ Essential for creating interactive form controls and action buttons.
 ```typescript
 // Create a refresh button with timer
 const refreshButton = new FormButtonHelper(
-  "Refresh Data",
-  () => {
-    console.log("Refreshing...");
-    loadData();
-  },
-  {
-    primary: true,
-    loadingPlaceholder: "Loading...",
-  },
-);
+    'Refresh Data',
+    () => {
+        console.log('Refreshing...')
+        loadData()
+    },
+    {
+        primary: true,
+        loadingPlaceholder: 'Loading...',
+    },
+)
 
 // Single-use action button
-const importButton = new FormButtonHelper("Import Data", () => importData(), {
-  primary: false,
-});
+const importButton = new FormButtonHelper('Import Data', () => importData(), {
+    primary: false,
+})
 
 // Get Formly field config
-const fieldConfig = refreshButton.field;
+const fieldConfig = refreshButton.field
 ```
 
 ## Constructors
@@ -46,7 +46,8 @@ const fieldConfig = refreshButton.field;
 new FormButtonHelper(
    label: string,
    callback?: (field: FormlyFieldConfig<FormlyFieldProps>) => void,
-   settings?: FormButtonHelperSettings): FormButtonHelper;
+   settings?: FormButtonHelperSettings
+): FormButtonHelper;
 ```
 
 Creates a FormButtonHelper instance for managing interactive form buttons.
@@ -214,9 +215,9 @@ Starts the timer.
 
 #### Parameters
 
-| Parameter  | Type     | Default value |
-| ---------- | -------- | ------------- |
-| `interval` | `number` | `undefined`   |
+| Parameter   | Type     | Default value |
+| ----------- | -------- | ------------- |
+| `interval?` | `number` | `undefined`   |
 
 #### Returns
 

@@ -27,7 +27,7 @@ Creates a SimpleUserNotification instance.
 | Parameter          | Type                                                                    | Default value | Description             |
 | ------------------ | ----------------------------------------------------------------------- | ------------- | ----------------------- |
 | `notificationText` | `string`                                                                | `undefined`   | The message to display. |
-| `options`          | [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) | `undefined`   | Notification options.   |
+| `options?`         | [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) | `undefined`   | Notification options.   |
 
 #### Returns
 
@@ -66,7 +66,7 @@ The message to display.
 ### options
 
 ```ts
-options: UserNotificationOptions = {};
+options: UserNotificationOptions = {}
 ```
 
 Notification options.
@@ -199,9 +199,9 @@ Updates notification options and redraws content.
 
 #### Parameters
 
-| Parameter | Type                                                                    | Default value | Description           |
-| --------- | ----------------------------------------------------------------------- | ------------- | --------------------- |
-| `options` | [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) | `undefined`   | New options to apply. |
+| Parameter  | Type                                                                    | Default value | Description           |
+| ---------- | ----------------------------------------------------------------------- | ------------- | --------------------- |
+| `options?` | [`UserNotificationOptions`](../type-aliases/UserNotificationOptions.md) | `undefined`   | New options to apply. |
 
 #### Returns
 
@@ -239,18 +239,19 @@ Updates the notification text.
 static error(
    message: string,
    actions?: string[],
-   throttle?: boolean): void;
+   throttle?: boolean
+): void;
 ```
 
 Shows an error notification.
 
 #### Parameters
 
-| Parameter  | Type       | Default value | Description                       |
-| ---------- | ---------- | ------------- | --------------------------------- |
-| `message`  | `string`   | `undefined`   | Message to display.               |
-| `actions`  | `string`[] | `[]`          | Optional actions.                 |
-| `throttle` | `boolean`  | `true`        | If true, throttles notifications. |
+| Parameter   | Type       | Default value | Description                       |
+| ----------- | ---------- | ------------- | --------------------------------- |
+| `message`   | `string`   | `undefined`   | Message to display.               |
+| `actions?`  | `string`[] | `[]`          | Optional actions.                 |
+| `throttle?` | `boolean`  | `true`        | If true, throttles notifications. |
 
 #### Returns
 
@@ -268,18 +269,19 @@ Shows an error notification.
 static info(
    message: string,
    actions?: string[],
-   throttle?: boolean): void;
+   throttle?: boolean
+): void;
 ```
 
 Shows an info notification.
 
 #### Parameters
 
-| Parameter  | Type       | Default value | Description                       |
-| ---------- | ---------- | ------------- | --------------------------------- |
-| `message`  | `string`   | `undefined`   | Message to display.               |
-| `actions`  | `string`[] | `[]`          | Optional actions.                 |
-| `throttle` | `boolean`  | `true`        | If true, throttles notifications. |
+| Parameter   | Type       | Default value | Description                       |
+| ----------- | ---------- | ------------- | --------------------------------- |
+| `message`   | `string`   | `undefined`   | Message to display.               |
+| `actions?`  | `string`[] | `[]`          | Optional actions.                 |
+| `throttle?` | `boolean`  | `true`        | If true, throttles notifications. |
 
 #### Returns
 
@@ -297,18 +299,19 @@ Shows an info notification.
 static warn(
    message: string,
    actions?: string[],
-   throttle?: boolean): void;
+   throttle?: boolean
+): void;
 ```
 
 Shows a warning notification.
 
 #### Parameters
 
-| Parameter  | Type       | Default value | Description                       |
-| ---------- | ---------- | ------------- | --------------------------------- |
-| `message`  | `string`   | `undefined`   | Message to display.               |
-| `actions`  | `string`[] | `[]`          | Optional actions.                 |
-| `throttle` | `boolean`  | `true`        | If true, throttles notifications. |
+| Parameter   | Type       | Default value | Description                       |
+| ----------- | ---------- | ------------- | --------------------------------- |
+| `message`   | `string`   | `undefined`   | Message to display.               |
+| `actions?`  | `string`[] | `[]`          | Optional actions.                 |
+| `throttle?` | `boolean`  | `true`        | If true, throttles notifications. |
 
 #### Returns
 

@@ -11,7 +11,7 @@
 ### Custom
 
 ```ts
-Custom: "custom";
+Custom: 'custom'
 ```
 
 ---
@@ -19,7 +19,7 @@ Custom: "custom";
 ### Deployment
 
 ```ts
-Deployment: "deployment";
+Deployment: 'deployment'
 ```
 
 ---
@@ -27,5 +27,5 @@ Deployment: "deployment";
 ### Organization
 
 ```ts
-Organization: "org";
+Organization: 'org'
 ```
